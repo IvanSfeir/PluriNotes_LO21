@@ -1,3 +1,3 @@
-#PluriNotes
+# PluriNotes
 
 ## Note manager project
