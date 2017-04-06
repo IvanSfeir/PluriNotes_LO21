@@ -1,1 +1,3 @@
-PluriNotes_LO21
+#PluriNotes
+
+## Note manager project
