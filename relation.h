@@ -1,7 +1,7 @@
 #ifndef RELATION_H
 #define RELATION_H
 
-#include "Note.h"
+//#include "Note.h"
 #include "iterator.h"
 #include <QString>
 
@@ -51,7 +51,7 @@ public:
     //implement iterator
     class iterator<Couple,Relation>;
     iterator begin() {return iterator(couples);}
-    iterator begin() {return iterator(couples+nbCouples);}
+    iterator end() {return iterator(couples+nbCouples);}
 };
 
 class RelationNormale: public Relation{

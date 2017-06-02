@@ -2,8 +2,9 @@
 #define ITERATOR_H
 
 template<class T, class classSource>
+
 class iterator{
-    friend class Source;
+    friend class classSource;
     T* current;
     iterator(T* curr): current(curr){}
 public:
