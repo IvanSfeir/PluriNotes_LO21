@@ -4,7 +4,7 @@
 template<class T, class classSource>
 
 class iterator{
-    friend class classSource;
+    friend class classSource;   // erreur : voir "template friend" ? : http://en.cppreference.com/w/cpp/language/friend
     T* current;
     iterator(T* curr): current(curr){}
 public:

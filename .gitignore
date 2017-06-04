@@ -4,3 +4,15 @@
 UML_diagram\.dia\.autosave
 
 idea\.txt
+CMakeLists.txt
+cmake-build-debug
+/.idea
+/.idea/workspace.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/PluriNotes_LO21.iml
+/.idea/vcs.xml
+
+*.user
+
+*.pro

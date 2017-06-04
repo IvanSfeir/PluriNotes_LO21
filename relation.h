@@ -1,7 +1,7 @@
 #ifndef RELATION_H
 #define RELATION_H
 
-//#include "Note.h"
+#include "note.h"
 #include "iterator.h"
 #include <QString>
 
