@@ -31,7 +31,9 @@ class Note {
     Note & operator=(const Note & n);
 
 public:
-    Note(const QString& id, unsigned int nbmax=10, const Type_etat_note &e=active):id(id), etat(e), versions(nullptr), nbVersion(0), nbMaxVersion(nbmax){}
+    Note(const QString& id, unsigned int nbmax=10, const Type_etat_note &e=active):id(id), etat(e), nbVersion(0), nbMaxVersion(nbmax){
+        versions= new Version*[10];
+    }
     ~Note();
 
     const QString &getId() const { return id; }
