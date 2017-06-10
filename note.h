@@ -5,15 +5,18 @@
 #include <QString>
 #include <QDateTime>
 #include <iostream>
+
+#include "version.h"
 #include "iterator.h"
 #include "noteexception.h"
 #include "notesmanager.h"
-#include "version.h"
+
 #include "versionexception.h"
 //using namespace std;
 
 enum Type_etat_note {active, archive, sursis};
 
+class Version;
 
 class Note {
     QString id; //unique

@@ -1,5 +1,10 @@
+/*!
+ *
+ */
 #ifndef NOTESMANAGER_H
 #define NOTESMANAGER_H
+
+
 
 #include "note.h"
 #include <QString>
@@ -19,6 +24,10 @@ private:
     ~NotesManager();
 
     //****** SINGLETON ******
+    /*!
+     *
+     * @param m
+     */
     NotesManager(const NotesManager& m);    // empêche recopie pour singleton et composition
     NotesManager& operator=(const NotesManager& m); // empêche affectation et composition
     static NotesManager * instance_NotesManager;

@@ -1,6 +1,8 @@
 QT += widgets
 QT += multimedia
 QT += gui
+QT += xml
+
 QMAKE_CXXFLAGS = -std=c++11
 QMAKE_LFLAGS = -std=c++11
 
