@@ -128,7 +128,7 @@ public:
      Iterator(Relation** c, unsigned int n): Iterator(c,n){}
     };
     Iterator begin() {return Iterator(relations, nbRelations);}
-    Iterator end() {return Iterator(couples+nbRelations, nbRelations);}
+    Iterator end() {return Iterator(relations+nbRelations, nbRelations);}
 };
 
 #endif // RELATION_H
