@@ -49,12 +49,12 @@ public:
     }
 
     //implement iterator
-    class Iterator: public Iterator<Couple>{
+    class iterator: public Iterator<Couple>{
      friend class Relation;
-     Iterator(Couple** c, unsigned int n): Iterator(c,n){}
+     iterator(Couple** c): Iterator(c){}
     };
-    Iterator begin() {return Iterator(couples, nbCouples);}
-    Iterator end() {return Iterator(couples+nbCouples, nbCouples);}
+    iterator begin() {return iterator(couples);}
+    iterator end() {return iterator(couples+nbCouples);}
 };
 
 class RelationNormale: public Relation{
@@ -121,12 +121,12 @@ public:
     void supprimerRelation(Relation* supprimerRelation);
 
     //implement iterator
-    class Iterator: public Iterator<Relation>{
+    class iterator: public Iterator<Relation>{
      friend class RelationManager;
-     Iterator(Relation** c, unsigned int n): Iterator(c,n){}
+     iterator(Relation** c): iterator(c){}
     };
-    Iterator begin() {return Iterator(relations, nbRelations);}
-    Iterator end() {return Iterator(relations+nbRelations, nbRelations);}
+    iterator begin() {return iterator(relations);}
+    iterator end() {return iterator(relations+nbRelations);}
 };
 
 #endif // RELATION_H

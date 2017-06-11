@@ -3,8 +3,9 @@
 
 template<class T>
 class Iterator{  // erreur : voir "template friend" ? : http://en.cppreference.com/w/cpp/language/friend
-    T* current;                 //https://cboard.cprogramming.com/cplusplus-programming/53097-declare-template-class-friend.html
-    Iterator (T* curr): current(curr){}
+    T** current;//https://cboard.cprogramming.com/cplusplus-programming/53097-declare-template-class-friend.html
+protected:
+    Iterator (T** curr): current(curr){}
 public:
     Iterator(): current(0){}
     T& operator*() const {return *current;}

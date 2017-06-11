@@ -57,14 +57,20 @@ public:
 
 
     // ********* ITERATOR ********
-    class iterator_version : public iterator<Version,Note>{
-    iterator_version begin() {return iterator_version(versions);}
-    iterator_version end() {return iterator_version(versions+nbVersion);}
-    iterator_version getIterator() const{
-            return iterator_version(versions, nbVersion);
-        }
-};
-
+    //class iterator_version : public iterator<Version,Note>{
+    //iterator_version begin() {return iterator_version(versions);}
+    //iterator_version end() {return iterator_version(versions+nbVersion);}
+    //iterator_version getIterator() const{
+    //        return iterator_version(versions, nbVersion);
+    //    }
+//};
+    //implement iterator
+    class iterator: public Iterator<Version>{
+     friend class Note;
+     iterator(Version** c): Iterator(c){}
+    };
+    iterator begin() {return iterator(versions);}
+    iterator end() {return iterator(versions+nbVersion);}
 
 }
 

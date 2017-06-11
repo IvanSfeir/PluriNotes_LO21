@@ -53,12 +53,12 @@ public:
     //    }
 
     //implement iterator
-    class Iterator: public Iterator<Note>{
+    class iterator: public Iterator<Note>{
      friend class NotesManager;
-     Iterator(Note** c, unsigned int n): Iterator(c,n){}
+     iterator(Note** c): Iterator(c){}
     };
-    Iterator begin() {return Iterator(tab_notes, nbNotes);}
-    Iterator end() {return Iterator(tab_notes+nbNotes, nbNotes);}
+    iterator begin() {return iterator(tab_notes);}
+    iterator end() {return iterator(tab_notes+nbNotes);}
 
     // ********* SINGLETON *************
     static NotesManager* getInstance();
