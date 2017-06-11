@@ -5,9 +5,9 @@
 #include "iterator.h"
 #include <QString>
 
-class RelationException {
+class exception {
 public:
-    RelationException(const QString& message=" "): info(message){}
+    exception(const QString& message=" "): info(message){}
     QString getInfo() const {return info;}
 private:
     QString info;
@@ -42,6 +42,9 @@ public:
     virtual void setTitre(const QString& newTitre) = 0;
     virtual void setDescription(const QString& newDescription) = 0;
     virtual void setOrientee(bool boolVal) = 0;
+    const QString& getTitre() const {return titre;}
+    const QString& getDescription() const {return description;}
+    bool getOrientee() const {return orientee;}
 
     void ajouterCouple(Couple* newCouple);
     void supprimerCouple(Couple* supCouple);
@@ -130,6 +133,12 @@ public:
     };
     iterator begin() {return iterator(relations);}
     iterator end() {return iterator(relations+nbRelations);}
+
+    ////////////////////////////
+    //Method load, save to XML//
+    ////////////////////////////
+    void loadRelationManager(const QString & filename);
+    void saveRelationManager(const QString & filename);
 };
 
 #endif // RELATION_H

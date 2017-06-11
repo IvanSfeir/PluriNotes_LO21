@@ -8,7 +8,7 @@ protected:
     Iterator (T** curr): current(curr){}
 public:
     Iterator(): current(0){}
-    T& operator*() const {return *current;}
+    T* operator*() const {return *current;}
     Iterator& operator++() {++current; return *this;}
     Iterator& operator++(int){
         Iterator old = *this; ++current; return old;
