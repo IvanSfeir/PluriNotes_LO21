@@ -4,8 +4,7 @@
 #include <QPushButton>
 #include <QApplication>
 #include <QMainWindow>
-#include <QMenuBar>
-#include <QMenu>
+
 
 class DroiteVersion : public QWidget {
 

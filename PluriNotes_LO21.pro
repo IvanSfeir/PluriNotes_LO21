@@ -13,13 +13,12 @@ SOURCES += \
     note.cpp \
     version.cpp \
     multimedia.cpp \
-    centrenote.cpp \
+    centrenoteact.cpp \
     centrerelation.cpp \
     centrerelations.cpp \
     centreversion.cpp \
     droitearborescence.cpp \
-    gaucheactives.cpp \
-    gauchearchivees.cpp \
+    gauche.cpp \
     interface.cpp \
 
 
@@ -34,11 +33,10 @@ HEADERS += \
     multimedia.h \
     article.h \
     tache.h \
-    centrenote.h \
+    centrenoteact.h \
     centrerelation.h \
     centrerelations.h \
     centreversion.h \
     droitearborescence.h \
-    gaucheactives.h \
-    gauchearchivees.h \
+    gauche.h \
     interface.h

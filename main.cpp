@@ -5,21 +5,23 @@
 #include "relation.h"
 #include "interface.h"
 #include "gauche.h"
+#include "centrenoteact.h"
 
 int main(int argc, char* argv[]) {
 
     QApplication app(argc, argv);
-    Interface interf;
-    interf.setFixedSize(1200, 400);
+    Interface interface;
+    interface.setFixedSize(1200, 400);
 
-
-
-    Gauche gauche(&interf);
+    Gauche gauche(&interface);
     gauche.show();
     gauche.move(0,20);
 
+    CentreNoteAct centrenoteact(&interface);
+    centrenoteact.move(400,70);
 
-    interf.show();
+
+    interface.show();
 
 
 
