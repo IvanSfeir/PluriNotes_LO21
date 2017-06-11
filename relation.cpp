@@ -1,9 +1,13 @@
+#include "note.h"
 #include "relation.h"
+#include "notesmanager.h"
 #include <Qstring>
 
 #include <QFile>
 #include <QXmlStreamWriter>
 #include <QXmlStreamReader>
+
+static NotesManager* notesManager = NotesManager::getInstance(); //get this Instance for the load method
 
 void Relation::ajouterCouple(Couple* newCouple){
     if (nbCouples == maxCouples){
@@ -123,7 +127,28 @@ void RelationManager::loadRelationManager(const QString & filename){
                 Relation* relation;
                 if (titre == "\ref") relation = relations[0];
                 else relation = new RelationNormale(titre, description, orientee);
-
+                //loop to get Couple
+                while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "couple")){
+                    QString label;
+                    QString note1;
+                    QString note2;
+                    if (xml.tokenString() == QXmlStreamReader::StartElement){
+                        if (xml.name() == "label"){
+                            xml.readNext();
+                            label=xml.text().toString();
+                        }
+                        if (xml.name() == "note1"){
+                            xml.readNext();
+                            note1=xml.text().toString();
+                        }
+                        if (xml.name() == "note2"){
+                            xml.readNext();
+                            note2=xml.text().toString();
+                        }
+                    }
+                    xml.readNext();
+                    relation->ajouterCouple(&Couple(notesManager->getNote(note1),&notesManager->getNote(note2),label));
+                }
             }
          }
     }
