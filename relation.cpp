@@ -150,10 +150,14 @@ void RelationManager::loadRelationManager(const QString & filename){
                     Couple* newCouple = new Couple(&notesManager->getNote(note1), &notesManager->getNote(note2), label);
                     relation->ajouterCouple(newCouple);
                 }
-                if (titre != "\ref")
+                if (titre != "\ref") ajouterRelation(relation);
             }
-         }
+        }
     }
+    if(xml.hasError()) {
+        throw exception("Error parsing xml : cannot read file");
+    }
+    xml.clear();
 }
 
 
