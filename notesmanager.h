@@ -29,8 +29,8 @@ private:
      *
      * @param m
      */
-    NotesManager(const NotesManager& m);    // empêche recopie pour singleton et composition
-    NotesManager& operator=(const NotesManager& m); // empêche affectation et composition
+    NotesManager(const NotesManager& m){}    // empêche recopie pour singleton et composition
+    NotesManager& operator=(const NotesManager& m){} // empêche affectation et composition
     static NotesManager * instance_NotesManager;
 
 public:
@@ -43,6 +43,8 @@ public:
     void load(const QString& f);
     void save() const;
 
+	bool is_archived(); // dans Classe Notes ? 
+    bool is_reprieved(); 
 
     // ******** ITERATOR *************
     //class iterator<Note,NotesManager>;

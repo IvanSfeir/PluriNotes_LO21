@@ -115,6 +115,8 @@ void NotesManager::save() const {
     fout.close();
 }
 
-
+bool NotesManager::is_archived() { 
+    return false; 
+} 
 
 
