@@ -3,7 +3,7 @@
 
 
 //********* SINGLETON ***************
-NotesManager NotesManager::instance_NotesManager = nullptr;
+NotesManager* NotesManager::instance_NotesManager = nullptr;
 
 NotesManager* NotesManager::getInstance(){ //méthode qui vérifie qu'il n'y ait qu'une seule instance de NotesManager
     if(NotesManager::instance_NotesManager==nullptr)   // si l'instance n'existe pas
