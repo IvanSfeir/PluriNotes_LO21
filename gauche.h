@@ -1,5 +1,5 @@
-#ifndef GAUCHEACTIVES_H
-#define GAUCHEACTIVES_H
+#ifndef GAUCHE_H
+#define GAUCHE_H
 
 #include <QPushButton>
 #include <QApplication>
@@ -10,11 +10,25 @@
 #include <QMainWindow>
 #include "interface.h"
 
-class GaucheActives : public QWidget {
+#include <QListWidget>
+#include <QComboBox>
+
+
+class Gauche : public QWidget {
 
     Q_OBJECT // macro pour pouvoir utiliser signals et slots
 
-    QLabel *titre_section;
+
+
+    QLabel *titre_act;
+    QVBoxLayout *couche;
+    QListWidget *notes_actives;
+    QPushButton *bouton_afficher_act;
+    QLabel *titre_arch;
+    QComboBox *notes_archivees;
+    QPushButton *bouton_afficher_arch;
+
+    /*
     QScrollArea *scrolleur;
     QWidget *contenuScrolleur;
     QWidget *section;
@@ -25,11 +39,13 @@ class GaucheActives : public QWidget {
     QPushButton *b2;
     QPushButton *b3;
     QPushButton *b4;
+    */
+
 
 
 public:
     // le dernier parametre du constructeur est le tableau de tab_notes de NotesManager
-    explicit GaucheActives(QString* titre, QMainWindow* parent=0);
+    explicit Gauche(QMainWindow* parent=0);
 
 signals:
 
@@ -39,4 +55,4 @@ public slots:
 
 };
 
-#endif // GAUCHEACTIVES_H
+#endif // GAUCHE_H
