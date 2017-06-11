@@ -3,18 +3,18 @@
 
 
 //********* SINGLETON ***************
-NotesManager* NotesManager::instance = nullptr;
+NotesManager NotesManager::instance_NotesManager = nullptr;
 
-NotesManager& NotesManager::getInstance(){ //méthode qui vérifie qu'il n'y ait qu'une seule instance de NotesManager
-    if(NotesManager::instance==nullptr)   // si l'instance n'existe pas
-        NotesManager::instance = new NotesManager;    // on crée une instance
-    return *NotesManager::instance;
+NotesManager* NotesManager::getInstance(){ //méthode qui vérifie qu'il n'y ait qu'une seule instance de NotesManager
+    if(NotesManager::instance_NotesManager==nullptr)   // si l'instance n'existe pas
+        NotesManager::instance_NotesManager = new NotesManager;    // on crée une instance
+    return NotesManager::instance_NotesManager;
 }
 
 void NotesManager::libererInstance(){
-    if(NotesManager::instance != nullptr) // si l'instance existe
-        delete NotesManager::instance;    // on la supprime
-    NotesManager::instance=nullptr;   // réinitialisation à nullptr
+    if(NotesManager::instance_NotesManager != nullptr) // si l'instance existe
+        delete NotesManager::instance_NotesManager;    // on la supprime
+    NotesManager::instance_NotesManager=nullptr;   // réinitialisation à nullptr
 }
 
 
@@ -27,7 +27,7 @@ NotesManager::~NotesManager(){  // relation de composition avec note => il faut 
 }
 
 
-Note& NotesManager::getNote(const Qstring& id){
+Note& NotesManager::getNote(const QString& id){
     for(unsigned int i=0; i<nbNotes; i++){
         if (tab_notes[i]->getId()==id) return *tab_notes[i];
     }
@@ -43,7 +43,7 @@ void NotesManager::ajouterNote(Note * n){
     if (nbNotes==nbMaxNotes){
         Note** newTab_Note= new Note*[nbMaxNotes+10];
         for(unsigned int i=0; i<nbMaxNotes; i++) newTab_Note[i]=tab_notes[i];
-        Article** oldTab_note=tab_notes;
+        Note** oldTab_note=tab_notes;
         tab_notes=newTab_Note;
         nbMaxNotes+=10;
         if (oldTab_note) delete[] oldTab_note;

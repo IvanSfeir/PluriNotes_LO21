@@ -14,7 +14,7 @@ NotesManager::~NotesManager(){  // relation de composition avec note => il faut 
 }
 
 
-Note& Note::getVersion(const Qstring& title){
+Version & Note::getVersion(const QString& title){
     for(unsigned int i=0; i<nbVersion; i++){
         if (versions[i]->getTitle()==title) return *versions[i];
     }

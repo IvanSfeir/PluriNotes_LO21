@@ -44,28 +44,31 @@ public:
     void supprimerCouple(Couple* supCouple);
 
     ~Relation(){
-        for (int i=0; i < nbCouples; i++) delete couples[i];
+        for (unsigned int i=0; i < nbCouples; i++) delete couples[i];
         delete[] couples;
     }
 
     //implement iterator
-    class iterator<Couple,Relation>;
-    iterator begin() {return iterator(couples);}
-    iterator end() {return iterator(couples+nbCouples);}
+    class Iterator: public iterator<Couple>{
+     friend class Relation;
+     Iterator(Couple** c, unsigned int n): Iterator(c,n){}
+    };
+    Iterator begin() {return Iterator(couples, nbCouples);}
+    Iterator end() {return Iterator(couples+nbCouples, nbCouples);}
 };
 
 class RelationNormale: public Relation{
 public:
     RelationNormale(const QString& titr, const QString& desc, int max=10, bool orie=true): Relation(titr, desc){}
-    void setTitre(QString& newTitre) {titre = newTire;}
+    void setTitre(QString& newTitre) {titre = newTitre;}
     void setDescription(QString& newDescription){description = newDescription;}
     void setOrientee(bool boolVal){orientee = boolVal;}
 };
 
 class RelationPreexistente: public Relation{
-    void setTitre(const QString& newCouple){}
-    void supprimerCouple(const QString& supCouple){}
-    void setOrientee(bool boolVal){}
+    void setTitre(){}
+    void supprimerCouple(){}
+    void setOrientee(){}
 
     static RelationPreexistente* instance_RelationPreexistente;
     RelationPreexistente(const RelationPreexistente&){}
@@ -94,7 +97,11 @@ class RelationManager{
     static RelationManager* instance_RelationManager;
     RelationManager(const RelationManager&){}
     RelationManager(){
-        relations = new relation[maxRelations+10];
+<<<<<<< HEAD
+        relations = new Relation[maxRelations+10];
+=======
+        relations = new Relation*[maxRelations+10];
+>>>>>>> a047dd54a395b8c92c752ea0115d394e676885a0
         maxRelations += 10;
         RelationPreexistente* RP = getRelationPreexistente();
         relations[0] = RP;
@@ -118,9 +125,12 @@ public:
     void supprimerRelation(Relation* supprimerRelation);
 
     //implement iterator
-    class iterator<Relation,RelationManager>;
-    iterator begin() {return iterator(relations);}
-    iterator begin() {return iterator(relations+nbRelations);}
+    class Iterator: public iterator<Relation>{
+     friend class RelationManager;
+     Iterator(Relation** c, unsigned int n): Iterator(c,n){}
+    };
+    Iterator begin() {return Iterator(relations, nbRelations);}
+    Iterator end() {return Iterator(couples+nbRelations, nbRelations);}
 };
 
 #endif // RELATION_H

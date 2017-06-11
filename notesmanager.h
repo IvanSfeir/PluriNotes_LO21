@@ -1,9 +1,15 @@
+/*!
+ *
+ */
 #ifndef NOTESMANAGER_H
 #define NOTESMANAGER_H
+
+
 
 #include "note.h"
 #include <QString>
 #include "iterator.h"
+#include "version.h"
 
 class Note;
 
@@ -19,6 +25,10 @@ private:
     ~NotesManager();
 
     //****** SINGLETON ******
+    /*!
+     *
+     * @param m
+     */
     NotesManager(const NotesManager& m);    // empêche recopie pour singleton et composition
     NotesManager& operator=(const NotesManager& m); // empêche affectation et composition
     static NotesManager * instance_NotesManager;
@@ -43,8 +53,8 @@ public:
         }
 
     // ********* SINGLETON *************
-    static NotesManager* getNotesManager();
-    static void libererNotesManager();
+    static NotesManager* getInstance();
+    static void libererInstance();
 
 
 //    class const_iterator{
