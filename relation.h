@@ -14,12 +14,15 @@ private:
 };
 
 class Couple {
-    Note note1;
-    Note note2;
+    Note* note1;
+    Note* note2;
+    QString label;
 public:
-    Couple(Note& n1, Note& n2): note1(n1), note2(n2){}
-    const Note& getNote1() const { return note1; }
-    const Note& getNote2() const { return note2; }
+    Couple(Note* n1, Note* n2, QString& lb): note1(n1), note2(n2), label(lb) {}
+    const Note& getNote1() const { return *note1; }
+    const Note& getNote2() const { return *note2; }
+    const QString& getLabel() const {return label;}
+    void setLabel(QString& newLb) {label = newLb;}
     ~Couple(){}
 };
 
@@ -33,8 +36,8 @@ protected:
     QString description;
     bool orientee;
 public:
-    Relation(const QString& titr, const QString& desc, int max=10, bool orie=true):
-        titre(titr), description(desc), nbCouples(0), maxCouples(max), orientee(orie){}
+    Relation(const QString& titr, const QString& desc="", bool orie=true):
+        titre(titr), description(desc), nbCouples(0), maxCouples(10), orientee(orie){}
 
     virtual void setTitre(const QString& newTitre) = 0;
     virtual void setDescription(const QString& newDescription) = 0;
@@ -59,33 +62,33 @@ public:
 
 class RelationNormale: public Relation{
 public:
-    RelationNormale(const QString& titr, const QString& desc, int max=10, bool orie=true): Relation(titr, desc){}
+    RelationNormale(const QString& titr, const QString& desc, bool orie=true): Relation(titr, desc, orie){}
     void setTitre(QString& newTitre) {this->titre = newTitre;}
     void setDescription(QString& newDescription){this->description = newDescription;}
     void setOrientee(bool boolVal){this->orientee = boolVal;}
 };
 
 class RelationPreexistente: public Relation{
-    void setTitre(){}
-    void supprimerCouple(){}
-    void setOrientee(){}
+    void setTitre(const QString&){}
+    void setDescription(const QString&){}
+    void setOrientee(bool){}
 
     static RelationPreexistente* instance_RelationPreexistente;
-    RelationPreexistente(const RelationPreexistente&){}
+    RelationPreexistente(const RelationPreexistente&);
     ~RelationPreexistente(){}
-    RelationPreexistente& operator=(const RelationPreexistente&){}
+    RelationPreexistente& operator=(const RelationPreexistente&);
     RelationPreexistente(): Relation("ref", "preexistente"){}
 
 public:
     static RelationPreexistente& getRelationPreexistente(){
-        if (!instance_RelationPreexistente){
-            instance_RelationPreexistente = new RelationPreexistente();
+        if (!instance_RelationPreexistente) instance_RelationPreexistente = new RelationPreexistente;
             return *instance_RelationPreexistente;
-        }
     }
     static void libererRelationPreexistente(){
-        if (instance_RelationPreexistente)
+        if (instance_RelationPreexistente){
             delete instance_RelationPreexistente;
+            instance_RelationPreexistente = 0;
+        }
     }
 };
 
@@ -99,8 +102,8 @@ class RelationManager{
     RelationManager(){
         relations = new Relation*[maxRelations+10];
         maxRelations += 10;
-        RelationPreexistente* RP = RelationPreexistente::getRelationPreexistente();
-        relations[0] = RP;
+        RelationPreexistente& RP = RelationPreexistente::getRelationPreexistente();
+        relations[0] = &RP;
         nbRelations++;
     }
     RelationManager& operator=(const RelationManager&){}
@@ -123,7 +126,7 @@ public:
     //implement iterator
     class iterator: public Iterator<Relation>{
      friend class RelationManager;
-     iterator(Relation** c): iterator(c){}
+     iterator(Relation** c): Iterator(c){}
     };
     iterator begin() {return iterator(relations);}
     iterator end() {return iterator(relations+nbRelations);}
