@@ -57,8 +57,8 @@ public:
 
     //implement iterator
     class iterator: public Iterator<Couple>{
-     friend class Relation;
-     iterator(Couple** c): Iterator(c){}
+    friend class Relation;
+    iterator(Couple** c): Iterator(c){}
     };
     iterator begin() {return iterator(couples);}
     iterator end() {return iterator(couples+nbCouples);}

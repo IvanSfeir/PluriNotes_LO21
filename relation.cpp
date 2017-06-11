@@ -147,8 +147,10 @@ void RelationManager::loadRelationManager(const QString & filename){
                         }
                     }
                     xml.readNext();
-                    relation->ajouterCouple(&Couple(notesManager->getNote(note1),&notesManager->getNote(note2),label));
+                    Couple* newCouple = new Couple(&notesManager->getNote(note1), &notesManager->getNote(note2), label);
+                    relation->ajouterCouple(newCouple);
                 }
+                if (titre != "\ref")
             }
          }
     }
