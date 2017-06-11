@@ -49,7 +49,7 @@ public:
     }
 
     //implement iterator
-    class Iterator: public iterator<Couple>{
+    class Iterator: public Iterator<Couple>{
      friend class Relation;
      Iterator(Couple** c, unsigned int n): Iterator(c,n){}
     };
@@ -121,7 +121,7 @@ public:
     void supprimerRelation(Relation* supprimerRelation);
 
     //implement iterator
-    class Iterator: public iterator<Relation>{
+    class Iterator: public Iterator<Relation>{
      friend class RelationManager;
      Iterator(Relation** c, unsigned int n): Iterator(c,n){}
     };

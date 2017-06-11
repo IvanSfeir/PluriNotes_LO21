@@ -45,12 +45,20 @@ public:
 
 
     // ******** ITERATOR *************
-    class iterator<Note,NotesManager>;
-    iterator begin() {return iterator(tab_notes);}
-    iterator end() {return iterator(tab_notes+nbNotes);}
-    iterator getIterator() const{
-            return iterator(tab_notes, nbNotes);
-        }
+    //class iterator<Note,NotesManager>;
+    //iterator begin() {return iterator(tab_notes);}
+    //iterator end() {return iterator(tab_notes+nbNotes);}
+    //iterator getIterator() const{
+    //        return iterator(tab_notes, nbNotes);
+    //    }
+
+    //implement iterator
+    class Iterator: public Iterator<Note>{
+     friend class NotesManager;
+     Iterator(Note** c, unsigned int n): Iterator(c,n){}
+    };
+    Iterator begin() {return Iterator(tab_notes, nbNotes);}
+    Iterator end() {return Iterator(tab_notes+nbNotes, nbNotes);}
 
     // ********* SINGLETON *************
     static NotesManager* getInstance();
