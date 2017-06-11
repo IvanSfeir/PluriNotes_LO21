@@ -1,8 +1,13 @@
+#include "note.h"
 #include "relation.h"
+#include "notesmanager.h"
 #include <Qstring>
 
 #include <QFile>
 #include <QXmlStreamWriter>
+#include <QXmlStreamReader>
+
+static NotesManager* notesManager = NotesManager::getInstance(); //get this Instance for the load method
 
 void Relation::ajouterCouple(Couple* newCouple){
     if (nbCouples == maxCouples){
@@ -90,8 +95,69 @@ void RelationManager::saveRelationManager(const QString & filename){
     newFile.close();
 }
 
-void loadRelationManager(const QString & filename){
+void RelationManager::loadRelationManager(const QString & filename){
     QFile loadFile(filename);
+    if (!loadFile.open(QIODevice::ReadOnly | QIODevice::Text))
+        throw exception(QString("Error open file xml: cannot load file"));
+    QXmlStreamReader xml(&loadFile);
+
+    while(!xml.atEnd() && !xml.hasError()) {
+        QXmlStreamReader::TokenType token = xml.readNext();
+        if(token == QXmlStreamReader::StartDocument) continue;
+         while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "relation")){
+            xml.readNext();
+            if (xml.tokenString() == QXmlStreamReader::StartElement){
+                QString titre;
+                QString description;
+                bool orientee;
+                if (xml.name() == "titre"){
+                    xml.readNext();
+                    titre = xml.text().toString();
+                }
+                if (xml.name() == "description"){
+                    xml.readNext();
+                    description = xml.text().toString();
+                }
+                if (xml.name() == "orientation"){
+                    xml.readNext();
+                    if (xml.text().toString() == "true") orientee = true;
+                    else orientee = false;
+                }
+
+                Relation* relation;
+                if (titre == "\ref") relation = relations[0];
+                else relation = new RelationNormale(titre, description, orientee);
+                //loop to get Couple
+                while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "couple")){
+                    QString label;
+                    QString note1;
+                    QString note2;
+                    if (xml.tokenString() == QXmlStreamReader::StartElement){
+                        if (xml.name() == "label"){
+                            xml.readNext();
+                            label=xml.text().toString();
+                        }
+                        if (xml.name() == "note1"){
+                            xml.readNext();
+                            note1=xml.text().toString();
+                        }
+                        if (xml.name() == "note2"){
+                            xml.readNext();
+                            note2=xml.text().toString();
+                        }
+                    }
+                    xml.readNext();
+                    Couple* newCouple = new Couple(&notesManager->getNote(note1), &notesManager->getNote(note2), label);
+                    relation->ajouterCouple(newCouple);
+                }
+                if (titre != "\ref") ajouterRelation(relation);
+            }
+        }
+    }
+    if(xml.hasError()) {
+        throw exception("Error parsing xml : cannot read file");
+    }
+    xml.clear();
 }
 
 

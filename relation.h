@@ -39,9 +39,10 @@ public:
     Relation(const QString& titr, const QString& desc="", bool orie=true):
         titre(titr), description(desc), nbCouples(0), maxCouples(10), orientee(orie){}
 
-    virtual void setTitre(const QString& newTitre) = 0;
-    virtual void setDescription(const QString& newDescription) = 0;
-    virtual void setOrientee(bool boolVal) = 0;
+    virtual void setTitre(const QString& newTitre) = 0;                     //pure
+    virtual void setDescription(const QString& newDescription) = 0;         //pure
+    virtual void setOrientee(bool boolVal) = 0;                             //pure
+
     const QString& getTitre() const {return titre;}
     const QString& getDescription() const {return description;}
     bool getOrientee() const {return orientee;}
@@ -49,15 +50,15 @@ public:
     void ajouterCouple(Couple* newCouple);
     void supprimerCouple(Couple* supCouple);
 
-    ~Relation(){
+    virtual ~Relation(){
         for (unsigned int i=0; i < nbCouples; i++) delete couples[i];
         delete[] couples;
     }
 
     //implement iterator
     class iterator: public Iterator<Couple>{
-     friend class Relation;
-     iterator(Couple** c): Iterator(c){}
+    friend class Relation;
+    iterator(Couple** c): Iterator(c){}
     };
     iterator begin() {return iterator(couples);}
     iterator end() {return iterator(couples+nbCouples);}
@@ -66,9 +67,10 @@ public:
 class RelationNormale: public Relation{
 public:
     RelationNormale(const QString& titr, const QString& desc, bool orie=true): Relation(titr, desc, orie){}
-    void setTitre(QString& newTitre) {this->titre = newTitre;}
-    void setDescription(QString& newDescription){this->description = newDescription;}
-    void setOrientee(bool boolVal){this->orientee = boolVal;}
+
+    void setTitre(const QString& newTitre) {titre = newTitre;}
+    void setDescription(const QString& newDescription){description = newDescription;}
+    void setOrientee(bool boolVal){orientee = boolVal;}
 };
 
 class RelationPreexistente: public Relation{
@@ -109,7 +111,7 @@ class RelationManager{
         relations[0] = &RP;
         nbRelations++;
     }
-    RelationManager& operator=(const RelationManager&){}
+    RelationManager& operator=(const RelationManager&);
 public:
     static RelationManager& getRelationManager(){
         if (!instance_RelationManager){
