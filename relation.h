@@ -60,9 +60,9 @@ public:
 class RelationNormale: public Relation{
 public:
     RelationNormale(const QString& titr, const QString& desc, int max=10, bool orie=true): Relation(titr, desc){}
-    void setTitre(QString& newTitre) {titre = newTitre;}
-    void setDescription(QString& newDescription){description = newDescription;}
-    void setOrientee(bool boolVal){orientee = boolVal;}
+    void setTitre(QString& newTitre) {this->titre = newTitre;}
+    void setDescription(QString& newDescription){this->description = newDescription;}
+    void setOrientee(bool boolVal){this->orientee = boolVal;}
 };
 
 class RelationPreexistente: public Relation{
@@ -97,8 +97,6 @@ class RelationManager{
     static RelationManager* instance_RelationManager;
     RelationManager(const RelationManager&){}
     RelationManager(){
-        relations = new Relation[maxRelations+10];
-        relations = new Relation*[maxRelations+10];
         relations = new Relation*[maxRelations+10];
         maxRelations += 10;
         RelationPreexistente* RP = RelationPreexistente::getRelationPreexistente();
