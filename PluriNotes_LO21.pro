@@ -12,7 +12,16 @@ SOURCES += \
     notesmanager.cpp \
     note.cpp \
     version.cpp \
-    multimedia.cpp
+    multimedia.cpp \
+    centrenote.cpp \
+    centrerelation.cpp \
+    centrerelations.cpp \
+    centreversion.cpp \
+    droitearborescence.cpp \
+    gaucheactives.cpp \
+    gauchearchivees.cpp \
+    interface.cpp \
+
 
 HEADERS += \
     iterator.h \
@@ -24,4 +33,12 @@ HEADERS += \
     versionexception.h \
     multimedia.h \
     article.h \
-    tache.h
+    tache.h \
+    centrenote.h \
+    centrerelation.h \
+    centrerelations.h \
+    centreversion.h \
+    droitearborescence.h \
+    gaucheactives.h \
+    gauchearchivees.h \
+    interface.h
