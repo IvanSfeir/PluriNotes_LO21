@@ -101,7 +101,7 @@ class RelationManager{
         relations = new Relation*[maxRelations+10];
         relations = new Relation*[maxRelations+10];
         maxRelations += 10;
-        RelationPreexistente* RP = getRelationPreexistente();
+        RelationPreexistente* RP = RelationPreexistente::getRelationPreexistente();
         relations[0] = RP;
         nbRelations++;
     }
