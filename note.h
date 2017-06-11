@@ -72,10 +72,10 @@ public:
     iterator begin() {return iterator(versions);}
     iterator end() {return iterator(versions+nbVersion);}
 
-}
+};
 
 //type ostream ? à revoir pour Qt
-ostream& operator<<(ostream& f, const Note& n);// operateur affichage
+//ostream& operator<<(ostream& f, const Note& n);// operateur affichage
 
 
 #endif

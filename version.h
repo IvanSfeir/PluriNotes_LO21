@@ -16,7 +16,7 @@ class Version {
 
 
 public:
-    virtual Version(const QString &t, const QDateTime & d): title(t), date_modif(d){}
+    Version(const QString &t, const QDateTime & d): title(t), date_modif(d){}
     virtual ~Version()=0;
 
     virtual QString getTitle() const{return title;}

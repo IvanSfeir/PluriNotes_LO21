@@ -22,12 +22,12 @@ class Tache : public Version{
 
 
 public:
-    Tache(const QString &t, QDateTime & d, const QString &a, const Type_statut_tache & s=attente, const unsigned int p=0, const QDateTime &d_e=NULL): //valeur NULL possible avec QDate ?
-        Version(t,d), action(a), priorite(p), date_echeance(d_e), statut(s){}
-    Tache(const QString &t, QDateTime &d, const QString &a, const Type_statut_tache & s=attente, const unsigned int p=0): //valeur NULL possible avec QDate ?
-        Version(t,d), action(a), statut(s), priorite(p){}
-    Tache(const QString &t, QDateTime &d, const QString &a, const Type_statut_tache & s=attente, const QDateTime &d_e=NULL): //valeur NULL possible avec QDate ?
-        Version(t,d), action(a), date_echeance(d_e), statut(s){}
+    Tache(const QString &t, QDateTime & d, const QString &a, const Type_statut_tache & s=attente, const unsigned int p=0/*, const QDateTime &d_e=NULL*/): //valeur NULL possible avec QDate ?
+        Version(t,d), action(a), priorite(p), /*date_echeance(d_e),*/ statut(s){}
+    //Tache(const QString &t, QDateTime &d, const QString &a, const Type_statut_tache & s=attente, const unsigned int p=0): //valeur NULL possible avec QDate ?
+        //Version(t,d), action(a), statut(s), priorite(p){}
+    Tache(const QString &t, QDateTime &d, const QString &a, const Type_statut_tache & s=attente/*, const QDateTime &d_e=NULL*/): //valeur NULL possible avec QDate ?
+        Version(t,d), action(a), /*date_echeance(d_e),*/ statut(s){}
 
     ~Tache(){}
 
