@@ -1,12 +1,15 @@
 #ifndef ITERATOR_H
 #define ITERATOR_H
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 template<class T>
 class Iterator{  // erreur : voir "template friend" ? : http://en.cppreference.com/w/cpp/language/friend
     T* current;                 //https://cboard.cprogramming.com/cplusplus-programming/53097-declare-template-class-friend.html
     Iterator (T* curr): current(curr){}
 =======
+=======
+>>>>>>> a047dd54a395b8c92c752ea0115d394e676885a0
 // class classSource>
 template<class T> class classSource;
 template <class T> class iterator{

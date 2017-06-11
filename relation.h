@@ -98,7 +98,11 @@ class RelationManager{
     RelationManager(const RelationManager&){}
     RelationManager(){
 <<<<<<< HEAD
+<<<<<<< HEAD
         relations = new Relation[maxRelations+10];
+=======
+        relations = new Relation*[maxRelations+10];
+>>>>>>> a047dd54a395b8c92c752ea0115d394e676885a0
 =======
         relations = new Relation*[maxRelations+10];
 >>>>>>> a047dd54a395b8c92c752ea0115d394e676885a0
