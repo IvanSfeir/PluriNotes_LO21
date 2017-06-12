@@ -4,6 +4,10 @@
 #include <QString>
 #include "notesmanager.h"
 #include "tache.h"
+#include "multimedia.h"
+#include "article.h"
+
+using namespace std;
 
 //********* SINGLETON ***************
 NotesManager* NotesManager::instance_NotesManager = nullptr;
@@ -24,7 +28,7 @@ void NotesManager::libererInstance(){
 NotesManager::NotesManager():tab_notes(nullptr),nbNotes(0),nbMaxNotes(50) {}
 
 NotesManager::~NotesManager(){  // relation de composition avec note => il faut supprimer toutes les notes
-    save();
+    saveNotesManager("NotesManager");
     for(unsigned int i=0; i<nbNotes; i++) delete tab_notes[i];
     delete[] tab_notes;
 }
@@ -123,7 +127,7 @@ void NotesManager::supprimerNote(Note * oldNote){
 void NotesManager::saveNotesManager(const QString & filename){
     QFile newFile(filename);
     if (!newFile.open(QIODevice::WriteOnly | QIODevice::Text))
-        throw exception(QString("Error open file xml: cannot save file"));
+        throw  NotesException(QString("Error open file xml: cannot save file"));
 
     QXmlStreamWriter stream(&newFile);
     stream.setAutoFormatting(true);
@@ -144,35 +148,45 @@ void NotesManager::saveNotesManager(const QString & filename){
             string type_version= typeid((*it_note)).name();
             type_version=type_version.substr(1,type_version.length()-1); // on renvoie le nom du type de l'objet, sans le 1er char (la longueur du nom)
 
-            switch (type_version) {
-                   case "image":
-                       stream.writeStartElement("img", enum_statut_to_string( (*it_note)->getImg()));
-                       stream.writeStartElement("desc", enum_statut_to_string( (*it_note)->getDesc()));
-                       stream.writeStartElement("img_URL", enum_statut_to_string( (*it_note)->getImg_URL()));
-                       break;
+            if (type_version=="image") {
 
-                   case "audio":
-                       stream.writeStartElement("audio_URL", enum_statut_to_string( (*it_note)->getAudio_URL()));
+                       //image *img = *(it_note);
+                        image *img =  dynamic_cast<image*>(*it_note);
+                       stream.writeStartElement("img", img->getImg());
+                       stream.writeStartElement("desc",  img-> getDesc());
+                       stream.writeStartElement("img_URL",  img->getimg_URL());
+                }
+            else if(type_version=="audio"){
+                        audio *aud = dynamic_cast<audio*>(*it_note);
+                       stream.writeStartElement("audio_URL", aud->getAudio_URL());
                        //stream.writeStartElement("playeraudio", enum_statut_to_string( (*it_note)->getImg_URL()));
-                       stream.writeStartElement("desc", enum_statut_to_string( (*it_note)->getDesc()));
-                       stream.writeStartElement("img_URL", enum_statut_to_string( (*it_note)->getImg_URL()));
-                       break;
-                   case "video":
-                       stream.writeStartElement("video_URL", enum_statut_to_string( (*it_note)->getVideo_URL()));
-                       stream.writeStartElement("desc", enum_statut_to_string( (*it_note)->getDesc()));
-                       stream.writeStartElement("img_URL", enum_statut_to_string( (*it_note)->getImg_URL()));
-                       break;
+                       stream.writeStartElement("desc", aud->getDesc());
+                       stream.writeStartElement("img_URL", aud->getimg_URL());
+               }
+            else if(type_version=="video"){
+                       video *vid = dynamic_cast<video*>(*it_note);
+                       stream.writeStartElement("video_URL", vid->getVideo_URL());
+                       stream.writeStartElement("desc", vid->getDesc());
+                       stream.writeStartElement("img_URL",  vid->getimg_URL());
 
-                   case "Tache":
-                       stream.writeStartElement("action", (*it_note)->getAction());
-                       if((*it_note)->getPriorite()) stream.writeStartElement("priorite", (*it_note)->getPriorite());
-                       if((*it_note)->getDate_echeance()) stream.writeStartElement("Date_echeance", (*it_note)->getDate_echeance().toString("dd.MM.yyyy hh::mm:ss"));
-                       stream.writeStartElement("statut", enum_statut_to_string( (*it_note)->getStatut()));
-                       break;
-                   case "Article":
-                       stream.writeStartElement("text", (*it_note)->getText());
-                       break;
-                    }
+}
+            else if(type_version=="Tache"){
+                        Tache *tach =dynamic_cast<Tache*>(*it_note);
+                       stream.writeStartElement("action", tach->getAction());
+                       if(tach->getPriorite())
+                       {
+                           string n = std::to_string((tach->getPriorite()));
+
+                           stream.writeStartElement("priorite", QString::fromStdString(n));
+                       }
+                       if((tach->getDate_echeance()).QDateTime::isNull()) stream.writeStartElement("Date_echeance", tach->getDate_echeance().toString("dd.MM.yyyy hh::mm:ss"));
+                       stream.writeStartElement("statut", enum_statut_to_string( tach->getStatut()));
+            }
+            else if (type_version=="Article")
+            {
+                        Article *art=dynamic_cast<Article*>(*it_note);
+                       stream.writeStartElement("text", art->getText());
+            }
 
             stream.writeEndElement();
         }
@@ -181,7 +195,7 @@ void NotesManager::saveNotesManager(const QString & filename){
     stream.writeEndElement();
     newFile.close();
 }
-
+/*
 void NotesManager::saveNotesManager_not_reprieved(const QString & filename){
     QFile newFile(filename);
     if (!newFile.open(QIODevice::WriteOnly | QIODevice::Text))
@@ -213,23 +227,23 @@ void NotesManager::saveNotesManager_not_reprieved(const QString & filename){
             switch (type_version) {
                    case "image":
                        stream.writeStartElement("type", "image");
-                       stream.writeStartElement("img", enum_statut_to_string( (*it_note)->getImg()));
-                       stream.writeStartElement("desc", enum_statut_to_string( (*it_note)->getDesc()));
-                       stream.writeStartElement("img_URL", enum_statut_to_string( (*it_note)->getImg_URL()));
+                       stream.writeStartElement("img",  (*it_note)->getImg());
+                       stream.writeStartElement("desc", (*it_note)->getDesc());
+                       stream.writeStartElement("img_URL", (*it_note)->getImg_URL());
                        break;
 
                    case "audio":
                        stream.writeStartElement("type", "audio");
-                       stream.writeStartElement("audio_URL", enum_statut_to_string( (*it_note)->getAudio_URL()));
+                       stream.writeStartElement("audio_URL", (*it_note)->getAudio_URL());
                        //stream.writeStartElement("playeraudio", enum_statut_to_string( (*it_note)->getImg_URL()));
-                       stream.writeStartElement("desc", enum_statut_to_string( (*it_note)->getDesc()));
-                       stream.writeStartElement("img_URL", enum_statut_to_string( (*it_note)->getImg_URL()));
+                       stream.writeStartElement("desc", (*it_note)->getDesc());
+                       stream.writeStartElement("img_URL", (*it_note)->getImg_URL());
                        break;
                    case "video":
                        stream.writeStartElement("type", "video");
-                       stream.writeStartElement("video_URL", enum_statut_to_string( (*it_note)->getVideo_URL()));
-                       stream.writeStartElement("desc", enum_statut_to_string( (*it_note)->getDesc()));
-                       stream.writeStartElement("img_URL", enum_statut_to_string( (*it_note)->getImg_URL()));
+                       stream.writeStartElement("video_URL",  (*it_note)->getVideo_URL());
+                       stream.writeStartElement("desc", (*it_note)->getDesc());
+                       stream.writeStartElement("img_URL", (*it_note)->getImg_URL());
                        break;
 
                    case "Tache":
@@ -259,6 +273,7 @@ QString fmt = "yyyy-MM-dd hh:mm:ss";
 QDateTime dt = QDateTime::fromString(dateStr, fmt);
 QString timeStr = dt.toString("hh:mm");
 */
+/*
 void NotesManager::loadNotesManager(const QString & filename){
     QFile loadFile(filename);
     if (!loadFile.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -325,3 +340,4 @@ void NotesManager::loadNotesManager(const QString & filename){
     }
     xml.clear();
 }
+*/
