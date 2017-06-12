@@ -3,23 +3,41 @@
 CentreRelations::CentreRelations(QMainWindow *parent):
     QWidget(parent) {
 
+    RelationManager *RM = RelationManager::getRelationManager();
+
     titre_relations = new QLabel(this);
     titre_relations->setText("Les relations disponibles :");
 
     relations = new QListWidget(this);
     relations->setFixedSize(320,100);
+/*
     relations->addItem("REFERENCE");
     relations->addItem("relation 2");
     relations->addItem("relation 3");
     relations->addItem("relation 4");
     relations->addItem("relation 5");
     relations->addItem("relation 6");
+*/
+
+    for (RelationManager::iterator it = RM->begin(); it != RM->end(); it++) {
+        relations->addItem(it->getTitre());
+    }
+
 
     afficher_relation = new QPushButton("Afficher couples",this);
+    QObject::connect(afficher_relation, SIGNAL(Clicked()),this, SLOT(afficherRelation()));
+
     fermer = new QPushButton("Fermer",this);
+    QObject::connect(fermer, SIGNAL(Clicked()),this, SLOT(close()));
+
     creer_relation_orientee = new QPushButton("Creer relation orientee",this);
+    QObject::connect(creer_relation_orientee, SIGNAL(Clicked()),this, SLOT(creerRelationOrientee()));
+
     creer_relation_non_orientee = new QPushButton("Creer relation non orientee",this);
+    QObject::connect(creer_relation_non_orientee, SIGNAL(Clicked()),this, SLOT(creerRelationNonOrientee()));
+
     supprimer_relation = new QPushButton("Supprimer relation",this);
+    QObject::connect(supprimer_relation, SIGNAL(Clicked()),this, SLOT(supprimerRelation()));
 
     horiz1 = new QHBoxLayout;
     horiz1->addWidget(afficher_relation);
@@ -41,16 +59,24 @@ CentreRelations::CentreRelations(QMainWindow *parent):
 
     setFixedSize(350,200);
 
-    QObject::connect(afficher_relation, SIGNAL(Clicked()),this, SLOT(afficherRelation()));
-    QObject::connect(supprimer_relation, SIGNAL(Clicked()),this, SLOT(supprimerRelation()));
-    QObject::connect(fermer, SIGNAL(Clicked()),this, SLOT(close()));
-    QObject::connect(creer_relation_non_orientee, SIGNAL(Clicked()),this, SLOT(creerRelationNonOrientee()));
-    QObject::connect(creer_relation_orientee, SIGNAL(Clicked()),this, SLOT(creerRelationOrientee()));
+
+}
+
+void CentreRelations::afficherRelation() {
+
+    RelationManager *RM = RelationManager::getRelationManager();
+    int position = relations->currentRow();
+    RelationManager::iterator it = RM->begin();
+    for(i=0; i!=position; i++) {it++;}
+    if(it->getOrientee()) {creerRelationOrientee(it);}
+    else {creerRelationNonOrientee(it);}
+
 
 
 }
 
-void CentreRelations::afficherRelation() {}
 void CentreRelations::supprimerRelation() {}
-void CentreRelations::creerRelationNonOrientee() {}
-void CentreRelations::creerRelationOrientee() {}
+
+void CentreRelations::ouvrirRelationNonOrientee(Relation* it) {}
+
+void CentreRelations::ouvrirRelationOrientee(Relation* it) {}
