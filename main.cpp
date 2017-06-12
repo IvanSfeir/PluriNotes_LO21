@@ -1,10 +1,10 @@
 #include <QApplication>
-/*
+
 #include "note.h"
 #include "version.h"
 #include "tache.h"
 #include "relation.h"
-*/
+
 #include "interface.h"
 #include "gauche.h"
 #include "centrenoteact.h"
@@ -16,10 +16,15 @@
 int main(int argc, char* argv[]) {
 
     QApplication app(argc, argv);
-    Interface interface;
-    interface.setFixedSize(1200, 400);
 
-    Gauche gauche(&interface);
+    NotesManager *NM = NotesManager::getInstance();
+    RelationManager *RM = RelationManager::getRelationManager();
+
+    Interface* interface = new Interface();
+
+    interface->setFixedSize(1200, 400);
+
+    Gauche gauche(interface);
     //gauche.show();
     gauche.move(0,20);
 /*
@@ -27,19 +32,19 @@ int main(int argc, char* argv[]) {
     //centrenoteact.show();
     centrenoteact.move(400,20);
 */
-    CentreNoteArch centrenotearch(&interface);
+    CentreNoteArch centrenotearch(interface);
     //centrenotearch.show();
     centrenotearch.move(400,20);
 
-    CentreRelations centrerelations(RM, &interface);
+    CentreRelations centrerelations(interface);
     //centrenotearch.show();
     centrerelations.move(800,15);
 
-    CentreRelationNonOrientee centrerelationnonorientee(&interface);
+    CentreRelationNonOrientee centrerelationnonorientee(interface);
     centrerelationnonorientee.move(800,205);
 
 
-    interface.show();
+    interface->show();
 
 
 

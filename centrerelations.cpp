@@ -1,6 +1,6 @@
 #include "centrerelations.h"
 
-CentreRelations::CentreRelations(RelationManager *RM, QMainWindow *parent):
+CentreRelations::CentreRelations(QMainWindow *parent):
     QWidget(parent) {
 
     titre_relations = new QLabel(this);

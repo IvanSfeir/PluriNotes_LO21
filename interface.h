@@ -24,13 +24,13 @@ class Interface : public QMainWindow {
     QAction *afficherRelations;
     QAction *actionQuitter;
 
-    NotesManager *NM;
-    RelationManager *RM;
-
 
 public:
     Interface();
     QAction *actionCorbeilleAuto;
+
+    NotesManager *NM;
+    RelationManager *RM;
 
 signals:
 

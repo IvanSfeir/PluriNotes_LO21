@@ -2,6 +2,7 @@
 #include <qDebug>
 
 Interface::Interface() {
+
     QMenu *menuNote = menuBar()->addMenu("Note");
 
     QAction *afficherNote = new QAction("Afficher note");
@@ -25,17 +26,14 @@ Interface::Interface() {
 
 
 
-    RelationManager *RM = RelationManager::getRelationManager();
-
-
-
     connect(actionQuitter, SIGNAL(triggered()), this, SLOT(avant_de_fermer()));
 
 }
 
 void Interface::avant_de_fermer() {
 
-    //if ((NM->corbeilleIsEmpty()) and (!actionCorbeilleAuto->isChecked())) {
+    NotesManager *NM = NotesManager::getInstance();
+    //if (!(NM->corbeilleIsEmpty()) and (!actionCorbeilleAuto->isChecked())) {
     actionCorbeilleAuto->setChecked(true);
     bool booleen = actionCorbeilleAuto->isChecked();
     if (booleen == true) {
