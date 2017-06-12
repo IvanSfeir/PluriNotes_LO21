@@ -1,5 +1,5 @@
-#if !defined(_NOTES_H)
-#define _NOTES_H
+#ifndef NOTE_H
+#define NOTE_H
 
 
 #include <QString>
@@ -18,7 +18,6 @@ enum Type_etat_note {active, archive, sursis};
 
 char* enum_etat_to_string(Type_etat_note t);
 
-class Version;
 
 class Note {
     QString id; //unique
@@ -45,7 +44,7 @@ public:
     void setEtat(const Type_etat_note e){etat=e;}
 
     Version& getVersion(const QString& title);
-    QString& getLastVersion() const { return *(versions[nbVersion]->getTitle());}
+    QString getLastVersion() const { return (versions[nbVersion]->getTitle());}
 
 
     void ajouterVersion(Version *v);
