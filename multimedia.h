@@ -33,7 +33,7 @@ public:
 
 class image : public Multimedia{
     QString img;    //=img_URL de Multimedia
-
+    
 public:
     image(const QString & t, QDateTime d, const QString &desc, const QString &i):
     Multimedia(t,d,desc,i), img(i) {}
