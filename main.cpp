@@ -1,8 +1,10 @@
 #include <QApplication>
+/*
 #include "note.h"
 #include "version.h"
 #include "tache.h"
 #include "relation.h"
+*/
 #include "interface.h"
 #include "gauche.h"
 #include "centrenoteact.h"
