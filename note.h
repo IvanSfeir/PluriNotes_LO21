@@ -18,19 +18,6 @@ enum Type_etat_note {active, archive, sursis};
 
 char* enum_etat_to_string(Type_etat_note t);
 
-
-
-public:
-    Version(const QString &t, const QDateTime & d): title(t), date_modif(d){}
-    virtual ~Version()=0;
-
-    virtual QString getTitle() const{return title;}
-    virtual QDateTime getDateModif() const{return date_modif;}
-
-    virtual void setTitle(const QString &newTitle){title=newTitle;}
-
-};
-
 class Note {
     QString id; //unique
     Version **versions; //tableau de pointeurs vers une version
@@ -56,7 +43,7 @@ public:
     void setEtat(const Type_etat_note e){etat=e;}
 
     Version& getVersion(const QString& title);
-    QString getLastVersion() const { return (versions[nbVersion]->getTitle());}
+    QString getLastVersion() const { return versions[nbVersion]->getTitle();}
 
 
     void ajouterVersion(Version *v);
