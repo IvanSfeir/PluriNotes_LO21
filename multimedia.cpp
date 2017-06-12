@@ -7,7 +7,7 @@ void Multimedia::showImg() const{
 
     label.setPixmap(img);
 
-    label.show()
+    label.show();
 }
 
 //QPixmap pm("path/to/your/image.jpg");
@@ -16,44 +16,40 @@ void Multimedia::showImg() const{
 //  lbl.show();
 //  return app.exec();
 
-void audio::startAudio() const {
-    QMediaPlayer player = new QMediaPlayer;
+void audio::playAudio() const {
+    QMediaPlayer* playeraudio = new QMediaPlayer;
 
-    player->setMedia(QUrl::fromLocalFile(audio_URL));
+    playeraudio->setMedia(QUrl::fromLocalFile(audio_URL));
     //player->setVolume(50);
-    player->play();
+    playeraudio->play();
 }
 
 void audio::pauseAudio() const {
-    QMediaPlayer::pause();
-
+    if (playeraudio->state() == QMediaPlayer::PlayingState)
+        playeraudio->QMediaPlayer::pause();
 }
 
 void audio::stopAudio() const {
-    QMediaPlayer::stop();
+    playeraudio->QMediaPlayer::stop();
 }
 
 void video::playVideo() const { // with QVideoWidget
-    QMediaPlayer player = new QMediaPlayer;
+    QMediaPlayer* playervideo = new QMediaPlayer;
 
-    playlist = new QMediaPlaylist(player);
-    playlist->addMedia(QUrl(video_URL));
+    //QVideoWidget* videoWidget = new QVideoWidget;
+    //playervideo->setVideoOutput(videoWidget);
 
-    videoWidget = new QVideoWidget;
-    player->setVideoOutput(videoWidget);
-
-    videoWidget->show();
-    playlist->setCurrentIndex(1);
-    player->play();
-
+    playervideo->setMedia(QUrl::fromLocalFile(video_URL));
+    //videoWidget->show();
+    playervideo->play();
 
 }
 
 void video::pauseVideo() const {
-    QMediaPlayer::pause();
+    playervideo->QMediaPlayer::pause();
 
 }
 
 void video::stopVideo() const {
-    QMediaPlayer::stop();
+    playervideo->QMediaPlayer::stop();
 }

@@ -2,27 +2,29 @@
 #define MULTIMEDIA_H
 
 #include <QString>
+#include <QApplication>
 #include <QMediaPlayer>
 #include <QPixmap>
 #include <QLabel>
+//#include <QVideoWidget>
 #include "version.h"
 
 
 class Multimedia : public Version {
 
     QString desc;
-    QUrl img_URL;
+    QString img_URL;
 
 public:
-    Multimedia(const QString & t, QDateTime, d, const QString &desc, const QUrl &i):
+    Multimedia(const QString & t, QDateTime d, const QString &desc, const QString &i):
         Version(t,d),desc(desc), img_URL(i){}
     ~Multimedia(){}
 
-    QString &getDesc() const {return desc;}
-    QUrl & getimg_URL() const{return img_URL;}
+    const QString& getDesc() const {return desc;}
+    const QString & getimg_URL() const{return img_URL;}
 
-    void setDesc(const QString newDesc) {desc=newDesc;}
-    void setImg_URL(const QUrl newImg_URL) {img_URL=newImg_URL;}
+    void setDesc(const QString& newDesc) {desc=newDesc;}
+    void setImg_URL(const QString& newImg_URL) {img_URL=newImg_URL;}
 
     void showImg() const;   // ou alors renvoi juste le label pour affichage ensuite dans l'onterface
 
@@ -30,19 +32,20 @@ public:
 
 
 class image : public Multimedia{
-    QUrl image;
+    QString img;
 
 public:
-    image(const QString & t, QDateTime, d, const QString &desc, const QUrl &i, QUrl im):
-    Multimedia(t,d,desc,i), image(im) {}
+    image(const QString & t, QDateTime d, const QString &desc, const QString &i, QString im):
+    Multimedia(t,d,desc,i), img(im) {}
     ~image(){}
 };
 
 class audio : public Multimedia{
-    QUrl audio_URL;
+    QString audio_URL;
+    QMediaPlayer* playeraudio;
 
 public:
-    audio(const QString & t, QDateTime, d, const QString &desc, const QUrl &i, QUrl au):
+    audio(const QString & t, QDateTime d, const QString &desc, const QString &i, QString au):
     Multimedia(t,d,desc,i), audio_URL(au) {}
     ~audio(){}
 
@@ -53,10 +56,11 @@ public:
 };
 
 class video : public Multimedia{
-    QUrl video_URL;
-
+    QString video_URL;
+    QMediaPlayer* playervideo;
+    QMediaPlaylist* playlist;
 public:
-    video(const QString & t, QDateTime, d, const QString &desc, const QUrl &i, QUrl vid):
+    video(const QString & t, QDateTime d, const QString &desc, const QString &i, QString vid):
     Multimedia(t,d,desc,i), video_URL(vid) {}
     ~video(){}
 
