@@ -17,21 +17,22 @@ CentreRelations::CentreRelations(QMainWindow *parent):
 
     afficher_relation = new QPushButton("Afficher couples",this);
     fermer = new QPushButton("Fermer",this);
-    creer_relation = new QPushButton("Creer relation",this);
+    creer_relation_orientee = new QPushButton("Creer relation orientee",this);
+    creer_relation_non_orientee = new QPushButton("Creer relation non orientee",this);
     supprimer_relation = new QPushButton("Supprimer relation",this);
 
     horiz1 = new QHBoxLayout;
     horiz1->addWidget(afficher_relation);
     horiz1->addWidget(supprimer_relation);
+    horiz1->addWidget(fermer);
 
     horiz2 = new QHBoxLayout;
-    horiz2->addWidget(creer_relation);
-    horiz2->addWidget(fermer);
+    horiz2->addWidget(creer_relation_orientee);
+    horiz2->addWidget(creer_relation_non_orientee);
+
 
     verti = new QVBoxLayout;
     verti->addWidget(titre_relations);
-    //verti->addWidget(titre_id2);
-    //verti->addWidget(titre_id3);
     verti->addWidget(relations);
     verti->addLayout(horiz1);
     verti->addLayout(horiz2);

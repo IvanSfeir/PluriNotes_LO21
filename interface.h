@@ -13,7 +13,6 @@ class Interface : public QMainWindow {
 
 
 public:
-
     Interface();
 
 signals:

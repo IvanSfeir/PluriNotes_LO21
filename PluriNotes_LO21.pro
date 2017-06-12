@@ -15,7 +15,8 @@ SOURCES += \
     version.cpp \
     multimedia.cpp \
     centrenoteact.cpp \
-    centrerelation.cpp \
+    centrerelationorientee.cpp \
+    centrerelationnonorientee.cpp \
     centrerelations.cpp \
     centreversion.cpp \
     droitearborescence.cpp \
@@ -37,7 +38,8 @@ HEADERS += \
     article.h \
     tache.h \
     centrenoteact.h \
-    centrerelation.h \
+    centrerelationorientee.h \
+    centrerelationnonorientee.h \
     centrerelations.h \
     centreversion.h \
     droitearborescence.h \

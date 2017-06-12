@@ -1,5 +1,5 @@
-#ifndef CENTRERELATION_H
-#define CENTRERELATION_H
+#ifndef CENTRERELATIONORIENTEE_H
+#define CENTRERELATIONORIENTEE_H
 
 #include <QApplication>
 #include <QMainWindow>
@@ -10,7 +10,7 @@
 #include <QHBoxLayout>
 #include <QString>
 
-class CentreRelation : public QWidget {
+class CentreRelationOrientee : public QWidget {
 
     Q_OBJECT // macro pour pouvoir utiliser signals et slots
 
@@ -25,7 +25,7 @@ class CentreRelation : public QWidget {
 
 public:
     // argument : la relation concernee
-    explicit CentreRelation(QMainWindow* parent=0);
+    explicit CentreRelationOrientee(QMainWindow* parent=0);
 
 signals:
 
@@ -35,4 +35,4 @@ public slots:
 
 };
 
-#endif // CENTRERELATION_H
+#endif // CENTRERELATIONORIENTEE_H
