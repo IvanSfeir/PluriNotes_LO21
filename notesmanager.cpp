@@ -115,8 +115,110 @@ void NotesManager::save() const {
     fout.close();
 }
 
-bool NotesManager::is_archived() { 
-    return false; 
+bool NotesManager::is_archived(Note *n) { 
+    return (*n->getEtat())==archive; 
+} 
+
+bool NotesManager::is_reprieved(Note *n) { 
+    return (*n->getEtat())==sursis; 
 } 
 
 
+void NotesManager::saveNotesManager(const QString & filename){
+    QFile newFile(filename);
+    if (!newFile.open(QIODevice::WriteOnly | QIODevice::Text))
+        throw exception(QString("Error open file xml: cannot save file"));
+
+    QXmlStreamWriter stream(&newFile);
+    stream.setAutoFormatting(true);
+    stream.writeStartDocument();
+    for (unsigned int i=0; i < nbNotes; i++){
+        stream.writeStartElement("Note");
+        stream.writeStartElement("id", tab_notes[i]->getId());
+        stream.writeStartElement("Type_etat_note", tab_notes[i]->getEtat());
+        stream.writeStartElement("Date_creation", tab_notes[i]->getDateCreation());
+        //if (tab_notes[i]->getOrientee()) stream.writeStartElement("orientation","true");
+        //else stream.writeStartElement("orientation","false");
+        for (NotesManager::iterator it_note = tab_notes[i]->begin(); it_note != tab_notes[i]->end(); it_note++){
+            stream.writeStartElement("Version");
+            stream.writeStartElement("titre", (*it_note)->getTitle());
+            stream.writeStartElement("date_modif", (*it_note)->getDateModif().getId());
+            /* TO DO :
+            ajouter save pour les classes filles de version (multimedia, ...)
+
+
+            */
+
+
+            stream.writeEndElement();
+        }
+        stream.writeEndElement();
+    }
+    stream.writeEndElement();
+    newFile.close();
+}
+
+void NotesManager::loadNotesManager(const QString & filename){
+    QFile loadFile(filename);
+    if (!loadFile.open(QIODevice::ReadOnly | QIODevice::Text))
+        throw exception(QString("Error open file xml: cannot load file"));
+    QXmlStreamReader xml(&loadFile);
+
+    while(!xml.atEnd() && !xml.hasError()) {
+        QXmlStreamReader::TokenType token = xml.readNext();
+        if(token == QXmlStreamReader::StartDocument) continue;
+         while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "relation")){
+            xml.readNext();
+            if (xml.tokenString() == QXmlStreamReader::StartElement){
+                QString titre;
+                QString description;
+                bool orientee;
+                if (xml.name() == "titre"){
+                    xml.readNext();
+                    titre = xml.text().toString();
+                }
+                if (xml.name() == "description"){
+                    xml.readNext();
+                    description = xml.text().toString();
+                }
+                if (xml.name() == "orientation"){
+                    xml.readNext();
+                    if (xml.text().toString() == "true") orientee = true;
+                    else orientee = false;
+                }
+
+                Relation* relation;
+                if (titre == "\ref") relation = relations[0];
+                else relation = new RelationNormale(titre, description, orientee);
+                //loop to get Couple
+                while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "couple")){
+                    QString label;
+                    QString note1;
+                    QString note2;
+                    if (xml.tokenString() == QXmlStreamReader::StartElement){
+                        if (xml.name() == "label"){
+                            xml.readNext();
+                            label=xml.text().toString();
+                        }
+                        if (xml.name() == "note1"){
+                            xml.readNext();
+                            note1=xml.text().toString();
+                        }
+                        if (xml.name() == "note2"){
+                            xml.readNext();
+                            note2=xml.text().toString();
+                        }
+                    }
+                    xml.readNext();
+                    Couple* newCouple = new Couple(&NotesManager->getNote(note1), &NotesManager->getNote(note2), label);
+                    relation->ajouterCouple(newCouple);
+                }
+                if (titre != "\ref") ajouterRelation(relation);
+            }
+        }
+    }
+    if(xml.hasError()) {
+        throw exception("Error parsing xml : cannot read file");
+    }
+    xml.clear();
+}
