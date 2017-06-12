@@ -83,7 +83,7 @@ void NotesManager::restaurerNote(Note * n)
 
 }
 
-void NotesManager::load(const Qstring& f) {
+void NotesManager::load(const QString& f) {
     if (filename!=f) save();
     filename=f;
     ifstream fin(filename); // open file
