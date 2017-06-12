@@ -101,6 +101,7 @@ public:
 
     void loadNotesManager(const QString & filename); 
     void saveNotesManager(const QString & filename);
+    void NotessaveNotesManager_not_reprieved(const QString & filename);
 
 };
 

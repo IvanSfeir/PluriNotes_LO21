@@ -171,12 +171,8 @@ void NotesManager::saveNotesManager(const QString & filename){
                        break;
                    case "Article":
                        stream.writeStartElement("text", (*it_note)->getText());
-                       break;
-                   default:
-                       break;
-                       }
-            */
-
+                       break;           
+                    }
 
             stream.writeEndElement();
         }
@@ -185,6 +181,74 @@ void NotesManager::saveNotesManager(const QString & filename){
     stream.writeEndElement();
     newFile.close();
 }
+
+void NotesManager::saveNotesManager_not_reprieved(const QString & filename){
+    QFile newFile(filename);
+    if (!newFile.open(QIODevice::WriteOnly | QIODevice::Text))
+        throw exception(QString("Error open file xml: cannot save file"));
+
+    QXmlStreamWriter stream(&newFile);
+    stream.setAutoFormatting(true);
+    stream.writeStartDocument();
+    for (unsigned int i=0; i < nbNotes; i++){
+        if(*tab_notes[i]->getEtat()!=sursis)
+        {
+        stream.writeStartElement("Note");
+        stream.writeStartElement("id", tab_notes[i]->getId());
+        QString s_etat = enum_etat_to_string(tab_notes[i]->getEtat());
+        stream.writeStartElement("Type_etat_note", s_etat);
+        stream.writeStartElement("Date_creation", tab_notes[i]->getDateCreation().toString("dd.MM.yyyy hh::mm:ss"));
+        //if (tab_notes[i]->getOrientee()) stream.writeStartElement("orientation","true");
+        //else stream.writeStartElement("orientation","false");
+
+        for (Note::iterator it_note = tab_notes[i]->begin(); it_note != tab_notes[i]->end(); it_note++){
+            stream.writeStartElement("Version");
+            stream.writeStartElement("Titre", (*it_note)->getTitle());
+            stream.writeStartElement("Date de derniere modification", (*it_note)->getDateModif());
+
+            string type_version= typeid((*it_note)).name();
+            type_version=type_version.substr(1,type_version.length()-1); // on renvoie le nom du type de l'objet, sans le 1er char (la longueur du nom)
+
+
+            switch (type_version) {
+                   case "image":
+                       stream.writeStartElement("img", enum_statut_to_string( (*it_note)->getImg()));
+                       stream.writeStartElement("desc", enum_statut_to_string( (*it_note)->getDesc()));
+                       stream.writeStartElement("img_URL", enum_statut_to_string( (*it_note)->getImg_URL()));
+                       break;
+
+                   case "audio":
+                       stream.writeStartElement("audio_URL", enum_statut_to_string( (*it_note)->getAudio_URL()));
+                       //stream.writeStartElement("playeraudio", (*it_note)->get...());
+                       stream.writeStartElement("desc", enum_statut_to_string( (*it_note)->getDesc()));
+                       stream.writeStartElement("img_URL", enum_statut_to_string( (*it_note)->getImg_URL()));
+                       break;
+                   case "video":
+                       stream.writeStartElement("video_URL", enum_statut_to_string( (*it_note)->getVideo_URL()));
+                       stream.writeStartElement("desc", enum_statut_to_string( (*it_note)->getDesc()));
+                       stream.writeStartElement("img_URL", enum_statut_to_string( (*it_note)->getImg_URL()));
+                       break;
+
+                   case "Tache":
+                       stream.writeStartElement("action", (*it_note)->getAction());
+                       if((*it_note)->getPriorite()) stream.writeStartElement("priorite", (*it_note)->getPriorite());
+                       if((*it_note)->getDate_echeance()) stream.writeStartElement("Date_echeance", (*it_note)->getDate_echeance().toString("dd.MM.yyyy hh::mm:ss"));
+                       stream.writeStartElement("statut", enum_statut_to_string( (*it_note)->getStatut()));
+                       break;
+                   case "Article":
+                       stream.writeStartElement("text", (*it_note)->getText());
+                       break;
+                    }
+
+            stream.writeEndElement();
+        }
+        stream.writeEndElement();
+    }
+    stream.writeEndElement();
+    newFile.close();
+    }
+    }
+
 /*QString dateStr = "2014-03-18 09:30:36";
 QString fmt = "yyyy-MM-dd hh:mm:ss";
 QDateTime dt = QDateTime::fromString(dateStr, fmt);
