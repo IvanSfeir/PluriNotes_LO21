@@ -18,7 +18,7 @@
 #include <QXmlStreamWriter>
 #include <QXmlStreamReader>
 
-class Note;
+
 
 class NotesManager {
 
@@ -50,8 +50,7 @@ public:
     void load(const QString& f);
     void save() const;
 
-	bool is_archived(); // dans Classe Notes ? 
-    bool is_reprieved(); 
+
 
     // ******** ITERATOR *************
     //class iterator<Note,NotesManager>;
@@ -100,9 +99,10 @@ public:
 //            return const_iterator(tab_notes, nbNotes);
 //        }
 
+    void loadNotesManager(const QString & filename); 
+    void saveNotesManager(const QString & filename);
+
 };
 
-    void loadNotesManager(const QString & filename); 
-    void saveNotesManager(const QString & filename); 
-
+    
 #endif // NOTESMANAGER_H

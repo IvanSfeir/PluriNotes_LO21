@@ -7,12 +7,6 @@ Note::~Note(){
 }
 
 
-NotesManager::~NotesManager(){  // relation de composition avec note => il faut supprimer toutes les notes
-    save();
-    for(unsigned int i=0; i<nbNotes; i++) delete tab_notes[i];
-    delete[] tab_notes;
-}
-
 
 Version & Note::getVersion(const QString& title){
     for(unsigned int i=0; i<nbVersion; i++){
@@ -31,7 +25,7 @@ void Note::ajouterVersion(Version * v){
     }
     // capacité max ?
     if (nbVersion==nbMaxVersion){
-        Note** newTab_Version= new Note*[nbMaxVersion+5];
+        Version** newTab_Version= new Version*[nbMaxVersion+5];
         for(unsigned int i=0; i<nbMaxVersion; i++) newTab_Version[i]=versions[i];
         Version** oldTab_version=versions;
         versions=newTab_Version;
@@ -74,32 +68,18 @@ void Note::restaurerVersion(Version *v)
 }
 
 
-void Note::save() const {
-    ofstream fout(filename);
-    for(unsigned int i=0; i<nbVersion; i++){
-        fout<<*versions[i];
-    }
-    fout.close();
-}
 
 
-ostream& operator<<(ostream& f, const Note& n){
-    f<<n.getId()<<endl;
-    f<<n.getDateCreation()<<endl;
-    f<<n.getEtat()<<endl;
-    f<<n.getLastVersion()<<endl;    // titre de la dernière version
-    return f;
-}
 
-// à ENLEVER si TITLE est non unique
-void Note::setVersion_title(const QString &newTitle) {
-    // recherche si title existe déjà
-    for(unsigned int i=0; i<nbVersion; i++){
-        if (versions[i]->getTitle()==newTitle) throw VersionException("error, modification of an already existent title");
-    }
 
-    // si new title est unique alors OK
-    if(i==nbVersion)
-        versions[i]->setTitle(newTitle);
 
-}
+char* enum_etat_to_string(Type_etat_note t){
+      switch(t){
+         case active:
+            return "active";
+         case archive:
+            return "archive";
+         case sursis:
+            return "sursis";
+      }
+ }

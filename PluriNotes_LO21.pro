@@ -23,7 +23,8 @@ SOURCES += \
     gauche.cpp \
     interface.cpp \
     centrenotearch.cpp \
-    centreversionarticle.cpp
+    centreversionarticle.cpp \
+    tache.cpp
 
 
 HEADERS += \

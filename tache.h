@@ -11,7 +11,7 @@
 #include <QDateTime>
 
 enum Type_statut_tache {en_cours, attente, terminee};
-
+char* enum_statut_to_string(Type_statut_tache t);
 
 class Tache : public Version{
     QString action;

@@ -9,6 +9,7 @@
 #include "note.h"
 #include "versionexception.h"
 
+class Note;
 
 class Version {
     QString title;

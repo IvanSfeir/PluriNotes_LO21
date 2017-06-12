@@ -16,6 +16,8 @@
 
 enum Type_etat_note {active, archive, sursis};
 
+char* enum_etat_to_string(Type_etat_note t);
+
 class Version;
 
 class Note {
@@ -43,17 +45,16 @@ public:
     void setEtat(const Type_etat_note e){etat=e;}
 
     Version& getVersion(const QString& title);
-    const QString &getLastVersion() const {return versions[nbVersion]->getTitle();}
+    const QString getLastVersion() const {Version *v =versions[nbVersion]; return *v->getTitle();}
 
-    void setVersion_title(const QString &newtitle);
 
     void ajouterVersion(Version *v);
     void supprimerVersion(Version *oldVersion);
     void restaurerVersion(Version *v);
 
+	bool is_archived(){return etat==archive;} 
+    bool is_reprieved(){return etat==sursis;}
 
-
-    void save() const;
 
 
     // ********* ITERATOR ********

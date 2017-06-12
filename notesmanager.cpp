@@ -77,13 +77,13 @@ void NotesManager::supprimerNote(Note * oldNote){
 }
 
 // TO DO : D'où restaurer une note ??
-void NotesManager::restaurerNote(Note * n)
+/*void NotesManager::restaurerNote(Note * n)
 {
 
 
 }
-
-void NotesManager::load(const QString& f) {
+*/
+/*void NotesManager::load(const QString& f) {
     if (filename!=f) save();
     filename=f;
     ifstream fin(filename); // open file
@@ -105,23 +105,16 @@ void NotesManager::load(const QString& f) {
         if (fin.peek()=='\n') fin.ignore();
     }
     fin.close(); // close file
-}
+}*/
 
-void NotesManager::save() const {
+/*void NotesManager::save() const {
     ofstream fout(filename);
     for(unsigned int i=0; i<nbNotes; i++){
         fout<<*tab_notes[i];
     }
     fout.close();
-}
+}*/
 
-bool NotesManager::is_archived(Note *n) { 
-    return (*n->getEtat())==archive; 
-} 
-
-bool NotesManager::is_reprieved(Note *n) { 
-    return (*n->getEtat())==sursis; 
-} 
 
 
 void NotesManager::saveNotesManager(const QString & filename){
@@ -135,14 +128,15 @@ void NotesManager::saveNotesManager(const QString & filename){
     for (unsigned int i=0; i < nbNotes; i++){
         stream.writeStartElement("Note");
         stream.writeStartElement("id", tab_notes[i]->getId());
-        stream.writeStartElement("Type_etat_note", tab_notes[i]->getEtat());
-        stream.writeStartElement("Date_creation", tab_notes[i]->getDateCreation());
+        QString s_etat = enum_etat_to_string(tab_notes[i]->getEtat());
+        stream.writeStartElement("Type_etat_note", s_etat);
+        stream.writeStartElement("Date_creation", tab_notes[i]->getDateCreation().toString("dd.MM.yyyy hh::mm:ss"));
         //if (tab_notes[i]->getOrientee()) stream.writeStartElement("orientation","true");
         //else stream.writeStartElement("orientation","false");
-        for (NotesManager::iterator it_note = tab_notes[i]->begin(); it_note != tab_notes[i]->end(); it_note++){
+        for (Note::iterator it_note = tab_notes[i]->begin(); it_note != tab_notes[i]->end(); it_note++){
             stream.writeStartElement("Version");
-            stream.writeStartElement("titre", (*it_note)->getTitle());
-            stream.writeStartElement("date_modif", (*it_note)->getDateModif().getId());
+            //stream.writeStartElement("titre", (*it_note)->getTitle());
+            //stream.writeStartElement("date_modif", (*it_note)->getDateModif().getId());
             /* TO DO :
             ajouter save pour les classes filles de version (multimedia, ...)
 
@@ -157,8 +151,12 @@ void NotesManager::saveNotesManager(const QString & filename){
     stream.writeEndElement();
     newFile.close();
 }
-
-void NotesManager::loadNotesManager(const QString & filename){
+/*QString dateStr = "2014-03-18 09:30:36";
+QString fmt = "yyyy-MM-dd hh:mm:ss";
+QDateTime dt = QDateTime::fromString(dateStr, fmt);
+QString timeStr = dt.toString("hh:mm");
+*/
+/*void NotesManager::loadNotesManager(const QString & filename){
     QFile loadFile(filename);
     if (!loadFile.open(QIODevice::ReadOnly | QIODevice::Text))
         throw exception(QString("Error open file xml: cannot load file"));
@@ -221,4 +219,4 @@ void NotesManager::loadNotesManager(const QString & filename){
         throw exception("Error parsing xml : cannot read file");
     }
     xml.clear();
-}
+}*/
