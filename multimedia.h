@@ -32,12 +32,14 @@ public:
 
 
 class image : public Multimedia{
-    QString img;
+    QString img;    //=img_URL de Multimedia
 
 public:
     image(const QString & t, QDateTime d, const QString &desc, const QString &i):
     Multimedia(t,d,desc,i), img(i) {}
     ~image(){}
+
+    const QString & getImg() const {return img;}
 
 };
 
@@ -54,6 +56,7 @@ public:
     void pauseAudio() const;
     void stopAudio() const;
 
+    const QString&  getAudio_URL() const {return audio_URL;}
 };
 
 class video : public Multimedia{
@@ -68,6 +71,9 @@ public:
     void playVideo() const;
     void pauseVideo() const;
     void stopVideo() const;
+
+    const QString&  getVideo_URL() const {return video_URL;}
+
 
 };
 

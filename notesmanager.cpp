@@ -145,25 +145,36 @@ void NotesManager::saveNotesManager(const QString & filename){
             type_version=type_version.substr(1,type_version.length()-1); // on renvoie le nom du type de l'objet, sans le 1er char (la longueur du nom)
 
             switch (type_version) {
-            case "image":
+                   case "image":
+                       stream.writeStartElement("img", enum_statut_to_string( (*it_note)->getImg()));
+                       stream.writeStartElement("desc", enum_statut_to_string( (*it_note)->getDesc()));
+                       stream.writeStartElement("img_URL", enum_statut_to_string( (*it_note)->getImg_URL()));
+                       break;
 
-            case "audio":
-                break;
-            case "video":
-                break;
+                   case "audio":
+                       stream.writeStartElement("audio_URL", enum_statut_to_string( (*it_note)->getAudio_URL()));
+                       //stream.writeStartElement("playeraudio", enum_statut_to_string( (*it_note)->getImg_URL()));
+                       stream.writeStartElement("desc", enum_statut_to_string( (*it_note)->getDesc()));
+                       stream.writeStartElement("img_URL", enum_statut_to_string( (*it_note)->getImg_URL()));
+                       break;
+                   case "video":
+                       stream.writeStartElement("video_URL", enum_statut_to_string( (*it_note)->getVideo_URL()));
+                       stream.writeStartElement("desc", enum_statut_to_string( (*it_note)->getDesc()));
+                       stream.writeStartElement("img_URL", enum_statut_to_string( (*it_note)->getImg_URL()));
+                       break;
 
-            case "Tache":
-                stream.writeStartElement("action", (*it_note)->getAction());
-                stream.writeStartElement("priorite", (*it_note)->getPriorite());
-                stream.writeStartElement("Date_echeance", (*it_note)->getDate_echeance().toString("dd.MM.yyyy hh::mm:ss"));
-                stream.writeStartElement("statut", enum_statut_to_string( (*it_note)->getStatut()));
-                break;
-            case "Article":
-                stream.writeStartElement("text", (*it_note)->getText());
-                break;
-            default:
-                break;
-            }
+                   case "Tache":
+                       stream.writeStartElement("action", (*it_note)->getAction());
+                       if((*it_note)->getPriorite()) stream.writeStartElement("priorite", (*it_note)->getPriorite());
+                       if((*it_note)->getDate_echeance()) stream.writeStartElement("Date_echeance", (*it_note)->getDate_echeance().toString("dd.MM.yyyy hh::mm:ss"));
+                       stream.writeStartElement("statut", enum_statut_to_string( (*it_note)->getStatut()));
+                       break;
+                   case "Article":
+                       stream.writeStartElement("text", (*it_note)->getText());
+                       break;
+                   default:
+                       break;
+                       }
             */
 
 
