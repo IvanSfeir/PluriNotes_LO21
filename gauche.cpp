@@ -57,7 +57,7 @@ Gauche::Gauche(QMainWindow* parent) :
 
     bouton_afficher_arch = new QPushButton("Afficher",this);
 
-    couche = new QVBoxLayout(this);
+    couche = new QVBoxLayout;
 
     couche->addWidget(titre_act);
     couche->addWidget(notes_actives);
