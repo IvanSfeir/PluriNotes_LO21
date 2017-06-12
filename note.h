@@ -45,7 +45,7 @@ public:
     void setEtat(const Type_etat_note e){etat=e;}
 
     Version& getVersion(const QString& title);
-    const QString getLastVersion() const {Version *v =versions[nbVersion]; return *v->getTitle();}
+    QString& getLastVersion() const { return *(versions[nbVersion]->getTitle());}
 
 
     void ajouterVersion(Version *v);
