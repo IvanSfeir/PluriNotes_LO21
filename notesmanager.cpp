@@ -139,7 +139,7 @@ void NotesManager::saveNotesManager(const QString & filename){
         for (Note::iterator it_note = tab_notes[i]->begin(); it_note != tab_notes[i]->end(); it_note++){
             stream.writeStartElement("Version");
             stream.writeStartElement("Titre", (*it_note)->getTitle());
-            stream.writeStartElement("Date de derniere modification", (*it_note)->getDateModif());
+            stream.writeStartElement("Date_derniere_modification", (*it_note)->getDateModif().toString("dd.MM.yyyy hh::mm:ss"));
 
             string type_version= typeid((*it_note)).name();
             type_version=type_version.substr(1,type_version.length()-1); // on renvoie le nom du type de l'objet, sans le 1er char (la longueur du nom)
@@ -171,7 +171,7 @@ void NotesManager::saveNotesManager(const QString & filename){
                        break;
                    case "Article":
                        stream.writeStartElement("text", (*it_note)->getText());
-                       break;           
+                       break;
                     }
 
             stream.writeEndElement();
@@ -204,7 +204,7 @@ void NotesManager::saveNotesManager_not_reprieved(const QString & filename){
         for (Note::iterator it_note = tab_notes[i]->begin(); it_note != tab_notes[i]->end(); it_note++){
             stream.writeStartElement("Version");
             stream.writeStartElement("Titre", (*it_note)->getTitle());
-            stream.writeStartElement("Date de derniere modification", (*it_note)->getDateModif());
+            stream.writeStartElement("Date_derniere_modification", (*it_note)->getDateModif());
 
             string type_version= typeid((*it_note)).name();
             type_version=type_version.substr(1,type_version.length()-1); // on renvoie le nom du type de l'objet, sans le 1er char (la longueur du nom)
@@ -212,30 +212,35 @@ void NotesManager::saveNotesManager_not_reprieved(const QString & filename){
 
             switch (type_version) {
                    case "image":
+                       stream.writeStartElement("type", "image");
                        stream.writeStartElement("img", enum_statut_to_string( (*it_note)->getImg()));
                        stream.writeStartElement("desc", enum_statut_to_string( (*it_note)->getDesc()));
                        stream.writeStartElement("img_URL", enum_statut_to_string( (*it_note)->getImg_URL()));
                        break;
 
                    case "audio":
+                       stream.writeStartElement("type", "audio");
                        stream.writeStartElement("audio_URL", enum_statut_to_string( (*it_note)->getAudio_URL()));
-                       //stream.writeStartElement("playeraudio", (*it_note)->get...());
+                       //stream.writeStartElement("playeraudio", enum_statut_to_string( (*it_note)->getImg_URL()));
                        stream.writeStartElement("desc", enum_statut_to_string( (*it_note)->getDesc()));
                        stream.writeStartElement("img_URL", enum_statut_to_string( (*it_note)->getImg_URL()));
                        break;
                    case "video":
+                       stream.writeStartElement("type", "video");
                        stream.writeStartElement("video_URL", enum_statut_to_string( (*it_note)->getVideo_URL()));
                        stream.writeStartElement("desc", enum_statut_to_string( (*it_note)->getDesc()));
                        stream.writeStartElement("img_URL", enum_statut_to_string( (*it_note)->getImg_URL()));
                        break;
 
                    case "Tache":
+                       stream.writeStartElement("type", "Tache");
                        stream.writeStartElement("action", (*it_note)->getAction());
                        if((*it_note)->getPriorite()) stream.writeStartElement("priorite", (*it_note)->getPriorite());
                        if((*it_note)->getDate_echeance()) stream.writeStartElement("Date_echeance", (*it_note)->getDate_echeance().toString("dd.MM.yyyy hh::mm:ss"));
                        stream.writeStartElement("statut", enum_statut_to_string( (*it_note)->getStatut()));
                        break;
                    case "Article":
+                      stream.writeStartElement("type", "Article");
                        stream.writeStartElement("text", (*it_note)->getText());
                        break;
                     }
@@ -254,7 +259,7 @@ QString fmt = "yyyy-MM-dd hh:mm:ss";
 QDateTime dt = QDateTime::fromString(dateStr, fmt);
 QString timeStr = dt.toString("hh:mm");
 */
-/*void NotesManager::loadNotesManager(const QString & filename){
+void NotesManager::loadNotesManager(const QString & filename){
     QFile loadFile(filename);
     if (!loadFile.open(QIODevice::ReadOnly | QIODevice::Text))
         throw exception(QString("Error open file xml: cannot load file"));
@@ -263,27 +268,29 @@ QString timeStr = dt.toString("hh:mm");
     while(!xml.atEnd() && !xml.hasError()) {
         QXmlStreamReader::TokenType token = xml.readNext();
         if(token == QXmlStreamReader::StartDocument) continue;
-         while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "relation")){
+         while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "Note")){
             xml.readNext();
             if (xml.tokenString() == QXmlStreamReader::StartElement){
-                QString titre;
-                QString description;
+                QString id;
+                QString etat;
+                QDateTime date_creation;
+                QString s_date;
                 bool orientee;
-                if (xml.name() == "titre"){
+                if (xml.name() == "id"){
                     xml.readNext();
-                    titre = xml.text().toString();
+                    id = xml.text().toString();
                 }
-                if (xml.name() == "description"){
+                if (xml.name() == "Type_etat_note"){
                     xml.readNext();
-                    description = xml.text().toString();
+                    etat = xml.text().toString();
                 }
-                if (xml.name() == "orientation"){
+                if (xml.name() == "Date_creation"){
                     xml.readNext();
-                    if (xml.text().toString() == "true") orientee = true;
-                    else orientee = false;
+                    s_date=xml.text().toString();
+                    s_date=QDateTime::fromString(s_date); // voir la doc
                 }
 
-                Relation* relation;
+                Version* vers;
                 if (titre == "\ref") relation = relations[0];
                 else relation = new RelationNormale(titre, description, orientee);
                 //loop to get Couple
@@ -317,4 +324,4 @@ QString timeStr = dt.toString("hh:mm");
         throw exception("Error parsing xml : cannot read file");
     }
     xml.clear();
-}*/
+}
