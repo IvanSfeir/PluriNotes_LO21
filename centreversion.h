@@ -8,27 +8,27 @@
 #include <QPushButton>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QDateTime>
+
 /*
 #include "Version.h"
-
 
 
 class CentreVersion : public QWidget {
 
     Q_OBJECT // macro pour pouvoir utiliser signals et slots
 
-    QLineEdit *id;
-    QLineEdit *title;
-    QTextEdit *text;
+    QLineEdit *titre;
+    QLineEdit *date_de_modif;
 
-    QLabel *idl;
-    QLabel *titlel;
-    QLabel *textl;
+    QLabel *titrel;
+    QLabel *date_de_modifl;
 
     QPushButton *sauvegarder;
-    QHBoxLayout *cid;
-    QHBoxLayout *ctitle;
-    QHBoxLayout *ctext;
+    QPushButton *fermer;
+    QHBoxLayout *cboutons;
+    QHBoxLayout *ctitre;
+    QHBoxLayout *cdate;
     QVBoxLayout *couche;
 
     Version *version;

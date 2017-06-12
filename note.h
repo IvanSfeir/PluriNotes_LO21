@@ -9,7 +9,7 @@
 #include "version.h"
 #include "iterator.h"
 #include "noteexception.h"
-#include "notesmanager.h"
+//#include "notesmanager.h"
 
 #include "versionexception.h"
 //using namespace std;

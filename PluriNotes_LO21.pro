@@ -2,6 +2,7 @@ QT += widgets
 QT += multimedia
 QT += gui
 QT += xml
+QT += core
 
 QMAKE_CXXFLAGS = -std=c++11
 QMAKE_LFLAGS = -std=c++11
@@ -20,7 +21,8 @@ SOURCES += \
     droitearborescence.cpp \
     gauche.cpp \
     interface.cpp \
-    centrenotearch.cpp
+    centrenotearch.cpp \
+    centreversionarticle.cpp
 
 
 HEADERS += \
@@ -41,4 +43,5 @@ HEADERS += \
     droitearborescence.h \
     gauche.h \
     interface.h \
-    centrenotearch.h
+    centrenotearch.h \
+    centreversionarticle.h
