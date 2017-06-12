@@ -1,11 +1,19 @@
-#ifndef NOTE_H
-#define NOTE_H
+#if !defined(_NOTES_H)
+#define _NOTES_H
 
 
 #include <QString>
 #include <QDateTime>
 #include <iostream>
 
+
+#include <QString>
+#include <QDateTime>
+#include <QDate>
+#include <QTime>
+
+#include "note.h"
+#include "versionexception.h"
 #include "version.h"
 #include "iterator.h"
 #include "noteexception.h"
@@ -18,6 +26,9 @@ enum Type_etat_note {active, archive, sursis};
 
 char* enum_etat_to_string(Type_etat_note t);
 
+class Version {
+    QString title;
+    QDateTime date_modif;
 
 
 public:
@@ -56,7 +67,7 @@ public:
     void setEtat(const Type_etat_note e){etat=e;}
 
     Version& getVersion(const QString& title);
-    QString getLastVersion() const { return (versions[nbVersion]->getTitle());}
+    const QString& getLastVersion() const { return *(versions[nbVersion]->getTitle());}
 
 
     void ajouterVersion(Version *v);
