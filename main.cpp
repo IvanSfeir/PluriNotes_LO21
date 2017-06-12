@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
     //centrenotearch.show();
     centrenotearch.move(400,20);
 
-    CentreRelations centrerelations(RM,&interface);
+    CentreRelations centrerelations(RM, &interface);
     //centrenotearch.show();
     centrerelations.move(800,15);
 

@@ -113,10 +113,10 @@ class RelationManager{
     }
     RelationManager& operator=(const RelationManager&);
 public:
-    static RelationManager& getRelationManager(){
+    static RelationManager* getRelationManager(){
         if (!instance_RelationManager){
             instance_RelationManager = new RelationManager;
-            return *instance_RelationManager;
+            return instance_RelationManager;
         }
     }
     static void libererRelationManager(){
