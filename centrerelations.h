@@ -8,6 +8,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include "relation.h"
 
 class CentreRelations : public QWidget {
 
@@ -26,7 +27,7 @@ class CentreRelations : public QWidget {
     QVBoxLayout *verti;
 
 public:
-    explicit CentreRelations(RelationManager *RM, QMainWindow* parent=0);
+    explicit CentreRelations(QMainWindow* parent=0);
 
 signals:
 
