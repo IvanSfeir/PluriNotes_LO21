@@ -1,16 +1,32 @@
-#ifndef DROITERELATIONS_H
-#define DROITERELATIONS_H
+#ifndef CENTRERELATIONS_H
+#define CENTRERELATIONS_H
 
+#include <QApplication>
+#include <QMainWindow>
+#include <QListWidget>
+#include <QLabel>
 #include <QPushButton>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
 
-class DroiteRelations : public QWidget {
+class CentreRelations : public QWidget {
 
     Q_OBJECT // macro pour pouvoir utiliser signals et slots
 
-    QPushButton* CreerRelation;
-    QPushButton* SupprimerRelation;
+    QLabel *titre_relations;
+    QListWidget *relations;
+    QPushButton *afficher_relation;
+    QPushButton *supprimer_relation;
+    QPushButton *creer_relation;
+    QPushButton *fermer;
+
+    QHBoxLayout *horiz1;
+    QHBoxLayout *horiz2;
+    QVBoxLayout *verti;
 
 public:
+    // argument : RelationsManager
+    explicit CentreRelations(QMainWindow* parent=0);
 
 signals:
 
@@ -20,4 +36,4 @@ public slots:
 
 };
 
-#endif // DROITERELATIONS_H
+#endif // CENTRERELATIONS_H

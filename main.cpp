@@ -9,6 +9,8 @@
 #include "gauche.h"
 #include "centrenoteact.h"
 #include "centrenotearch.h"
+#include "centrerelations.h"
+#include "centrerelation.h"
 
 int main(int argc, char* argv[]) {
 
@@ -27,6 +29,13 @@ int main(int argc, char* argv[]) {
     CentreNoteArch centrenotearch(&interface);
     //centrenotearch.show();
     centrenotearch.move(400,20);
+
+    CentreRelations centrerelations(&interface);
+    //centrenotearch.show();
+    centrerelations.move(800,15);
+
+    CentreRelation centrerelation(&interface);
+    centrerelation.move(800,205);
 
 
     interface.show();

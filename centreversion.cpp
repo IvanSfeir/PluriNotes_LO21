@@ -33,9 +33,9 @@ CentreVersion::CentreVersion (Version& vers, QWidget *parent):
     couche->addLayout(cdate);
 
     titre->setText(version->getTitle());
-    //***************************************
+    // **************************************
     //TOSTRING WAS NOT DECLARED IN THIS SCOPE
-    //***************************************
+    // **************************************
     //date_de_modif->setText(version->getDateModif());
 
     date_de_modif->setReadOnly(true);
@@ -52,9 +52,9 @@ CentreVersion::CentreVersion (Version& vers, QWidget *parent):
 
 void CentreVersion::sauvegarderVersion() {
     version->setTitle(titre->text());
-    //********************************
+    // *******************************
     // CHANGER LA DATE DE MODIFICATION
-    //********************************
+    // *******************************
     QMessageBox::information(this,"Sauvegarde","La nouvelle version a bien été sauvegardée");
 
     sauvegarder->setEnabled(false);
