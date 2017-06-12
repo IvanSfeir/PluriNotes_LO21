@@ -26,14 +26,17 @@ class CentreRelations : public QWidget {
     QVBoxLayout *verti;
 
 public:
-    // argument : RelationsManager
-    explicit CentreRelations(QMainWindow* parent=0);
+    explicit CentreRelations(RelationManager *RM, QMainWindow* parent=0);
 
 signals:
 
 private slots:
 
 public slots:
+    void afficherRelation();
+    void supprimerRelation();
+    void creerRelationNonOrientee();
+    void creerRelationOrientee();
 
 };
 

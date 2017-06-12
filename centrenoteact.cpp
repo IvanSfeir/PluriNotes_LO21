@@ -25,10 +25,12 @@ CentreNoteAct::CentreNoteAct(QMainWindow *parent):
 
     afficher = new QPushButton("Afficher",this);
     arborescence = new QPushButton("Arborescence",this);
+    restaurer = new QPushButton("Restaurer",this);
     fermer = new QPushButton("Fermer",this);
 
     horiz = new QHBoxLayout;
     horiz->addWidget(afficher);
+    horiz->addWidget(restaurer);
     horiz->addWidget(arborescence);
     horiz->addWidget(fermer);
 

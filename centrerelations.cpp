@@ -1,6 +1,6 @@
 #include "centrerelations.h"
 
-CentreRelations::CentreRelations(QMainWindow *parent):
+CentreRelations::CentreRelations(RelationManager *RM, QMainWindow *parent):
     QWidget(parent) {
 
     titre_relations = new QLabel(this);
@@ -41,4 +41,16 @@ CentreRelations::CentreRelations(QMainWindow *parent):
 
     setFixedSize(350,200);
 
+    QObject::connect(afficher_relation, SIGNAL(Clicked()),this, SLOT(afficherRelation()));
+    QObject::connect(supprimer_relation, SIGNAL(Clicked()),this, SLOT(supprimerRelation()));
+    QObject::connect(fermer, SIGNAL(Clicked()),this, SLOT(close()));
+    QObject::connect(creer_relation_non_orientee, SIGNAL(Clicked()),this, SLOT(creerRelationNonOrientee()));
+    QObject::connect(creer_relation_orientee, SIGNAL(Clicked()),this, SLOT(creerRelationOrientee()));
+
+
 }
+
+void CentreRelations::afficherRelation() {}
+void CentreRelations::supprimerRelation() {}
+void CentreRelations::creerRelationNonOrientee() {}
+void CentreRelations::creerRelationOrientee() {}
