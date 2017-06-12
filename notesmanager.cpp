@@ -1,6 +1,9 @@
-#include "notesmanager.h"
-#include <QString>
+#include <typeinfo>
+#include <string>
 
+#include <QString>
+#include "notesmanager.h"
+#include "tache.h"
 
 //********* SINGLETON ***************
 NotesManager* NotesManager::instance_NotesManager = nullptr;
@@ -135,12 +138,32 @@ void NotesManager::saveNotesManager(const QString & filename){
         //else stream.writeStartElement("orientation","false");
         for (Note::iterator it_note = tab_notes[i]->begin(); it_note != tab_notes[i]->end(); it_note++){
             stream.writeStartElement("Version");
-            //stream.writeStartElement("titre", (*it_note)->getTitle());
-            //stream.writeStartElement("date_modif", (*it_note)->getDateModif().getId());
-            /* TO DO :
-            ajouter save pour les classes filles de version (multimedia, ...)
+            stream.writeStartElement("Titre", (*it_note)->getTitle());
+            stream.writeStartElement("Date de derniere modification", (*it_note)->getDateModif());
 
+            string type_version= typeid((*it_note)).name();
+            type_version=type_version.substr(1,type_version.length()-1); // on renvoie le nom du type de l'objet, sans le 1er char (la longueur du nom)
 
+            switch (type_version) {
+            case "image":
+
+            case "audio":
+                break;
+            case "video":
+                break;
+
+            case "Tache":
+                stream.writeStartElement("action", (*it_note)->getAction());
+                stream.writeStartElement("priorite", (*it_note)->getPriorite());
+                stream.writeStartElement("Date_echeance", (*it_note)->getDate_echeance().toString("dd.MM.yyyy hh::mm:ss"));
+                stream.writeStartElement("statut", enum_statut_to_string( (*it_note)->getStatut()));
+                break;
+            case "Article":
+                stream.writeStartElement("text", (*it_note)->getText());
+                break;
+            default:
+                break;
+            }
             */
 
 

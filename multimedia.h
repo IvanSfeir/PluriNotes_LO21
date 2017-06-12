@@ -35,9 +35,10 @@ class image : public Multimedia{
     QString img;
 
 public:
-    image(const QString & t, QDateTime d, const QString &desc, const QString &i, QString im):
-    Multimedia(t,d,desc,i), img(im) {}
+    image(const QString & t, QDateTime d, const QString &desc, const QString &i):
+    Multimedia(t,d,desc,i), img(i) {}
     ~image(){}
+
 };
 
 class audio : public Multimedia{
