@@ -36,8 +36,8 @@ private slots:
 public slots:
     void afficherRelation();
     void supprimerRelation();
-    void creerRelationNonOrientee();
-    void creerRelationOrientee();
+    void creerRelationNonOrientee(Relation* it);
+    void creerRelationOrientee(Relation* it);
 
 };
 

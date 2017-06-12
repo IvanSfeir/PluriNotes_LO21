@@ -10,6 +10,12 @@
 
 #include "NotesManager.h"
 #include "relation.h"
+#include "centrerelations.h"
+#include "centrerelationnonorientee.h"
+#include "centrerelationorientee.h"
+#include "centrenoteact.h"
+#include "centrenotearch.h"
+#include "centreversion.h"
 
 class Interface : public QMainWindow {
 
@@ -38,6 +44,9 @@ private slots:
 
 public slots:
     void avant_de_fermer();
+    void ouvrir_relations();
+    //void ouvrir_note();
+    void fermer_note();
 
 };
 

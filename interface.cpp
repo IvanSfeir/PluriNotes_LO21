@@ -1,5 +1,4 @@
 #include "interface.h"
-#include <qDebug>
 
 Interface::Interface() {
 
@@ -43,5 +42,24 @@ void Interface::avant_de_fermer() {
     }
 
     this->close();
+
+}
+
+void ouvrir_relations() {
+    CentreRelati
+}
+
+void ouvrir_note() {
+
+}
+
+void fermer_centre() {
+
+    if(centrenoteact) centrenoteact->close();
+    if(centrenotearch) centrenotearch->close();
+    if(centreversion) centreversion->close();
+    if(centrerelations) centrerelations->close();
+    if(centrerelationorientee) centrerelationorientee->close();
+    if(centrerelationnonorientee) centrerelationnonorientee->close();
 
 }
