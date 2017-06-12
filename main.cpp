@@ -6,6 +6,7 @@
 #include "interface.h"
 #include "gauche.h"
 #include "centrenoteact.h"
+#include "centrenotearch.h"
 
 int main(int argc, char* argv[]) {
 
@@ -14,11 +15,16 @@ int main(int argc, char* argv[]) {
     interface.setFixedSize(1200, 400);
 
     Gauche gauche(&interface);
-    gauche.show();
+    //gauche.show();
     gauche.move(0,20);
-
+/*
     CentreNoteAct centrenoteact(&interface);
-    centrenoteact.move(400,70);
+    //centrenoteact.show();
+    centrenoteact.move(400,20);
+*/
+    CentreNoteArch centrenotearch(&interface);
+    //centrenotearch.show();
+    centrenotearch.move(400,20);
 
 
     interface.show();

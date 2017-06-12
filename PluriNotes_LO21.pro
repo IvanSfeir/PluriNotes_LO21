@@ -20,6 +20,7 @@ SOURCES += \
     droitearborescence.cpp \
     gauche.cpp \
     interface.cpp \
+    centrenotearch.cpp
 
 
 HEADERS += \
@@ -39,4 +40,5 @@ HEADERS += \
     centreversion.h \
     droitearborescence.h \
     gauche.h \
-    interface.h
+    interface.h \
+    centrenotearch.h

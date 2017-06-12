@@ -10,6 +10,13 @@
 #include <QString>
 #include "iterator.h"
 #include "version.h"
+#include "relation.h"
+#include "notesmanager.h"
+#include <Qstring>
+
+#include <QFile>
+#include <QXmlStreamWriter>
+#include <QXmlStreamReader>
 
 class Note;
 
@@ -95,6 +102,7 @@ public:
 
 };
 
-
+    void loadNotesManager(const QString & filename); 
+    void saveNotesManager(const QString & filename); 
 
 #endif // NOTESMANAGER_H
