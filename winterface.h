@@ -10,12 +10,12 @@
 
 #include "NotesManager.h"
 #include "relation.h"
-#include "centrerelations.h"
-#include "centrerelationnonorientee.h"
-#include "centrerelationorientee.h"
-#include "centrenoteact.h"
-#include "centrenotearch.h"
-#include "centreversion.h"
+#include "wrelations.h"
+#include "wrelationnonorientee.h"
+#include "wrelationorientee.h"
+#include "wnoteact.h"
+#include "wnotearch.h"
+#include "wversion.h"
 
 class Interface : public QMainWindow {
 
@@ -34,9 +34,6 @@ class Interface : public QMainWindow {
 public:
     Interface();
     QAction *actionCorbeilleAuto;
-
-    NotesManager *NM;
-    RelationManager *RM;
 
 signals:
 

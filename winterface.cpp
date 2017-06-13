@@ -1,16 +1,19 @@
-#include "interface.h"
+#include "winterface.h"
 
 Interface::Interface() {
+
 
     QMenu *menuNote = menuBar()->addMenu("Note");
 
     QAction *afficherNote = new QAction("Afficher note");
     menuNote->addAction(afficherNote);
 
+
     QMenu *menuRelations = menuBar()->addMenu("Relations");
 
     QAction *afficherRelations = new QAction("Afficher Relations");
     menuRelations->addAction(afficherRelations);
+
 
     QMenu *menuCorbeille = menuBar()->addMenu("Corbeille");
 
@@ -18,13 +21,11 @@ Interface::Interface() {
     menuCorbeille->addAction(actionCorbeilleAuto);
     actionCorbeilleAuto->setCheckable(true);
 
+
     QMenu *menuQuitter = menuBar()->addMenu("Quitter");
 
     QAction *actionQuitter = new QAction("Quitter application");
     menuQuitter->addAction(actionQuitter);
-
-
-
     connect(actionQuitter, SIGNAL(triggered()), this, SLOT(avant_de_fermer()));
 
 }

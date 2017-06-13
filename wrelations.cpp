@@ -1,4 +1,4 @@
-#include "centrerelations.h"
+#include "wrelations.h"
 
 CentreRelations::CentreRelations(QMainWindow *parent):
     QWidget(parent) {

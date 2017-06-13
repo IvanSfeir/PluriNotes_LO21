@@ -1,20 +1,23 @@
-#include "centrerelationorientee.h"
+#include "wrelationnonorientee.h"
 
-CentreRelationOrientee::CentreRelationOrientee(QMainWindow *parent):
+CentreRelationNonOrientee::CentreRelationNonOrientee(QMainWindow *parent):
     QWidget(parent) {
 
     // exemple
-    QString relatexemple="R1 orientee";
+    QString relatexemple="R2 non orientee";
 
     titre_relation = new QLabel(this);
-    titre_relation->setText("La relation orientee de label : "+relatexemple);
+    titre_relation->setText("La relation non orientee de label : "+relatexemple);
     titre_relation->setFixedHeight(10);
 
     couples = new QListWidget(this);
     couples->setFixedSize(320,100);
-    couples->addItem("id1 -> id4");
-    couples->addItem("id2 -> id7");
-    couples->addItem("id7 -> id3");
+    couples->addItem("id1 - id4");
+    couples->addItem("id1 - id7");
+    couples->addItem("id7 - id3");
+    couples->addItem("id4 - id1");
+    couples->addItem("id7 - id1");
+    couples->addItem("id3 - id7");
 
     ajouter_couple = new QPushButton("Ajouter couple",this);
     supprimer_couple = new QPushButton("Supprimer couple",this);

@@ -1,13 +1,13 @@
-#include "centrenotearch.h"
+#include "wnoteact.h"
 
-CentreNoteArch::CentreNoteArch(Note *it, QWidget *parent):
+CentreNoteAct::CentreNoteAct(Note *it, QWidget *parent):
     QWidget(parent) {
 
     // exemple
-    QString idexemple="2";
+    QString idexemple="1";
 
     titre_id = new QLabel(this);
-    titre_id->setText("La note archivee d'identifiant "+idexemple);
+    titre_id->setText("La note active d'identifiant "+idexemple);
     //titre_id2 = new QLabel(this);
     //titre_id2->setText("La note d'identifiant "+idexemple);
     //titre_id3 = new QLabel(this);
@@ -24,12 +24,14 @@ CentreNoteArch::CentreNoteArch(Note *it, QWidget *parent):
     versions->addItem("version 6");
 
     afficher = new QPushButton("Afficher",this);
+    arborescence = new QPushButton("Arborescence",this);
     restaurer = new QPushButton("Restaurer",this);
     fermer = new QPushButton("Fermer",this);
 
     horiz = new QHBoxLayout;
     horiz->addWidget(afficher);
     horiz->addWidget(restaurer);
+    horiz->addWidget(arborescence);
     horiz->addWidget(fermer);
 
     verti = new QVBoxLayout;

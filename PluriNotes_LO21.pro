@@ -14,16 +14,16 @@ SOURCES += \
     note.cpp \
     version.cpp \
     multimedia.cpp \
-    centrenoteact.cpp \
-    centrerelationorientee.cpp \
-    centrerelationnonorientee.cpp \
-    centrerelations.cpp \
-    centreversion.cpp \
-    droitearborescence.cpp \
-    gauche.cpp \
-    interface.cpp \
-    centrenotearch.cpp \
-    centreversionarticle.cpp \
+    wnoteact.cpp \
+    wrelationorientee.cpp \
+    wrelationnonorientee.cpp \
+    wrelations.cpp \
+    wversion.cpp \
+    warborescence.cpp \
+    wgauche.cpp \
+    winterface.cpp \
+    wnotearch.cpp \
+    wversionarticle.cpp \
     tache.cpp
 
 
@@ -38,13 +38,13 @@ HEADERS += \
     multimedia.h \
     article.h \
     tache.h \
-    centrenoteact.h \
-    centrerelationorientee.h \
-    centrerelationnonorientee.h \
-    centrerelations.h \
-    centreversion.h \
-    droitearborescence.h \
-    gauche.h \
-    interface.h \
-    centrenotearch.h \
-    centreversionarticle.h
+    wnoteact.h \
+    wrelationorientee.h \
+    wrelationnonorientee.h \
+    wrelations.h \
+    wversion.h \
+    warborescence.h \
+    wgauche.h \
+    winterface.h \
+    wnotearch.h \
+    wversionarticle.h

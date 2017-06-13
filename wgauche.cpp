@@ -1,4 +1,4 @@
-#include "gauche.h"
+#include "wgauche.h"
 
 Gauche::Gauche(QMainWindow* parent) :
     QWidget(parent) {

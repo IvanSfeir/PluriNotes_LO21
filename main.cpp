@@ -5,13 +5,13 @@
 #include "tache.h"
 #include "relation.h"
 
-#include "interface.h"
-#include "gauche.h"
-#include "centrenoteact.h"
-#include "centrenotearch.h"
-#include "centrerelations.h"
-#include "centrerelationorientee.h"
-#include "centrerelationnonorientee.h"
+#include "winterface.h"
+#include "wgauche.h"
+#include "wnoteact.h"
+#include "wnotearch.h"
+#include "wrelations.h"
+#include "wrelationorientee.h"
+#include "wrelationnonorientee.h"
 
 int main(int argc, char* argv[]) {
 

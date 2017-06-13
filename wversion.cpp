@@ -1,4 +1,4 @@
-#include "centreversion.h"
+#include "wversion.h"
 #include <QMessageBox>
 
 

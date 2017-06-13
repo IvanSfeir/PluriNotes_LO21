@@ -8,10 +8,10 @@
 #include <QVBoxLayout>
 #include <QObject>
 #include <QMainWindow>
-#include "interface.h"
+#include "winterface.h"
 #include "note.h"
-#include "centrenoteact.h"
-#include "centrenotearch.h"
+#include "wnoteact.h"
+#include "wnotearch.h"
 
 #include <QListWidget>
 #include <QComboBox>
