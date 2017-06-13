@@ -9,7 +9,7 @@ Interface::Interface() {
     QMenu *menuRelations = menuBar()->addMenu("Relations");
     QAction *afficherRelations = new QAction("Afficher Relations");
     menuRelations->addAction(afficherRelations);
-    QObject::connect(afficherRelations, triggered(), this, ouvrir_relations());
+    QObject::connect(afficherRelations, SIGNAL(triggered()), this, SLOT(ouvrir_relations()));
 
     QMenu *menuCorbeille = menuBar()->addMenu("Corbeille");
     QAction *actionCorbeilleAuto = new QAction("Corbeille automatiquement detruite");
@@ -45,7 +45,7 @@ void Interface::avant_de_fermer() {
 void Interface::ouvrir_relations() {
     fermer_droite();
     window_relations = new CentreRelations(this);
-    window_relations->move();
+    window_relations->move(800,15);
     window_relations->show();
 }
 /*
@@ -63,7 +63,7 @@ void fermer_centre() {
 }
 */
 
-void fermer_droite() {
+void Interface::fermer_droite() {
     if(window_relations) window_relations->close();
 }
 
