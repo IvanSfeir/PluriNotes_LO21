@@ -12,11 +12,13 @@ Note::~Note(){
 
 
 
-Version & Note::getVersion(const QString& title){
-    for(unsigned int i=0; i<nbVersion; i++){
-        if (versions[i]->getTitle()==title) return *versions[i];
-    }
-    throw Exception("error, nonexistent version");
+Version *Note::getVersion(const unsigned int p){
+    if(p>nbVersion)
+        throw Exception("error, nonexistent version");
+    else
+        return versions[p];
+
+
 }
 
 // à REVOIR si title unique pour Version.
@@ -65,9 +67,10 @@ void Note::supprimerVersion(Version * oldVersion){
 }
 
 // TO DO : Comment/D'où restaurer une Version ??
-void Note::restaurerVersion(Version *v)
+void Note::restaurerVersion(const unsigned int p)
 {
-/////////
+Version *v=getVersion(p);
+this->ajouterVersion(v);
 
 }
 

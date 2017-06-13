@@ -41,16 +41,14 @@ private:
     static NotesManager * instance_NotesManager;
 
 public:
-    Note& getNote(const QString& id);
+    Note* getNote(const QString& id);
     void ajouterNote(Note* n);
     void supprimerNote(Note* oldNote);
-    void restaurerNote(Note* n);
+    void restaurerNote(const QString & id);
 
-    // à conserver pour XML ?
-    void load(const QString& f);
-    void save() const;
-
-
+    bool is_bin_empty();
+    bool is_archived_in_bin();
+    bool is_note_refed(const QString & id); //cherche si une note est référencée ou non
 
     // ******** ITERATOR *************
     //class iterator<Note,NotesManager>;

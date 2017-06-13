@@ -72,15 +72,15 @@ class RelationPreexistente: public Relation{
     void setOrientee(bool){}
 
     static RelationPreexistente* instance_RelationPreexistente;
-    RelationPreexistente(const RelationPreexistente&);
+    RelationPreexistente(const RelationPreexistente& r);
     ~RelationPreexistente(){}
     RelationPreexistente& operator=(const RelationPreexistente&);
     RelationPreexistente(): Relation("ref", "preexistente"){}
 
 public:
-    static RelationPreexistente& getRelationPreexistente(){
+    static RelationPreexistente* getRelationPreexistente(){
         if (!instance_RelationPreexistente) instance_RelationPreexistente = new RelationPreexistente;
-            return *instance_RelationPreexistente;
+            return instance_RelationPreexistente;
     }
     static void libererRelationPreexistente(){
         if (instance_RelationPreexistente){
@@ -100,8 +100,8 @@ class RelationManager{
     RelationManager(){
         relations = new Relation*[maxRelations+10];
         maxRelations += 10;
-        RelationPreexistente& RP = RelationPreexistente::getRelationPreexistente();
-        relations[0] = &RP;
+        RelationPreexistente* RP = RelationPreexistente::getRelationPreexistente();
+        relations[0] = RP;
         nbRelations++;
     }
     RelationManager& operator=(const RelationManager&);

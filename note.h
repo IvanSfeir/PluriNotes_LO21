@@ -44,13 +44,13 @@ public:
 
     void setEtat(const Type_etat_note e){etat=e;}
 
-    Version& getVersion(const QString& title);
-    QString getLastVersion() const { return versions[nbVersion]->getTitle();}
+    Version* getVersion(const unsigned int p);
+    Version * getLastVersion() const { return versions[nbVersion];}
 
 
     void ajouterVersion(Version *v);
     void supprimerVersion(Version *oldVersion);
-    void restaurerVersion(Version *v);
+    void restaurerVersion(const unsigned int p);
 
     bool is_active(){return etat==active;}
     bool is_archived(){return etat==archive;}
