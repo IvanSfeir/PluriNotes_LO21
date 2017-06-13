@@ -19,8 +19,7 @@ CentreRelations::CentreRelations(QMainWindow *parent):
     relations->addItem("relation 6");
 */
     for (RelationManager::iterator it = RM->begin(); it != RM->end(); it++) {
-        QString titre = (*it)->getTitre();
-        relations->addItem(titre);
+        relations->addItem((*it)->getTitre());
     }
 
 
@@ -68,8 +67,8 @@ void CentreRelations::afficherRelation() {
     unsigned int position = relations->currentRow();
     RelationManager::iterator it = RM->begin();
     for(unsigned int i=0; i!=position; i++) {it++;}
-    if((*it)->getOrientee()) {creerRelationOrientee(it);}
-    else {creerRelationNonOrientee(it);}
+    if((*it)->getOrientee()) {afficherRelationOrientee((*it));}
+    else {afficherRelationNonOrientee((*it));}
 
 
 
@@ -77,6 +76,14 @@ void CentreRelations::afficherRelation() {
 
 void CentreRelations::supprimerRelation() {}
 
-void CentreRelations::ouvrirRelationNonOrientee(Relation* it) {}
+void CentreRelations::afficherRelationNonOrientee(Relation* it) {
+    //for (Relation::iterator itRelation = it->begin(); itRelation != it->end(); itRelation++){
+        //add item to screen
+    //}
+}
 
-void CentreRelations::ouvrirRelationOrientee(Relation* it) {}
+void CentreRelations::afficherRelationOrientee(Relation* it) {
+    //for (Relation::iterator itRelation = it->begin(); itRelation != it->end(); itRelation++){
+        //add item to screen
+    //}
+}
