@@ -21,18 +21,18 @@ int main(int argc, char* argv[]) {
 
 
     QApplication app(argc, argv);
-/*
+
     NotesManager *NM = NotesManager::getInstance();
     RelationManager *RM = RelationManager::getRelationManager();
-*/
+
     Interface* interface = new Interface();
 
     interface->setFixedSize(1200, 400);
-/*
+
     Gauche gauche(interface);
     //gauche.show();
     gauche.move(0,20);
-*/
+
     //CentreNoteAct centrenoteact(&interface);
     //centrenoteact.show();
     //centrenoteact.move(400,20);
