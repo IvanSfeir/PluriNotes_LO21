@@ -152,12 +152,14 @@ void NotesManager::saveNotesManager(const QString & filename){
 
                        //image *img = *(it_note);
                         image *img =  dynamic_cast<image*>(*it_note);
+                        stream.writeStartElement("type", "image");
                        stream.writeStartElement("img", img->getImg());
                        stream.writeStartElement("desc",  img-> getDesc());
                        stream.writeStartElement("img_URL",  img->getimg_URL());
                 }
             else if(type_version=="audio"){
                         audio *aud = dynamic_cast<audio*>(*it_note);
+                        stream.writeStartElement("type", "audio");
                        stream.writeStartElement("audio_URL", aud->getAudio_URL());
                        //stream.writeStartElement("playeraudio", enum_statut_to_string( (*it_note)->getImg_URL()));
                        stream.writeStartElement("desc", aud->getDesc());
@@ -165,6 +167,7 @@ void NotesManager::saveNotesManager(const QString & filename){
                }
             else if(type_version=="video"){
                        video *vid = dynamic_cast<video*>(*it_note);
+                       stream.writeStartElement("type", "video");
                        stream.writeStartElement("video_URL", vid->getVideo_URL());
                        stream.writeStartElement("desc", vid->getDesc());
                        stream.writeStartElement("img_URL",  vid->getimg_URL());
@@ -172,6 +175,7 @@ void NotesManager::saveNotesManager(const QString & filename){
 }
             else if(type_version=="Tache"){
                         Tache *tach =dynamic_cast<Tache*>(*it_note);
+                        stream.writeStartElement("type", "Tache");
                        stream.writeStartElement("action", tach->getAction());
                        if(tach->getPriorite())
                        {
@@ -184,6 +188,7 @@ void NotesManager::saveNotesManager(const QString & filename){
             }
             else if (type_version=="Article")
             {
+              stream.writeStartElement("type", "Article");
                         Article *art=dynamic_cast<Article*>(*it_note);
                        stream.writeStartElement("text", art->getText());
             }
@@ -195,17 +200,17 @@ void NotesManager::saveNotesManager(const QString & filename){
     stream.writeEndElement();
     newFile.close();
 }
-/*
-void NotesManager::saveNotesManager_not_reprieved(const QString & filename){
+
+void NotesManager::saveNotesManager_no_reprieve(const QString & filename){
     QFile newFile(filename);
     if (!newFile.open(QIODevice::WriteOnly | QIODevice::Text))
-        throw exception(QString("Error open file xml: cannot save file"));
+        throw  NotesException(QString("Error open file xml: cannot save file"));
 
     QXmlStreamWriter stream(&newFile);
     stream.setAutoFormatting(true);
     stream.writeStartDocument();
     for (unsigned int i=0; i < nbNotes; i++){
-        if(*tab_notes[i]->getEtat()!=sursis)
+        if(!(tab_notes[i]->is_reprieved())) // si la note n'est pas en sursis
         {
         stream.writeStartElement("Note");
         stream.writeStartElement("id", tab_notes[i]->getId());
@@ -214,59 +219,67 @@ void NotesManager::saveNotesManager_not_reprieved(const QString & filename){
         stream.writeStartElement("Date_creation", tab_notes[i]->getDateCreation().toString("dd.MM.yyyy hh::mm:ss"));
         //if (tab_notes[i]->getOrientee()) stream.writeStartElement("orientation","true");
         //else stream.writeStartElement("orientation","false");
-
         for (Note::iterator it_note = tab_notes[i]->begin(); it_note != tab_notes[i]->end(); it_note++){
             stream.writeStartElement("Version");
             stream.writeStartElement("Titre", (*it_note)->getTitle());
-            stream.writeStartElement("Date_derniere_modification", (*it_note)->getDateModif());
+            stream.writeStartElement("Date_derniere_modification", (*it_note)->getDateModif().toString("dd.MM.yyyy hh::mm:ss"));
 
             string type_version= typeid((*it_note)).name();
             type_version=type_version.substr(1,type_version.length()-1); // on renvoie le nom du type de l'objet, sans le 1er char (la longueur du nom)
 
+            if (type_version=="image") {
 
-            switch (type_version) {
-                   case "image":
-                       stream.writeStartElement("type", "image");
-                       stream.writeStartElement("img",  (*it_note)->getImg());
-                       stream.writeStartElement("desc", (*it_note)->getDesc());
-                       stream.writeStartElement("img_URL", (*it_note)->getImg_URL());
-                       break;
-
-                   case "audio":
-                       stream.writeStartElement("type", "audio");
-                       stream.writeStartElement("audio_URL", (*it_note)->getAudio_URL());
+                       //image *img = *(it_note);
+                        image *img =  dynamic_cast<image*>(*it_note);
+                        stream.writeStartElement("type", "image");
+                       stream.writeStartElement("img", img->getImg());
+                       stream.writeStartElement("desc",  img-> getDesc());
+                       stream.writeStartElement("img_URL",  img->getimg_URL());
+                }
+            else if(type_version=="audio"){
+                        audio *aud = dynamic_cast<audio*>(*it_note);
+                        stream.writeStartElement("type", "audio");
+                       stream.writeStartElement("audio_URL", aud->getAudio_URL());
                        //stream.writeStartElement("playeraudio", enum_statut_to_string( (*it_note)->getImg_URL()));
-                       stream.writeStartElement("desc", (*it_note)->getDesc());
-                       stream.writeStartElement("img_URL", (*it_note)->getImg_URL());
-                       break;
-                   case "video":
+                       stream.writeStartElement("desc", aud->getDesc());
+                       stream.writeStartElement("img_URL", aud->getimg_URL());
+               }
+            else if(type_version=="video"){
+                       video *vid = dynamic_cast<video*>(*it_note);
                        stream.writeStartElement("type", "video");
-                       stream.writeStartElement("video_URL",  (*it_note)->getVideo_URL());
-                       stream.writeStartElement("desc", (*it_note)->getDesc());
-                       stream.writeStartElement("img_URL", (*it_note)->getImg_URL());
-                       break;
+                       stream.writeStartElement("video_URL", vid->getVideo_URL());
+                       stream.writeStartElement("desc", vid->getDesc());
+                       stream.writeStartElement("img_URL",  vid->getimg_URL());
 
-                   case "Tache":
-                       stream.writeStartElement("type", "Tache");
-                       stream.writeStartElement("action", (*it_note)->getAction());
-                       if((*it_note)->getPriorite()) stream.writeStartElement("priorite", (*it_note)->getPriorite());
-                       if((*it_note)->getDate_echeance()) stream.writeStartElement("Date_echeance", (*it_note)->getDate_echeance().toString("dd.MM.yyyy hh::mm:ss"));
-                       stream.writeStartElement("statut", enum_statut_to_string( (*it_note)->getStatut()));
-                       break;
-                   case "Article":
-                      stream.writeStartElement("type", "Article");
-                       stream.writeStartElement("text", (*it_note)->getText());
-                       break;
-                    }
+}
+            else if(type_version=="Tache"){
+                        Tache *tach =dynamic_cast<Tache*>(*it_note);
+                        stream.writeStartElement("type", "Tache");
+                       stream.writeStartElement("action", tach->getAction());
+                       if(tach->getPriorite())
+                       {
+                           string n = std::to_string((tach->getPriorite()));
+
+                           stream.writeStartElement("priorite", QString::fromStdString(n));
+                       }
+                       if((tach->getDate_echeance()).QDateTime::isNull()) stream.writeStartElement("Date_echeance", tach->getDate_echeance().toString("dd.MM.yyyy hh::mm:ss"));
+                       stream.writeStartElement("statut", enum_statut_to_string( tach->getStatut()));
+            }
+            else if (type_version=="Article")
+            {
+              stream.writeStartElement("type", "Article");
+                        Article *art=dynamic_cast<Article*>(*it_note);
+                       stream.writeStartElement("text", art->getText());
+            }
 
             stream.writeEndElement();
         }
         stream.writeEndElement();
     }
+    }
     stream.writeEndElement();
     newFile.close();
-    }
-    }
+}
 
 /*QString dateStr = "2014-03-18 09:30:36";
 QString fmt = "yyyy-MM-dd hh:mm:ss";
@@ -302,29 +315,93 @@ void NotesManager::loadNotesManager(const QString & filename){
                 if (xml.name() == "Date_creation"){
                     xml.readNext();
                     s_date=xml.text().toString();
-                    s_date=QDateTime::fromString(s_date); // voir la doc
+                    date_creation=QDateTime::fromString(s_date, "dd.MM.yyyy hh::mm:ss"); // voir la doc
+
                 }
 
                 Version* vers;
-                if (titre == "\ref") relation = relations[0];
-                else relation = new RelationNormale(titre, description, orientee);
+                // if (titre == "\ref") relation = relations[0];
+                // else relation = new RelationNormale(titre, description, orientee);
                 //loop to get Couple
-                while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "couple")){
-                    QString label;
-                    QString note1;
-                    QString note2;
-                    if (xml.tokenString() == QXmlStreamReader::StartElement){
-                        if (xml.name() == "label"){
+                while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "Version")){
+                    QString titre;
+                    QString s_datemodif;
+                    QDateTime dateModif;
+                  if (xml.tokenString() == QXmlStreamReader::StartElement){
+                        if (xml.name() == "Titre"){
                             xml.readNext();
-                            label=xml.text().toString();
+                            titre=xml.text().toString();
                         }
-                        if (xml.name() == "note1"){
+                        if (xml.name() == "Date_derniere_modification"){
                             xml.readNext();
-                            note1=xml.text().toString();
+                            s_datemodif=xml.text().toString();
+                            dateModif=QDateTime::fromString(s_datemodif, "dd.MM.yyyy hh::mm:ss"); // voir la doc
                         }
                         if (xml.name() == "note2"){
                             xml.readNext();
                             note2=xml.text().toString();
+                        }
+                        QString type_version;  //get the type of the object
+                        if (xml.name() == "type"){
+                            xml.readNext();
+                            type_version=xml.text().toString();
+                        }
+
+                        if (type_version=="image") {
+                         QString img;
+                         QString img_URL;
+                         QString desc;
+                          image *img =  dynamic_cast<image*>(*it_note);
+                          if (xml.name() == "img"){
+                              xml.readNext();
+                              img=xml.text().toString();
+                          }
+                          if (xml.name() == "desc"){
+                              xml.readNext();
+                              desc=xml.text().toString();
+                          }
+                          if (xml.name() == "img_URL"){
+                              xml.readNext();
+                              img_URL=xml.text().toString();
+                          }
+                         image* newImg = new image(&NotesManager->getNote(note1), &NotesManager->getNote(note2), label);
+                         relation->ajouterCouple(newCouple);
+
+                            }
+                        else if(type_version=="audio"){
+                            audio *aud = dynamic_cast<audio*>(*it_note);
+                            stream.writeStartElement("type", "audio");
+                           stream.writeStartElement("audio_URL", aud->getAudio_URL());
+                           //stream.writeStartElement("playeraudio", enum_statut_to_string( (*it_note)->getImg_URL()));
+                           stream.writeStartElement("desc", aud->getDesc());
+                           stream.writeStartElement("img_URL", aud->getimg_URL());
+                           }
+                        else if(type_version=="video"){
+                           video *vid = dynamic_cast<video*>(*it_note);
+                           stream.writeStartElement("type", "video");
+                           stream.writeStartElement("video_URL", vid->getVideo_URL());
+                           stream.writeStartElement("desc", vid->getDesc());
+                           stream.writeStartElement("img_URL",  vid->getimg_URL());
+
+                        }
+                        else if(type_version=="Tache"){
+                          Tache *tach =dynamic_cast<Tache*>(*it_note);
+                          stream.writeStartElement("type", "Tache");
+                         stream.writeStartElement("action", tach->getAction());
+                         if(tach->getPriorite())
+                         {
+                             string n = std::to_string((tach->getPriorite()));
+
+                             stream.writeStartElement("priorite", QString::fromStdString(n));
+                         }
+                         if((tach->getDate_echeance()).QDateTime::isNull()) stream.writeStartElement("Date_echeance", tach->getDate_echeance().toString("dd.MM.yyyy hh::mm:ss"));
+                         stream.writeStartElement("statut", enum_statut_to_string( tach->getStatut()));
+                       }
+                        else if (type_version=="Article")
+                        {
+                          stream.writeStartElement("type", "Article");
+                          Article *art=dynamic_cast<Article*>(*it_note);
+                         stream.writeStartElement("text", art->getText());
                         }
                     }
                     xml.readNext();
