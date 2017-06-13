@@ -18,12 +18,10 @@ CentreRelationOrientee::CentreRelationOrientee(QMainWindow *parent):
 
     ajouter_couple = new QPushButton("Ajouter couple",this);
     supprimer_couple = new QPushButton("Supprimer couple",this);
-    fermer = new QPushButton("Fermer",this);
 
     horiz = new QHBoxLayout;
     horiz->addWidget(ajouter_couple);
     horiz->addWidget(supprimer_couple);
-    horiz->addWidget(fermer);
 
     verti = new QVBoxLayout;
     verti->addWidget(titre_relation);

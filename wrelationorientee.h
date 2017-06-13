@@ -18,7 +18,6 @@ class CentreRelationOrientee : public QWidget {
     QListWidget *couples;
     QPushButton *ajouter_couple;
     QPushButton *supprimer_couple;
-    QPushButton *fermer;
 
     QHBoxLayout *horiz;
     QVBoxLayout *verti;
