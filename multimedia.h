@@ -40,6 +40,7 @@ public:
     ~image(){}
 
     const QString & getImg() const {return img;}
+    void setImg(const QString & img_URL) {img=img_URL;}
 
 };
 
@@ -57,6 +58,7 @@ public:
     void stopAudio() const;
 
     const QString&  getAudio_URL() const {return audio_URL;}
+    void  setAudio_URL(const QString & aud_URL) {audio_URL=aud_URL;}
 };
 
 class video : public Multimedia{

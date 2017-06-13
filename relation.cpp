@@ -33,7 +33,7 @@ void Relation::supprimerCouple(Couple* supCouple){
         }
         delete supCouple;
         nbCouples--;
-    } throw exception("Le couple n'est pas existe!");
+    } throw Exception("Le couple n'est pas existe!");
 }
 
 RelationPreexistente* RelationPreexistente::instance_RelationPreexistente = 0;
@@ -62,7 +62,7 @@ void RelationManager::supprimerRelation(Relation* supRelation){
         }
         delete supRelation;
         nbRelations--;
-    } throw exception("La relation n'est pas existe ou n'est pas supprime!");
+    } throw Exception("La relation n'est pas existe ou n'est pas supprime!");
 }
 
 RelationManager* RelationManager::instance_RelationManager = 0;
@@ -73,7 +73,7 @@ RelationManager* RelationManager::instance_RelationManager = 0;
 void RelationManager::saveRelationManager(const QString & filename){
     QFile newFile(filename);
     if (!newFile.open(QIODevice::WriteOnly | QIODevice::Text))
-        throw exception(QString("Error open file xml: cannot save file"));
+        throw Exception(QString("Error open file xml: cannot save file"));
     QXmlStreamWriter stream(&newFile);
     stream.setAutoFormatting(true);
     stream.writeStartDocument();
@@ -98,7 +98,7 @@ void RelationManager::saveRelationManager(const QString & filename){
 void RelationManager::loadRelationManager(const QString & filename){
     QFile loadFile(filename);
     if (!loadFile.open(QIODevice::ReadOnly | QIODevice::Text))
-        throw exception(QString("Error open file xml: cannot load file"));
+        throw Exception(QString("Error open file xml: cannot load file"));
     QXmlStreamReader xml(&loadFile);
 
     while(!xml.atEnd() && !xml.hasError()) {
@@ -155,7 +155,7 @@ void RelationManager::loadRelationManager(const QString & filename){
         }
     }
     if(xml.hasError()) {
-        throw exception("Error parsing xml : cannot read file");
+        throw Exception("Error parsing xml : cannot read file");
     }
     xml.clear();
 }

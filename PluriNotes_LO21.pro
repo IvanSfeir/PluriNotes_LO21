@@ -30,10 +30,9 @@ HEADERS += \
     iterator.h \
     note.h \
     relation.h \
-    noteexception.h \
+    exception.h \
     notesmanager.h \
     version.h \
-    versionexception.h \
     multimedia.h \
     article.h \
     tache.h \

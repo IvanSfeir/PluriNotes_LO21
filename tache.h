@@ -9,9 +9,13 @@
 
 #include "version.h"
 #include <QDateTime>
+#include <iostream>
+
+using namespace std;
 
 enum Type_statut_tache {en_cours, attente, terminee};
-char* enum_statut_to_string(Type_statut_tache t);
+string enum_statut_to_string(Type_statut_tache t);
+Type_statut_tache string_to_enum_statut(const string &s);
 
 class Tache : public Version{
     QString action;
@@ -40,9 +44,7 @@ public:
 
     void setAction(const QString newAction) { action=newAction;}
     void setPriorite(const unsigned int newPriorite) {priorite=newPriorite;}
-    void setDate_echeance(unsigned int year, unsigned int month, unsigned int day, unsigned int hour, unsigned int min, unsigned int sec) {
-        QDateTime newDate(QDate(year,month,day), QTime(hour, min, sec));
-        date_echeance=newDate;}
+    void setDate_echeance(QDateTime & newDate) {date_echeance=newDate;}
     void setStatut(const Type_statut_tache & newStatut) {statut=newStatut;}
 
 };
