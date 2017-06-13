@@ -23,6 +23,7 @@ class Interface : public QMainWindow {
 
     Gauche* window_gauche=0;
     CentreRelations* window_relations=0;
+    CentreRelationDetails* window_relation_details=0;
 
 
     QMenu *menuNote;
@@ -38,6 +39,7 @@ public:
     Interface();
     QAction *actionCorbeilleAuto;
     void fermer_droite();
+    void fermer_gauche();
 
 
 signals:
@@ -47,6 +49,7 @@ private slots:
 public slots:
     void avant_de_fermer();
     void ouvrir_relations();
+    void ouvrir_relation_details(unsigned int position);
     //void ouvrir_note();
     //void fermer_centre();
 

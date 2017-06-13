@@ -506,10 +506,10 @@ bool NotesManager::is_archived_in_bin(){
     }
     return true;
 }
-/*
+
 bool NotesManager::is_note_refed(const QString &id){
     RelationPreexistente *rp= RelationPreexistente::getRelationPreexistente();
-    for(RelationPreexistente::iterator it_ref=RelationPreexistente::begin(); it_ref!=RelationPreexistente::end();++it_ref)
+    for(RelationPreexistente::iterator it_ref=rp->begin(); it_ref!=rp->end();++it_ref)
     {
         if (((*it_ref)->getNote1().getId()==id) ||((*it_ref)->getNote2().getId()==id) )
             return false;
@@ -517,4 +517,4 @@ bool NotesManager::is_note_refed(const QString &id){
     return true;
 
 }
-*/
+
