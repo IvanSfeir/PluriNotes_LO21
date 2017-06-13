@@ -22,8 +22,8 @@ int main(int argc, char* argv[]) {
 
     QApplication app(argc, argv);
 
-    NotesManager *NM = NotesManager::getInstance();
-    RelationManager *RM = RelationManager::getRelationManager();
+    //NotesManager *NM = NotesManager::getInstance();
+    //RelationManager *RM = RelationManager::getRelationManager();
 
     Interface* interface = new Interface();
 
@@ -41,9 +41,9 @@ int main(int argc, char* argv[]) {
     //centrenotearch.show();
     //centrenotearch.move(400,20);
 
-    CentreRelations centrerelations(interface);
+    //CentreRelations centrerelations(interface);
     //centrenotearch.show();
-    centrerelations.move(800,15);
+    //centrerelations.move(800,15);
 
     CentreRelationNonOrientee centrerelationnonorientee(interface);
     centrerelationnonorientee.move(800,205);
