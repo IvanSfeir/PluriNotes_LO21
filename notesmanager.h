@@ -41,10 +41,10 @@ private:
     static NotesManager * instance_NotesManager;
 
 public:
-    Note& getNote(const QString& id);
+    Note* getNote(const QString& id);
     void ajouterNote(Note* n);
     void supprimerNote(Note* oldNote);
-    void restaurerNote(Note* n);
+    void restaurerNote(const QString & id);
 
     // à conserver pour XML ?
     void load(const QString& f);

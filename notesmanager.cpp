@@ -35,9 +35,9 @@ NotesManager::~NotesManager(){  // relation de composition avec note => il faut 
 }
 
 
-Note& NotesManager::getNote(const QString& id){
+Note* NotesManager::getNote(const QString& id){
     for(unsigned int i=0; i<nbNotes; i++){
-        if (tab_notes[i]->getId()==id) return *tab_notes[i];
+        if (tab_notes[i]->getId()==id) return tab_notes[i];
     }
     throw Exception("error, nonexistent note");
 }
@@ -84,44 +84,12 @@ void NotesManager::supprimerNote(Note * oldNote){
     --nbNotes;
 }
 
-// TO DO : D'où restaurer une note ??
-/*void NotesManager::restaurerNote(Note * n)
+
+void NotesManager::restaurerNote(const QString & id)
 {
-
-
+Note *n = getNote(id);
+n->setEtat(active);
 }
-*/
-/*void NotesManager::load(const QString& f) {
-    if (filename!=f) save();
-    filename=f;
-    ifstream fin(filename); // open file
-    if (!fin) throw Exception("error, file does not exist");
-    while(!fin.eof()&&fin.good()){
-        char tmp[1000];
-        fin.getline(tmp,1000); // get id on the first line
-        if (fin.bad()) throw NotesException("error reading note id on file");
-        Qstring id=tmp;
-        fin.getline(tmp,1000); // get title on the next line
-        if (fin.bad()) throw NotesException("error reading note title on file");
-        Qstring title=tmp;
-        fin.getline(tmp,1000); // get text on the next line
-        if (fin.bad()) throw NotesException("error reading note text on file");
-        Qstring text=tmp;
-        Note* n=new Note(id,title,text);
-        ajouterNote(n);
-        if (fin.peek()=='\r') fin.ignore();
-        if (fin.peek()=='\n') fin.ignore();
-    }
-    fin.close(); // close file
-}*/
-
-/*void NotesManager::save() const {
-    ofstream fout(filename);
-    for(unsigned int i=0; i<nbNotes; i++){
-        fout<<*tab_notes[i];
-    }
-    fout.close();
-}*/
 
 
 
@@ -135,28 +103,29 @@ void NotesManager::saveNotesManager(const QString & filename){
     stream.writeStartDocument();
     for (unsigned int i=0; i < nbNotes; i++){
       stream.writeStartElement("Note");
-        stream.writeStartElement("id", tab_notes[i]->getId());
+        stream.writeStartElement("id", tab_notes[i]->getId());  //QString id;
         QString nbV;
         QString nbMaxV;
-        nbV.setNum(tab_notes[i]->getNbVersion());
-        nbMaxV.setNum(tab_notes[i]->getNbMaxVersion());
+
+        nbV.setNum(tab_notes[i]->getNbVersion());   //convert int to QString -> unsigned int nbVersion;
+        nbMaxV.setNum(tab_notes[i]->getNbMaxVersion()); // unsigned int nbMaxVersion;
         stream.writeStartElement("nbVersion", nbV);
         stream.writeStartElement("nbMaxVersion", nbMaxV);
-        string s_etat = enum_etat_to_string(tab_notes[i]->getEtat());
-        stream.writeStartElement("Type_etat_note", QString::fromStdString( s_etat));
-        stream.writeStartElement("Date_creation", tab_notes[i]->getDateCreation().toString("dd.MM.yyyy hh::mm:ss"));
-        //if (tab_notes[i]->getOrientee()) stream.writeStartElement("orientation","true");
-        //else stream.writeStartElement("orientation","false");
-        for (Note::iterator it_note = tab_notes[i]->begin(); it_note != tab_notes[i]->end(); it_note++){
-            stream.writeStartElement("Version");
-            stream.writeStartElement("Titre", (*it_note)->getTitle());
-            stream.writeStartElement("Date_derniere_modification", (*it_note)->getDateModif().toString("dd.MM.yyyy hh::mm:ss"));
 
-            string type_version= typeid((*it_note)).name();
+        string s_etat = enum_etat_to_string(tab_notes[i]->getEtat());  // Type_etat_note etat; convert Type_etat_note to string
+        stream.writeStartElement("Type_etat_note", QString::fromStdString( s_etat)); 
+        stream.writeStartElement("Date_creation", tab_notes[i]->getDateCreation().toString("dd.MM.yyyy hh::mm:ss"));    //QDateTime date_creation;
+
+        for (Note::iterator it_note = tab_notes[i]->begin(); it_note != tab_notes[i]->end(); it_note++){// pour chaque Version de Note (Version : *it_note)
+            stream.writeStartElement("Version");
+            stream.writeStartElement("Titre", (*it_note)->getTitle());  //class Version : QString title;
+            stream.writeStartElement("Date_derniere_modification", (*it_note)->getDateModif().toString("dd.MM.yyyy hh::mm:ss"));    //class vErsion : QDateTime date_modif
+
+            string type_version= typeid((*it_note)).name();// get the type of an object into a string
             type_version=type_version.substr(1,type_version.length()-1); // on renvoie le nom du type de l'objet, sans le 1er char (la longueur du nom)
 
             if (type_version=="image") {
-                        image *img =  dynamic_cast<image*>(*it_note);
+                        image *img =  dynamic_cast<image*>(*it_note);   //cast version* to *img
                         stream.writeStartElement("type", "image");
                        stream.writeStartElement("img", img->getImg());
                        stream.writeStartElement("desc",  img-> getDesc());
