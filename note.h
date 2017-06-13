@@ -8,15 +8,15 @@
 
 #include "version.h"
 #include "iterator.h"
-#include "noteexception.h"
+#include "exception.h"
 //#include "notesmanager.h"
 
-#include "versionexception.h"
-//using namespace std;
+using namespace std;
 
 enum Type_etat_note {active, archive, sursis};
 
-char* enum_etat_to_string(Type_etat_note t);
+string enum_etat_to_string(Type_etat_note t);
+Type_etat_note string_to_enum_etat(const string &s);
 
 class Note {
     QString id; //unique

@@ -1,6 +1,6 @@
 #include "tache.h"
 
-char* enum_statut_to_string(Type_statut_tache t){
+string enum_statut_to_string(Type_statut_tache t){
       switch(t){
          case en_cours:
             return "en cours";
@@ -10,3 +10,14 @@ char* enum_statut_to_string(Type_statut_tache t){
             return "terminee";
       }
  }
+
+
+Type_statut_tache string_to_enum_statut(const string &s){
+    if(s=="en cours")
+        return en_cours;
+    if(s=="attente")
+        return attente;
+    if(s=="terminee")
+        return terminee;
+
+}

@@ -1,5 +1,9 @@
 #include <QString>
 #include "note.h"
+#include <iostream>
+
+using namespace std;
+
 
 Note::~Note(){
         for (int i=0; i < nbVersion; i++) delete versions[i];
@@ -12,7 +16,7 @@ Version & Note::getVersion(const QString& title){
     for(unsigned int i=0; i<nbVersion; i++){
         if (versions[i]->getTitle()==title) return *versions[i];
     }
-    throw VersionException("error, nonexistent version");
+    throw Exception("error, nonexistent version");
 }
 
 // à REVOIR si title unique pour Version.
@@ -21,7 +25,7 @@ Version & Note::getVersion(const QString& title){
 void Note::ajouterVersion(Version * v){
     // recherche si titre existe déjà
     for(unsigned int i=0; i<nbVersion; i++){
-        if (versions[i]->getTitle()==v->getTitle()) throw VersionException("error, creation of an already existent version");
+        if (versions[i]->getTitle()==v->getTitle()) throw Exception("error, creation of an already existent version");
     }
     // capacité max ?
     if (nbVersion==nbMaxVersion){
@@ -45,7 +49,7 @@ void Note::supprimerVersion(Version * oldVersion){
     }
     // si la version n'est pas trouvé
     if(i==nbVersion)
-        throw NotesException("error, deletion of a non existant note.");
+        throw Exception("error, deletion of a non existant note.");
 
     // décalage à gauche du tableau
     for(unsigned int j=i; j<nbVersion-1; j++){
@@ -73,13 +77,21 @@ void Note::restaurerVersion(Version *v)
 
 
 
-char* enum_etat_to_string(Type_etat_note t){
-      switch(t){
-         case active:
-            return "active";
-         case archive:
-            return "archive";
-         case sursis:
-            return "sursis";
-      }
+string enum_etat_to_string(Type_etat_note t){
+    if (t==active)
+        return "active";
+    if (t==archive)
+        return "archive";
+    if (t==sursis)
+        return "sursis";
  }
+
+Type_etat_note string_to_enum_etat(const string &s){
+    if(s=="active")
+        return active;
+    if(s=="archive")
+        return archive;
+    if(s=="sursis")
+        return sursis;
+
+}

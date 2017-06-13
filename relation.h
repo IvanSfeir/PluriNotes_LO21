@@ -4,14 +4,7 @@
 #include "note.h"
 #include "iterator.h"
 #include <QString>
-
-class exception {
-public:
-    exception(const QString& message=" "): info(message){}
-    QString getInfo() const {return info;}
-private:
-    QString info;
-};
+#include "exception.h"
 
 class Couple {
     Note* note1;

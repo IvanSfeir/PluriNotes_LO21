@@ -7,7 +7,7 @@
 #include <QDate>
 #include <QTime>
 
-#include "versionexception.h"
+#include "exception.h"
 
 class Version {
     QString title;
@@ -20,6 +20,7 @@ public:
     virtual QDateTime getDateModif() const{return date_modif;}
 
     virtual void setTitle(const QString &newTitle){title=newTitle;}
+    virtual void setDate(const QDateTime &newDate){date_modif=newDate;}
 
 };
 
