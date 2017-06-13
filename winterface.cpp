@@ -28,6 +28,11 @@ Interface::Interface() {
     menuQuitter->addAction(actionQuitter);
     connect(actionQuitter, SIGNAL(triggered()), this, SLOT(avant_de_fermer()));
 
+    gauche = new Gauche(this);
+    gauche.move(0,20);
+    gauche.show();
+
+
 }
 
 void Interface::avant_de_fermer() {

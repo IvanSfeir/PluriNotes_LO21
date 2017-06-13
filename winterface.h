@@ -16,10 +16,13 @@
 #include "wnoteact.h"
 #include "wnotearch.h"
 #include "wversion.h"
+#include "wgauche.h"
 
 class Interface : public QMainWindow {
 
     Q_OBJECT // macro pour pouvoir utiliser signals et slots
+
+    Gauche *gauche;
 
     QMenu *menuNote;
     QMenu *menuRelations;
@@ -29,7 +32,6 @@ class Interface : public QMainWindow {
     QAction *afficherNote;
     QAction *afficherRelations;
     QAction *actionQuitter;
-
 
 public:
     Interface();

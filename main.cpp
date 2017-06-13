@@ -26,9 +26,9 @@ int main(int argc, char* argv[]) {
 
     interface->setFixedSize(1200, 400);
 
-    Gauche gauche(interface);
+    //Gauche gauche(interface);
     //gauche.show();
-    gauche.move(0,20);
+    //gauche.move(0,20);
 
     //CentreNoteAct centrenoteact(&interface);
     //centrenoteact.show();
