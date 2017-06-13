@@ -53,8 +53,8 @@ public:
 signals:
 
 private slots:
-    void ouvrirNoteActiveId(const QString& ident);
-    void ouvrirNoteArchiveeId(const QString& ident);
+    //void ouvrirNoteActiveId(const QString& ident);
+    //void ouvrirNoteArchiveeId(const QString& ident);
 
 public slots:
 
