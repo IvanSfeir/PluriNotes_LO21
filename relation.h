@@ -72,7 +72,7 @@ class RelationPreexistente: public Relation{
     void setOrientee(bool){}
 
     static RelationPreexistente* instance_RelationPreexistente;
-    RelationPreexistente(const RelationPreexistente&);
+    RelationPreexistente(const RelationPreexistente& r);
     ~RelationPreexistente(){}
     RelationPreexistente& operator=(const RelationPreexistente&);
     RelationPreexistente(): Relation("ref", "preexistente"){}

@@ -488,3 +488,33 @@ void NotesManager::loadNotesManager(const QString & filename){
     }
     xml.clear();
 }
+
+bool NotesManager::is_bin_empty(){
+    for(NotesManager::iterator it_note=NotesManager::begin(); it_note!=NotesManager::end();++it_note )
+    {
+        if ((*it_note)->is_reprieved())
+            return false;
+    }
+    return true;
+}
+
+bool NotesManager::is_archived_in_bin(){
+    for(NotesManager::iterator it_note=NotesManager::begin(); it_note!=NotesManager::end();++it_note )
+    {
+        if ((*it_note)->is_active())
+            return false;
+    }
+    return true;
+}
+/*
+bool NotesManager::is_note_refed(const QString &id){
+    RelationPreexistente *rp= RelationPreexistente::getRelationPreexistente();
+    for(RelationPreexistente::iterator it_ref=RelationPreexistente::begin(); it_ref!=RelationPreexistente::end();++it_ref)
+    {
+        if (((*it_ref)->getNote1().getId()==id) ||((*it_ref)->getNote2().getId()==id) )
+            return false;
+    }
+    return true;
+
+}
+*/
