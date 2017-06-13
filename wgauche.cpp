@@ -1,4 +1,5 @@
 #include "wgauche.h"
+#include <QDebug>
 
 Gauche::Gauche(QMainWindow* parent) :
     QWidget(parent) {
@@ -43,12 +44,14 @@ Gauche::Gauche(QMainWindow* parent) :
 
     notes_actives = new QListWidget(this);
     notes_actives->setFixedSize(330,200);
-//    notes_actives->addItem("titre act 1");
-//    notes_actives->addItem("titre act 2");
-//    notes_actives->addItem("titre act 3");
+    notes_actives->addItem("titre act 1");
+    notes_actives->addItem("titre act 2");
+    notes_actives->addItem("titre act 3");
+
+    //qDebug() << notes_actives->currentItem()->text();
 
     bouton_afficher_act = new QPushButton("Afficher",this);
-    QObject::connect(bouton_afficher_act, SIGNAL(Clicked()), this, SLOT(ouvrirNoteActiveId(notes_actives->currentItem()->text())));
+    QObject::connect(bouton_afficher_act, SIGNAL(clicked()), this, SLOT(ouvrirNoteActiveId(notes_actives->currentItem()->text())));
 
     titre_arch = new QLabel(this);
     titre_arch->setText("Les notes archivees :");
@@ -59,7 +62,7 @@ Gauche::Gauche(QMainWindow* parent) :
 //    notes_archivees->addItem("titre arch 3");
 
     bouton_afficher_arch = new QPushButton("Afficher",this);
-    QObject::connect(bouton_afficher_arch,SIGNAL(Clicked()),this,SLOT(ouvrirNoteArchiveeId(notes_archivees->currentText())));
+    QObject::connect(bouton_afficher_arch,SIGNAL(clicked()),this,SLOT(ouvrirNoteArchiveeId(notes_archivees->currentText())));
 
     for (NotesManager::iterator it = NM->end();it != NM->begin();--it) {
         if((*it)->is_archived()) {notes_archivees->addItem((*it)->getId());}
