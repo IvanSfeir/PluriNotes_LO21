@@ -296,11 +296,11 @@ QString fmt = "yyyy-MM-dd hh:mm:ss";
 QDateTime dt = QDateTime::fromString(dateStr, fmt);
 QString timeStr = dt.toString("hh:mm");
 */
-
+/*
 void NotesManager::loadNotesManager(const QString & filename){
     QFile loadFile(filename);
     if (!loadFile.open(QIODevice::ReadOnly | QIODevice::Text))
-        throw exception(QString("Error open file xml: cannot load file"));
+        throw NotesException(QString("Error open file xml: cannot load file"));
     QXmlStreamReader xml(&loadFile);
 
     while(!xml.atEnd() && !xml.hasError()) {
@@ -437,3 +437,4 @@ void NotesManager::loadNotesManager(const QString & filename){
     }
     xml.clear();
 }
+*/

@@ -86,10 +86,12 @@ void Gauche::ouvrirNoteActiveId(const QString& ident) {
     NotesManager *NM = NotesManager::getInstance();
     //fermer_centre();
     CentreNoteAct centrenoteact = CentreNoteAct(NM->getNote(ident),this);
+    CentreNoteAct centrenoteact(&(NM->getNote(ident)),this);
 }
 
 void Gauche::ouvrirNoteArchiveeId(const QString& ident) {
     NotesManager *NM = NotesManager::getInstance();
     //fermer_centre();
     CentreNoteArch centrenotearch(NM->getNote(ident),this);
+    CentreNoteArch centrenotearch(&(NM->getNote(ident)),this);
 }
