@@ -19,7 +19,7 @@ CentreRelations::CentreRelations(QMainWindow *parent):
     relations->addItem("relation 5");
     relations->addItem("relation 6");
 */
-    for (RelationManager::iterator it = RM->begin(); it != RM->end(); it++) {
+    for (RelationManager::iterator it = RM->begin(); it != RM->end(); ++it) {
         relations->addItem((*it)->getTitre());
     }
 

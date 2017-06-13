@@ -1,6 +1,6 @@
 #include "centrenotearch.h"
 
-CentreNoteArch::CentreNoteArch(QMainWindow *parent):
+CentreNoteArch::CentreNoteArch(Note *it, QWidget *parent):
     QWidget(parent) {
 
     // exemple

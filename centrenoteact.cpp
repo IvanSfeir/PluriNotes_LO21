@@ -1,6 +1,6 @@
 #include "centrenoteact.h"
 
-CentreNoteAct::CentreNoteAct(QMainWindow *parent):
+CentreNoteAct::CentreNoteAct(Note *it, QWidget *parent):
     QWidget(parent) {
 
     // exemple

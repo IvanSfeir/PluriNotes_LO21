@@ -8,6 +8,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include "note.h"
 
 
 class CentreNoteAct : public QWidget {
@@ -29,7 +30,7 @@ class CentreNoteAct : public QWidget {
 
 public:
     // argument : la note concernee
-    explicit CentreNoteAct(QMainWindow* parent=0);
+    explicit CentreNoteAct(Note *it, QWidget* parent=0);
 
 signals:
 

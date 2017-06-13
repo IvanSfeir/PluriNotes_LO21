@@ -15,6 +15,11 @@
 
 int main(int argc, char* argv[]) {
 
+
+    //static CentreNoteAct centrenoteact=0;
+    //static CentreNoteArch centrenotearch=0;
+
+
     QApplication app(argc, argv);
 
     NotesManager *NM = NotesManager::getInstance();
@@ -32,9 +37,9 @@ int main(int argc, char* argv[]) {
     //centrenoteact.show();
     //centrenoteact.move(400,20);
 
-    CentreNoteArch centrenotearch(interface);
+    //CentreNoteArch centrenotearch(interface);
     //centrenotearch.show();
-    centrenotearch.move(400,20);
+    //centrenotearch.move(400,20);
 
     CentreRelations centrerelations(interface);
     //centrenotearch.show();

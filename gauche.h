@@ -9,6 +9,9 @@
 #include <QObject>
 #include <QMainWindow>
 #include "interface.h"
+#include "note.h"
+#include "centrenoteact.h"
+#include "centrenotearch.h"
 
 #include <QListWidget>
 #include <QComboBox>
@@ -50,6 +53,8 @@ public:
 signals:
 
 private slots:
+    void ouvrirNoteActiveId(const QString& ident);
+    void ouvrirNoteArchiveeId(const QString& ident);
 
 public slots:
 

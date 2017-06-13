@@ -50,6 +50,7 @@ public:
     void supprimerVersion(Version *oldVersion);
     void restaurerVersion(Version *v);
 
+    bool is_active(){return etat==active;}
     bool is_archived(){return etat==archive;}
     bool is_reprieved(){return etat==sursis;}
 
