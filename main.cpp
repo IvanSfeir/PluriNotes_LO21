@@ -22,9 +22,6 @@ int main(int argc, char* argv[]) {
 
     QApplication app(argc, argv);
 
-    NotesManager *NM = NotesManager::getInstance();
-    RelationManager *RM = RelationManager::getRelationManager();
-
     Interface* interface = new Interface();
 
     interface->setFixedSize(1200, 400);
@@ -53,4 +50,5 @@ int main(int argc, char* argv[]) {
 
 
     return app.exec();
+    return 0;
 }

@@ -41,6 +41,8 @@ void Interface::avant_de_fermer() {
         // save(NM, reponse);
     }
 
+    NotesManager::libererInstance();
+    RelationManager::libererRelationManager();
     this->close();
 
 }
