@@ -13,6 +13,10 @@ public:
     Iterator& operator++(int){
         Iterator old = *this; ++current; return old;
     }
+    Iterator& operator--() {--current; return *this;}
+    Iterator& operator--(int){
+        Iterator old = *this; --current; return old;
+    }
     bool operator==(Iterator it) const{
         return current == it.current;
     }
