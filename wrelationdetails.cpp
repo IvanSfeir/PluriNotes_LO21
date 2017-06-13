@@ -34,8 +34,9 @@ CentreRelationDetails::CentreRelationDetails(QMainWindow *parent):
     couples->addItem("id2 -> id7");
     couples->addItem("id7 -> id3");
 
-    ajouter_couple = new QPushButton("Ajouter couple",this);
-    supprimer_couple = new QPushButton("Supprimer couple",this);
+    ajouter_couple = new QPushButton("Ajouter couple");
+    supprimer_couple = new QPushButton("Supprimer couple");
+    sauver = new QPushButton("Sauver");
 
     horiz = new QHBoxLayout;
     horiz->addWidget(sauver);

@@ -51,7 +51,7 @@ Gauche::Gauche(QMainWindow* parent) :
     //qDebug() << notes_actives->currentItem()->text();
 
     bouton_afficher_act = new QPushButton("Afficher",this);
-    QObject::connect(bouton_afficher_act, SIGNAL(clicked()), this, SLOT(ouvrirNoteActiveId(notes_actives->currentItem()->text())));
+    //QObject::connect(bouton_afficher_act, SIGNAL(clicked()), this, SLOT(ouvrirNoteActiveId(notes_actives->currentItem()->text())));
 
     titre_arch = new QLabel(this);
     titre_arch->setText("Les notes archivees :");
@@ -62,7 +62,7 @@ Gauche::Gauche(QMainWindow* parent) :
 //    notes_archivees->addItem("titre arch 3");
 
     bouton_afficher_arch = new QPushButton("Afficher",this);
-    QObject::connect(bouton_afficher_arch,SIGNAL(clicked()),this,SLOT(ouvrirNoteArchiveeId(notes_archivees->currentText())));
+    //QObject::connect(bouton_afficher_arch,SIGNAL(clicked()),this,SLOT(ouvrirNoteArchiveeId(notes_archivees->currentText())));
 
     for (NotesManager::iterator it = NM->end();it != NM->begin();--it) {
         if((*it)->is_archived()) {notes_archivees->addItem((*it)->getId());}
@@ -84,7 +84,7 @@ Gauche::Gauche(QMainWindow* parent) :
     setFixedSize(350,350);
 
 }
-
+/*
 void Gauche::ouvrirNoteActiveId(const QString& ident) {
     NotesManager *NM = NotesManager::getInstance();
     //fermer_centre();
@@ -96,3 +96,4 @@ void Gauche::ouvrirNoteArchiveeId(const QString& ident) {
     //fermer_centre();
     CentreNoteArch centrenotearch(&(NM->getNote(ident)),this);
 }
+*/
