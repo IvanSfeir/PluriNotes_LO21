@@ -32,7 +32,6 @@ public:
     QPushButton* getBoutonAfficher();
     unsigned int getIndiceRelation();
 
-
 signals:
 
 private slots:

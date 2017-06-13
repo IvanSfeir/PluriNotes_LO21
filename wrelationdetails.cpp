@@ -30,15 +30,15 @@ CentreRelationDetails::CentreRelationDetails(Relation* relat, QMainWindow *paren
 
     couples = new QListWidget(this);
     couples->setFixedSize(320,100);
-    couples->addItem("id1 -> id4");
-    couples->addItem("id2 -> id7");
-    couples->addItem("id7 -> id3");
 
-//    void CentreRelations::ouvrirRelationNonOrientee(Relation* it) {
-//        //for (Relation::iterator itRelation = it->begin(); itRelation != it->end(); itRelation++){
-//            //add item to screen
-//        //}
-//    }
+//    couples->addItem("id1 -> id4");
+//    couples->addItem("id2 -> id7");
+//    couples->addItem("id7 -> id3");
+
+
+    for (Relation::iterator itRelation = relat->begin(); itRelation != relat->end(); itRelation++){
+          couples->addItem(((*itRelation)->getNote1().getId())+" - "+((*itRelation)->getNote2().getId()));
+    }
 
 //    void CentreRelations::ouvrirRelationOrientee(Relation* it) {
 //        //for (Relation::iterator itRelation = it->begin(); itRelation != it->end(); itRelation++){

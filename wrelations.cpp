@@ -25,7 +25,7 @@ CentreRelations::CentreRelations(QMainWindow *parent):
     }
 
 
-    afficher_relation = new QPushButton("Afficher couples",this);
+    afficher_relation = new QPushButton("Afficher details",this);
     QObject::connect(afficher_relation, SIGNAL(Clicked()),this, SLOT(afficherRelation()));
 
     fermer = new QPushButton("Fermer",this);
