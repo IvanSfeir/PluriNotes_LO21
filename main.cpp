@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
     QApplication app(argc, argv);
 
     NotesManager *NM = NotesManager::getInstance();
-    //RelationManager *RM = RelationManager::getRelationManager();
+    RelationManager *RM = RelationManager::getRelationManager();
 
     Interface* interface = new Interface();
 
