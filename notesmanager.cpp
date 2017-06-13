@@ -113,7 +113,7 @@ void NotesManager::saveNotesManager(const QString & filename){
         stream.writeStartElement("nbMaxVersion", nbMaxV);
 
         string s_etat = enum_etat_to_string(tab_notes[i]->getEtat());  // Type_etat_note etat; convert Type_etat_note to string
-        stream.writeStartElement("Type_etat_note", QString::fromStdString( s_etat)); 
+        stream.writeStartElement("Type_etat_note", QString::fromStdString( s_etat));
         stream.writeStartElement("Date_creation", tab_notes[i]->getDateCreation().toString("dd.MM.yyyy hh::mm:ss"));    //QDateTime date_creation;
 
         for (Note::iterator it_note = tab_notes[i]->begin(); it_note != tab_notes[i]->end(); it_note++){// pour chaque Version de Note (Version : *it_note)
@@ -427,7 +427,7 @@ void NotesManager::loadNotesManager(const QString & filename){
 
                         }
                         else if(type_version=="Tache"){
-                          Tache *newTache;                          
+                          Tache *newTache;
                           string s_stat;
                           QString etat;
                           QString action;
@@ -479,7 +479,7 @@ void NotesManager::loadNotesManager(const QString & filename){
                         }
                     }
                     xml.readNext();
-                }                
+                }
             }
         }
     }
