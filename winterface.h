@@ -22,7 +22,9 @@ class Interface : public QMainWindow {
 
     Q_OBJECT // macro pour pouvoir utiliser signals et slots
 
-    Gauche* gauche;
+    Gauche* window_gauche;
+    CentreRelations* window_relations;
+
 
     QMenu *menuNote;
     QMenu *menuRelations;
@@ -36,6 +38,8 @@ class Interface : public QMainWindow {
 public:
     Interface();
     QAction *actionCorbeilleAuto;
+    void fermer_droite();
+
 
 signals:
 
@@ -43,9 +47,9 @@ private slots:
 
 public slots:
     void avant_de_fermer();
-    //void ouvrir_relations();
+    void ouvrir_relations();
     //void ouvrir_note();
-    //void fermer_note();
+    //void fermer_centre();
 
 };
 
