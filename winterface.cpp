@@ -47,10 +47,11 @@ void Interface::ouvrir_relations() {
     window_relations = new CentreRelations(this);
     window_relations->move(800,15);
     window_relations->show();
+    QObject::connect(window_relations, SIGNAL(getBoutonAfficher()->clicked()), this, SLOT(ouvrir_relation_details(getIndiceRelation())));
+
 }
 /*
 void ouvrir_note() {
-
 }
 
 void fermer_centre() {
@@ -62,7 +63,15 @@ void fermer_centre() {
 }
 */
 
+void Interface::ouvrir_relation_details(unsigned int position) {
+    RelationManager *RM = RelationManager::getRelationManager();
+    RelationManager::iterator it = RM->begin();
+    for(unsigned int i=0; i!=position; i++) {it++;}
+    window_relation_details = new CentreRelationDetails((*it), this);
+}
+
 void Interface::fermer_droite() {
     if(window_relations) window_relations->close();
+    if(window_relation_details) window_relation_details->close();
 }
 

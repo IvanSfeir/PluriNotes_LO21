@@ -1,6 +1,6 @@
 #include "wrelationdetails.h"
 
-CentreRelationDetails::CentreRelationDetails(QMainWindow *parent):
+CentreRelationDetails::CentreRelationDetails(Relation* relat, QMainWindow *parent):
     QWidget(parent) {
 
     // exemple
@@ -33,6 +33,18 @@ CentreRelationDetails::CentreRelationDetails(QMainWindow *parent):
     couples->addItem("id1 -> id4");
     couples->addItem("id2 -> id7");
     couples->addItem("id7 -> id3");
+
+//    void CentreRelations::ouvrirRelationNonOrientee(Relation* it) {
+//        //for (Relation::iterator itRelation = it->begin(); itRelation != it->end(); itRelation++){
+//            //add item to screen
+//        //}
+//    }
+
+//    void CentreRelations::ouvrirRelationOrientee(Relation* it) {
+//        //for (Relation::iterator itRelation = it->begin(); itRelation != it->end(); itRelation++){
+//            //add item to screen
+//        //}
+//    }
 
     ajouter_couple = new QPushButton("Ajouter couple");
     supprimer_couple = new QPushButton("Supprimer couple");

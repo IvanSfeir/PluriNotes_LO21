@@ -29,16 +29,17 @@ class CentreRelations : public QWidget {
 
 public:
     explicit CentreRelations(QMainWindow* parent=0);
+    QPushButton* getBoutonAfficher();
+    unsigned int getIndiceRelation();
+
 
 signals:
 
 private slots:
 
 public slots:
-    void afficherRelation();
     void supprimerRelation();
-    void ouvrirRelationNonOrientee(Relation* it);
-    void ouvrirRelationOrientee(Relation* it);
+
 
 };
 
