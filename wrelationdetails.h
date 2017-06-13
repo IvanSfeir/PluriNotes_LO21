@@ -5,6 +5,7 @@
 #include <QMainWindow>
 #include <QListWidget>
 #include <QLabel>
+#include <QLineEdit>
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -14,8 +15,20 @@ class CentreRelationDetails : public QWidget {
 
     Q_OBJECT // macro pour pouvoir utiliser signals et slots
 
-    QLabel *titre_relation;
+    QLabel *titrel;
+    QLineEdit *titre;
+    QHBoxLayout *titreh;
+
+    QLabel *descl;
+    QLineEdit *desc;
+    QHBoxLayout *desch;
+
+    QLabel *orienteel;
+    QLineEdit *orientee;
+    QHBoxLayout *orienteeh;
+
     QListWidget *couples;
+    QPushButton *sauver;
     QPushButton *ajouter_couple;
     QPushButton *supprimer_couple;
 

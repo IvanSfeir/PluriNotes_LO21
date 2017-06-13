@@ -44,6 +44,9 @@ int main(int argc, char* argv[]) {
     //CentreRelationNonOrientee centrerelationnonorientee(interface);
     //centrerelationnonorientee.move(800,205);
 
+    CentreRelationDetails centre(interface);
+    centre.show();
+
     interface->show();
 
 
