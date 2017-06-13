@@ -296,7 +296,7 @@ QString fmt = "yyyy-MM-dd hh:mm:ss";
 QDateTime dt = QDateTime::fromString(dateStr, fmt);
 QString timeStr = dt.toString("hh:mm");
 */
-
+/*
 void NotesManager::loadNotesManager(const QString & filename){
     QFile loadFile(filename);
     if (!loadFile.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -437,3 +437,4 @@ void NotesManager::loadNotesManager(const QString & filename){
     }
     xml.clear();
 }
+*/
