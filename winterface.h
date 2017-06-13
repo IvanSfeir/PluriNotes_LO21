@@ -22,7 +22,7 @@ class Interface : public QMainWindow {
 
     Q_OBJECT // macro pour pouvoir utiliser signals et slots
 
-    Gauche *gauche;
+    Gauche* gauche;
 
     QMenu *menuNote;
     QMenu *menuRelations;

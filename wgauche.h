@@ -8,7 +8,7 @@
 #include <QVBoxLayout>
 #include <QObject>
 #include <QMainWindow>
-#include "winterface.h"
+#include "notesmanager.h"
 #include "note.h"
 #include "wnoteact.h"
 #include "wnotearch.h"

@@ -29,9 +29,8 @@ Interface::Interface() {
     connect(actionQuitter, SIGNAL(triggered()), this, SLOT(avant_de_fermer()));
 
     gauche = new Gauche(this);
-    gauche.move(0,20);
-    gauche.show();
-
+    gauche->move(0,20);
+    gauche->show();
 
 }
 
