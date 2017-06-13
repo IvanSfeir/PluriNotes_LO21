@@ -67,8 +67,8 @@ void CentreRelations::afficherRelation() {
     unsigned int position = relations->currentRow();
     RelationManager::iterator it = RM->begin();
     for(unsigned int i=0; i!=position; i++) {it++;}
-    if((*it)->getOrientee()) {afficherRelationOrientee((*it));}
-    else {afficherRelationNonOrientee((*it));}
+    if((*it)->getOrientee()) {creerRelationOrientee((*it));}
+    else {creerRelationNonOrientee((*it));}
 
 
 
@@ -76,13 +76,13 @@ void CentreRelations::afficherRelation() {
 
 void CentreRelations::supprimerRelation() {}
 
-void CentreRelations::afficherRelationNonOrientee(Relation* it) {
+void CentreRelations::ouvrirRelationNonOrientee(Relation* it) {
     //for (Relation::iterator itRelation = it->begin(); itRelation != it->end(); itRelation++){
         //add item to screen
     //}
 }
 
-void CentreRelations::afficherRelationOrientee(Relation* it) {
+void CentreRelations::ouvrirRelationOrientee(Relation* it) {
     //for (Relation::iterator itRelation = it->begin(); itRelation != it->end(); itRelation++){
         //add item to screen
     //}
