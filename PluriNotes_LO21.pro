@@ -15,8 +15,7 @@ SOURCES += \
     version.cpp \
     multimedia.cpp \
     wnoteact.cpp \
-    wrelationorientee.cpp \
-    wrelationnonorientee.cpp \
+    wrelationdetails.cpp \
     wrelations.cpp \
     wversion.cpp \
     warborescence.cpp \
@@ -39,8 +38,7 @@ HEADERS += \
     article.h \
     tache.h \
     wnoteact.h \
-    wrelationorientee.h \
-    wrelationnonorientee.h \
+    wrelationdetails.h \
     wrelations.h \
     wversion.h \
     warborescence.h \

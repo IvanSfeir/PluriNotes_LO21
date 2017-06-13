@@ -10,7 +10,7 @@
 #include <QHBoxLayout>
 #include <QString>
 
-class CentreRelationOrientee : public QWidget {
+class CentreRelationDetails : public QWidget {
 
     Q_OBJECT // macro pour pouvoir utiliser signals et slots
 
@@ -24,7 +24,7 @@ class CentreRelationOrientee : public QWidget {
 
 public:
     // argument : la relation concernee
-    explicit CentreRelationOrientee(QMainWindow* parent=0);
+    explicit CentreRelationDetails(QMainWindow* parent=0);
 
 signals:
 

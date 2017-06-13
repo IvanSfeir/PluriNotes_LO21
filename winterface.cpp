@@ -58,8 +58,7 @@ void fermer_centre() {
     if(centrenotearch) centrenotearch->close();
     if(centreversion) centreversion->close();
     if(centrerelations) centrerelations->close();
-    if(centrerelationorientee) centrerelationorientee->close();
-    if(centrerelationnonorientee) centrerelationnonorientee->close();
+    if(centrerelationdetails) centrerelationdetails->close();
 }
 */
 

@@ -10,8 +10,7 @@
 #include "wnoteact.h"
 #include "wnotearch.h"
 #include "wrelations.h"
-#include "wrelationorientee.h"
-#include "wrelationnonorientee.h"
+#include "wrelationdetails.h"
 
 int main(int argc, char* argv[]) {
 
@@ -42,8 +41,8 @@ int main(int argc, char* argv[]) {
     //centrenotearch.show();
     //centrerelations.move(800,15);
 
-    CentreRelationNonOrientee centrerelationnonorientee(interface);
-    centrerelationnonorientee.move(800,205);
+    //CentreRelationNonOrientee centrerelationnonorientee(interface);
+    //centrerelationnonorientee.move(800,205);
 
     interface->show();
 
