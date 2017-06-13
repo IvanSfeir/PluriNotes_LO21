@@ -9,6 +9,7 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include "relation.h"
+#include "notesmanager.h"
 
 class CentreRelations : public QWidget {
 

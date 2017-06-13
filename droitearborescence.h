@@ -1,6 +1,8 @@
 #ifndef DROITEARBORESCENCE_H
 #define DROITEARBORESCENCE_H
 
+#include <QWidget>
+
 class DroiteArborescence : public QWidget {
 
     Q_OBJECT // macro pour pouvoir utiliser signals et slots

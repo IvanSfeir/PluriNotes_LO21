@@ -41,9 +41,9 @@ Gauche::Gauche(QMainWindow* parent) :
 
     notes_actives = new QListWidget(this);
     notes_actives->setFixedSize(330,200);
-    notes_actives->addItem("titre act 1");
-    notes_actives->addItem("titre act 2");
-    notes_actives->addItem("titre act 3");
+//    notes_actives->addItem("titre act 1");
+//    notes_actives->addItem("titre act 2");
+//    notes_actives->addItem("titre act 3");
 
     bouton_afficher_act = new QPushButton("Afficher",this);
 
@@ -51,11 +51,13 @@ Gauche::Gauche(QMainWindow* parent) :
     titre_arch->setText("Les notes archivees :");
 
     notes_archivees = new QComboBox(this);
-    notes_archivees->addItem("titre arch 1");
-    notes_archivees->addItem("titre arch 2");
-    notes_archivees->addItem("titre arch 3");
+//    notes_archivees->addItem("titre arch 1");
+//    notes_archivees->addItem("titre arch 2");
+//    notes_archivees->addItem("titre arch 3");
 
     bouton_afficher_arch = new QPushButton("Afficher",this);
+
+
 
     couche = new QVBoxLayout;
 

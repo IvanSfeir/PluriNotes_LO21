@@ -44,9 +44,9 @@ private slots:
 
 public slots:
     void avant_de_fermer();
-    void ouvrir_relations();
+    //void ouvrir_relations();
     //void ouvrir_note();
-    void fermer_note();
+    //void fermer_note();
 
 };
 

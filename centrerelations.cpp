@@ -3,6 +3,7 @@
 CentreRelations::CentreRelations(QMainWindow *parent):
     QWidget(parent) {
 
+    NotesManager *NM = NotesManager::getInstance();
     RelationManager *RM = RelationManager::getRelationManager();
 
     titre_relations = new QLabel(this);
@@ -67,8 +68,8 @@ void CentreRelations::afficherRelation() {
     unsigned int position = relations->currentRow();
     RelationManager::iterator it = RM->begin();
     for(unsigned int i=0; i!=position; i++) {it++;}
-    if((*it)->getOrientee()) {creerRelationOrientee((*it));}
-    else {creerRelationNonOrientee((*it));}
+    if((*it)->getOrientee()) {ouvrirRelationOrientee((*it));}
+    else {ouvrirRelationNonOrientee((*it));}
 
 
 

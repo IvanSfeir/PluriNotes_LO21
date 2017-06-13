@@ -44,9 +44,9 @@ void Interface::avant_de_fermer() {
     this->close();
 
 }
-
+/*
 void ouvrir_relations() {
-    CentreRelati
+    CentreRelations();
 }
 
 void ouvrir_note() {
@@ -63,3 +63,4 @@ void fermer_centre() {
     if(centrerelationnonorientee) centrerelationnonorientee->close();
 
 }
+*/

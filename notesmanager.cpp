@@ -13,7 +13,7 @@ using namespace std;
 NotesManager* NotesManager::instance_NotesManager = nullptr;
 
 NotesManager* NotesManager::getInstance(){ //méthode qui vérifie qu'il n'y ait qu'une seule instance de NotesManager
-    if(NotesManager::instance_NotesManager==nullptr)   // si l'instance n'existe pas
+    if(NotesManager::instance_NotesManager==nullptr)  // si l'instance n'existe pas
         NotesManager::instance_NotesManager = new NotesManager;    // on crée une instance
     return NotesManager::instance_NotesManager;
 }
