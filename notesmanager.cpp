@@ -138,8 +138,12 @@ void NotesManager::saveNotesManager(const QString & filename){
         QString s_etat = enum_etat_to_string(tab_notes[i]->getEtat());
         stream.writeStartElement("Type_etat_note", s_etat);
         stream.writeStartElement("Date_creation", tab_notes[i]->getDateCreation().toString("dd.MM.yyyy hh::mm:ss"));
-        //if (tab_notes[i]->getOrientee()) stream.writeStartElement("orientation","true");
-        //else stream.writeStartElement("orientation","false");
+        QString nbV;
+        QString nbMaxV;
+        nbV.setNum(tab_notes[i]->getNbVersion());
+        nbMaxV.setNum(tab_notes[i]->getNbMaxVersion());
+        stream.writeStartElement("nbVersion", nbV);
+        stream.writeStartElement("nbMaxVersion", nbMaxV);
         for (Note::iterator it_note = tab_notes[i]->begin(); it_note != tab_notes[i]->end(); it_note++){
             stream.writeStartElement("Version");
             stream.writeStartElement("Titre", (*it_note)->getTitle());
@@ -214,6 +218,12 @@ void NotesManager::saveNotesManager_no_reprieve(const QString & filename){
         {
         stream.writeStartElement("Note");
         stream.writeStartElement("id", tab_notes[i]->getId());
+        QString nbV;
+        QString nbMaxV;
+        nbV.setNum(tab_notes[i]->getNbVersion());
+        nbMaxV.setNum(tab_notes[i]->getNbMaxVersion());
+        stream.writeStartElement("nbVersion", nbV);
+        stream.writeStartElement("nbMaxVersion", nbMaxV);
         QString s_etat = enum_etat_to_string(tab_notes[i]->getEtat());
         stream.writeStartElement("Type_etat_note", s_etat);
         stream.writeStartElement("Date_creation", tab_notes[i]->getDateCreation().toString("dd.MM.yyyy hh::mm:ss"));
@@ -286,7 +296,7 @@ QString fmt = "yyyy-MM-dd hh:mm:ss";
 QDateTime dt = QDateTime::fromString(dateStr, fmt);
 QString timeStr = dt.toString("hh:mm");
 */
-/*
+
 void NotesManager::loadNotesManager(const QString & filename){
     QFile loadFile(filename);
     if (!loadFile.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -303,10 +313,25 @@ void NotesManager::loadNotesManager(const QString & filename){
                 QString etat;
                 QDateTime date_creation;
                 QString s_date;
+                QString nbVersion;
+                QString nbVersionMaxVersion;
+                unsigned int nbV;
+                unsigned int nbMaxV;
                 bool orientee;
                 if (xml.name() == "id"){
                     xml.readNext();
                     id = xml.text().toString();
+                }
+                if (xml.name() == "nbVersion"){
+                    xml.readNext();
+                    nbVersion = xml.text().toString();
+                    nbV=nbVersion.toInt(0,10);//int dec = str.toInt(&ok, 10);       // dec == 0, ok == false
+                }
+                if (xml.name() == "nbMaxVersion"){
+                    xml.readNext();
+                    nbMaxVersion = xml.text().toString();
+                    nbMaxV=nbMaxVersion.toInt(0,10);//int dec = str.toInt(&ok, 10);       // dec == 0, ok == false
+
                 }
                 if (xml.name() == "Type_etat_note"){
                     xml.readNext();
@@ -318,7 +343,7 @@ void NotesManager::loadNotesManager(const QString & filename){
                     date_creation=QDateTime::fromString(s_date, "dd.MM.yyyy hh::mm:ss"); // voir la doc
 
                 }
-
+                Note * newNote= new Note(id,)
                 Version* vers;
                 // if (titre == "\ref") relation = relations[0];
                 // else relation = new RelationNormale(titre, description, orientee);
@@ -337,21 +362,16 @@ void NotesManager::loadNotesManager(const QString & filename){
                             s_datemodif=xml.text().toString();
                             dateModif=QDateTime::fromString(s_datemodif, "dd.MM.yyyy hh::mm:ss"); // voir la doc
                         }
-                        if (xml.name() == "note2"){
-                            xml.readNext();
-                            note2=xml.text().toString();
-                        }
+
                         QString type_version;  //get the type of the object
                         if (xml.name() == "type"){
                             xml.readNext();
                             type_version=xml.text().toString();
                         }
-
                         if (type_version=="image") {
                          QString img;
                          QString img_URL;
                          QString desc;
-                          image *img =  dynamic_cast<image*>(*it_note);
                           if (xml.name() == "img"){
                               xml.readNext();
                               img=xml.text().toString();
@@ -417,4 +437,3 @@ void NotesManager::loadNotesManager(const QString & filename){
     }
     xml.clear();
 }
-*/

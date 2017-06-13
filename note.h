@@ -37,6 +37,8 @@ public:
     ~Note();
 
     const QString &getId() const { return id; }
+    const QString &getNbVersion() const { return nbVersion; }
+    const QString &getNbMaxVersion() const { return nbMaxVersion; }
     const QDateTime & getDateCreation() const { return date_creation; }
     const Type_etat_note &getEtat() const { return etat; }
 
@@ -50,6 +52,7 @@ public:
     void supprimerVersion(Version *oldVersion);
     void restaurerVersion(Version *v);
 
+    bool is_active(){return etat==active;}
     bool is_archived(){return etat==archive;}
     bool is_reprieved(){return etat==sursis;}
 
