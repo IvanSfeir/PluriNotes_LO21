@@ -7,8 +7,6 @@
 #include<QPushButton>
 #include<QHBoxLayout>
 
-#include"note.h"
-
 
 class WindowCreerNote : public QWidget {
 

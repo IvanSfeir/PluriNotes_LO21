@@ -24,7 +24,8 @@ SOURCES += \
     wnotearch.cpp \
     wversionarticle.cpp \
     tache.cpp \
-    wcreernote.cpp
+    wcreernote.cpp \
+    wcreerarticle.cpp
 
 
 HEADERS += \
@@ -46,4 +47,5 @@ HEADERS += \
     winterface.h \
     wnotearch.h \
     wversionarticle.h \
-    wcreernote.h
+    wcreernote.h \
+    wcreerarticle.h
