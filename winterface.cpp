@@ -171,3 +171,4 @@ void Interface::ouvrir_creer_note() {
     fermer_centre();
     window_creer_note = new WindowCreerNote();
 }
+
