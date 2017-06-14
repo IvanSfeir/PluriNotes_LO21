@@ -97,13 +97,7 @@ class RelationManager{
 
     static RelationManager* instance_RelationManager;
     RelationManager(const RelationManager&){}
-    RelationManager(){
-        relations = new Relation*[maxRelations+10];
-        maxRelations += 10;
-        RelationPreexistente* RP = RelationPreexistente::getRelationPreexistente();
-        relations[0] = RP;
-        nbRelations++;
-    }
+    RelationManager();
     RelationManager& operator=(const RelationManager&);
 public:
     static RelationManager* getRelationManager(){

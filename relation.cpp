@@ -7,7 +7,11 @@
 #include <QXmlStreamWriter>
 #include <QXmlStreamReader>
 
-static NotesManager* notesManager = NotesManager::getInstance(); //get this Instance for the load method
+NotesManager* notesManager = NotesManager::getInstance(); //get this Instance for the load method
+
+RelationManager* RelationManager::instance_RelationManager = nullptr;
+
+RelationManager::RelationManager():relations(nullptr),nbRelations(0),maxRelations(0) {}
 
 void Relation::ajouterCouple(Couple* newCouple){
     if (nbCouples == maxCouples){
@@ -64,8 +68,6 @@ void RelationManager::supprimerRelation(Relation* supRelation){
         nbRelations--;
     } throw Exception("La relation n'est pas existe ou n'est pas supprime!");
 }
-
-RelationManager* RelationManager::instance_RelationManager = 0;
 
 ////////////////////////////////////////////////////////////////////
 /////////////////////method save, load//////////////////////////////
