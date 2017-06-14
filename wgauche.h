@@ -47,7 +47,6 @@ class Gauche : public QWidget {
 
 
 public:
-    // le dernier parametre du constructeur est le tableau de tab_notes de NotesManager
     explicit Gauche(QMainWindow* parent=0);
     QListWidget* getNoteActives() {return notes_actives;}
     QPushButton* getBoutonAfficherAct() {return bouton_afficher_act;}

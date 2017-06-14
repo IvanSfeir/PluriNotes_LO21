@@ -9,11 +9,8 @@ Gauche::Gauche(QMainWindow* parent) :
     /*
     scrolleur = new QScrollArea(this);
     contenuScrolleur = new QWidget(this);
-
     section = new QWidget(this);
-
     section_actives = new QVBoxLayout();
-
     notes_actives = new QVBoxLayout();
     b1 = new QPushButton(parent);
     b1->setText("note 1");
@@ -27,14 +24,10 @@ Gauche::Gauche(QMainWindow* parent) :
     b4 = new QPushButton(parent);
     b4->setText("note 4");
     notes_actives->addWidget(b4);
-
     contenuScrolleur->setLayout(notes_actives);
-
     scrolleur->setWidget(contenuScrolleur);
-
     section_actives->addWidget(titre_section);
     section_actives->addWidget(scrolleur);
-
     QObject::connect(b1, SIGNAL(isClicked()), parent, SLOT(close()));
     */
 
@@ -45,7 +38,7 @@ Gauche::Gauche(QMainWindow* parent) :
     notes_actives = new QListWidget(this);
     notes_actives->setFixedSize(330,200);
 
-    ///print all the note which are active
+    ///print all the notes which are active
     for (NotesManager::iterator it = NM->begin(); it != NM->end(); it++) {
         if ((*it)->is_active())
             notes_actives->addItem((*it)->getId());
@@ -58,7 +51,7 @@ Gauche::Gauche(QMainWindow* parent) :
     titre_arch = new QLabel(this);
     titre_arch->setText("Les notes archivees :");
     notes_archivees = new QComboBox(this);
-    ///print all the note which are acrchived
+    ///print all the note which are archived
     for (NotesManager::iterator it = NM->begin(); it != NM->end(); it++) {
         if ((*it)->is_archived())
             notes_archivees->addItem((*it)->getId());
