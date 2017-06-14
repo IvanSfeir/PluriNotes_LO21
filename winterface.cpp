@@ -42,6 +42,8 @@ Interface::Interface() {
     newNoteArch->ajouterVersion(a3);
     newNoteArch->setEtat(archive);
     NM->ajouterNote(newNoteArch);
+
+    NM->saveNotesManager("test_type_save.xml");
     ///////////////////////////////////////////////
     ///////////////////////////////////////////////
     ///////////////////////////////////////////////
