@@ -49,7 +49,6 @@ public:
     bool is_bin_empty();
     bool is_archived_in_bin();
     bool is_note_refed(const QString & id); //cherche si une note est référencée ou non
-    bool is_id_taken(const QString & id);
 
     // ******** ITERATOR *************
     //class iterator<Note,NotesManager>;
