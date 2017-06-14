@@ -4,15 +4,9 @@ CentreNoteAct::CentreNoteAct(Note *note, QWidget *parent):
     QWidget(parent) {
 
     setFixedSize(300,350);
-    QString idexemple="1";
 
     titre_id = new QLabel(this);
-    titre_id->setText("La note active d'identifiant "+idexemple);
-    //titre_id2 = new QLabel(this);
-    //titre_id2->setText("La note d'identifiant "+idexemple);
-    //titre_id3 = new QLabel(this);
-    //titre_id3->setText("La note d'identifiant "+idexemple);
-    titre_id->setFixedHeight(10);
+    titre_id->setText("La note active d'identifiant "+note->getId());
 
     versions = new QListWidget(this);
 
@@ -34,8 +28,6 @@ CentreNoteAct::CentreNoteAct(Note *note, QWidget *parent):
 
     verti = new QVBoxLayout;
     verti->addWidget(titre_id);
-    //verti->addWidget(titre_id2);
-    //verti->addWidget(titre_id3);
     verti->addWidget(versions);
     verti->addLayout(horiz);
 
