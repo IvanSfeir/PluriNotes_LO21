@@ -20,6 +20,26 @@ Interface::Interface() {
     newNote->ajouterVersion(a3);
     NM->ajouterNote(newNote);
     qDebug() << NM->getNote("note1")->getVersion(0)->getTitle() << "\n";
+    ///////////
+    Note* newNoteArch = new Note("noteArch"); //id=1
+    a1 = new Article("testA1'",QDateTime::currentDateTime(),"testestsetsetstest");
+    a2 = new Article("testA2'",QDateTime::fromString("13.06.2017-10:30:14","dd.MM.yyyy-hh:mm:ss"),"testestsetsetstest2");
+    a3 = new Article("testA3'",QDateTime::fromString("13.06.2017-10:32:14","dd.MM.yyyy-hh:mm:ss"),"testestsetsetstest3");
+    newNoteArch->ajouterVersion(a1);
+    newNoteArch->ajouterVersion(a2);
+    newNoteArch->ajouterVersion(a3);
+    newNoteArch->setEtat(archive);
+    NM->ajouterNote(newNoteArch);
+    ///////////
+    newNoteArch = new Note("noteArch2"); //id=1
+    a1 = new Article("testA1''",QDateTime::currentDateTime(),"testestsetsetstest");
+    a2 = new Article("testA2''",QDateTime::fromString("13.06.2017-10:30:14","dd.MM.yyyy-hh:mm:ss"),"testestsetsetstest2");
+    a3 = new Article("testA3''",QDateTime::fromString("13.06.2017-10:32:14","dd.MM.yyyy-hh:mm:ss"),"testestsetsetstest3");
+    newNoteArch->ajouterVersion(a1);
+    newNoteArch->ajouterVersion(a2);
+    newNoteArch->ajouterVersion(a3);
+    newNoteArch->setEtat(archive);
+    NM->ajouterNote(newNoteArch);
     ///////////////////////////////////////////////
     ///////////////////////////////////////////////
     ///////////////////////////////////////////////
@@ -122,20 +142,20 @@ void Interface::ouvrir_gauche() {
 }
 
 void Interface::ouvrir_note_active_id() {
-    QString ident = window_gauche->getNotesActives()->currentItem()->text();
-    qDebug() << ident;
-    NotesManager *NM = NotesManager::getInstance();
-    fermer_centre();
-    window_note_act = new CentreNoteAct (NM->getNote(ident),this);
-    window_note_act->move(400,15);
-    window_note_act->show();
+    if (QListWidgetItem* ident = window_gauche->getNotesActives()->currentItem()){
+        NotesManager *NM = NotesManager::getInstance();
+        fermer_centre();
+        window_note_act = new CentreNoteAct (NM->getNote(ident->text()),this);
+        window_note_act->move(400,15);
+        window_note_act->show();
+    }
 }
 
 void Interface::ouvrir_note_archivee_id() {
-    QString ident = window_gauche->getNotesArchivees()->currentItem()->text();;
+    QString ident = window_gauche->getNotesArchivees()->currentText();
     NotesManager *NM = NotesManager::getInstance();
     fermer_centre();
     window_note_arch = new CentreNoteArch(NM->getNote(ident),this);
-    window_note_act->move(400,15);
+    window_note_arch->move(400,15);
     window_note_arch->show();
 }
