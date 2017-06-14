@@ -16,25 +16,30 @@
 #include "wnotearch.h"
 #include "wversion.h"
 #include "wgauche.h"
+#include "wcreernote.h"
 
 class Interface : public QMainWindow {
 
     Q_OBJECT // macro pour pouvoir utiliser signals et slots
 
+
+
     Gauche* window_gauche=0;
     CentreNoteAct* window_note_act=0;
     CentreNoteArch* window_note_arch=0;
+    WindowCreerNote* window_creer_note=0;
     CentreRelations* window_relations=0;
     CentreRelationDetails* window_relation_details=0;
 
 
 
-    QMenu *menuNote;
+    QMenu *menuNotes;
     QMenu *menuRelations;
     QMenu *menuCorbeille;
     QMenu *menuQuitter;
 
-    QAction *afficherNote;
+    QAction *afficherNotes;
+    QAction *creerNote;
     QAction *afficherRelations;
     QAction *actionQuitter;
 
@@ -57,6 +62,7 @@ public slots:
     void ouvrir_relation_details(unsigned int position);
     void ouvrir_note_active_id();
     void ouvrir_note_archivee_id();
+    void ouvrir_creer_note();
     void ouvrir_gauche();
 
     //void fermer_centre();

@@ -46,10 +46,12 @@ Interface::Interface() {
 
 
 
-    QMenu *menuNote = menuBar()->addMenu("Notes");
-    QAction *afficherNote = new QAction("Afficher notes");
-    menuNote->addAction(afficherNote);
-    QObject::connect(afficherNote, SIGNAL(triggered()), this, SLOT(ouvrir_gauche()));
+    QMenu *menuNotes = menuBar()->addMenu("Notes");
+    QAction *afficherNotes = new QAction("Afficher notes");
+    menuNotes->addAction(afficherNotes);
+    QObject::connect(afficherNotes, SIGNAL(triggered()), this, SLOT(ouvrir_gauche()));
+    menuNotes->addAction(creerNote);
+    QObject::connect(creerNote, SIGNAL(triggered()), this, SLOT(ouvrir_creer_note());
 
     QMenu *menuRelations = menuBar()->addMenu("Relations");
     QAction *afficherRelations = new QAction("Afficher Relations");
@@ -118,6 +120,30 @@ void Interface::ouvrir_relation_details(unsigned int position) {
     window_relation_details = new CentreRelationDetails((*it), this);
 }
 
+void Interface::ouvrir_note_active_id() {
+    QString ident = window_gauche->getNotesActives()->currentItem()->text();
+    qDebug() << ident;
+    NotesManager *NM = NotesManager::getInstance();
+    fermer_centre();
+    window_note_act = new CentreNoteAct (NM->getNote(ident),this);
+    window_note_act->move(400,15);
+    window_note_act->show();
+}
+
+void Interface::ouvrir_note_archivee_id() {
+    QString ident = window_gauche->getNotesArchivees()->currentItem()->text();;
+    NotesManager *NM = NotesManager::getInstance();
+    fermer_centre();
+    window_note_arch = new CentreNoteArch(NM->getNote(ident),this);
+    window_note_act->move(400,15);
+    window_note_arch->show();
+}
+
+void Interface::ouvrir_creer_note() {
+    fermer_centre();
+    window_creer_note = new WindowCreerNote();
+}
+
 void Interface::fermer_droite() {
     if(window_relations) window_relations->close();
     if(window_relation_details) window_relation_details->close();
@@ -141,6 +167,7 @@ void Interface::ouvrir_gauche() {
     window_gauche->show();
 }
 
+
 void Interface::ouvrir_note_active_id() {
     if (QListWidgetItem* ident = window_gauche->getNotesActives()->currentItem()){
         NotesManager *NM = NotesManager::getInstance();
@@ -159,3 +186,4 @@ void Interface::ouvrir_note_archivee_id() {
     window_note_arch->move(400,15);
     window_note_arch->show();
 }
+
