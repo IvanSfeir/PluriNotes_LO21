@@ -58,11 +58,11 @@ WindowCreerNote::WindowCreerNote(QWidget *parent) {
     this->setLayout(V_window);
 }
 
-void WindowCreerNote::forward_to_create_type(QWidget *parent){
-    QString type_test=this->getTypeNote();  //selected type of not
+//void WindowCreerNote::forward_to_create_type(QWidget *parent){
+//    QString type_test=this->getTypeNote();  //selected type of not
 
-    if(type_test=="Article")
-        WindowCreerArticle(getId(),getTitle(),parent);
+//    if(type_test=="Article")
+//        WindowCreerArticle(getId(),getTitle(),parent);
 
 //    if(type_test=="Tache")
 //        WindowCreerArticle(getId(),getTitle());
@@ -72,4 +72,4 @@ void WindowCreerNote::forward_to_create_type(QWidget *parent){
 //        WindowCreerArticle(getId(),getTitle());
 //    if(type_test=="Video")
 //        WindowCreerArticle(getId(),getTitle());
-}
+//}

@@ -1,10 +1,15 @@
 #include "wcreerarticle.h"
+#include "notesmanager.h"
+#include "article.h"
 #include <QTextEdit>
 #include <QDebug>
+
 
 WindowCreerArticle::WindowCreerArticle(QString& ident, QString& titre, QWidget* parent):
     QWidget(parent) {
     //Keep ident, titre, desc to create the Note
+    identifiant = ident;
+    titre_article = titre;
     setFixedSize(200, 350);
 
     frame = new QVBoxLayout;
@@ -23,7 +28,7 @@ WindowCreerArticle::WindowCreerArticle(QString& ident, QString& titre, QWidget* 
 
     button_bar = new QHBoxLayout;
     button_create = new QPushButton("Create");
-    QObject::connect(button_create, SIGNAL(clicked()), this, SLOT(create(ident, titre)));
+    QObject::connect(button_create, SIGNAL(clicked()), this, SLOT(create()));
     button_close = new QPushButton("Close");
     QObject::connect(button_close, SIGNAL(clicked()), this, SLOT(close()));
 
@@ -41,7 +46,12 @@ WindowCreerArticle::WindowCreerArticle(QString& ident, QString& titre, QWidget* 
     this->setLayout(frame);
 }
 
-void WindowCreerArticle::create(QString& ident, QString& titre) {
-    QString text = getButtonCreate()->text();
-    qDebug() << text;
+void WindowCreerArticle::create() {
+    QString text = getTextBox()->toPlainText();
+    NotesManager* NM = NotesManager::getInstance();
+    Note* newNote = new Note(identifiant);
+    Article* newArticle = new Article(titre_article, QDateTime::currentDateTime(), text);
+    newNote->ajouterVersion(newArticle);
+    NM->ajouterNote(newNote);
 }
+

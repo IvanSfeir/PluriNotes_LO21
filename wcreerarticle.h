@@ -32,16 +32,20 @@ class WindowCreerArticle : public QWidget {
 
     QVBoxLayout *frame;
 
+    QString identifiant;
+    QString titre_article;
+
 public:
     WindowCreerArticle(QString& ident, QString& titre, QWidget *parent=0);
     QPushButton* getButtonCreate() {return button_create;}
+    QTextEdit* getTextBox() {return text_box;}
 
 signals:
 
 private slots:
 
 public slots:
-    void create(QString& ident, QString& titre);
+    void create();
 };
 
 #endif // WCREERARTICLE_H
