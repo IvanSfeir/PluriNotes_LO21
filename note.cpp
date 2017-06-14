@@ -25,10 +25,6 @@ Version *Note::getVersion(const unsigned int p){
     // Si oui : laisser comme ça
     // Sinon changer
 void Note::ajouterVersion(Version * v){
-    // recherche si titre existe déjà
-    for(unsigned int i=0; i<nbVersion; i++){
-        if (versions[i]->getTitle()==v->getTitle()) throw Exception("error, creation of an already existent version");
-    }
     // capacité max ?
     if (nbVersion==nbMaxVersion){
         Version** newTab_Version= new Version*[nbMaxVersion+5];
@@ -66,7 +62,6 @@ void Note::supprimerVersion(Version * oldVersion){
     --nbVersion;
 }
 
-// TO DO : Comment/D'où restaurer une Version ??
 void Note::restaurerVersion(const unsigned int p)
 {
 Version *v=getVersion(p);

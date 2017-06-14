@@ -7,7 +7,7 @@ CentreNoteAct::CentreNoteAct(Note *la_note, QWidget *parent):
     setFixedSize(300,350);
 
     titre_id = new QLabel(this);
-    titre_id->setText("La note active d'identifiant "+note->getId());
+    titre_id->setText("La note active d'identifiant: "+note->getId());
 
     versions = new QListWidget(this);
 
@@ -15,16 +15,16 @@ CentreNoteAct::CentreNoteAct(Note *la_note, QWidget *parent):
             versions->addItem((*it)->getTitle());
     }
 
-    afficher = new QPushButton("Afficher",this);
-    arborescence = new QPushButton("Arborescence",this);
-    restaurer = new QPushButton("Restaurer",this);
-    fermer = new QPushButton("Fermer",this);
+    afficher = new QPushButton("Afficher");
+    //arborescence = new QPushButton("Arborescence",this);
+    restaurer = new QPushButton("Restaurer");
+    fermer = new QPushButton("Fermer");
     connect(fermer, SIGNAL(clicked()), this, SLOT(close()));
 
     horiz = new QHBoxLayout;
     horiz->addWidget(afficher);
     horiz->addWidget(restaurer);
-    horiz->addWidget(arborescence);
+    //horiz->addWidget(arborescence);
     horiz->addWidget(fermer);
 
     verti = new QVBoxLayout;

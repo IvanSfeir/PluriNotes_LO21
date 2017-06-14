@@ -21,6 +21,7 @@
 #include "wcreerimage.h"
 #include "wcreeraudio.h"
 #include "wcreervideo.h"
+#include "wcreertache.h"
 #include <QCloseEvent>
 
 class Interface : public QMainWindow {
@@ -39,7 +40,7 @@ class Interface : public QMainWindow {
     WindowCreerImage* window_creer_image=0;
     WindowCreerVideo* window_creer_video=0;
     WindowCreerAudio* window_creer_audio=0;
-
+    WindowCreerTache* window_creer_tache=0;
 
     QMenu *menuNotes;
     QMenu *menuRelations;
@@ -50,6 +51,8 @@ class Interface : public QMainWindow {
     QAction *creerNote;
     QAction *afficherRelations;
     QAction *actionQuitter;
+
+    Note* currentNote;
 
 public:
     Interface();
@@ -72,8 +75,9 @@ public slots:
     void ouvrir_note_active_id();                           //done
     void ouvrir_note_archivee_id();                         //done
     void ouvrir_creer_note();                               //working
-    void forward_to_create_type();
-
+    void forward_to_create_type();                          //done
+    void restaurer_note();
+    void restaurer_version();
     //void fermer_centre();
 
 };

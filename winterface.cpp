@@ -71,12 +71,6 @@ Interface::Interface() {
 
 
     //////////////////////////////////////////////////////////////////////////////////////
-
-    //QString id = "idE";
-    //QString titre = "titreE";
-    //window_creer_article = new WindowCreerArticle(id,titre, this);
-    //window_creer_article->move(0,20);
-    //window_creer_article->show();
 }
 
 void Interface::closeEvent(QCloseEvent *bar){
@@ -109,17 +103,6 @@ void Interface::ouvrir_relations() {
     QObject::connect(window_relations->getBoutonAfficher(), SIGNAL(clicked()), this, SLOT(ouvrir_relation_details(getIndiceRelation())));
 }
 
-
-/*
-void fermer_centre() {
-    if(centrenoteact) centrenoteact->close();
-    if(centrenotearch) centrenotearch->close();
-    if(centreversion) centreversion->close();
-    if(centrerelations) centrerelations->close();
-    if(centrerelationdetails) centrerelationdetails->close();
-}
-*/
-
 void Interface::ouvrir_relation_details(unsigned int position) {
     RelationManager *RM = RelationManager::getRelationManager();
     RelationManager::iterator it = RM->begin();
@@ -139,6 +122,7 @@ void Interface::fermer_gauche() {
     if(window_creer_image) window_creer_image->close();
     if(window_creer_audio) window_creer_audio->close();
     if(window_creer_video) window_creer_video->close();
+    if(window_creer_tache) window_creer_tache->close();
 }
 
 void Interface::fermer_centre() {
@@ -154,6 +138,7 @@ void Interface::ouvrir_gauche() {
     window_gauche->move(0,20);
     QObject::connect(window_gauche->getBoutonAfficherAct(),SIGNAL(clicked()),this,SLOT(ouvrir_note_active_id()));
     QObject::connect(window_gauche->getBoutonAfficherArch(),SIGNAL(clicked()),this,SLOT(ouvrir_note_archivee_id()));
+    QObject::connect(window_gauche->getBoutonRestaurer(), SIGNAL(clicked()),this,SLOT(restaurer_note()));
     window_gauche->show();
 }
 
@@ -161,7 +146,9 @@ void Interface::ouvrir_note_active_id() {
     if (QListWidgetItem* ident = window_gauche->getNotesActives()->currentItem()){
         NotesManager *NM = NotesManager::getInstance();
         fermer_centre();
-        window_note_act = new CentreNoteAct (NM->getNote(ident->text()),this);
+        currentNote = NM->getNote(ident->text());
+        window_note_act = new CentreNoteAct (currentNote,this);
+        QObject::connect(window_note_act->getBoutonRestaurerVersion(),SIGNAL(clicked()),this,SLOT(restaurer_version()));
         window_note_act->move(400,15);
         window_note_act->show();
     }
@@ -216,6 +203,33 @@ void Interface::forward_to_create_type(){
         window_creer_audio->move(0,20);
         window_creer_audio->show();
     }
+    if(typeNote=="Tache"){
+        fermer_gauche();
+        window_creer_tache = new WindowCreerTache(id,titre, this);
+        window_creer_tache->move(0,20);
+        window_creer_tache->show();
+    }
 }
 
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
 
+///////////////////////////PARTIE MANIPULATE NOTE////////////////////
+/////////////////////////////////////////////////////////////////////
+void Interface::restaurer_note(){
+    QString ident = window_gauche->getNotesArchivees()->currentText();
+    NotesManager *NM = NotesManager::getInstance();
+    NM->restaurerNote(ident);
+    ouvrir_gauche();
+}
+
+void Interface::restaurer_version(){
+    unsigned int index = window_note_act->getListVersions()->currentRow();
+    if (index != -1 ){//&& currentNote->getNbVersion() == index){
+    qDebug() << currentNote->getVersion(index)->getTitle() << "\n";
+    qDebug() << currentNote->getNbVersion() <<"\n";
+    //currentNote->ajouterVersion(currentNote->getVersion(index));
+    //currentNote->restaurerVersion(index);
+    ouvrir_note_active_id();
+    }
+}

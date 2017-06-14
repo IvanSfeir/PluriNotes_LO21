@@ -20,7 +20,7 @@ class CentreNoteAct : public QWidget {
     //QLabel *titre_id3;
     QListWidget *versions;
     QPushButton *afficher;
-    QPushButton *arborescence;
+    //QPushButton *arborescence;
     QPushButton *restaurer;
     QPushButton *fermer;
 
@@ -34,6 +34,8 @@ public:
     // argument : la note concernee
     explicit CentreNoteAct(Note *it, QWidget* parent=0);
     QPushButton* getBoutonAfficherVersion() {return afficher;}
+    QPushButton* getBoutonRestaurerVersion() {return restaurer;}
+    QListWidget* getListVersions() {return versions;}
 
 signals:
 
