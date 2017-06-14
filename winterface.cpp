@@ -26,9 +26,10 @@ Interface::Interface() {
 
 
 
-    QMenu *menuNote = menuBar()->addMenu("Note");
-    QAction *afficherNote = new QAction("Afficher note");
+    QMenu *menuNote = menuBar()->addMenu("Notes");
+    QAction *afficherNote = new QAction("Afficher notes");
     menuNote->addAction(afficherNote);
+    QObject::connect(afficherNote, SIGNAL(triggered()), this, SLOT(ouvrir_gauche()));
 
     QMenu *menuRelations = menuBar()->addMenu("Relations");
     QAction *afficherRelations = new QAction("Afficher Relations");
@@ -49,10 +50,16 @@ Interface::Interface() {
     window_gauche->move(0,20);
     //QObject::connect(window_gauche)
     window_gauche->show();
-    QObject::connect(window_gauche->getBoutonAfficherAct(),SIGNAL(clicked()),this,SLOT(ouvrir_note_active_id(((window_gauche->getNotesActives())->currentItem())->text())));
-    QObject::connect(window_gauche->getBoutonAfficherArch(),SIGNAL(clicked()),this,SLOT(ouvrir_note_archivee_id((window_gauche->getNotesArchivees())->currentText())));
+
+    //////////////////////////////////////////////////////////////////////////////////////
+
+    Note* noteTest = NM->getNote("note1");
+    window_note = new CentreNoteAct(noteTest,this);
+    window_note->move(400,20);
+    window_note->show();
 
 }
+
 
 void Interface::avant_de_fermer() {
     NotesManager *NM = NotesManager::getInstance();
@@ -76,10 +83,9 @@ void Interface::ouvrir_relations() {
     window_relations->show();
     QObject::connect(window_relations->getBoutonAfficher(), SIGNAL(clicked()), this, SLOT(ouvrir_relation_details(getIndiceRelation())));
 }
-/*
-void ouvrir_note() {
-}
 
+
+/*
 void fermer_centre() {
     if(centrenoteact) centrenoteact->close();
     if(centrenotearch) centrenotearch->close();
@@ -108,7 +114,8 @@ void Interface::fermer_gauche() {
 void Interface::ouvrir_gauche() {
     window_gauche = new Gauche(this);
     window_gauche->move(0,20);
-    //QObject::connect(window_gauche)
+    QObject::connect(window_gauche->getBoutonAfficherAct(),SIGNAL(clicked()),this,SLOT(ouvrir_note_active_id(((window_gauche->getNotesActives())->currentItem())->text())));
+    QObject::connect(window_gauche->getBoutonAfficherArch(),SIGNAL(clicked()),this,SLOT(ouvrir_note_archivee_id((window_gauche->getNotesArchivees())->currentText())));
     window_gauche->show();
 }
 

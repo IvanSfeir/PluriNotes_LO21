@@ -53,6 +53,7 @@ public:
     QComboBox* getNotesArchivees() {return notes_archivees;}
     QPushButton* getBoutonAfficherArch() {return bouton_afficher_arch;}
 
+
     void ouvrir_note();
 
 signals:
