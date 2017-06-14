@@ -61,15 +61,18 @@ WindowCreerNote::WindowCreerNote(QWidget *parent) {
 //void WindowCreerNote::forward_to_create_type(QWidget *parent){
 //    QString type_test=this->getTypeNote();  //selected type of not
 
-//    if(type_test=="Article")
-//        WindowCreerArticle(getId(),getTitle(),parent);
+    QString s_id, s_title;
+    s_id=getId();
+    s_title=getTitle();
+    if(type_test=="Article")
+        WindowCreerArticle(s_id,s_title,parent);
 
 //    if(type_test=="Tache")
-//        WindowCreerArticle(getId(),getTitle());
+//        WindowCreerArticle(getId(),getTitle(), parent);
 //    if(type_test=="Image")
-//        WindowCreerArticle(getId(),getTitle());
+//        WindowCreerArticle(getId(),getTitle(),parent);
 //    if(type_test=="Audio")
-//        WindowCreerArticle(getId(),getTitle());
+//        WindowCreerArticle(getId(),getTitle(),parent);
 //    if(type_test=="Video")
-//        WindowCreerArticle(getId(),getTitle());
-//}
+//        WindowCreerArticle(getId(),getTitle(),parent);
+}
