@@ -101,8 +101,9 @@ public:
     void saveNotesManager(const QString & filename);
     void saveNotesManager_no_reprieve(const QString & filename);
 
+    bool is_id_taken(const QString &id);
 };
 
-bool is_id_taken(const QString &id);
+
     
 #endif // NOTESMANAGER_H
