@@ -28,7 +28,8 @@ void NotesManager::libererInstance(){
 
 NotesManager::NotesManager():tab_notes(nullptr),nbNotes(0),nbMaxNotes(0) {}
 
-NotesManager::~NotesManager(){
+NotesManager::~NotesManager(){  // relation de composition avec note => il faut supprimer toutes les notes
+    saveNotesManager("NotesManager");
     for(unsigned int i=0; i<nbNotes; i++) delete tab_notes[i];
     delete[] tab_notes;
 }
@@ -69,7 +70,7 @@ void NotesManager::supprimerNote(Note * oldNote){
     // si la note n'est pas trouvé
     if(i==nbNotes)
         throw Exception("error, deletion of a non existant note.");
-    if(is_note_refed(tab_notes[i]->getId()))
+    if(is_note_refed(this->tab_notes[i]))
         tab_notes[i]->setEtat(sursis);
     else
         tab_notes[i]->setEtat(archive);
@@ -94,19 +95,6 @@ n->setEtat(active);
 }
 
 
-//void NotesManager::saveNotesManager(const QString & filename){
-//    QFile newFile(filename);
-//    if (!newFile.open(QIODevice::WriteOnly | QIODevice::Text))
-//        throw  Exception(QString("Error open file xml: cannot save file"));
-//    QXmlStreamWriter stream(&newFile);
-//    stream.setAutoFormatting(true);
-//    stream.writeStartDocument();
-//    stream.writeStartElement("Note");
-//    stream.writeEndElement();
-//    stream.writeEndDocument();
-//    newFile.close();
-//}
-
 
 void NotesManager::saveNotesManager(const QString & filename){
     QFile newFile(filename);
@@ -118,80 +106,78 @@ void NotesManager::saveNotesManager(const QString & filename){
     stream.writeStartDocument();
     for (unsigned int i=0; i < nbNotes; i++){
       stream.writeStartElement("Note");
-        stream.writeTextElement("id", tab_notes[i]->getId());  //QString id;
+        stream.writeStartElement("id", tab_notes[i]->getId());  //QString id;
         QString nbV;
         QString nbMaxV;
 
         nbV.setNum(tab_notes[i]->getNbVersion());   //convert int to QString -> unsigned int nbVersion;
         nbMaxV.setNum(tab_notes[i]->getNbMaxVersion()); // unsigned int nbMaxVersion;
-        stream.writeTextElement("nbVersion", nbV);
-        stream.writeTextElement("nbMaxVersion", nbMaxV);
+        stream.writeStartElement("nbVersion", nbV);
+        stream.writeStartElement("nbMaxVersion", nbMaxV);
 
         string s_etat = enum_etat_to_string(tab_notes[i]->getEtat());  // Type_etat_note etat; convert Type_etat_note to string
-        stream.writeTextElement("Type_etat_note", QString::fromStdString( s_etat));
-        stream.writeTextElement("Date_creation", tab_notes[i]->getDateCreation().toString("dd.MM.yyyy-hh::mm:ss"));    //QDateTime date_creation;
+        stream.writeStartElement("Type_etat_note", QString::fromStdString( s_etat));
+        stream.writeStartElement("Date_creation", tab_notes[i]->getDateCreation().toString("dd.MM.yyyy-hh::mm:ss"));    //QDateTime date_creation;
 
         for (Note::iterator it_note = tab_notes[i]->begin(); it_note != tab_notes[i]->end(); it_note++){// pour chaque Version de Note (Version : *it_note)
             stream.writeStartElement("Version");
-            stream.writeTextElement("Titre", (*it_note)->getTitle());  //class Version : QString title;
-            stream.writeTextElement("Date_derniere_modification", (*it_note)->getDateModif().toString("dd.MM.yyyy-hh::mm:ss"));    //class vErsion : QDateTime date_modif
+            stream.writeStartElement("Titre", (*it_note)->getTitle());  //class Version : QString title;
+            stream.writeStartElement("Date_derniere_modification", (*it_note)->getDateModif().toString("dd.MM.yyyy-hh::mm:ss"));    //class vErsion : QDateTime date_modif
 
             string type_version= typeid((*it_note)).name();// get the type of an object into a string
             type_version=type_version.substr(1,type_version.length()-1); // on renvoie le nom du type de l'objet, sans le 1er char (la longueur du nom)
 
             if (type_version=="image") {
                         image *img =  dynamic_cast<image*>(*it_note);   //cast version* to *img
-                        stream.writeTextElement("type", "image");
-                       stream.writeTextElement("img", img->getImg());
-                       stream.writeTextElement("desc",  img-> getDesc());
-                       stream.writeTextElement("img_URL",  img->getimg_URL());
+                        stream.writeStartElement("type", "image");
+                       stream.writeStartElement("img", img->getImg());
+                       stream.writeStartElement("desc",  img-> getDesc());
+                       stream.writeStartElement("img_URL",  img->getimg_URL());
                 }
             else if(type_version=="audio"){
                         audio *aud = dynamic_cast<audio*>(*it_note);
-                        stream.writeTextElement("type", "audio");
-                       stream.writeTextElement("audio_URL", aud->getAudio_URL());
+                        stream.writeStartElement("type", "audio");
+                       stream.writeStartElement("audio_URL", aud->getAudio_URL());
                        //stream.writeStartElement("playeraudio", enum_statut_to_string( (*it_note)->getImg_URL()));
-                       stream.writeTextElement("desc", aud->getDesc());
-                       stream.writeTextElement("img_URL", aud->getimg_URL());
+                       stream.writeStartElement("desc", aud->getDesc());
+                       stream.writeStartElement("img_URL", aud->getimg_URL());
                }
             else if(type_version=="video"){
                        video *vid = dynamic_cast<video*>(*it_note);
-                       stream.writeTextElement("type", "video");
-                       stream.writeTextElement("video_URL", vid->getVideo_URL());
-                       stream.writeTextElement("desc", vid->getDesc());
-                       stream.writeTextElement("img_URL",  vid->getimg_URL());
+                       stream.writeStartElement("type", "video");
+                       stream.writeStartElement("video_URL", vid->getVideo_URL());
+                       stream.writeStartElement("desc", vid->getDesc());
+                       stream.writeStartElement("img_URL",  vid->getimg_URL());
 
 }
             else if(type_version=="Tache"){
                         Tache *tach =dynamic_cast<Tache*>(*it_note);
-                        stream.writeTextElement("type", "Tache");
-                       stream.writeTextElement("action", tach->getAction());
+                        stream.writeStartElement("type", "Tache");
+                       stream.writeStartElement("action", tach->getAction());
                        if(tach->getPriorite())
                        {
                            string n = std::to_string((tach->getPriorite()));
 
-                           stream.writeTextElement("priorite", QString::fromStdString(n));
+                           stream.writeStartElement("priorite", QString::fromStdString(n));
                        }
-                       //if((tach->getDate_echeance()).QDateTime::isNull()) stream.writeStartElement("Date_echeance", tach->getDate_echeance().toString("dd.MM.yyyy-hh::mm:ss"));
+                       if((tach->getDate_echeance()).QDateTime::isNull()) stream.writeStartElement("Date_echeance", tach->getDate_echeance().toString("dd.MM.yyyy-hh::mm:ss"));
                        string s_statut=enum_statut_to_string( tach->getStatut());
-                       stream.writeTextElement("statut", QString::fromStdString(s_statut));
+                       stream.writeStartElement("statut", QString::fromStdString(s_statut));
             }
             else if (type_version=="Article")
             {
-              stream.writeTextElement("type", "Article");
+              stream.writeStartElement("type", "Article");
                         Article *art=dynamic_cast<Article*>(*it_note);
-                       stream.writeTextElement("text", art->getText());
+                       stream.writeStartElement("text", art->getText());
             }
+
             stream.writeEndElement();
         }
         stream.writeEndElement();
     }
-    stream.writeEndDocument();
+    stream.writeEndElement();
     newFile.close();
 }
-////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
 
 void NotesManager::saveNotesManager_no_reprieve(const QString & filename){
         QFile newFile(filename);
@@ -535,3 +521,11 @@ bool NotesManager::is_note_refed(const QString &id){
 
 }
 
+bool NotesManager::is_id_taken(const QString &id){
+    for(unsigned int i=0; i<nbNotes; i++){
+        if (tab_notes[i]->getId()==n->getId())
+            return false;
+    }
+    return true;
+
+}
