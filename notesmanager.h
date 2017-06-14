@@ -103,5 +103,6 @@ public:
 
 };
 
+bool is_id_taken(const QString &id);
     
 #endif // NOTESMANAGER_H
