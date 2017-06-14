@@ -46,7 +46,6 @@ public:
     QString getTitle() const { return title->text();}
     QString getTypeNote() const { return type_note->currentText();}
 
-    void forward_to_create_type();
     void forward_to_create_type(QWidget * parent);
 };
 
