@@ -28,7 +28,7 @@ WindowCreerNote::WindowCreerNote(QWidget *parent) {
     H_buttons= new QHBoxLayout;
 
     valider = new QPushButton("Valider");
-    connect(valider, SIGNAL(clicked(bool)), this, SLOT(forward_to_create_type));
+    connect(valider, SIGNAL(clicked(bool)), this, SLOT(forward_to_create_type(parent)));
 
     annuler = new QPushButton("Fermer");
     connect(annuler, SIGNAL(clicked(bool)), this, SLOT(close()));
@@ -58,11 +58,11 @@ WindowCreerNote::WindowCreerNote(QWidget *parent) {
     this->setLayout(V_window);
 }
 
-void WindowCreerNote::forward_to_create_type(){
+void WindowCreerNote::forward_to_create_type(QWidget *parent){
     QString type_test=this->getTypeNote();  //selected type of not
 
     if(type_test=="Article")
-        WindowCreerArticle(getId(),getTitle());
+        WindowCreerArticle(getId(),getTitle(),parent);
 //    if(type_test=="Tache")
 //        WindowCreerArticle(getId(),getTitle());
 //    if(type_test=="Image")

@@ -20,7 +20,7 @@ class WindowCreerArticle : public QWidget {
     QVBoxLayout *verti;
 
 public:
-    WindowCreerArticle(QWidget *parent=0);
+    WindowCreerArticle(QString &i, QString &titre, QWidget *parent=0);
     QPushButton* getBoutonSauvegarder() {return sauvegarder;}
 
 };
