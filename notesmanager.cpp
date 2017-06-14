@@ -70,7 +70,7 @@ void NotesManager::supprimerNote(Note * oldNote){
     // si la note n'est pas trouvé
     if(i==nbNotes)
         throw Exception("error, deletion of a non existant note.");
-    if(is_note_refed(this->tab_notes[i]))
+    if(is_note_refed(tab_notes[i]->getId()))
         tab_notes[i]->setEtat(sursis);
     else
         tab_notes[i]->setEtat(archive);
@@ -117,12 +117,12 @@ void NotesManager::saveNotesManager(const QString & filename){
 
         string s_etat = enum_etat_to_string(tab_notes[i]->getEtat());  // Type_etat_note etat; convert Type_etat_note to string
         stream.writeStartElement("Type_etat_note", QString::fromStdString( s_etat));
-        stream.writeStartElement("Date_creation", tab_notes[i]->getDateCreation().toString("dd.MM.yyyy hh::mm:ss"));    //QDateTime date_creation;
+        stream.writeStartElement("Date_creation", tab_notes[i]->getDateCreation().toString("dd.MM.yyyy-hh::mm:ss"));    //QDateTime date_creation;
 
         for (Note::iterator it_note = tab_notes[i]->begin(); it_note != tab_notes[i]->end(); it_note++){// pour chaque Version de Note (Version : *it_note)
             stream.writeStartElement("Version");
             stream.writeStartElement("Titre", (*it_note)->getTitle());  //class Version : QString title;
-            stream.writeStartElement("Date_derniere_modification", (*it_note)->getDateModif().toString("dd.MM.yyyy hh::mm:ss"));    //class vErsion : QDateTime date_modif
+            stream.writeStartElement("Date_derniere_modification", (*it_note)->getDateModif().toString("dd.MM.yyyy-hh::mm:ss"));    //class vErsion : QDateTime date_modif
 
             string type_version= typeid((*it_note)).name();// get the type of an object into a string
             type_version=type_version.substr(1,type_version.length()-1); // on renvoie le nom du type de l'objet, sans le 1er char (la longueur du nom)
@@ -160,7 +160,7 @@ void NotesManager::saveNotesManager(const QString & filename){
 
                            stream.writeStartElement("priorite", QString::fromStdString(n));
                        }
-                       if((tach->getDate_echeance()).QDateTime::isNull()) stream.writeStartElement("Date_echeance", tach->getDate_echeance().toString("dd.MM.yyyy hh::mm:ss"));
+                       if((tach->getDate_echeance()).QDateTime::isNull()) stream.writeStartElement("Date_echeance", tach->getDate_echeance().toString("dd.MM.yyyy-hh::mm:ss"));
                        string s_statut=enum_statut_to_string( tach->getStatut());
                        stream.writeStartElement("statut", QString::fromStdString(s_statut));
             }
@@ -200,13 +200,13 @@ void NotesManager::saveNotesManager_no_reprieve(const QString & filename){
             stream.writeStartElement("nbMaxVersion", nbMaxV);
             string s_etat = enum_etat_to_string(tab_notes[i]->getEtat());
             stream.writeStartElement("Type_etat_note", QString::fromStdString( s_etat));
-            stream.writeStartElement("Date_creation", tab_notes[i]->getDateCreation().toString("dd.MM.yyyy hh::mm:ss"));
+            stream.writeStartElement("Date_creation", tab_notes[i]->getDateCreation().toString("dd.MM.yyyy-hh::mm:ss"));
             //if (tab_notes[i]->getOrientee()) stream.writeStartElement("orientation","true");
             //else stream.writeStartElement("orientation","false");
             for (Note::iterator it_note = tab_notes[i]->begin(); it_note != tab_notes[i]->end(); it_note++){
                 stream.writeStartElement("Version");
                 stream.writeStartElement("Titre", (*it_note)->getTitle());
-                stream.writeStartElement("Date_derniere_modification", (*it_note)->getDateModif().toString("dd.MM.yyyy hh::mm:ss"));
+                stream.writeStartElement("Date_derniere_modification", (*it_note)->getDateModif().toString("dd.MM.yyyy-hh::mm:ss"));
 
                 string type_version= typeid((*it_note)).name();
                 type_version=type_version.substr(1,type_version.length()-1); // on renvoie le nom du type de l'objet, sans le 1er char (la longueur du nom)
@@ -244,7 +244,7 @@ void NotesManager::saveNotesManager_no_reprieve(const QString & filename){
 
                                stream.writeStartElement("priorite", QString::fromStdString(n));
                            }
-                           if((tach->getDate_echeance()).QDateTime::isNull()) stream.writeStartElement("Date_echeance", tach->getDate_echeance().toString("dd.MM.yyyy hh::mm:ss"));
+                           if((tach->getDate_echeance()).QDateTime::isNull()) stream.writeStartElement("Date_echeance", tach->getDate_echeance().toString("dd.MM.yyyy-hh::mm:ss"));
                            string s_statut=enum_statut_to_string( tach->getStatut());
                            stream.writeStartElement("statut", QString::fromStdString(s_statut));
                 }
@@ -315,7 +315,7 @@ void NotesManager::loadNotesManager(const QString & filename){
                 if (xml.name() == "Date_creation"){
                     xml.readNext();
                     s_date=xml.text().toString();
-                    date_creation=QDateTime::fromString(s_date, "dd.MM.yyyy hh::mm:ss"); // voir la doc
+                    date_creation=QDateTime::fromString(s_date, "dd.MM.yyyy-hh::mm:ss"); // voir la doc
 
                 }
                 Note * newNote= new Note(id,nbMaxV,etat);
@@ -337,7 +337,7 @@ void NotesManager::loadNotesManager(const QString & filename){
                         if (xml.name() == "Date_derniere_modification"){
                             xml.readNext();
                             s_datemodif=xml.text().toString();
-                            dateModif=QDateTime::fromString(s_datemodif, "dd.MM.yyyy hh::mm:ss"); // voir la doc
+                            dateModif=QDateTime::fromString(s_datemodif, "dd.MM.yyyy-hh::mm:ss"); // voir la doc
 
                         }
 
@@ -459,7 +459,7 @@ void NotesManager::loadNotesManager(const QString & filename){
                            if (xml.name() == "Date_echeance"){
                                xml.readNext();
                                s_date_e=xml.text().toString();
-                               date_e=QDateTime::fromString(s_date_e, "dd.MM.yyyy hh::mm:ss"); // voir la doc
+                               date_e=QDateTime::fromString(s_date_e, "dd.MM.yyyy-hh::mm:ss"); // voir la doc
                                newTache->setDate_echeance(date_e);
                            }
                           newNote->ajouterVersion(newTache);
