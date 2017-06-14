@@ -70,18 +70,21 @@ void NotesManager::supprimerNote(Note * oldNote){
     // si la note n'est pas trouvé
     if(i==nbNotes)
         throw Exception("error, deletion of a non existant note.");
+    if(is_note_refed(this->tab_notes[i]))
+        tab_notes[i]->setEtat(sursis);
+    else
+        tab_notes[i]->setEtat(archive);
+//    // décalage à gauche du tableau
+//    for(unsigned int j=i; j<nbNotes-1; j++){
+//        tab_notes[j]=tab_notes[j+1];
+//    }
 
-    // décalage à gauche du tableau
-    for(unsigned int j=i; j<nbNotes-1; j++){
-        tab_notes[j]=tab_notes[j+1];
-    }
-
-    // suppression de la dernière note (en double) de tab_notes[j=nbNotes-1];
-    delete tab_notes[nbNotes];
-    delete oldNote;
+//    // suppression de la dernière note (en double) de tab_notes[j=nbNotes-1];
+//    delete tab_notes[nbNotes];
+//    delete oldNote;
 
     //actualisation du nombre de notes
-    --nbNotes;
+    //--nbNotes;
 }
 
 
