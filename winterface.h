@@ -17,6 +17,7 @@
 #include "wversion.h"
 #include "wgauche.h"
 #include "wcreernote.h"
+#include "wcreerarticle.h"
 
 class Interface : public QMainWindow {
 
@@ -30,7 +31,7 @@ class Interface : public QMainWindow {
     WindowCreerNote* window_creer_note=0;
     CentreRelations* window_relations=0;
     CentreRelationDetails* window_relation_details=0;
-
+    WindowCreerArticle* window_creer_article=0;
 
 
     QMenu *menuNotes;

@@ -71,12 +71,10 @@ Interface::Interface() {
 
 
     //////////////////////////////////////////////////////////////////////////////////////
-    /*
-    Note* noteTest = NM->getNote("note1");
-    window_note = new CentreNoteAct(noteTest,this);
-    window_note->move(400,20);
-    window_note->show();
-    */
+
+    window_creer_article = new WindowCreerArticle("idE","titreE", this);
+    window_creer_article->move(0,20);
+    window_creer_article->show();
 }
 
 
@@ -119,11 +117,6 @@ void Interface::ouvrir_relation_details(unsigned int position) {
     RelationManager::iterator it = RM->begin();
     for(unsigned int i=0; i!=position; i++) {it++;}
     window_relation_details = new CentreRelationDetails((*it), this);
-}
-
-void Interface::ouvrir_creer_note() {
-    fermer_centre();
-    window_creer_note = new WindowCreerNote();
 }
 
 void Interface::fermer_droite() {
@@ -174,6 +167,8 @@ void Interface::ouvrir_note_archivee_id() {
 
 ////////////////////////////PARTY CREATE NOTE////////////////////////
 /////////////////////////////////////////////////////////////////////
-//void Interface::ouvrir_creer_note() {
+void Interface::ouvrir_creer_note() {
+    fermer_centre();
+    window_creer_note = new WindowCreerNote();
+}
 
-//}
