@@ -49,5 +49,5 @@ public:
 
     void forward_to_create_type(QWidget* parent);
 
-
+}
 #endif // WCREERNOTE_H
