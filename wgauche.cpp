@@ -93,6 +93,4 @@ void Gauche::ouvrirNoteArchiveeId(const QString& ident) {
     CentreNoteArch centrenotearch(&(NM->getNote(ident)),this);
 }
 */
-void ouvrir_note() {
 
-}

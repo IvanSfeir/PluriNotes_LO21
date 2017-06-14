@@ -1,6 +1,6 @@
 #include "wnoteact.h"
 
-CentreNoteAct::CentreNoteAct(Note *it, QWidget *parent):
+CentreNoteAct::CentreNoteAct(Note *note, QWidget *parent):
     QWidget(parent) {
 
     // exemple
@@ -16,12 +16,10 @@ CentreNoteAct::CentreNoteAct(Note *it, QWidget *parent):
 
     versions = new QListWidget(this);
     versions->setFixedSize(320,100);
-    versions->addItem("version 1");
-    versions->addItem("version 2");
-    versions->addItem("version 3");
-    versions->addItem("version 4");
-    versions->addItem("version 5");
-    versions->addItem("version 6");
+
+    for (Note::iterator it = note->begin(); it != note->end(); it++) {
+            versions->addItem((*it)->getTitle());
+    }
 
     afficher = new QPushButton("Afficher",this);
     arborescence = new QPushButton("Arborescence",this);
