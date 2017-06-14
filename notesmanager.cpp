@@ -26,7 +26,7 @@ void NotesManager::libererInstance(){
 }
 
 
-NotesManager::NotesManager():tab_notes(nullptr),nbNotes(0),nbMaxNotes(50) {}
+NotesManager::NotesManager():tab_notes(nullptr),nbNotes(0),nbMaxNotes(0) {}
 
 NotesManager::~NotesManager(){  // relation de composition avec note => il faut supprimer toutes les notes
     saveNotesManager("NotesManager");
