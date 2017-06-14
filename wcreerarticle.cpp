@@ -10,7 +10,7 @@ WindowCreerArticle::WindowCreerArticle(QString& ident, QString& titre, QWidget* 
     //Keep ident, titre, desc to create the Note
     identifiant = ident;
     titre_article = titre;
-    setFixedSize(200, 350);
+    setFixedSize(300, 350);
 
     frame = new QVBoxLayout;
 
@@ -23,7 +23,7 @@ WindowCreerArticle::WindowCreerArticle(QString& ident, QString& titre, QWidget* 
     titre_text = new QLabel(titre);
 
     text_title = new QHBoxLayout;
-    text_label = new QLabel("Text:");
+    text_label = new QLabel("Texte:");
     text_box = new QTextEdit;
 
     button_bar = new QHBoxLayout;
@@ -53,5 +53,6 @@ void WindowCreerArticle::create() {
     Article* newArticle = new Article(titre_article, QDateTime::currentDateTime(), text);
     newNote->ajouterVersion(newArticle);
     NM->ajouterNote(newNote);
+    this->close();
 }
 

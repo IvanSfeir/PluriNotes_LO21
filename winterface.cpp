@@ -128,6 +128,8 @@ void Interface::fermer_droite() {
 
 void Interface::fermer_gauche() {
     if(window_gauche) window_gauche->close();
+    if(window_creer_note) window_creer_note->close();
+    if(window_creer_article) window_creer_article->close();
 }
 
 void Interface::fermer_centre() {
@@ -139,6 +141,7 @@ void Interface::fermer_centre() {
 ////////////////////////////PARTY SHOW NOTES/////////////////////////
 /////////////////////////////////////////////////////////////////////
 void Interface::ouvrir_gauche() {
+    fermer_gauche();
     window_gauche = new Gauche(this);
     window_gauche->move(0,20);
     QObject::connect(window_gauche->getBoutonAfficherAct(),SIGNAL(clicked()),this,SLOT(ouvrir_note_active_id()));
@@ -170,10 +173,10 @@ void Interface::ouvrir_note_archivee_id() {
 ////////////////////////////PARTY CREATE NOTE////////////////////////
 /////////////////////////////////////////////////////////////////////
 void Interface::ouvrir_creer_note() {
-    fermer_centre();
+    fermer_gauche();
     window_creer_note = new WindowCreerNote(this);
     connect(window_creer_note->getBoutonValider(), SIGNAL(clicked(bool)), this, SLOT(forward_to_create_type()));
-    window_creer_note->move(400,15);
+    window_creer_note->move(0,20);
     window_creer_note->show();
 }
 
@@ -181,11 +184,12 @@ void Interface::forward_to_create_type(){
     QString typeNote = window_creer_note->getTypeNote();
     QString id = window_creer_note->getId();
     QString titre = window_creer_note->getTitle();
-    if(typeNote=="Article")
+    if(typeNote=="Article"){
         fermer_gauche();
         window_creer_article = new WindowCreerArticle(id,titre, this);
-        window_creer_article->move(800,15);
+        window_creer_article->move(0,20);
         window_creer_article->show();
+    }
 }
 
 

@@ -3,7 +3,7 @@
 
 WindowCreerNote::WindowCreerNote(QWidget *parent): QWidget(parent) {
 
-    setFixedSize(330,200);
+    setFixedSize(300, 350);
     // vertical window
     V_window=new QVBoxLayout;
 
