@@ -3,6 +3,7 @@
 CentreNoteArch::CentreNoteArch(Note *note, QWidget *parent):
     QWidget(parent) {
 
+    setFixedSize(300,350);
     // exemple
     QString idexemple="2";
 
@@ -15,7 +16,6 @@ CentreNoteArch::CentreNoteArch(Note *note, QWidget *parent):
     titre_id->setFixedHeight(10);
 
     versions = new QListWidget(this);
-    versions->setFixedSize(320,100);
 
     for (Note::iterator it = note->begin(); it != note->end(); it++) {
             versions->addItem((*it)->getTitle());
@@ -39,6 +39,5 @@ CentreNoteArch::CentreNoteArch(Note *note, QWidget *parent):
 
     setLayout(verti);
 
-    setFixedSize(350,200);
 
 }
