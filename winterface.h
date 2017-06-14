@@ -40,6 +40,7 @@ public:
     QAction *actionCorbeilleAuto;
     void fermer_droite();
     void fermer_gauche();
+    void ouvrir_gauche();
 
 
 signals:

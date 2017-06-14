@@ -103,3 +103,9 @@ void Interface::fermer_gauche() {
     if(window_gauche) window_gauche->close();
 }
 
+void Interface::ouvrir_gauche() {
+    window_gauche = new Gauche(this);
+    window_gauche->move(0,20);
+    //QObject::connect(window_gauche)
+    window_gauche->show();
+}
