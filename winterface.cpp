@@ -52,12 +52,12 @@ Interface::Interface() {
     window_gauche->show();
 
     //////////////////////////////////////////////////////////////////////////////////////
-
+    /*
     Note* noteTest = NM->getNote("note1");
     window_note = new CentreNoteAct(noteTest,this);
     window_note->move(400,20);
     window_note->show();
-
+    */
 }
 
 
@@ -114,19 +114,23 @@ void Interface::fermer_gauche() {
 void Interface::ouvrir_gauche() {
     window_gauche = new Gauche(this);
     window_gauche->move(0,20);
-    QObject::connect(window_gauche->getBoutonAfficherAct(),SIGNAL(clicked()),this,SLOT(ouvrir_note_active_id(((window_gauche->getNotesActives())->currentItem())->text())));
-    QObject::connect(window_gauche->getBoutonAfficherArch(),SIGNAL(clicked()),this,SLOT(ouvrir_note_archivee_id((window_gauche->getNotesArchivees())->currentText())));
+    QObject::connect(window_gauche->getBoutonAfficherAct(),SIGNAL(clicked()),this,SLOT(ouvrir_note_active_id()));
+    QObject::connect(window_gauche->getBoutonAfficherArch(),SIGNAL(clicked()),this,SLOT(ouvrir_note_archivee_id()));
     window_gauche->show();
 }
 
-void Interface::ouvrir_note_active_id(const QString& ident) {
+void Interface::ouvrir_note_active_id() {
+    QString ident = window_gauche->getNotesActives()->currentRow();
     NotesManager *NM = NotesManager::getInstance();
-    //fermer_centre();
-    CentreNoteAct centrenoteact(&(NM->getNote(ident)),this);
+    qDebug() << ident;
+    //window_note_act = new CentreNoteAct (NM->getNote(ident),this);
+    //window_note_act->show();
 }
 
-void Interface::ouvrir_note_archivee_id(const QString& ident) {
+void Interface::ouvrir_note_archivee_id() {
+    QString ident = "sadfd";
     NotesManager *NM = NotesManager::getInstance();
     //fermer_centre();
-    CentreNoteArch centrenotearch(&(NM->getNote(ident)),this);
+    window_note_arch = new CentreNoteArch(NM->getNote(ident),this);
+    window_note_arch->show();
 }
