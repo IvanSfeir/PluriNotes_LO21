@@ -3,7 +3,7 @@
 CentreNoteAct::CentreNoteAct(Note *note, QWidget *parent):
     QWidget(parent) {
 
-    versions->setFixedSize(300,350);
+    setFixedSize(300,350);
     QString idexemple="1";
 
     titre_id = new QLabel(this);
