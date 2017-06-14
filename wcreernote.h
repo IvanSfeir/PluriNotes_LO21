@@ -8,6 +8,7 @@
 #include<QHBoxLayout>
 #include <QFormLayout>
 #include "wcreerarticle.h"
+#include <QLineEdit>
 
 class WindowCreerNote : public QWidget {
 
@@ -41,7 +42,7 @@ public:
     QComboBox* getComboType() {return type_note;}
     QPushButton* getBoutonValider() {return valider;}
 
-    QString getId() const { return id->text();}
+    QString getId() const { return id->text() ;}
     QString getTitle() const { return title->text();}
     QString getTypeNote() const { return type_note->currentText();}
 
