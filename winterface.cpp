@@ -79,6 +79,12 @@ Interface::Interface() {
     //window_creer_article->show();
 }
 
+void Interface::closeEvent(QCloseEvent *bar){
+    NotesManager *NM = NotesManager::getInstance();
+    NM->saveNotesManager("save_test.xml");
+    NM->libererInstance();
+    bar->accept();
+}
 
 void Interface::avant_de_fermer() {
     NotesManager *NM = NotesManager::getInstance();
