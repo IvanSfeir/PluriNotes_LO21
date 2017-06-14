@@ -51,6 +51,7 @@ public:
     QListWidget* getNoteActives() {return notes_actives;}
     QPushButton* getBoutonAfficherAct() {return bouton_afficher_act;}
 
+
     void ouvrir_note();
 
 signals:
