@@ -72,7 +72,9 @@ Interface::Interface() {
 
     //////////////////////////////////////////////////////////////////////////////////////
 
-    window_creer_article = new WindowCreerArticle("idE","titreE", this);
+    QString id = "idE";
+    QString titre = "titreE";
+    window_creer_article = new WindowCreerArticle(id,titre, this);
     window_creer_article->move(0,20);
     window_creer_article->show();
 }

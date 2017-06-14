@@ -8,7 +8,6 @@
 #include<QVBoxLayout>
 #include<QTextEdit>
 
-#include"version.h"
 
 
 class WindowCreerArticle : public QWidget {
@@ -34,7 +33,7 @@ class WindowCreerArticle : public QWidget {
     QVBoxLayout *frame;
 
 public:
-    WindowCreerArticle(QString ident, QString titre, QWidget *parent=0);
+    WindowCreerArticle(QString& ident, QString& titre, QWidget *parent=0);
     QPushButton* getButtonCreate() {return button_create;}
 
 signals:
@@ -42,7 +41,7 @@ signals:
 private slots:
 
 public slots:
-    void create(QString ident, QString titre);
+    void create(QString& ident, QString& titre);
 };
 
 #endif // WCREERARTICLE_H

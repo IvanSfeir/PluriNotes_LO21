@@ -2,7 +2,7 @@
 #include <QTextEdit>
 #include <QDebug>
 
-WindowCreerArticle::WindowCreerArticle(QString ident, QString titre, QWidget* parent):
+WindowCreerArticle::WindowCreerArticle(QString& ident, QString& titre, QWidget* parent):
     QWidget(parent) {
     //Keep ident, titre, desc to create the Note
     setFixedSize(200, 350);
@@ -41,7 +41,7 @@ WindowCreerArticle::WindowCreerArticle(QString ident, QString titre, QWidget* pa
     this->setLayout(frame);
 }
 
-void WindowCreerArticle::create(QString ident, QString titre) {
+void WindowCreerArticle::create(QString& ident, QString& titre) {
     QString text = getButtonCreate()->text();
     qDebug() << text;
 }
