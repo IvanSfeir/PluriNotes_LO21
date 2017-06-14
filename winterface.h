@@ -51,6 +51,8 @@ class Interface : public QMainWindow {
     QAction *afficherRelations;
     QAction *actionQuitter;
 
+    Note* currentNote;
+
 public:
     Interface();
     QAction *actionCorbeilleAuto;
@@ -74,6 +76,7 @@ public slots:
     void ouvrir_creer_note();                               //working
     void forward_to_create_type();                          //done
     void restaurer_note();
+    void restaurer_version();
     //void fermer_centre();
 
 };

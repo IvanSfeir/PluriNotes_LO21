@@ -145,7 +145,9 @@ void Interface::ouvrir_note_active_id() {
     if (QListWidgetItem* ident = window_gauche->getNotesActives()->currentItem()){
         NotesManager *NM = NotesManager::getInstance();
         fermer_centre();
-        window_note_act = new CentreNoteAct (NM->getNote(ident->text()),this);
+        currentNote = NM->getNote(ident->text());
+        window_note_act = new CentreNoteAct (currentNote,this);
+        QObject::connect(window_note_act->getBoutonRestaurerVersion(),SIGNAL(clicked()),this,SLOT(restaurer_version()));
         window_note_act->move(400,15);
         window_note_act->show();
     }
@@ -210,7 +212,17 @@ void Interface::forward_to_create_type(){
 void Interface::restaurer_note(){
     QString ident = window_gauche->getNotesArchivees()->currentText();
     NotesManager *NM = NotesManager::getInstance();
-    Note* restoreNote = NM->getNote(ident);
-    restoreNote->setEtat(active);
+    NM->restaurerNote(ident);
     ouvrir_gauche();
+}
+
+void Interface::restaurer_version(){
+    unsigned int index = window_note_act->getListVersions()->currentRow();
+    if (index != -1 ){//&& currentNote->getNbVersion() == index){
+    qDebug() << currentNote->getVersion(index)->getTitle() << "\n";
+    qDebug() << currentNote->getNbVersion() <<"\n";
+    //currentNote->ajouterVersion(currentNote->getVersion(index));
+    //currentNote->restaurerVersion(index);
+    ouvrir_note_active_id();
+    }
 }
