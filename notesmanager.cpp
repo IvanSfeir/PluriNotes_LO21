@@ -535,3 +535,9 @@ bool NotesManager::is_note_refed(const QString &id){
 
 }
 
+bool NotesManager::is_id_taken(const QString &id){
+    for(unsigned int i=0; i<nbNotes; i++){
+        if (tab_notes[i]->getId()==id)
+            return false;
+    }
+    return true;
