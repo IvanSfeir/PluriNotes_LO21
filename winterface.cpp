@@ -171,6 +171,8 @@ void Interface::ouvrir_note_archivee_id() {
 /////////////////////////////////////////////////////////////////////
 void Interface::ouvrir_creer_note() {
     fermer_centre();
-    window_creer_note = new WindowCreerNote();
+    window_creer_note = new WindowCreerNote(this);
+    window_creer_note->move(400,15);
+    window_creer_note->show();
 }
 
