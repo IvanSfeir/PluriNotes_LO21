@@ -49,6 +49,8 @@ Interface::Interface() {
     window_gauche->move(0,20);
     //QObject::connect(window_gauche)
     window_gauche->show();
+    QObject::connect(window_gauche->getBoutonAfficherAct(),SIGNAL(clicked()),this,SLOT(ouvrir_note_active_id(((window_gauche->getNotesActives())->currentItem())->text())));
+    QObject::connect(window_gauche->getBoutonAfficherArch(),SIGNAL(clicked()),this,SLOT(ouvrir_note_archivee_id((window_gauche->getNotesArchivees())->currentText())));
 
 }
 
@@ -108,4 +110,16 @@ void Interface::ouvrir_gauche() {
     window_gauche->move(0,20);
     //QObject::connect(window_gauche)
     window_gauche->show();
+}
+
+void Interface::ouvrir_note_active_id(const QString& ident) {
+    NotesManager *NM = NotesManager::getInstance();
+    //fermer_centre();
+    CentreNoteAct centrenoteact(&(NM->getNote(ident)),this);
+}
+
+void Interface::ouvrir_note_archivee_id(const QString& ident) {
+    NotesManager *NM = NotesManager::getInstance();
+    //fermer_centre();
+    CentreNoteArch centrenotearch(&(NM->getNote(ident)),this);
 }

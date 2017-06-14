@@ -65,7 +65,3 @@ CentreRelations::CentreRelations(QMainWindow *parent):
 
 void CentreRelations::supprimerRelation() {}
 
-
-
-QPushButton* CentreRelations::getBoutonAfficher() {return afficher_relation;}
-unsigned int CentreRelations::getIndiceRelation() {return relations->currentRow();}

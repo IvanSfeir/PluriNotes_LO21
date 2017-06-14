@@ -31,6 +31,7 @@ class CentreNoteAct : public QWidget {
 public:
     // argument : la note concernee
     explicit CentreNoteAct(Note *it, QWidget* parent=0);
+    QPushButton* getBoutonAfficherVersion() {return afficher;}
 
 signals:
 

@@ -48,14 +48,18 @@ class Gauche : public QWidget {
 
 public:
     explicit Gauche(QMainWindow* parent=0);
-    QListWidget* getNoteActives() {return notes_actives;}
+    QListWidget* getNotesActives() {return notes_actives;}
     QPushButton* getBoutonAfficherAct() {return bouton_afficher_act;}
+    QComboBox* getNotesArchivees() {return notes_archivees;}
+    QPushButton* getBoutonAfficherArch() {return bouton_afficher_arch;}
 
     void ouvrir_note();
 
 signals:
 
 private slots:
+    //transportes dans interface :
+    //****************************
     //void ouvrirNoteActiveId(const QString& ident);
     //void ouvrirNoteArchiveeId(const QString& ident);
 

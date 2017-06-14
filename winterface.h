@@ -51,7 +51,8 @@ public slots:
     void avant_de_fermer();
     void ouvrir_relations();
     void ouvrir_relation_details(unsigned int position);
-    //void ouvrir_note();
+    void ouvrir_note_active_id(const QString& ident);
+    void ouvrir_note_archivee_id(const QString& ident);
     //void fermer_centre();
 
 };

@@ -29,8 +29,8 @@ class CentreRelations : public QWidget {
 
 public:
     explicit CentreRelations(QMainWindow* parent=0);
-    QPushButton* getBoutonAfficher();
-    unsigned int getIndiceRelation();
+    QPushButton* getBoutonAfficher() {return afficher_relation;}
+    unsigned int getIndiceRelation() {return relations->currentRow();}
 
 signals:
 
