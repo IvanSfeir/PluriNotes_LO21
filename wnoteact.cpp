@@ -3,7 +3,7 @@
 CentreNoteAct::CentreNoteAct(Note *note, QWidget *parent):
     QWidget(parent) {
 
-    // exemple
+    versions->setFixedSize(300,350);
     QString idexemple="1";
 
     titre_id = new QLabel(this);
@@ -15,7 +15,6 @@ CentreNoteAct::CentreNoteAct(Note *note, QWidget *parent):
     titre_id->setFixedHeight(10);
 
     versions = new QListWidget(this);
-    versions->setFixedSize(320,100);
 
     for (Note::iterator it = note->begin(); it != note->end(); it++) {
             versions->addItem((*it)->getTitle());
@@ -25,6 +24,7 @@ CentreNoteAct::CentreNoteAct(Note *note, QWidget *parent):
     arborescence = new QPushButton("Arborescence",this);
     restaurer = new QPushButton("Restaurer",this);
     fermer = new QPushButton("Fermer",this);
+    connect(fermer, SIGNAL(clicked()), this, SLOT(close()));
 
     horiz = new QHBoxLayout;
     horiz->addWidget(afficher);
@@ -40,7 +40,5 @@ CentreNoteAct::CentreNoteAct(Note *note, QWidget *parent):
     verti->addLayout(horiz);
 
     setLayout(verti);
-
-    setFixedSize(350,200);
 
 }
