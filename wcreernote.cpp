@@ -1,6 +1,9 @@
 #include"wcreernote.h"
+#include"wcreerarticle.h"
 
-WindowCreerNote::WindowCreerNote(QWidget *parent) {
+WindowCreerNote::WindowCreerNote(QWidget *parent): QWidget(parent) {
+
+    setFixedSize(330,200);
     // vertical window
     V_window=new QVBoxLayout;
 
@@ -28,7 +31,6 @@ WindowCreerNote::WindowCreerNote(QWidget *parent) {
     H_buttons= new QHBoxLayout;
 
     valider = new QPushButton("Valider");
-    connect(valider, SIGNAL(clicked(bool)), this, SLOT(forward_to_create_type(parent)));
 
     annuler = new QPushButton("Fermer");
     connect(annuler, SIGNAL(clicked(bool)), this, SLOT(close()));
@@ -58,21 +60,4 @@ WindowCreerNote::WindowCreerNote(QWidget *parent) {
     this->setLayout(V_window);
 }
 
-//void WindowCreerNote::forward_to_create_type(QWidget *parent){
-//    QString type_test=this->getTypeNote();  //selected type of not
 
-    QString s_id, s_title;
-    s_id=getId();
-    s_title=getTitle();
-    if(type_test=="Article")
-        WindowCreerArticle(s_id,s_title,parent);
-
-//    if(type_test=="Tache")
-//        WindowCreerArticle(getId(),getTitle(), parent);
-//    if(type_test=="Image")
-//        WindowCreerArticle(getId(),getTitle(),parent);
-//    if(type_test=="Audio")
-//        WindowCreerArticle(getId(),getTitle(),parent);
-//    if(type_test=="Video")
-//        WindowCreerArticle(getId(),getTitle(),parent);
-}

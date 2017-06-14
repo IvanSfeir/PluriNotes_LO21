@@ -46,8 +46,11 @@ public:
     QString getTitle() const { return title->text();}
     QString getTypeNote() const { return type_note->currentText();}
 
+signals:
 
-    void forward_to_create_type(QWidget* parent);
+private slots:
+
+public slots:
 
 };
 

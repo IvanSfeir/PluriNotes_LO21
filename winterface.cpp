@@ -72,11 +72,11 @@ Interface::Interface() {
 
     //////////////////////////////////////////////////////////////////////////////////////
 
-    QString id = "idE";
-    QString titre = "titreE";
-    window_creer_article = new WindowCreerArticle(id,titre, this);
-    window_creer_article->move(0,20);
-    window_creer_article->show();
+    //QString id = "idE";
+    //QString titre = "titreE";
+    //window_creer_article = new WindowCreerArticle(id,titre, this);
+    //window_creer_article->move(0,20);
+    //window_creer_article->show();
 }
 
 
@@ -172,7 +172,20 @@ void Interface::ouvrir_note_archivee_id() {
 void Interface::ouvrir_creer_note() {
     fermer_centre();
     window_creer_note = new WindowCreerNote(this);
+    connect(window_creer_note->getBoutonValider(), SIGNAL(clicked(bool)), this, SLOT(forward_to_create_type()));
     window_creer_note->move(400,15);
     window_creer_note->show();
 }
+
+void Interface::forward_to_create_type(){
+    QString typeNote = window_creer_note->getTypeNote();
+    QString id = window_creer_note->getId();
+    QString titre = window_creer_note->getTitle();
+    if(typeNote=="Article")
+        fermer_gauche();
+        window_creer_article = new WindowCreerArticle(id,titre, this);
+        window_creer_article->move(800,15);
+        window_creer_article->show();
+}
+
 
