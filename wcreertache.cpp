@@ -24,19 +24,19 @@ WindowCreerTache::WindowCreerTache(QString& ident, QString& titre, QWidget *pare
     action_box = new QTextEdit;
 
     statut = new QHBoxLayout;
-    statut_label = new QLabel("*Statut :(en_cours, attente, terminee)");
+    statut_label = new QLabel("*Statut : (en_cours, attente, terminee)");
     statut_box = new QLineEdit;
 
     priorite = new QHBoxLayout;
-    prio_label = new QLabel("Priorite (>=0) : (optionelle)");
+    prio_label = new QLabel("Priorite (>=0) :");
     prio_box = new QLineEdit;
 
     date_echeance_day = new QHBoxLayout;
-    date_e_day_label= new QLabel("Date de la date d'echeance : (15.05.2017)");
+    date_e_day_label= new QLabel("Date d'echeance : (i.e 01.01.2000)");
     date_e_day_box = new QLineEdit;
 
     date_echeance_min= new QHBoxLayout;
-    date_e_min_label= new QLabel("Temps de la date d'echeance : (14:13:09)");
+    date_e_min_label= new QLabel("Temps de l'echeance : (i.e. 12:00:00)");
     date_e_min_box= new QLineEdit;
 
     button_bar = new QHBoxLayout;

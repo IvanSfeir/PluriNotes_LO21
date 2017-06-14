@@ -27,6 +27,8 @@ class CentreNoteAct : public QWidget {
     QHBoxLayout *horiz;
     QVBoxLayout *verti;
 
+    Note *note;
+
 
 public:
     // argument : la note concernee
@@ -40,6 +42,7 @@ signals:
 private slots:
 
 public slots:
+    //void saveVersion();
 
 };
 

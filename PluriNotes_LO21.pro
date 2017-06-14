@@ -29,7 +29,8 @@ SOURCES += \
     wcreertache.cpp \
     wcreerimage.cpp \
     wcreeraudio.cpp \
-    wcreervideo.cpp
+    wcreervideo.cpp \
+    wafficherarticle.cpp
 
 
 HEADERS += \
@@ -56,4 +57,5 @@ HEADERS += \
     wcreertache.h \
     wcreerimage.h \
     wcreeraudio.h \
-    wcreervideo.h
+    wcreervideo.h \
+    wafficherarticle.h
