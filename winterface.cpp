@@ -1,6 +1,30 @@
 #include "winterface.h"
+#include "notesmanager.h"
+#include "relation.h"
+#include "article.h"
+#include "note.h"
+#include <QDebug>
 
 Interface::Interface() {
+
+    //////////////////////////////////////////////
+    //init for testing////////////////////////////
+    //////////////////////////////////////////////
+    NotesManager* NM = NotesManager::getInstance();
+    Note* newNote = new Note("note1"); //id=1
+    Article* a1 = new Article("testA1",QDateTime::currentDateTime(),"testestsetsetstest");
+    Article* a2 = new Article("testA2",QDateTime::fromString("13.06.2017-10:30:14","dd.MM.yyyy-hh:mm:ss"),"testestsetsetstest2");
+    Article* a3 = new Article("testA3",QDateTime::fromString("13.06.2017-10:32:14","dd.MM.yyyy-hh:mm:ss"),"testestsetsetstest3");
+    newNote->ajouterVersion(a1);
+    newNote->ajouterVersion(a2);
+    newNote->ajouterVersion(a3);
+    NM->ajouterNote(newNote);
+    qDebug() << NM->getNote("note1")->getVersion(0)->getTitle() << "\n";
+    ///////////////////////////////////////////////
+    ///////////////////////////////////////////////
+    ///////////////////////////////////////////////
+
+
 
     QMenu *menuNote = menuBar()->addMenu("Note");
     QAction *afficherNote = new QAction("Afficher note");
@@ -47,7 +71,7 @@ void Interface::ouvrir_relations() {
     window_relations = new CentreRelations(this);
     window_relations->move(800,15);
     window_relations->show();
-    QObject::connect(window_relations, SIGNAL((window_relations->getBoutonAfficher())->clicked()), this, SLOT(ouvrir_relation_details(getIndiceRelation())));
+    QObject::connect(window_relations->getBoutonAfficher(), SIGNAL(clicked()), this, SLOT(ouvrir_relation_details(getIndiceRelation())));
 }
 /*
 void ouvrir_note() {

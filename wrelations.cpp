@@ -4,7 +4,7 @@ CentreRelations::CentreRelations(QMainWindow *parent):
     QWidget(parent) {
 
     NotesManager *NM = NotesManager::getInstance();
-    RelationManager *RM = RelationManager::getRelationManager();
+    RelationManager* RM = RelationManager::getRelationManager();
 
     titre_relations = new QLabel(this);
     titre_relations->setText("Les relations disponibles :");

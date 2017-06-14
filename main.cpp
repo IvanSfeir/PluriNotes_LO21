@@ -18,7 +18,7 @@ int main(int argc, char* argv[]) {
     //static CentreNoteAct centrenoteact=0;
     //static CentreNoteArch centrenotearch=0;
 
-
+    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QApplication app(argc, argv);
 
     Interface* interface = new Interface();
