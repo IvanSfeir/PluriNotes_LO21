@@ -47,6 +47,7 @@ Interface::Interface() {
 
     window_gauche = new Gauche(this);
     window_gauche->move(800,15);
+    QObject::connect(window_gauche)
     window_gauche->show();
 
 }

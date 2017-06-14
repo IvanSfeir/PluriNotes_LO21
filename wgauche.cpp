@@ -38,36 +38,39 @@ Gauche::Gauche(QMainWindow* parent) :
     QObject::connect(b1, SIGNAL(isClicked()), parent, SLOT(close()));
     */
 
-
+    /////////////////Note Active//////////////////////////
     titre_act = new QLabel(this);
     titre_act->setText("Les notes actives :");
 
     notes_actives = new QListWidget(this);
     notes_actives->setFixedSize(330,200);
-    notes_actives->addItem("titre act 1");
-    notes_actives->addItem("titre act 2");
-    notes_actives->addItem("titre act 3");
 
-    //qDebug() << notes_actives->currentItem()->text();
+    ///print all the note which are active
+    for (NotesManager::iterator it = NM->begin(); it != NM->end(); it++) {
+        if ((*it)->is_active())
+            notes_actives->addItem((*it)->getId());
+    }
+    ///button to show note in detail
+    bouton_afficher_act = new QPushButton("Afficher Note");
 
-    bouton_afficher_act = new QPushButton("Afficher",this);
-    //QObject::connect(bouton_afficher_act, SIGNAL(clicked()), this, SLOT(ouvrirNoteActiveId(notes_actives->currentItem()->text())));
-
+    ///////////////////////////////////////////////////////
+    /////////////////Note Archived/////////////////////////
     titre_arch = new QLabel(this);
     titre_arch->setText("Les notes archivees :");
-
     notes_archivees = new QComboBox(this);
-//    notes_archivees->addItem("titre arch 1");
-//    notes_archivees->addItem("titre arch 2");
-//    notes_archivees->addItem("titre arch 3");
-
-    bouton_afficher_arch = new QPushButton("Afficher",this);
+    ///print all the note which are acrchived
+    for (NotesManager::iterator it = NM->begin(); it != NM->end(); it++) {
+        if ((*it)->is_archived())
+            notes_archivees->addItem((*it)->getId());
+    }
+    ///////////////////////////////////////////////////////
+    bouton_afficher_arch = new QPushButton("Afficher Archived",this);
     //QObject::connect(bouton_afficher_arch,SIGNAL(clicked()),this,SLOT(ouvrirNoteArchiveeId(notes_archivees->currentText())));
 
-    for (NotesManager::iterator it = NM->end();it != NM->begin();--it) {
-        if((*it)->is_archived()) {notes_archivees->addItem((*it)->getId());}
-            else if((*it)->is_active()) {notes_actives->addItem((*it)->getId());}
-    }
+    //for (NotesManager::iterator it = NM->end();it != NM->begin();--it) {
+    //    if((*it)->is_archived()) {notes_archivees->addItem((*it)->getId());}
+    //        else if((*it)->is_active()) {notes_actives->addItem((*it)->getId());}
+    //}
 
     couche = new QVBoxLayout;
 
@@ -97,3 +100,6 @@ void Gauche::ouvrirNoteArchiveeId(const QString& ident) {
     CentreNoteArch centrenotearch(&(NM->getNote(ident)),this);
 }
 */
+void ouvrir_note() {
+
+}
