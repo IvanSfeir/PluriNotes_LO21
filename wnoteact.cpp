@@ -41,6 +41,4 @@ CentreNoteAct::CentreNoteAct(Note *note, QWidget *parent):
 
     setLayout(verti);
 
-    setFixedSize(350,200);
-
 }
