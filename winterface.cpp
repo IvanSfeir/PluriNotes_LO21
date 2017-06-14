@@ -130,12 +130,14 @@ void Interface::fermer_gauche() {
     if(window_gauche) window_gauche->close();
     if(window_creer_note) window_creer_note->close();
     if(window_creer_article) window_creer_article->close();
+    if(window_creer_image) window_creer_image->close();
+    if(window_creer_audio) window_creer_audio->close();
+    if(window_creer_video) window_creer_video->close();
 }
 
 void Interface::fermer_centre() {
     if(window_note_act) window_note_act->close();
     if(window_note_arch) window_note_arch->close();
-    //if(window_version) window_version->close();
 }
 
 ////////////////////////////PARTY SHOW NOTES/////////////////////////
@@ -189,6 +191,24 @@ void Interface::forward_to_create_type(){
         window_creer_article = new WindowCreerArticle(id,titre, this);
         window_creer_article->move(0,20);
         window_creer_article->show();
+    }
+    if(typeNote=="Image"){
+        fermer_gauche();
+        window_creer_image = new WindowCreerImage(id,titre, this);
+        window_creer_image->move(0,20);
+        window_creer_image->show();
+    }
+    if(typeNote=="Video"){
+        fermer_gauche();
+        window_creer_video = new WindowCreerVideo(id,titre, this);
+        window_creer_video->move(0,20);
+        window_creer_video->show();
+    }
+    if(typeNote=="Audio"){
+        fermer_gauche();
+        window_creer_audio = new WindowCreerAudio(id,titre, this);
+        window_creer_audio->move(0,20);
+        window_creer_audio->show();
     }
 }
 

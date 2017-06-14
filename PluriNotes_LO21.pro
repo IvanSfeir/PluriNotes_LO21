@@ -26,7 +26,10 @@ SOURCES += \
     tache.cpp \
     wcreernote.cpp \
     wcreerarticle.cpp \
-    wcreertache.cpp
+    wcreertache.cpp \
+    wcreerimage.cpp \
+    wcreeraudio.cpp \
+    wcreervideo.cpp
 
 
 HEADERS += \
@@ -50,4 +53,7 @@ HEADERS += \
     wversionarticle.h \
     wcreernote.h \
     wcreerarticle.h \
-    wcreertache.h
+    wcreertache.h \
+    wcreerimage.h \
+    wcreeraudio.h \
+    wcreervideo.h

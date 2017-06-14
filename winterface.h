@@ -18,6 +18,10 @@
 #include "wgauche.h"
 #include "wcreernote.h"
 #include "wcreerarticle.h"
+#include "wcreerimage.h"
+#include "wcreeraudio.h"
+#include "wcreervideo.h"
+
 
 class Interface : public QMainWindow {
 
@@ -32,6 +36,9 @@ class Interface : public QMainWindow {
     CentreRelations* window_relations=0;
     CentreRelationDetails* window_relation_details=0;
     WindowCreerArticle* window_creer_article=0;
+    WindowCreerImage* window_creer_image=0;
+    WindowCreerVideo* window_creer_video=0;
+    WindowCreerAudio* window_creer_audio=0;
 
 
     QMenu *menuNotes;
