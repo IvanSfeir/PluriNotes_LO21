@@ -1,7 +1,8 @@
 #include "wnoteact.h"
+#include "article.h"
 
-CentreNoteAct::CentreNoteAct(Note *note, QWidget *parent):
-    QWidget(parent) {
+CentreNoteAct::CentreNoteAct(Note *la_note, QWidget *parent):
+    note(la_note), QWidget(parent) {
 
     setFixedSize(300,350);
 
@@ -34,3 +35,11 @@ CentreNoteAct::CentreNoteAct(Note *note, QWidget *parent):
     setLayout(verti);
 
 }
+
+/*
+void CentreNoteAct::saveVersion() {
+    QString title =
+    Article* newArticle = new Article(title, QDateTime::currentDateTime(), text);
+    note->ajouterVersion(newArticle);
+}
+*/
