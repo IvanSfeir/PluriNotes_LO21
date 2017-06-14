@@ -30,7 +30,10 @@ class Gauche : public QWidget {
     QLabel *titre_arch;
     QComboBox *notes_archivees;
     QPushButton *bouton_afficher_arch;
-
+    QPushButton *restaurer;
+    QHBoxLayout *button_box;
+    QPushButton *arborescence;
+    QHBoxLayout* button_arch_box;
     /*
     QScrollArea *scrolleur;
     QWidget *contenuScrolleur;
@@ -52,6 +55,9 @@ public:
     QPushButton* getBoutonAfficherAct() {return bouton_afficher_act;}
     QComboBox* getNotesArchivees() {return notes_archivees;}
     QPushButton* getBoutonAfficherArch() {return bouton_afficher_arch;}
+    QPushButton* getBoutonAfficherArboresence() {return arborescence;}
+    QPushButton* getBoutonRestaurer() {return restaurer;}
+
 
 
     void ouvrir_note();

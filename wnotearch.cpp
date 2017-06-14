@@ -15,12 +15,12 @@ CentreNoteArch::CentreNoteArch(Note *note, QWidget *parent):
     }
 
     afficher = new QPushButton("Afficher",this);
-    restaurer = new QPushButton("Restaurer",this);
     fermer = new QPushButton("Fermer",this);
+    connect(fermer, SIGNAL(clicked()), this, SLOT(close()));
 
     horiz = new QHBoxLayout;
     horiz->addWidget(afficher);
-    horiz->addWidget(restaurer);
+    //horiz->addWidget(restaurer);
     horiz->addWidget(fermer);
 
     verti = new QVBoxLayout;

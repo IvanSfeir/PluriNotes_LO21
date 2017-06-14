@@ -20,7 +20,7 @@ class CentreNoteAct : public QWidget {
     //QLabel *titre_id3;
     QListWidget *versions;
     QPushButton *afficher;
-    QPushButton *arborescence;
+    //QPushButton *arborescence;
     QPushButton *restaurer;
     QPushButton *fermer;
 

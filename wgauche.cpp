@@ -20,7 +20,9 @@ Gauche::Gauche(QMainWindow* parent) :
             notes_actives->addItem((*it)->getId());
     }
     ///button to show note in detail
+    button_box = new QHBoxLayout;
     bouton_afficher_act = new QPushButton("Afficher Note");
+    arborescence = new QPushButton("Arborescence");
 
     ///////////////////////////////////////////////////////
     /////////////////Note Archived/////////////////////////
@@ -33,17 +35,20 @@ Gauche::Gauche(QMainWindow* parent) :
             notes_archivees->addItem((*it)->getId());
     }
     ///////////////////////////////////////////////////////
-    bouton_afficher_arch = new QPushButton("Afficher Archived",this);
-
+    button_arch_box = new QHBoxLayout;
+    bouton_afficher_arch = new QPushButton("Afficher Archived");
+    restaurer = new QPushButton("Restaurer");
 
     couche = new QVBoxLayout;
 
+    button_box->addWidget(bouton_afficher_act);button_box->addWidget(arborescence);
+    button_arch_box->addWidget(bouton_afficher_arch);button_arch_box->addWidget(restaurer);
     couche->addWidget(titre_act);
     couche->addWidget(notes_actives);
-    couche->addWidget(bouton_afficher_act);
+    couche->addLayout(button_box);
     couche->addWidget(titre_arch);
     couche->addWidget(notes_archivees);
-    couche->addWidget(bouton_afficher_arch);
+    couche->addLayout(button_arch_box);
 
 
     this->setLayout(couche);

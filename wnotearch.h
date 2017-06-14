@@ -20,7 +20,7 @@ class CentreNoteArch : public QWidget {
     //QLabel *titre_id3;
     QListWidget *versions;
     QPushButton *afficher;
-    QPushButton *restaurer;
+    //QPushButton *restaurer;
     QPushButton *fermer;
 
     QHBoxLayout *horiz;
