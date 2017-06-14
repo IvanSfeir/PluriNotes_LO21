@@ -61,13 +61,9 @@ WindowCreerNote::WindowCreerNote(QWidget *parent) {
 void WindowCreerNote::forward_to_create_type(QWidget *parent){
     QString type_test=this->getTypeNote();  //selected type of not
 
-<<<<<<< HEAD
-    if(type_test=="Article"){}
-        //WindowCreerArticle(getId(),getTitle());
-=======
     if(type_test=="Article")
         WindowCreerArticle(getId(),getTitle(),parent);
->>>>>>> 2165640f3608a2cd1c96bf46489c8aca363dfd32
+
 //    if(type_test=="Tache")
 //        WindowCreerArticle(getId(),getTitle());
 //    if(type_test=="Image")
