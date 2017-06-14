@@ -50,8 +50,9 @@ Interface::Interface() {
     QAction *afficherNotes = new QAction("Afficher notes");
     menuNotes->addAction(afficherNotes);
     QObject::connect(afficherNotes, SIGNAL(triggered()), this, SLOT(ouvrir_gauche()));
-    //menuNotes->addAction(creerNote);
-    //QObject::connect(creerNote, SIGNAL(triggered()), this, SLOT(ouvrir_creer_note()));
+    QAction *creerNote = new QAction("Creer note");
+    menuNotes->addAction(creerNote);
+    QObject::connect(creerNote, SIGNAL(triggered()), this, SLOT(ouvrir_creer_note()));
 
     QMenu *menuRelations = menuBar()->addMenu("Relations");
     QAction *afficherRelations = new QAction("Afficher Relations");
@@ -140,6 +141,8 @@ void Interface::fermer_centre() {
     //if(window_version) window_version->close();
 }
 
+////////////////////////////PARTY SHOW NOTES/////////////////////////
+/////////////////////////////////////////////////////////////////////
 void Interface::ouvrir_gauche() {
     window_gauche = new Gauche(this);
     window_gauche->move(0,20);
@@ -166,4 +169,11 @@ void Interface::ouvrir_note_archivee_id() {
     window_note_arch->move(400,15);
     window_note_arch->show();
 }
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
 
+////////////////////////////PARTY CREATE NOTE////////////////////////
+/////////////////////////////////////////////////////////////////////
+void Interface::ouvrir_creer_note() {
+
+}

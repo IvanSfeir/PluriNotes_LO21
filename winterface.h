@@ -60,10 +60,11 @@ public slots:
     void avant_de_fermer();
     void ouvrir_relations();
     void ouvrir_relation_details(unsigned int position);
-    void ouvrir_note_active_id();
-    void ouvrir_note_archivee_id();
-    void ouvrir_creer_note();
-    void ouvrir_gauche();
+    void ouvrir_gauche();                                   //done
+    void ouvrir_note_active_id();                           //done
+    void ouvrir_note_archivee_id();                         //done
+    void ouvrir_creer_note();                               //working
+
 
     //void fermer_centre();
 
