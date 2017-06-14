@@ -125,7 +125,7 @@ void Interface::ouvrir_note_active_id() {
 }
 
 void Interface::ouvrir_note_archivee_id() {
-    QString ident = "sadfd";
+    QString ident = window_gauche->getNotesArchivees()->currentItem()->text();;
     NotesManager *NM = NotesManager::getInstance();
     //fermer_centre();
     window_note_arch = new CentreNoteArch(NM->getNote(ident),this);
