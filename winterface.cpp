@@ -107,6 +107,12 @@ void Interface::fermer_gauche() {
     if(window_gauche) window_gauche->close();
 }
 
+void Interface::fermer_centre() {
+    if(window_note_act) window_note_act->close();
+    if(window_note_arch) window_note_arch->close();
+    //if(window_version) window_version->close();
+}
+
 void Interface::ouvrir_gauche() {
     window_gauche = new Gauche(this);
     window_gauche->move(0,20);
@@ -119,15 +125,17 @@ void Interface::ouvrir_note_active_id() {
     QString ident = window_gauche->getNotesActives()->currentItem()->text();
     qDebug() << ident;
     NotesManager *NM = NotesManager::getInstance();
-
+    fermer_centre();
     window_note_act = new CentreNoteAct (NM->getNote(ident),this);
+    window_note_act->move(400,15);
     window_note_act->show();
 }
 
 void Interface::ouvrir_note_archivee_id() {
     QString ident = window_gauche->getNotesArchivees()->currentItem()->text();;
     NotesManager *NM = NotesManager::getInstance();
-    //fermer_centre();
+    fermer_centre();
     window_note_arch = new CentreNoteArch(NM->getNote(ident),this);
+    window_note_act->move(400,15);
     window_note_arch->show();
 }
