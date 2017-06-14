@@ -18,6 +18,7 @@
 #include "wgauche.h"
 #include "wcreernote.h"
 #include "wcreerarticle.h"
+#include <QCloseEvent>
 
 class Interface : public QMainWindow {
 
@@ -50,7 +51,7 @@ public:
     void fermer_droite();
     void fermer_gauche();
     void fermer_centre();
-
+    void closeEvent(QCloseEvent *bar);
 
 
 signals:
