@@ -21,6 +21,7 @@
 #include "wcreerimage.h"
 #include "wcreeraudio.h"
 #include "wcreervideo.h"
+#include "wcreertache.h"
 #include <QCloseEvent>
 
 class Interface : public QMainWindow {
@@ -39,7 +40,7 @@ class Interface : public QMainWindow {
     WindowCreerImage* window_creer_image=0;
     WindowCreerVideo* window_creer_video=0;
     WindowCreerAudio* window_creer_audio=0;
-
+    WindowCreerTache* window_creer_tache=0;
 
     QMenu *menuNotes;
     QMenu *menuRelations;

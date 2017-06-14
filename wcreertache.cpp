@@ -20,23 +20,23 @@ WindowCreerTache::WindowCreerTache(QString& ident, QString& titre, QWidget *pare
 
     //Tache
     action = new QHBoxLayout;
-    action_label = new QLabel("Action :");
+    action_label = new QLabel("*Action :");
     action_box = new QTextEdit;
 
     statut = new QHBoxLayout;
-    statut_label = new QLabel("Statut :");
+    statut_label = new QLabel("*Statut :(en_cours, attente, terminee)");
     statut_box = new QLineEdit;
 
     priorite = new QHBoxLayout;
-    prio_label = new QLabel("Priorite :");
+    prio_label = new QLabel("Priorite (>=0) : (optionelle)");
     prio_box = new QLineEdit;
 
     date_echeance_day = new QHBoxLayout;
-    date_e_day_label= new QLabel("Date de la date d'echeance :(dd.MM.yyyy)");
+    date_e_day_label= new QLabel("Date de la date d'echeance : (15.05.2017)");
     date_e_day_box = new QLineEdit;
 
     date_echeance_min= new QHBoxLayout;
-    date_e_min_label= new QLabel("Temps de la date d'echeance :(hh::mm:ss)");
+    date_e_min_label= new QLabel("Temps de la date d'echeance : (14:13:09)");
     date_e_min_box= new QLineEdit;
 
     button_bar = new QHBoxLayout;
@@ -49,7 +49,7 @@ WindowCreerTache::WindowCreerTache(QString& ident, QString& titre, QWidget *pare
     id_title->addWidget(id_label); id_title->addWidget(id_text);
     titre_title->addWidget(titre_label); titre_title->addWidget(titre_text);
     action->addWidget(action_label); action->addWidget(action_box);
-    statut->addWidget(statut_label); action->addWidget(statut_box);
+    statut->addWidget(statut_label); statut->addWidget(statut_box);
     priorite->addWidget(prio_label); priorite->addWidget(prio_box);
     date_echeance_day->addWidget(date_e_day_label); date_echeance_day->addWidget(date_e_day_box);
     date_echeance_min->addWidget(date_e_min_label); date_echeance_min->addWidget(date_e_min_box);

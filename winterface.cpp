@@ -122,6 +122,7 @@ void Interface::fermer_gauche() {
     if(window_creer_image) window_creer_image->close();
     if(window_creer_audio) window_creer_audio->close();
     if(window_creer_video) window_creer_video->close();
+    if(window_creer_tache) window_creer_tache->close();
 }
 
 void Interface::fermer_centre() {
@@ -199,6 +200,12 @@ void Interface::forward_to_create_type(){
         window_creer_audio = new WindowCreerAudio(id,titre, this);
         window_creer_audio->move(0,20);
         window_creer_audio->show();
+    }
+    if(typeNote=="Tache"){
+        fermer_gauche();
+        window_creer_tache = new WindowCreerTache(id,titre, this);
+        window_creer_tache->move(0,20);
+        window_creer_tache->show();
     }
 }
 
