@@ -71,12 +71,6 @@ Interface::Interface() {
 
 
     //////////////////////////////////////////////////////////////////////////////////////
-
-    //QString id = "idE";
-    //QString titre = "titreE";
-    //window_creer_article = new WindowCreerArticle(id,titre, this);
-    //window_creer_article->move(0,20);
-    //window_creer_article->show();
 }
 
 void Interface::closeEvent(QCloseEvent *bar){
@@ -108,17 +102,6 @@ void Interface::ouvrir_relations() {
     window_relations->show();
     QObject::connect(window_relations->getBoutonAfficher(), SIGNAL(clicked()), this, SLOT(ouvrir_relation_details(getIndiceRelation())));
 }
-
-
-/*
-void fermer_centre() {
-    if(centrenoteact) centrenoteact->close();
-    if(centrenotearch) centrenotearch->close();
-    if(centreversion) centreversion->close();
-    if(centrerelations) centrerelations->close();
-    if(centrerelationdetails) centrerelationdetails->close();
-}
-*/
 
 void Interface::ouvrir_relation_details(unsigned int position) {
     RelationManager *RM = RelationManager::getRelationManager();
@@ -154,6 +137,7 @@ void Interface::ouvrir_gauche() {
     window_gauche->move(0,20);
     QObject::connect(window_gauche->getBoutonAfficherAct(),SIGNAL(clicked()),this,SLOT(ouvrir_note_active_id()));
     QObject::connect(window_gauche->getBoutonAfficherArch(),SIGNAL(clicked()),this,SLOT(ouvrir_note_archivee_id()));
+    QObject::connect(window_gauche->getBoutonRestaurer(), SIGNAL(clicked()),this,SLOT(restaurer_note()));
     window_gauche->show();
 }
 
@@ -218,4 +202,15 @@ void Interface::forward_to_create_type(){
     }
 }
 
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
 
+///////////////////////////PARTIE MANIPULATE NOTE////////////////////
+/////////////////////////////////////////////////////////////////////
+void Interface::restaurer_note(){
+    QString ident = window_gauche->getNotesArchivees()->currentText();
+    NotesManager *NM = NotesManager::getInstance();
+    Note* restoreNote = NM->getNote(ident);
+    restoreNote->setEtat(active);
+    ouvrir_gauche();
+}

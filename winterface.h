@@ -72,8 +72,8 @@ public slots:
     void ouvrir_note_active_id();                           //done
     void ouvrir_note_archivee_id();                         //done
     void ouvrir_creer_note();                               //working
-    void forward_to_create_type();
-
+    void forward_to_create_type();                          //done
+    void restaurer_note();
     //void fermer_centre();
 
 };
