@@ -46,8 +46,8 @@ Interface::Interface() {
     connect(actionQuitter, SIGNAL(triggered()), this, SLOT(avant_de_fermer()));
 
     window_gauche = new Gauche(this);
-    window_gauche->move(800,15);
-    QObject::connect(window_gauche)
+    window_gauche->move(0,20);
+    //QObject::connect(window_gauche)
     window_gauche->show();
 
 }
