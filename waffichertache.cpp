@@ -28,7 +28,7 @@ WindowAfficherTache::WindowAfficherTache(Tache *ta, QWidget *parent):
 
     date_echeance_day = new QHBoxLayout;
     date_e_day_label= new QLabel("Date d'echeance : (i.e 01.01.2000)");
-    QString s = dynamic_cast<QString>(tache->getDate_echeance());
+    QString s = (tache->getDate_echeance()).toString("dd.MM.yyyy-hh::mm:ss");
     date_e_day_box = new QLineEdit(s);
 
 //    date_echeance_min= new QHBoxLayout;
