@@ -11,11 +11,11 @@ Interface::Interface() {
     //init for testing////////////////////////////
     //////////////////////////////////////////////
     NotesManager* NM = NotesManager::getInstance();
-    RelationManager* RM = RelationManager::getRelationManager();
-    RelationPreexistente* RP = RelationPreexistente::getRelationPreexistente();
-    RM->ajouterRelation(RP);
-    RelationManager::iterator it = RM->begin();
-    qDebug() << (*it)->getOrientee();
+//    RelationManager* RM = RelationManager::getRelationManager();
+//    RelationPreexistente* RP = RelationPreexistente::getRelationPreexistente();
+//    RM->ajouterRelation(RP);
+//    RelationManager::iterator it = RM->begin();
+//    qDebug() << (*it)->getOrientee();
 
     Note* newNote = new Note("note1"); //id=1
     Article* a1 = new Article("testA1",QDateTime::currentDateTime(),"testestsetsetstest");

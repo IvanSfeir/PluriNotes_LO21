@@ -20,8 +20,8 @@ WindowAfficherArticle::WindowAfficherArticle(Article* art, QWidget* parent):
     button_bar = new QHBoxLayout;
     //button_save = new QPushButton("Sauvegarder");
     //QObject::connect(button_save, SIGNAL(clicked()), this, SLOT(save()));
-    //button_close = new QPushButton("Fermer");
-    //QObject::connect(button_close, SIGNAL(clicked()), this, SLOT(close()));
+    button_close = new QPushButton("Fermer");
+    QObject::connect(button_close, SIGNAL(clicked()), this, SLOT(close()));
 
     titre_title->addWidget(titre_label); titre_title->addWidget(titre_text);
     text_title->addWidget(text_label); text_title->addWidget(text_box);
@@ -30,6 +30,7 @@ WindowAfficherArticle::WindowAfficherArticle(Article* art, QWidget* parent):
     frame->addLayout(titre_title);
     frame->addLayout(text_title);
     //frame->addLayout(button_bar);
+    frame->addWidget(button_close);
     this->setLayout(frame);
 }
 
