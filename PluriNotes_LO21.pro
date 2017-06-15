@@ -33,9 +33,8 @@ SOURCES += \
     wafficherarticle.cpp \
     wafficherimage.cpp \
     waffichervideo.cpp \
-    hafficheraudio.cpp
-    waffichercouple.cpp \
-    windowcreerrelation.cpp
+    hafficheraudio.cpp \
+    waffichercouple.cpp
 
 
 HEADERS += \
