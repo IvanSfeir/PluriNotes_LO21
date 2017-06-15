@@ -86,7 +86,7 @@ void Interface::closeEvent(QCloseEvent *bar){
     NM->libererInstance();
     bar->accept();
 }
-/*
+
 void Interface::avant_de_fermer() {
     NotesManager *NM = NotesManager::getInstance();
     //if (!(NM->is_bin_empty()) and (!actionCorbeilleAuto->isChecked())) {
@@ -99,32 +99,32 @@ void Interface::avant_de_fermer() {
         msgBox.setInformativeText("Voulez-vous supprimer definitivement les notes de la corbeille ?");
         msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
         msgBox.setDefaultButton(QMessageBox::Save);
-        int ret = msgBox.exec();
-        // int reponse = QMessageBox::question(this,"Corbeille","Voulez-vous supprimer definitivement les notes de la corbeille ?");
-        // save(NM, reponse);
-        switch (ret) {
-////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! EN CHANTIER ...  !!!!!!!!!!!!!!!!!////////////////////////////
-          case QMessageBox::Save:
-              // Save was clicked
-            close();
-              break;
-          case QMessageBox::Discard:
-              // Don't Save was clicked
-            close();
-              break;
-//          case QMessageBox::Cancel:
-//              // Cancel was clicked
+//        int ret = msgBox.exec();
+//        // int reponse = QMessageBox::question(this,"Corbeille","Voulez-vous supprimer definitivement les notes de la corbeille ?");
+//        // save(NM, reponse);
+//        switch (ret) {
+//////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! EN CHANTIER ...  !!!!!!!!!!!!!!!!!////////////////////////////
+//          case QMessageBox::Save:
+//              // Save was clicked
+//            close();
 //              break;
-//          default:
-//              // should never be reached
-              break;
-        }
+//          case QMessageBox::Discard:
+//              // Don't Save was clicked
+//            close();
+//              break;
+////          case QMessageBox::Cancel:
+////              // Cancel was clicked
+////              break;
+////          default:
+////              // should never be reached
+//              break;
+//        }
     }
     NotesManager::libererInstance();
     RelationManager::libererRelationManager();
     this->close();
 }
-*/
+
 ///////////////////RELATION////////////////////////////
 void Interface::ouvrir_relations() {
     //fermer_droite();
