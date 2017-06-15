@@ -160,6 +160,7 @@ void Interface::fermer_centre() {
     if(window_note_act) window_note_act->close();
     if(window_note_arch) window_note_arch->close();
     if(window_afficher_article) window_afficher_article->close();
+    if(window_afficher_image) window_afficher_image->close();
 }
 
 ///////////////////////////PARTIE SHOW NOTES/////////////////////////
@@ -287,14 +288,20 @@ void Interface::ouvrir_version_act() {
         window_afficher_article->move(400,20);
         window_afficher_article->show();
     }
+    if(typeid(*vers)==typeid(image)) {
+        window_afficher_image = new WindowAfficherImage(dynamic_cast<image*>(vers), this);
+        window_afficher_image->move(400,20);
+        window_afficher_image->show();
+    }
 //    if(typeid(*vers)==typeid(Article)) {
 //        window_afficher_article = new WindowAfficherArticle(vers, this);
-//    }
+//        window_afficher_article->move(400,20);
+//        window_afficher_article->show();
+    //    }
 //    if(typeid(*vers)==typeid(Article)) {
 //        window_afficher_article = new WindowAfficherArticle(vers, this);
-//    }
-//    if(typeid(*vers)==typeid(Article)) {
-//        window_afficher_article = new WindowAfficherArticle(vers, this);
+//        window_afficher_article->move(400,20);
+//        window_afficher_article->show();
 //    }
 }
 
@@ -309,14 +316,23 @@ void Interface::ouvrir_version_arch() {
         window_afficher_article->getText()->setReadOnly(true);
         window_afficher_article->getTitle()->setReadOnly(true);
     }
+    if(typeid(*vers)==typeid(image)) {
+        window_afficher_image = new WindowAfficherImage(dynamic_cast<image*>(vers), this);
+        window_afficher_image->move(400,20);
+        window_afficher_image->show();
+        window_afficher_image->getDesc()->setReadOnly(true);
+        window_afficher_image->getTitle()->setReadOnly(true);
+        window_afficher_image->getChemin()->setReadOnly(true);
+    }
 //    if(typeid(*vers)==typeid(Article)) {
 //        window_afficher_article = new WindowAfficherArticle(vers, this);
-//    }
+//        window_afficher_article->move(400,20);
+//        window_afficher_article->show();
+    //    }
 //    if(typeid(*vers)==typeid(Article)) {
 //        window_afficher_article = new WindowAfficherArticle(vers, this);
-//    }
-//    if(typeid(*vers)==typeid(Article)) {
-//        window_afficher_article = new WindowAfficherArticle(vers, this);
+//        window_afficher_article->move(400,20);
+//        window_afficher_article->show();
 //    }
 }
 
