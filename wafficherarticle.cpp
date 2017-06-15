@@ -18,19 +18,19 @@ WindowAfficherArticle::WindowAfficherArticle(Article* art, QWidget* parent):
     text_box = new QTextEdit(article->getText());
 
     button_bar = new QHBoxLayout;
-    //button_save = new QPushButton("Sauvegarder");
+    button_save = new QPushButton("Sauvegarder");
     //QObject::connect(button_save, SIGNAL(clicked()), this, SLOT(save()));
     button_close = new QPushButton("Fermer");
     QObject::connect(button_close, SIGNAL(clicked()), this, SLOT(close()));
 
     titre_title->addWidget(titre_label); titre_title->addWidget(titre_text);
     text_title->addWidget(text_label); text_title->addWidget(text_box);
-    //button_bar->addWidget(button_save); button_bar->addWidget(button_close);
+    button_bar->addWidget(button_save); button_bar->addWidget(button_close);
 
     frame->addLayout(titre_title);
     frame->addLayout(text_title);
-    //frame->addLayout(button_bar);
-    frame->addWidget(button_close);
+    frame->addLayout(button_bar);
+    //frame->addWidget(button_close);
     this->setLayout(frame);
 }
 

@@ -87,14 +87,42 @@ void Interface::closeEvent(QCloseEvent *bar){
 }
 
 void Interface::avant_de_fermer() {
+<<<<<<< HEAD
     //NotesManager *NM = NotesManager::getInstance();
     //if (!(NM->corbeilleIsEmpty()) and (!actionCorbeilleAuto->isChecked())) {
+=======
+    NotesManager *NM = NotesManager::getInstance();
+    //if (!(NM->is_bin_empty()) and (!actionCorbeilleAuto->isChecked())) {
+>>>>>>> 64220457ee392ddfdb5c53c462a3c3b14bc44718
     actionCorbeilleAuto->setChecked(true);
     bool booleen = actionCorbeilleAuto->isChecked();
     if (booleen == true) {
-        QMessageBox::information(this,"checked","checked");
-        // int reponse = QMessageBox::question(this,"Corbeille","Voulez-vous supprimer definitivement les notes de la corbeille ?");
-        // save(NM, reponse);
+        //QMessageBox::information(this,"checked","checked");
+        QMessageBox msgBox;
+        msgBox.setText("Corbeille");
+        msgBox.setInformativeText("Voulez-vous supprimer definitivement les notes de la corbeille ?");
+        msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+        msgBox.setDefaultButton(QMessageBox::Save);
+//        int ret = msgBox.exec();
+//        // int reponse = QMessageBox::question(this,"Corbeille","Voulez-vous supprimer definitivement les notes de la corbeille ?");
+//        // save(NM, reponse);
+//        switch (ret) {
+//////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! EN CHANTIER ...  !!!!!!!!!!!!!!!!!////////////////////////////
+//          case QMessageBox::Save:
+//              // Save was clicked
+//            close();
+//              break;
+//          case QMessageBox::Discard:
+//              // Don't Save was clicked
+//            close();
+//              break;
+////          case QMessageBox::Cancel:
+////              // Cancel was clicked
+////              break;
+////          default:
+////              // should never be reached
+//              break;
+//        }
     }
     NotesManager::libererInstance();
     RelationManager::libererRelationManager();
@@ -168,8 +196,8 @@ void Interface::ouvrir_note_archivee_id() {
     NotesManager *NM = NotesManager::getInstance();
     fermer_centre();
     window_note_arch = new CentreNoteArch(NM->getNote(ident),this);
-    window_note_arch->move(400,15);
     QObject::connect(this->window_note_arch->getBoutonAfficherVersion(), SIGNAL(clicked()), this, SLOT(ouvrir_version_arch()));
+    window_note_arch->move(400,15);
     window_note_arch->show();
 }
 
@@ -257,22 +285,19 @@ void Interface::restaurer_version(){
 void Interface::ouvrir_version_act() {
     unsigned int pos = window_note_act->getListVersions()->currentRow();
     Version* vers = currentNote->getVersion(pos);
+    fermer_centre();
     if(typeid(*vers)==typeid(Article)) {
-        fermer_centre();
         window_afficher_article = new WindowAfficherArticle(dynamic_cast<Article*>(vers), this);
-        window_afficher_article->move(400,15);
+        window_afficher_article->move(400,20);
         window_afficher_article->show();
     }
 //    if(typeid(*vers)==typeid(Article)) {
-//        fermer_centre();
 //        window_afficher_article = new WindowAfficherArticle(vers, this);
 //    }
 //    if(typeid(*vers)==typeid(Article)) {
-//        fermer_centre();
 //        window_afficher_article = new WindowAfficherArticle(vers, this);
 //    }
 //    if(typeid(*vers)==typeid(Article)) {
-//        fermer_centre();
 //        window_afficher_article = new WindowAfficherArticle(vers, this);
 //    }
 }
@@ -280,21 +305,23 @@ void Interface::ouvrir_version_act() {
 void Interface::ouvrir_version_arch() {
     unsigned int pos = window_note_arch->getListVersions()->currentRow();
     Version* vers = currentNote->getVersion(pos);
+    fermer_centre();
     if(typeid(*vers)==typeid(Article)) {
-        fermer_centre();
         window_afficher_article = new WindowAfficherArticle(dynamic_cast<Article*>(vers), this);
+        window_afficher_article->move(400,20);
+        window_afficher_article->show();
+        window_afficher_article->getText()->setReadOnly(true);
+        window_afficher_article->getTitle()->setReadOnly(true);
     }
 //    if(typeid(*vers)==typeid(Article)) {
-//        fermer_centre();
 //        window_afficher_article = new WindowAfficherArticle(vers, this);
 //    }
 //    if(typeid(*vers)==typeid(Article)) {
-//        fermer_centre();
 //        window_afficher_article = new WindowAfficherArticle(vers, this);
 //    }
 //    if(typeid(*vers)==typeid(Article)) {
-//        fermer_centre();
 //        window_afficher_article = new WindowAfficherArticle(vers, this);
 //    }
 }
 
+//void sauver_article() {}
