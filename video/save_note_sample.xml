@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Note>
+    <id>note1</id>
+    <nbVersion>5</nbVersion>
+    <nbMaxVersion>10</nbMaxVersion>
+    <Type_etat_note>active</Type_etat_note>
+    <Date_creation>15.06.2017-20::55:21</Date_creation>
+    <Version>
+        <Titre>testA1</Titre>
+        <Date_derniere_modification>15.06.2017-20::55:21</Date_derniere_modification>
+        <type>Article</type>
+        <text>testestsetsetstest</text>
+    </Version>
+    <Version>
+        <Titre>testA2</Titre>
+        <Date_derniere_modification>13.06.2017-10::30:14</Date_derniere_modification>
+        <type>Article</type>
+        <text>testestsetsetstest2</text>
+    </Version>
+    <Version>
+        <Titre>testA3</Titre>
+        <Date_derniere_modification>13.06.2017-10::32:14</Date_derniere_modification>
+        <type>Article</type>
+        <text>testestsetsetstest3</text>
+    </Version>
+    <Version>
+        <Titre>testA3modifi</Titre>
+        <Date_derniere_modification>15.06.2017-20::58:27</Date_derniere_modification>
+        <type>Article</type>
+        <text>testestsetsetstest3 modifciation</text>
+    </Version>
+    <Version>
+        <Titre>testA2</Titre>
+        <Date_derniere_modification>13.06.2017-10::30:14</Date_derniere_modification>
+        <type>Article</type>
+        <text>testestsetsetstest2</text>
+    </Version>
+</Note>
+<Note>
+    <id>noteArch</id>
+    <nbVersion>3</nbVersion>
+    <nbMaxVersion>10</nbMaxVersion>
+    <Type_etat_note>archive</Type_etat_note>
+    <Date_creation>15.06.2017-20::55:21</Date_creation>
+    <Version>
+        <Titre>testA1'</Titre>
+        <Date_derniere_modification>15.06.2017-20::55:21</Date_derniere_modification>
+        <type>Article</type>
+        <text>testestsetsetstest</text>
+    </Version>
+    <Version>
+        <Titre>testA2'</Titre>
+        <Date_derniere_modification>13.06.2017-10::30:14</Date_derniere_modification>
+        <type>Article</type>
+        <text>testestsetsetstest2</text>
+    </Version>
+    <Version>
+        <Titre>testA3'</Titre>
+        <Date_derniere_modification>13.06.2017-10::32:14</Date_derniere_modification>
+        <type>Article</type>
+        <text>testestsetsetstest3</text>
+    </Version>
+</Note>
+<Note>
+    <id>noteArch2</id>
+    <nbVersion>4</nbVersion>
+    <nbMaxVersion>10</nbMaxVersion>
+    <Type_etat_note>active</Type_etat_note>
+    <Date_creation>15.06.2017-20::55:21</Date_creation>
+    <Version>
+        <Titre>testA1''</Titre>
+        <Date_derniere_modification>15.06.2017-20::55:21</Date_derniere_modification>
+        <type>Article</type>
+        <text>testestsetsetstest</text>
+    </Version>
+    <Version>
+        <Titre>testA2''</Titre>
+        <Date_derniere_modification>13.06.2017-10::30:14</Date_derniere_modification>
+        <type>Article</type>
+        <text>testestsetsetstest2</text>
+    </Version>
+    <Version>
+        <Titre>testA3''</Titre>
+        <Date_derniere_modification>13.06.2017-10::32:14</Date_derniere_modification>
+        <type>Article</type>
+        <text>testestsetsetstest3</text>
+    </Version>
+    <Version>
+        <Titre>testA3''</Titre>
+        <Date_derniere_modification>15.06.2017-21::00:08</Date_derniere_modification>
+        <type>Article</type>
+        <text>testestsetsetstest3 archive modif</text>
+    </Version>
+</Note>
+<Note>
+    <id>audio</id>
+    <nbVersion>1</nbVersion>
+    <nbMaxVersion>10</nbMaxVersion>
+    <Type_etat_note>active</Type_etat_note>
+    <Date_creation>15.06.2017-21::00:48</Date_creation>
+    <Version>
+        <Titre>audio</Titre>
+        <Date_derniere_modification>15.06.2017-21::00:48</Date_derniere_modification>
+        <type>audio</type>
+        <audio_URL>audio mp3</audio_URL>
+        <desc>description</desc>
+        <img_URL>img</img_URL>
+    </Version>
+</Note>
