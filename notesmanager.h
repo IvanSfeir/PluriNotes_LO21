@@ -83,14 +83,9 @@ public:
      * @return 1 s'il y a des notes en sursis, 0 sinon
      */
     bool is_bin_empty();
-<<<<<<< HEAD
-     /*!
-     * Cherche s'il y a des notes supprimées et archivées
-=======
 
     /*! \fn     bool is_archived_in_bin()
      * \brief s'il y a des notes supprimées et archivées
->>>>>>> 5c13c9765e095231b449e6d51412c5fa9b20023f
      * @return  1 s'il y a des notes archivées, 0 sinon
      */
     bool is_archived_in_bin();
