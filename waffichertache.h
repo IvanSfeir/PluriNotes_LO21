@@ -8,6 +8,8 @@
 #include<QVBoxLayout>
 #include<QTextEdit>
 #include<QLineEdit>
+#include<QString>
+#include<QDateTime>
 #include"note.h"
 #include"version.h"
 #include"tache.h"
@@ -58,7 +60,7 @@ public:
     QLineEdit* getStatutBox() {return statut_box;}
     QLineEdit* getPrioBox() {return statut_box;}
     QLineEdit* getDate_e_DayBox() {return date_e_day_box;}
-    QLineEdit* getDate_e_MinBox() {return date_e_min_box;}
+//    QLineEdit* getDate_e_MinBox() {return date_e_min_box;}
 
 signals:
 

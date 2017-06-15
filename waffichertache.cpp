@@ -23,11 +23,12 @@ WindowAfficherTache::WindowAfficherTache(Tache *ta, QWidget *parent):
 
     priorite = new QHBoxLayout;
     prio_label = new QLabel("Priorite (>=0) :");
+    //QString tmp = to_string(tache->getPriorite());
     prio_box = new QLineEdit(to_string(tache->getPriorite()));
 
     date_echeance_day = new QHBoxLayout;
     date_e_day_label= new QLabel("Date d'echeance : (i.e 01.01.2000)");
-    date_e_day_box = new QLineEdit(tache->getDate_echeance());
+    date_e_day_box = new QLineEdit(toString(tache->getDate_echeance()));
 
 //    date_echeance_min= new QHBoxLayout;
 //    date_e_min_label= new QLabel("Temps de l'echeance : (i.e. 12:00:00)");
