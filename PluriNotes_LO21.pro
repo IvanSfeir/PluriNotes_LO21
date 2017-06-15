@@ -35,8 +35,7 @@ SOURCES += \
     waffichervideo.cpp \
     hafficheraudio.cpp
     waffichercouple.cpp \
-    windowcreerrelation.cpp
-
+    windowcreerrelation.cpp \
 
 HEADERS += \
     iterator.h \
