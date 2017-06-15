@@ -14,8 +14,12 @@
 using namespace std;
 
 enum Type_statut_tache {en_cours, attente, terminee};
+
 string enum_statut_to_string(Type_statut_tache t);
 Type_statut_tache string_to_enum_statut(const string &s);
+
+QString enum_statut_to_qstring(Type_statut_tache t);
+Type_statut_tache qstring_to_enum_statut(const QString &s);
 
 class Tache : public Version{
     QString action;
