@@ -1,3 +1,16 @@
+/*!
+ * \file haffichervideo.h
+ * \class WindowAfficherVideo haffichervideo.h
+ * \brief Définit la classe WindowAfficherVideo : Emplacement pour afficher un video
+ * \details Hérite de QWidget
+ *      \brief video : Note video
+ *   \brief titre_text: Formulaire titre de la video
+ *   \brief desc_text: Formulaire description de la video
+ *   \brief image_text: Formulaire image de la video
+ *   \brief video_text: Formulaire video de la video
+    *\brief valider : Bouton valider
+    *\brief annuler : Bouton annuler
+ */
 #ifndef HAFFICHERVIDEO_H
 #define HAFFICHERVIDEO_H
 #include<QWidget>

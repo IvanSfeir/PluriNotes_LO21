@@ -4,10 +4,10 @@
  * \brief Définit la classe WindowAfficherAudio : Emplacement pour afficher un audio
  * \details Hérite de QWidget
  *      \brief audio : Note audio
- *   \brief titre_text: Formulaire titre de la relation
- *   \brief desc_text: Formulaire titre de la relation
- *   \brief image_text: Formulaire titre de la relation
- *   \brief audio_text: Formulaire titre de la relation
+ *   \brief titre_text: Formulaire titre de la audio
+ *   \brief desc_text: Formulaire description de la audio
+ *   \brief image_text: Formulaire image de la audio
+ *   \brief audio_text: Formulaire audio de la audio
     *\brief valider : Bouton valider
     *\brief annuler : Bouton annuler
  */
