@@ -101,8 +101,11 @@ class RelationManager{
     RelationManager& operator=(const RelationManager&);
 public:
     static RelationManager* getRelationManager(){
-        if (RelationManager::instance_RelationManager==nullptr)
+        if (RelationManager::instance_RelationManager==nullptr){
             RelationManager::instance_RelationManager = new RelationManager;
+            RelationPreexistente* RP = RelationPreexistente::getRelationPreexistente();
+            instance_RelationManager->ajouterRelation(RP);
+        }
         return instance_RelationManager;
     }
     static void libererRelationManager(){

@@ -1,18 +1,28 @@
-#include "wrelations.h"
+#include "waffichercouple.h"
+#include "relation.h"
+#include <QLabel>
+#include <QWidget>
+#include <QLayout>
+#include <QPushButton>
 
-CentreRelations::CentreRelations(QMainWindow *parent):
+waffichercouple::waffichercouple(Relation* r, QMainWindow *parent):
     QWidget(parent) {
+
     setFixedSize(320,350);
-    NotesManager *NM = NotesManager::getInstance();
-    RelationManager* RM = RelationManager::getRelationManager();
+    //NotesManager *NM = NotesManager::getInstance();
+    //RelationManager* RM = RelationManager::getRelationManager();
 
-    titre_relations = new QLabel(this);
-    titre_relations->setText("Les relations disponibles :");
+    titre_relation = new QHBoxLayout;
+    titre_st = new QLabel("Les couples disponibles :");
 
-    relations = new QListWidget(this);
+    couples = new QListWidget(this);
 
-    for (RelationManager::iterator it = RM->begin(); it != RM->end(); it++) {
-        relations->addItem((*it)->getTitre());
+    QString arrow;
+    if (r->getOrientee()) arrow = "------>";
+    else arrow = "------";
+
+    for (Relation::iterator it = r->begin(); it != r->end(); it++) {
+        couples->addItem((*it)->getNote1()->getId() + arrow + (*it)->getNote2()->getId());
     }
 
 
@@ -48,6 +58,3 @@ CentreRelations::CentreRelations(QMainWindow *parent):
 
 
 }
-
-void CentreRelations::supprimerRelation() {}
-

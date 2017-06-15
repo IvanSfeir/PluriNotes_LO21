@@ -19,8 +19,7 @@ class CentreRelations : public QWidget {
     QListWidget *relations;
     QPushButton *afficher_relation;
     QPushButton *supprimer_relation;
-    QPushButton *creer_relation_orientee;
-    QPushButton *creer_relation_non_orientee;
+    QPushButton *creer_relation;
     QPushButton *fermer;
 
     QHBoxLayout *horiz1;
