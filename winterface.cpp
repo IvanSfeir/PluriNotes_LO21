@@ -86,22 +86,45 @@ void Interface::closeEvent(QCloseEvent *bar){
     NM->libererInstance();
     bar->accept();
 }
-
+/*
 void Interface::avant_de_fermer() {
     NotesManager *NM = NotesManager::getInstance();
-    //if (!(NM->corbeilleIsEmpty()) and (!actionCorbeilleAuto->isChecked())) {
+    //if (!(NM->is_bin_empty()) and (!actionCorbeilleAuto->isChecked())) {
     actionCorbeilleAuto->setChecked(true);
     bool booleen = actionCorbeilleAuto->isChecked();
     if (booleen == true) {
-        QMessageBox::information(this,"checked","checked");
+        //QMessageBox::information(this,"checked","checked");
+        QMessageBox msgBox;
+        msgBox.setText("Corbeille");
+        msgBox.setInformativeText("Voulez-vous supprimer definitivement les notes de la corbeille ?");
+        msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+        msgBox.setDefaultButton(QMessageBox::Save);
+        int ret = msgBox.exec();
         // int reponse = QMessageBox::question(this,"Corbeille","Voulez-vous supprimer definitivement les notes de la corbeille ?");
         // save(NM, reponse);
+        switch (ret) {
+////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! EN CHANTIER ...  !!!!!!!!!!!!!!!!!////////////////////////////
+          case QMessageBox::Save:
+              // Save was clicked
+            close();
+              break;
+          case QMessageBox::Discard:
+              // Don't Save was clicked
+            close();
+              break;
+//          case QMessageBox::Cancel:
+//              // Cancel was clicked
+//              break;
+//          default:
+//              // should never be reached
+              break;
+        }
     }
     NotesManager::libererInstance();
     RelationManager::libererRelationManager();
     this->close();
 }
-
+*/
 ///////////////////RELATION////////////////////////////
 void Interface::ouvrir_relations() {
     //fermer_droite();
