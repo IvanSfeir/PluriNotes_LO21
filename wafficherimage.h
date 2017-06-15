@@ -9,7 +9,6 @@
 #include<QVBoxLayout>
 #include<QTextEdit>
 #include<QLineEdit>
-#include"article.h"
 #include"note.h"
 #include"multimedia.h"
 
