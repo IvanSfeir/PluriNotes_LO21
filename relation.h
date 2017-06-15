@@ -112,6 +112,7 @@ public:
     RelationManager::instance_RelationManager=nullptr;  
     }
 
+    unsigned int getNbRelations() {return nbRelations;}
     void ajouterRelation(Relation* newRelation);
     void supprimerRelation(Relation* supprimerRelation);
 
