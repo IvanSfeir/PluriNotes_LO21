@@ -133,7 +133,7 @@ void Interface::ouvrir_relations() {
     QObject::connect(window_relations->getBoutonAfficher(), SIGNAL(clicked()), this, SLOT(ouvrir_couples()));
     //QObject::connect(window_relations->getBoutonAfficher(), SIGNAL(clicked()), this, SLOT(ouvrir_relation_details()));
     QObject::connect(window_relations->getBoutonCreate(), SIGNAL(clicked()), this, SLOT(ouvrir_creer_relation()));
-    //QObject::connect(window_creer_relation->get, SIGNAL(clicked()),this, SLOT(ouvrir_creer_relation()));
+    //QObject::connect(window_relations->get(), SIGNAL(clicked()),this, SLOT(ouvrir_creer_couple()));
 
 }
 
@@ -149,6 +149,7 @@ void Interface::fermer_droite() {
     if(window_relations) window_relations->close();
     if(window_relation_details) window_relation_details->close();
     if(window_creer_relation) window_creer_relation->close();
+    if(window_creer_couple) window_creer_couple->close();
 
 }
 
@@ -194,6 +195,31 @@ void Interface::creer_relation()
     }
     RM->ajouterRelation(rn);
 }
+
+void Interface::ouvrir_creer_couple()
+{
+    fermer_droite();
+    window_creer_couple = new WindowCreerCouple(this);
+    connect(window_creer_couple->getBoutonValider(), SIGNAL(clicked(bool)), this, SLOT(creer_couple()));
+    window_creer_couple->move(800,15);
+    window_creer_couple->show();
+}
+
+void Interface::creer_couple()
+{
+    //fermer_droite();
+    RelationManager *RM = RelationManager::getRelationManager();
+    QString id1 = window_creer_couple->getNote1();
+    QString id2 = window_creer_couple->getNote2();
+    QString label= window_creer_couple->getLabel();
+    NotesManager * NM = NotesManager::getInstance();
+    Note *n1,*n2;
+    n1=NM->getNote(id1);
+    n2=NM->getNote(id2);
+    Couple * newCouple = new Couple(n1,n2,label);
+    currentRelation->ajouterCouple(newCouple);
+}
+
 ///////////////////////////PARTIE SHOW NOTES/////////////////////////
 /////////////////////////////////////////////////////////////////////
 void Interface::ouvrir_gauche() {
@@ -380,8 +406,12 @@ void Interface::ouvrir_version_arch() {
 
 void Interface::ouvrir_couples(){
     QString rela = window_relations->getListRelation()->currentItem()->text();
+     QString rel_title=window_relations->getListRelation()->currentItem()->text();
+     RelationManager *RM= RelationManager::getRelationManager();
+     currentRelation = RM->getRelationFromTitle(rel_title);
     fermer_droite();
     window_afficher_couples = new WindowAfficherCouple(rela, this);
     window_afficher_couples->move(800,15);
     window_afficher_couples->show();
+    QObject::connect(window_afficher_couples->getButtonCreateVersion(), SIGNAL(clicked()),this, SLOT(ouvrir_creer_couple()));
 }
