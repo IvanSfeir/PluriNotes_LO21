@@ -17,12 +17,10 @@ SOURCES += \
     wnoteact.cpp \
     wrelationdetails.cpp \
     wrelations.cpp \
-    wversion.cpp \
     warborescence.cpp \
     wgauche.cpp \
     winterface.cpp \
     wnotearch.cpp \
-    wversionarticle.cpp \
     tache.cpp \
     wcreernote.cpp \
     wcreerarticle.cpp \
@@ -52,12 +50,10 @@ HEADERS += \
     wnoteact.h \
     wrelationdetails.h \
     wrelations.h \
-    wversion.h \
     warborescence.h \
     wgauche.h \
     winterface.h \
     wnotearch.h \
-    wversionarticle.h \
     wcreernote.h \
     wcreerarticle.h \
     wcreertache.h \

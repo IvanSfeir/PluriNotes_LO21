@@ -84,19 +84,42 @@ public:
 
 /*!
  * \fn     void ajouterVersion(Version *v)
- * \brief
+ * \brief : Ajoute une version à une note
  * @param v : Version d'une note
  */
     void ajouterVersion(Version *v);
-    void supprimerVersion(Version *oldVersion);
+
+    /*!
+     * \fn     void restaurerVersion(const unsigned int p)
+     * \brief Restaurer une version d'une note
+     * @param p
+     */
     void restaurerVersion(const unsigned int p);
 
+    /*!
+     * \fn     bool is_active()
+     * \brief Cherche si la Note est active
+     * @return 1 si Note est active, 0 sinon
+     */
     bool is_active(){return etat==active;}
+
+    /*!
+     * \fn     bool is_archived()
+     * \brief Cherche si la Note est archivée
+     * @return 1 si Note est archivée, 0 sinon
+     */
     bool is_archived(){return etat==archive;}
+
+    /*!
+     * \fn     bool is_reprieved()
+     * \brief Cherche si la Note est en sursis
+     * @return 1 si Note est en sursis, 0 sinon
+     */
     bool is_reprieved(){return etat==sursis;}
 
-
-    //implement iterator
+    /*!
+        * \class Template method pour la classe Iterator sur une Version
+        */
     class iterator: public Iterator<Version>{
      friend class Note;
      iterator(Version** c): Iterator(c){}
@@ -105,9 +128,5 @@ public:
     iterator end() {return iterator(versions+nbVersion);}
 
 };
-
-//type ostream ? à revoir pour Qt
-//ostream& operator<<(ostream& f, const Note& n);// operateur affichage
-
 
 #endif

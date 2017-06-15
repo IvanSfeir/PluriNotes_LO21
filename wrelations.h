@@ -1,4 +1,13 @@
-
+/*!
+ * \file wrelations.h
+ * \class CentreRelations wversionarticle.h
+ * \brief Définit la classe CentreVersionArticle
+ * \details Hérite de CentreVersion
+ *      \a texte : Texte de l'article ;
+ *   \a QLabel *textel;
+*    \a QHBoxLayout *ctexte;
+*   \a Article *article;
+ */
 #ifndef CENTRERELATIONS_H
 #define CENTRERELATIONS_H
 

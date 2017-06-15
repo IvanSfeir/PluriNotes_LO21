@@ -1,3 +1,11 @@
+/*!
+ * \file version.h
+ * \class Version version.h
+ * \brief Définit la classe Version
+ * \details Classe abstraite
+ *      \a title : Titre
+ *      \a date_modif : Date de dernière modification
+ */
 #ifndef VERSION_H
 #define VERSION_H
 
