@@ -31,8 +31,11 @@ SOURCES += \
     wcreeraudio.cpp \
     wcreervideo.cpp \
     wafficherarticle.cpp \
+    wafficherimage.cpp \
+    waffichervideo.cpp \
+    hafficheraudio.cpp
     waffichercouple.cpp \
-    windowcreerrelation.cpp \
+    windowcreerrelation.cpp
 
 
 HEADERS += \
@@ -61,5 +64,8 @@ HEADERS += \
     wcreeraudio.h \
     wcreervideo.h \
     wafficherarticle.h \
+    wafficherimage.h \
     waffichercouple.h \
     windowcreerrelation.h \
+    haffichervideo.h \
+    hafficheraudio.h

@@ -1,0 +1,4 @@
+#ifndef HAFFICHERVIDEO_H
+#define HAFFICHERVIDEO_H
+
+#endif // HAFFICHERVIDEO_H
