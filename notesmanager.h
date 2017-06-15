@@ -1,5 +1,11 @@
 /*!
+ *  \file NotesManager.h
+ *  \brief Définit la classe NotesManager : Permet de d'ajouter, supprimer, restaurer une Note. Permet de sauvegarder/charger la session dans/à partir d'un fichier XML.
  *
+ *  \details Design Pattern : Singleton et Iterator.
+ *   \a tab_notes : tableau de pointeur de Notes
+ *   \a nbNotes : nombre de notes dans tab_notes
+ *   \a nbMaxNotes : nombre de notes maximales dans tab_notes
  */
 #ifndef NOTESMANAGER_H
 #define NOTESMANAGER_H
@@ -32,12 +38,14 @@ private:
     ~NotesManager();
 
     //****** SINGLETON ******
-    /*!
-     *
-     * @param m
-     */
+
     NotesManager(const NotesManager& m){}    // empêche recopie pour singleton et composition
     NotesManager& operator=(const NotesManager& m){} // empêche affectation et composition
+
+    /*!
+ *  \brief
+ * @param m
+ */
     static NotesManager * instance_NotesManager;
 
 public:
@@ -69,33 +77,6 @@ public:
     // ********* SINGLETON *************
     static NotesManager* getInstance();
     static void libererInstance();
-
-
-//    class const_iterator{
-//            Article **current;
-//            const_iterator(Article **a):current(a){}
-
-//            friend class NotesManager;
-//        public:
-//            const_iterator():current(nullptr){}
-
-//            const Article &operator*() const {
-//                return **current;
-//            }
-
-//            const_iterator &operator++(){
-//                ++current;
-//                return *this;
-//            }
-
-//            bool operator!=(const_iterator it) const{
-//                return current != it.current;
-//            }
-
-//        };
-//    const_iterator getIterator() const{
-//            return const_iterator(tab_notes, nbNotes);
-//        }
 
     void loadNotesManager(const QString & filename); 
     void saveNotesManager(const QString & filename);
