@@ -24,6 +24,7 @@ WindowAfficherTache::WindowAfficherTache(Tache *ta, QWidget *parent):
     priorite = new QHBoxLayout;
     prio_label = new QLabel("Priorite (>=0) :");
     //QString tmp = to_string(tache->getPriorite());
+
     prio_box = new QLineEdit(QString::number(tache->getPriorite()));
 
     date_echeance_day = new QHBoxLayout;

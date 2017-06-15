@@ -1,6 +1,7 @@
 #include <typeinfo>
 #include <string>
 
+
 #include <QString>
 #include "notesmanager.h"
 #include "tache.h"
@@ -210,77 +211,75 @@ void NotesManager::saveNotesManager_no_reprieve(const QString & filename){
             if(!(tab_notes[i]->is_reprieved())) // si la note n'est pas en sursis
             {
             stream.writeStartElement("Note");
-            stream.writeStartElement("id", tab_notes[i]->getId());
+            stream.writeTextElement("id", tab_notes[i]->getId());
             QString nbV;
             QString nbMaxV;
             nbV.setNum(tab_notes[i]->getNbVersion());
             nbMaxV.setNum(tab_notes[i]->getNbMaxVersion());
-            stream.writeStartElement("nbVersion", nbV);
-            stream.writeStartElement("nbMaxVersion", nbMaxV);
+            stream.writeTextElement("nbVersion", nbV);
+            stream.writeTextElement("nbMaxVersion", nbMaxV);
             string s_etat = enum_etat_to_string(tab_notes[i]->getEtat());
-            stream.writeStartElement("Type_etat_note", QString::fromStdString( s_etat));
-            stream.writeStartElement("Date_creation", tab_notes[i]->getDateCreation().toString("dd.MM.yyyy-hh::mm:ss"));
+            stream.writeTextElement("Type_etat_note", QString::fromStdString( s_etat));
+            stream.writeTextElement("Date_creation", tab_notes[i]->getDateCreation().toString("dd.MM.yyyy-hh::mm:ss"));
             //if (tab_notes[i]->getOrientee()) stream.writeStartElement("orientation","true");
             //else stream.writeStartElement("orientation","false");
             for (Note::iterator it_note = tab_notes[i]->begin(); it_note != tab_notes[i]->end(); it_note++){
                 stream.writeStartElement("Version");
-                stream.writeStartElement("Titre", (*it_note)->getTitle());
-                stream.writeStartElement("Date_derniere_modification", (*it_note)->getDateModif().toString("dd.MM.yyyy-hh::mm:ss"));
+                stream.writeTextElement("Titre", (*it_note)->getTitle());
+                stream.writeTextElement("Date_derniere_modification", (*it_note)->getDateModif().toString("dd.MM.yyyy-hh::mm:ss"));
 
                 string type_version= typeid((*it_note)).name();
                 type_version=type_version.substr(1,type_version.length()-1); // on renvoie le nom du type de l'objet, sans le 1er char (la longueur du nom)
 
                 //if (type_version=="image") {
-                    if(typeid(*it_note)==typeid(image)){
+                    if(typeid(**it_note)==typeid(image)){
                             image *img =  dynamic_cast<image*>(*it_note);
-                            stream.writeStartElement("type", "image");
-                           stream.writeStartElement("img", img->getImg());
-                           stream.writeStartElement("desc",  img-> getDesc());
-                           stream.writeStartElement("img_URL",  img->getimg_URL());
+                            stream.writeTextElement("type", "image");
+                           stream.writeTextElement("img", img->getImg());
+                           stream.writeTextElement("desc",  img-> getDesc());
+                           stream.writeTextElement("img_URL",  img->getimg_URL());
                     }
 //                else if(type_version=="audio"){
-                        if(typeid(*it_note)==typeid(audio)){
+                        if(typeid(**it_note)==typeid(audio)){
 
                             audio *aud = dynamic_cast<audio*>(*it_note);
-                            stream.writeStartElement("type", "audio");
-                           stream.writeStartElement("audio_URL", aud->getAudio_URL());
+                            stream.writeTextElement("type", "audio");
+                           stream.writeTextElement("audio_URL", aud->getAudio_URL());
                            //stream.writeStartElement("playeraudio", enum_statut_to_string( (*it_note)->getImg_URL()));
-                           stream.writeStartElement("desc", aud->getDesc());
-                           stream.writeStartElement("img_URL", aud->getimg_URL());
+                           stream.writeTextElement("desc", aud->getDesc());
+                           stream.writeTextElement("img_URL", aud->getimg_URL());
                    }
                 //else if(type_version=="video"){
-                        if(typeid(*it_note)==typeid(video)){
+                        if(typeid(**it_note)==typeid(video)){
 
                            video *vid = dynamic_cast<video*>(*it_note);
-                           stream.writeStartElement("type", "video");
-                           stream.writeStartElement("video_URL", vid->getVideo_URL());
-                           stream.writeStartElement("desc", vid->getDesc());
-                           stream.writeStartElement("img_URL",  vid->getimg_URL());
+                           stream.writeTextElement("type", "video");
+                           stream.writeTextElement("video_URL", vid->getVideo_URL());
+                           stream.writeTextElement("desc", vid->getDesc());
+                           stream.writeTextElement("img_URL",  vid->getimg_URL());
 
     }
 //                else if(type_version=="Tache"){
-                        if(typeid(*it_note)==typeid(Tache)){
+                        if(typeid(**it_note)==typeid(Tache)){
 
                             Tache *tach =dynamic_cast<Tache*>(*it_note);
-                            stream.writeStartElement("type", "Tache");
-                           stream.writeStartElement("action", tach->getAction());
+                            stream.writeTextElement("type", "Tache");
+                           stream.writeTextElement("action", tach->getAction());
                            if(tach->getPriorite())
                            {
                                string n = std::to_string((tach->getPriorite()));
 
-                               stream.writeStartElement("priorite", QString::fromStdString(n));
+                               stream.writeTextElement("priorite", QString::fromStdString(n));
                            }
                            if((tach->getDate_echeance()).QDateTime::isNull()) stream.writeStartElement("Date_echeance", tach->getDate_echeance().toString("dd.MM.yyyy-hh::mm:ss"));
                            string s_statut=enum_statut_to_string( tach->getStatut());
-                           stream.writeStartElement("statut", QString::fromStdString(s_statut));
+                           stream.writeTextElement("statut", QString::fromStdString(s_statut));
                 }
                 //else if (type_version=="Article")
-                        if(typeid(*it_note)==typeid(image))
-
-                {
-                  stream.writeStartElement("type", "Article");
+                        if(typeid(**it_note)==typeid(Article)) {
+                  stream.writeTextElement("type", "Article");
                             Article *art=dynamic_cast<Article*>(*it_note);
-                           stream.writeStartElement("text", art->getText());
+                           stream.writeTextElement("text", art->getText());
                 }
 
                 stream.writeEndElement();
@@ -297,6 +296,7 @@ QDateTime dt = QDateTime::fromString(dateStr, fmt);
 QString timeStr = dt.toString("hh:mm");
 */
 
+/*
 void NotesManager::loadNotesManager(const QString & filename){
   NotesManager *NM= NotesManager::getInstance();
     QFile loadFile(filename);
@@ -519,7 +519,8 @@ void NotesManager::loadNotesManager(const QString & filename){
     }
     xml.clear();
 }
-
+*/
+//////////////////////////////////////////////////////
 bool NotesManager::is_bin_empty(){
     for(NotesManager::iterator it_note=NotesManager::begin(); it_note!=NotesManager::end();++it_note )
     {
@@ -557,4 +558,59 @@ bool NotesManager::is_id_taken(const QString &id){
         }
     }
    return true;
+}
+////////////////////////////////////////testting////////////////////////////////
+void NotesManager::loadNotesManager(const QString & filename){
+  NotesManager *NM= NotesManager::getInstance();
+    QFile loadFile(filename);
+    if (!loadFile.open(QIODevice::ReadOnly | QIODevice::Text))
+        throw Exception(QString("Error open file xml: cannot load file"));
+    QXmlStreamReader xml(&loadFile);
+
+    while(!xml.atEnd() && !xml.hasError()) {
+        QXmlStreamReader::TokenType token = xml.readNext();
+        if(token == QXmlStreamReader::StartDocument) continue;
+        if(xml.name() == "Note"){
+          xml.readNext();
+         while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "Note")){
+            xml.readNext();
+            if (xml.tokenType() == QXmlStreamReader::StartElement){
+                QString id;
+                QString s_etat;
+                QDateTime date_creation;
+                QString s_date;
+                QString nbVersion;
+                QString nbMaxVersion;
+                Type_etat_note etat;
+                unsigned int nbV;
+                unsigned int nbMaxV;
+                if (xml.name() == "id"){
+                    xml.readNext();
+                    id = xml.text().toString();
+                    qDebug() << id;
+                }
+                if (xml.name() == "nbVersion"){
+                    xml.readNext();
+                    nbVersion = xml.text().toString();
+                    //nbV=nbVersion.toInt(0,10);//int dec = str.toInt(&ok, 10);       // dec == 0, ok == false
+                }
+                if (xml.name() == "nbMaxVersion"){
+                    xml.readNext();
+                    nbMaxVersion = xml.text().toString();
+                    //nbMaxV=nbMaxVersion.toInt();//int dec = str.toInt(&ok, 10);       // dec == 0, ok == false
+                }
+                if (xml.name() == "Type_etat_note"){
+                    xml.readNext();
+                    s_etat = xml.text().toString();
+                    //etat=string_to_enum_etat(s_etat.QString::toStdString());
+                }
+                if (xml.name() == "Date_creation"){
+                    xml.readNext();
+                    s_date=xml.text().toString();
+                    //date_creation=QDateTime::fromString(s_date, "dd.MM.yyyy-hh::mm:ss"); // voir la doc
+                }
+              }
+           }
+        }
+    }
 }
