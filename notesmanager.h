@@ -71,7 +71,7 @@ public:
      * @return 1 s'il y a des notes en sursis, 0 sinon
      */
     bool is_bin_empty();
-    \/*!
+     /*!
      * Cherche s'il y a des notes supprimées et archivées
      * @return  1 s'il y a des notes archivées, 0 sinon
      */
