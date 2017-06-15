@@ -28,6 +28,7 @@
 #include "wafficherimage.h"
 #include "hafficheraudio.h"
 #include "haffichervideo.h"
+#include "waffichercouple.h"
 #include <QCloseEvent>
 
 class Interface : public QMainWindow {
@@ -51,6 +52,7 @@ class Interface : public QMainWindow {
     WindowAfficherArticle* window_afficher_article=0;
     WindowAfficherImage* window_afficher_image=0;
     WindowAfficherAudio* window_afficher_audio=0;
+    WindowAfficherCouple* window_afficher_couples=0;
     //WindowAfficherVideo* window_afficher_video=0;
 
 
@@ -96,6 +98,7 @@ public slots:
     void ouvrir_version_arch();
     //void sauver_article();
     void creer_relation();
+    void ouvrir_couples();
 
 };
 

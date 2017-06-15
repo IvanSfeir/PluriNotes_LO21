@@ -20,7 +20,7 @@ CentreRelations::CentreRelations(QMainWindow *parent):
     //QObject::connect(afficher_relation, SIGNAL(Clicked()),this, SLOT(afficherRelation()));
 
     fermer = new QPushButton("Fermer");
-    QObject::connect(fermer, SIGNAL(Clicked()),this, SLOT(close()));
+    connect(fermer, SIGNAL(Clicked()),this, SLOT(close()));
 
     creer_relation = new QPushButton("Creer relation");
     //QObject::connect(creer_relation_orientee, SIGNAL(Clicked()),this, SLOT(creerRelation()));

@@ -363,5 +363,8 @@ void Interface::ouvrir_version_arch() {
 
 void Interface::ouvrir_couples(){
     QString rela = window_relations->getListRelation()->currentItem()->text();
-    qDebug() << rela;
+    fermer_droite();
+    window_afficher_couples = new WindowAfficherCouple(rela, this);
+    window_afficher_couples->move(800,15);
+    window_afficher_couples->show();
 }
