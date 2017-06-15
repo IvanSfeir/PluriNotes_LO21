@@ -11,6 +11,12 @@ Interface::Interface() {
     //init for testing////////////////////////////
     //////////////////////////////////////////////
     NotesManager* NM = NotesManager::getInstance();
+    RelationManager* RM = RelationManager::getRelationManager();
+    RelationPreexistente* RP = RelationPreexistente::getRelationPreexistente();
+    RM->ajouterRelation(RP);
+    RelationManager::iterator it = RM->begin();
+    qDebug() << (*it)->getOrientee();
+
     Note* newNote = new Note("note1"); //id=1
     Article* a1 = new Article("testA1",QDateTime::currentDateTime(),"testestsetsetstest");
     Article* a2 = new Article("testA2",QDateTime::fromString("13.06.2017-10:30:14","dd.MM.yyyy-hh:mm:ss"),"testestsetsetstest2");
@@ -40,6 +46,8 @@ Interface::Interface() {
     newNoteArch->ajouterVersion(a3);
     newNoteArch->setEtat(archive);
     NM->ajouterNote(newNoteArch);
+
+    NM->saveNotesManager("test_type_save.xml");
     ///////////////////////////////////////////////
     ///////////////////////////////////////////////
     ///////////////////////////////////////////////
@@ -95,12 +103,13 @@ void Interface::avant_de_fermer() {
     this->close();
 }
 
+///////////////////RELATION////////////////////////////
 void Interface::ouvrir_relations() {
-    fermer_droite();
+    //fermer_droite();
     window_relations = new CentreRelations(this);
-    window_relations->move(800,15);
+    window_relations->move(400,15);
     window_relations->show();
-    QObject::connect(window_relations->getBoutonAfficher(), SIGNAL(clicked()), this, SLOT(ouvrir_relation_details(getIndiceRelation())));
+    //QObject::connect(window_relations->getBoutonAfficher(), SIGNAL(clicked()), this, SLOT(ouvrir_relation_details()));
 }
 
 void Interface::ouvrir_relation_details(unsigned int position) {
@@ -230,8 +239,8 @@ void Interface::restaurer_note(){
 }
 
 void Interface::restaurer_version(){
-    unsigned int index = window_note_act->getListVersions()->currentRow();
-    if (index != -1 ){//&& currentNote->getNbVersion() == index){
+    int index = window_note_act->getListVersions()->currentRow();
+    if (index != -1 && currentNote->getNbVersion() - 1 == index){
     qDebug() << currentNote->getVersion(index)->getTitle() << "\n";
     qDebug() << currentNote->getNbVersion() <<"\n";
     //currentNote->ajouterVersion(currentNote->getVersion(index));

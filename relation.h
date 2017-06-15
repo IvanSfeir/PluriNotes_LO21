@@ -30,7 +30,7 @@ protected:
     bool orientee;
 public:
     Relation(const QString& titr, const QString& desc="", bool orie=true):
-        titre(titr), description(desc), nbCouples(0), maxCouples(10), orientee(orie){}
+        titre(titr), description(desc), nbCouples(0), maxCouples(0), orientee(orie){}
 
     virtual void setTitre(const QString& newTitre) = 0;                     //pure
     virtual void setDescription(const QString& newDescription) = 0;         //pure
@@ -75,7 +75,7 @@ class RelationPreexistente: public Relation{
     RelationPreexistente(const RelationPreexistente& r);
     ~RelationPreexistente(){}
     RelationPreexistente& operator=(const RelationPreexistente&);
-    RelationPreexistente(): Relation("ref", "preexistente"){}
+    RelationPreexistente();
 
 public:
     static RelationPreexistente* getRelationPreexistente(){
@@ -97,24 +97,19 @@ class RelationManager{
 
     static RelationManager* instance_RelationManager;
     RelationManager(const RelationManager&){}
-    RelationManager(){
-        relations = new Relation*[maxRelations+10];
-        maxRelations += 10;
-        RelationPreexistente* RP = RelationPreexistente::getRelationPreexistente();
-        relations[0] = RP;
-        nbRelations++;
-    }
+    RelationManager();
     RelationManager& operator=(const RelationManager&);
 public:
     static RelationManager* getRelationManager(){
-        if (!instance_RelationManager)
-            instance_RelationManager = new RelationManager;
+        if (RelationManager::instance_RelationManager==nullptr)
+            RelationManager::instance_RelationManager = new RelationManager;
         return instance_RelationManager;
     }
     static void libererRelationManager(){
-        if (instance_RelationManager){
-            delete instance_RelationManager;
+        if (RelationManager::instance_RelationManager!=nullptr){
+            delete RelationManager::instance_RelationManager;
         }
+    RelationManager::instance_RelationManager=nullptr;  
     }
 
     void ajouterRelation(Relation* newRelation);

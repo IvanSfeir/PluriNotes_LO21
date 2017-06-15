@@ -139,14 +139,16 @@ void NotesManager::saveNotesManager(const QString & filename){
             string type_version= typeid((*it_note)).name();// get the type of an object into a string
             type_version=type_version.substr(1,type_version.length()-1); // on renvoie le nom du type de l'objet, sans le 1er char (la longueur du nom)
 
-            if (type_version=="image") {
+            //if (type_version=="image") {
+                if(typeid(*it_note)==typeid(image)){
                         image *img =  dynamic_cast<image*>(*it_note);   //cast version* to *img
                         stream.writeTextElement("type", "image");
                        stream.writeTextElement("img", img->getImg());
                        stream.writeTextElement("desc",  img-> getDesc());
                        stream.writeTextElement("img_URL",  img->getimg_URL());
                 }
-            else if(type_version=="audio"){
+            //else if(type_version=="audio"){
+                if(typeid(*it_note)==typeid(audio)){
                         audio *aud = dynamic_cast<audio*>(*it_note);
                         stream.writeTextElement("type", "audio");
                        stream.writeTextElement("audio_URL", aud->getAudio_URL());
@@ -154,7 +156,8 @@ void NotesManager::saveNotesManager(const QString & filename){
                        stream.writeTextElement("desc", aud->getDesc());
                        stream.writeTextElement("img_URL", aud->getimg_URL());
                }
-            else if(type_version=="video"){
+           // else if(type_version=="video"){
+                    if(typeid(*it_note)==typeid(video)){
                        video *vid = dynamic_cast<video*>(*it_note);
                        stream.writeTextElement("type", "video");
                        stream.writeTextElement("video_URL", vid->getVideo_URL());
@@ -162,7 +165,9 @@ void NotesManager::saveNotesManager(const QString & filename){
                        stream.writeTextElement("img_URL",  vid->getimg_URL());
 
 }
-            else if(type_version=="Tache"){
+            //else if(type_version=="Tache"){
+                    if(typeid(*it_note)==typeid(Tache)){
+
                         Tache *tach =dynamic_cast<Tache*>(*it_note);
                         stream.writeTextElement("type", "Tache");
                        stream.writeTextElement("action", tach->getAction());
@@ -176,7 +181,8 @@ void NotesManager::saveNotesManager(const QString & filename){
                        string s_statut=enum_statut_to_string( tach->getStatut());
                        stream.writeTextElement("statut", QString::fromStdString(s_statut));
             }
-            else if (type_version=="Article")
+            //else if (type_version=="Article")
+                    if(typeid(*it_note)==typeid(image))
             {
               stream.writeTextElement("type", "Article");
                         Article *art=dynamic_cast<Article*>(*it_note);
@@ -225,14 +231,17 @@ void NotesManager::saveNotesManager_no_reprieve(const QString & filename){
                 string type_version= typeid((*it_note)).name();
                 type_version=type_version.substr(1,type_version.length()-1); // on renvoie le nom du type de l'objet, sans le 1er char (la longueur du nom)
 
-                if (type_version=="image") {
+                //if (type_version=="image") {
+                    if(typeid(*it_note)==typeid(image)){
                             image *img =  dynamic_cast<image*>(*it_note);
                             stream.writeStartElement("type", "image");
                            stream.writeStartElement("img", img->getImg());
                            stream.writeStartElement("desc",  img-> getDesc());
                            stream.writeStartElement("img_URL",  img->getimg_URL());
                     }
-                else if(type_version=="audio"){
+//                else if(type_version=="audio"){
+                        if(typeid(*it_note)==typeid(audio)){
+
                             audio *aud = dynamic_cast<audio*>(*it_note);
                             stream.writeStartElement("type", "audio");
                            stream.writeStartElement("audio_URL", aud->getAudio_URL());
@@ -240,7 +249,9 @@ void NotesManager::saveNotesManager_no_reprieve(const QString & filename){
                            stream.writeStartElement("desc", aud->getDesc());
                            stream.writeStartElement("img_URL", aud->getimg_URL());
                    }
-                else if(type_version=="video"){
+                //else if(type_version=="video"){
+                        if(typeid(*it_note)==typeid(video)){
+
                            video *vid = dynamic_cast<video*>(*it_note);
                            stream.writeStartElement("type", "video");
                            stream.writeStartElement("video_URL", vid->getVideo_URL());
@@ -248,7 +259,9 @@ void NotesManager::saveNotesManager_no_reprieve(const QString & filename){
                            stream.writeStartElement("img_URL",  vid->getimg_URL());
 
     }
-                else if(type_version=="Tache"){
+//                else if(type_version=="Tache"){
+                        if(typeid(*it_note)==typeid(Tache)){
+
                             Tache *tach =dynamic_cast<Tache*>(*it_note);
                             stream.writeStartElement("type", "Tache");
                            stream.writeStartElement("action", tach->getAction());
@@ -262,7 +275,9 @@ void NotesManager::saveNotesManager_no_reprieve(const QString & filename){
                            string s_statut=enum_statut_to_string( tach->getStatut());
                            stream.writeStartElement("statut", QString::fromStdString(s_statut));
                 }
-                else if (type_version=="Article")
+                //else if (type_version=="Article")
+                        if(typeid(*it_note)==typeid(image))
+
                 {
                   stream.writeStartElement("type", "Article");
                             Article *art=dynamic_cast<Article*>(*it_note);
