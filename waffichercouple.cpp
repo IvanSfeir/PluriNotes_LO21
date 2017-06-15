@@ -28,13 +28,13 @@ WindowAfficherCouple::WindowAfficherCouple(QString& relation_name, QWidget *pare
 
 
     fermer = new QPushButton("Fermer");
-    QObject::connect(fermer, SIGNAL(Clicked()),this, SLOT(close()));
+    QObject::connect(fermer, SIGNAL(clicked()),this, SLOT(close()));
 
     creer_couple = new QPushButton("Creer couple");
-    //QObject::connect(creer_relation_orientee, SIGNAL(Clicked()),this, SLOT(creerRelation()));
+    //QObject::connect(creer_relation_orientee, SIGNAL(clicked()),this, SLOT(creerRelation()));
 
     supprimer_couple = new QPushButton("Supprimer couple");
-    //QObject::connect(supprimer_relation, SIGNAL(Clicked()),this, SLOT(supprimerRelation()));
+    //QObject::connect(supprimer_relation, SIGNAL(clicked()),this, SLOT(supprimerRelation()));
 
     horiz1 = new QHBoxLayout;
     horiz1->addWidget(supprimer_couple);
