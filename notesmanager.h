@@ -1,6 +1,6 @@
 /*!
- *  \file NotesManager.h
- *  \class NotesManager
+ *  \file notesmanager.h
+ *  \class NotesManager notesmanager.h
  *  \brief Définit la classe NotesManager : Permet de d'ajouter, supprimer, restaurer une Note. Permet de sauvegarder/charger la session dans/à partir d'un fichier XML.
  *
  *  \details Design Pattern : Singleton et Iterator.
