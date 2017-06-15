@@ -8,6 +8,7 @@
 
 #include "note.h"
 #include <QString>
+#include <QDebug>
 #include "iterator.h"
 #include "version.h"
 #include "relation.h"

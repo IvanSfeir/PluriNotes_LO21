@@ -11,6 +11,7 @@ Interface::Interface() {
     //init for testing////////////////////////////
     //////////////////////////////////////////////
     NotesManager* NM = NotesManager::getInstance();
+    NM->loadNotesManager("save_test.xml");
     RelationManager* RM = RelationManager::getRelationManager();
     qDebug() << RM->getNbRelations();
 
