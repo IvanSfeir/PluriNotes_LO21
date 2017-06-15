@@ -30,6 +30,7 @@
 #include "haffichervideo.h"
 #include "waffichertache.h"
 #include "waffichercouple.h"
+#include "wcreercouple.h"
 #include <QCloseEvent>
 
 class Interface : public QMainWindow {
@@ -45,6 +46,7 @@ class Interface : public QMainWindow {
     CentreRelations* window_relations=0;
     CentreRelationDetails* window_relation_details=0;
     WindowCreerRelation* window_creer_relation=0;
+    WindowCreerCouple* window_creer_couple=0;
     WindowCreerArticle* window_creer_article=0;
     WindowCreerImage* window_creer_image=0;
     WindowCreerVideo* window_creer_video=0;
@@ -69,6 +71,7 @@ class Interface : public QMainWindow {
     QAction *actionQuitter;
 
     Note* currentNote;
+    Relation* currentRelation;
 
 public:
     Interface();
@@ -101,6 +104,8 @@ public slots:
     void sauver_article();
     void creer_relation();
     void ouvrir_couples();
+    void ouvrir_creer_couple();
+    void creer_couple();
 
 
 };
