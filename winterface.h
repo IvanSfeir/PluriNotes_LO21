@@ -26,6 +26,8 @@
 #include "wafficherarticle.h"
 #include "windowcreerrelation.h"
 #include "wafficherimage.h"
+#include "hafficheraudio.h"
+#include "haffichervideo.h"
 #include <QCloseEvent>
 
 class Interface : public QMainWindow {
@@ -48,6 +50,8 @@ class Interface : public QMainWindow {
     WindowCreerTache* window_creer_tache=0;
     WindowAfficherArticle* window_afficher_article=0;
     WindowAfficherImage* window_afficher_image=0;
+    WindowAfficherAudio* window_afficher_audio=0;
+    //WindowAfficherVideo* window_afficher_video=0;
 
 
     QMenu *menuNotes;
