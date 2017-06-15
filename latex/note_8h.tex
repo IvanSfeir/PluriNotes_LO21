@@ -1,0 +1,72 @@
+\hypertarget{note_8h}{}\section{note.\+h File Reference}
+\label{note_8h}\index{note.\+h@{note.\+h}}
+{\ttfamily \#include $<$Q\+String$>$}\newline
+{\ttfamily \#include $<$Q\+Date\+Time$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include \char`\"{}version.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}iterator.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}exception.\+h\char`\"{}}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_note}{Note}
+\begin{DoxyCompactList}\small\item\em Définit la classe Notes \+: Permet de d\textquotesingle{}ajouter, supprimer, restaurer une \hyperlink{class_version}{Version} à une \hyperlink{class_note}{Note}. \end{DoxyCompactList}\item 
+class \hyperlink{class_note_1_1iterator}{Note\+::iterator}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{note_8h_a952f39258bbc825f3d94ffd41440486b}\label{note_8h_a952f39258bbc825f3d94ffd41440486b}} 
+enum \hyperlink{note_8h_a952f39258bbc825f3d94ffd41440486b}{Type\+\_\+etat\+\_\+note} \{ {\bfseries active}, 
+{\bfseries archive}, 
+{\bfseries sursis}
+ \}\begin{DoxyCompactList}\small\item\em Enumeration des états des notes
+
+{\itshape active} \+: La note est active {\itshape archive} \+: La note est archivée (supprimée mais encore liée par une relation de Reference) {\itshape sursis} \+: La note est en sursis (supprimée et liée à aucune relation de Reference) \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{note_8h_a44a4b3e36992ea3a1fe2a252ec7880fa}{enum\+\_\+etat\+\_\+to\+\_\+string} (\hyperlink{note_8h_a952f39258bbc825f3d94ffd41440486b}{Type\+\_\+etat\+\_\+note} t)
+\begin{DoxyCompactList}\small\item\em \+: Convertit un Type\+\_\+etat\+\_\+note vers une string. \end{DoxyCompactList}\item 
+\hyperlink{note_8h_a952f39258bbc825f3d94ffd41440486b}{Type\+\_\+etat\+\_\+note} \hyperlink{note_8h_acdaea2b0c1efc48920d20c9176cf0503}{string\+\_\+to\+\_\+enum\+\_\+etat} (const string \&s)
+\begin{DoxyCompactList}\small\item\em Convertit une string vers un Type\+\_\+etat\+\_\+note. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{note_8h_a44a4b3e36992ea3a1fe2a252ec7880fa}\label{note_8h_a44a4b3e36992ea3a1fe2a252ec7880fa}} 
+\index{note.\+h@{note.\+h}!enum\+\_\+etat\+\_\+to\+\_\+string@{enum\+\_\+etat\+\_\+to\+\_\+string}}
+\index{enum\+\_\+etat\+\_\+to\+\_\+string@{enum\+\_\+etat\+\_\+to\+\_\+string}!note.\+h@{note.\+h}}
+\subsubsection{\texorpdfstring{enum\+\_\+etat\+\_\+to\+\_\+string()}{enum\_etat\_to\_string()}}
+{\footnotesize\ttfamily string enum\+\_\+etat\+\_\+to\+\_\+string (\begin{DoxyParamCaption}\item[{\hyperlink{note_8h_a952f39258bbc825f3d94ffd41440486b}{Type\+\_\+etat\+\_\+note}}]{t }\end{DoxyParamCaption})}
+
+
+
+\+: Convertit un Type\+\_\+etat\+\_\+note vers une string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & \+: enum à convertir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string de l\textquotesingle{}enum 
+\end{DoxyReturn}
+\mbox{\Hypertarget{note_8h_acdaea2b0c1efc48920d20c9176cf0503}\label{note_8h_acdaea2b0c1efc48920d20c9176cf0503}} 
+\index{note.\+h@{note.\+h}!string\+\_\+to\+\_\+enum\+\_\+etat@{string\+\_\+to\+\_\+enum\+\_\+etat}}
+\index{string\+\_\+to\+\_\+enum\+\_\+etat@{string\+\_\+to\+\_\+enum\+\_\+etat}!note.\+h@{note.\+h}}
+\subsubsection{\texorpdfstring{string\+\_\+to\+\_\+enum\+\_\+etat()}{string\_to\_enum\_etat()}}
+{\footnotesize\ttfamily \hyperlink{note_8h_a952f39258bbc825f3d94ffd41440486b}{Type\+\_\+etat\+\_\+note} string\+\_\+to\+\_\+enum\+\_\+etat (\begin{DoxyParamCaption}\item[{const string \&}]{s }\end{DoxyParamCaption})}
+
+
+
+Convertit une string vers un Type\+\_\+etat\+\_\+note. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & \+: string à convertir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+enum de la string 
+\end{DoxyReturn}

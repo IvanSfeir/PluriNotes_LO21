@@ -1,0 +1,185 @@
+\hypertarget{class_relation_manager}{}\section{Relation\+Manager Class Reference}
+\label{class_relation_manager}\index{Relation\+Manager@{Relation\+Manager}}
+
+
+The \hyperlink{class_relation_manager}{Relation\+Manager} class\+: \hyperlink{class_relation}{Relation} Manager to manage \hyperlink{class_relation}{Relation}, Singleton.  
+
+
+
+
+{\ttfamily \#include $<$relation.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_relation_manager_1_1iterator}{iterator}
+\begin{DoxyCompactList}\small\item\em The iterator class\+: iterator through table of relations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_relation}{Relation} $\ast$ \hyperlink{class_relation_manager_ab5eedc7d52a94e7377b532704366ee48}{get\+Relation\+From\+Title} (Q\+String \&title)
+\begin{DoxyCompactList}\small\item\em get\+Relation\+From\+Title\+: return pointer to relation from a titre \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_relation_manager_ac4f3ef3f86fd911fb6619de910a52411}{get\+Nb\+Relations} ()
+\begin{DoxyCompactList}\small\item\em get\+Nb\+Relations\+: get number of relations in \hyperlink{class_relation_manager}{Relation\+Manager} \end{DoxyCompactList}\item 
+void \hyperlink{class_relation_manager_a6661d400acae8992ce2d0677f7bb8bb7}{ajouter\+Relation} (\hyperlink{class_relation}{Relation} $\ast$new\+Relation)
+\begin{DoxyCompactList}\small\item\em ajouter\+Relation\+: add \hyperlink{class_relation}{Relation} to table of \hyperlink{class_relation}{Relation} in \hyperlink{class_relation_manager}{Relation\+Manager} \end{DoxyCompactList}\item 
+void \hyperlink{class_relation_manager_a1ab185cfa12b8632d44c7f705d0168f1}{supprimer\+Relation} (\hyperlink{class_relation}{Relation} $\ast$supprimer\+Relation)
+\begin{DoxyCompactList}\small\item\em supprimer\+Relation\+: detete a \hyperlink{class_relation}{Relation} in \hyperlink{class_relation_manager}{Relation\+Manager} \end{DoxyCompactList}\item 
+\hyperlink{class_relation_manager_1_1iterator}{iterator} \hyperlink{class_relation_manager_a0cbea7cf6799fb13153d1fab8b345487}{begin} ()
+\begin{DoxyCompactList}\small\item\em begin\+: return the pointer to the first position in the table \end{DoxyCompactList}\item 
+\hyperlink{class_relation_manager_1_1iterator}{iterator} \hyperlink{class_relation_manager_a9425308e362ee6921041d1e904785f19}{end} ()
+\begin{DoxyCompactList}\small\item\em end\+: return the pointer to the end position in the table \end{DoxyCompactList}\item 
+void \hyperlink{class_relation_manager_af587ffbf383d7fae096b0a2dba9ff679}{load\+Relation\+Manager} (const Q\+String \&filename)
+\begin{DoxyCompactList}\small\item\em load\+Relation\+Manager\+: load .xml to \hyperlink{class_relation_manager}{Relation\+Manager} \end{DoxyCompactList}\item 
+void \hyperlink{class_relation_manager_af12e8c983fdf15a3e84ec826c150fbea}{save\+Relation\+Manager} (const Q\+String \&filename)
+\begin{DoxyCompactList}\small\item\em save\+Relation\+Manager\+: save \hyperlink{class_relation_manager}{Relation\+Manager} to .xml \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_relation_manager}{Relation\+Manager} $\ast$ \hyperlink{class_relation_manager_a507b3edf840eb79a29f46662f3c30d04}{get\+Relation\+Manager} ()
+\begin{DoxyCompactList}\small\item\em get\+Relation\+Manager\+: get instance of \hyperlink{class_relation_manager}{Relation\+Manager}, contruct if there is no instance of \hyperlink{class_relation_manager}{Relation\+Manager} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_relation_manager_a9ba5983117f98b5bb83bd41575f736b9}\label{class_relation_manager_a9ba5983117f98b5bb83bd41575f736b9}} 
+static void \hyperlink{class_relation_manager_a9ba5983117f98b5bb83bd41575f736b9}{liberer\+Relation\+Manager} ()
+\begin{DoxyCompactList}\small\item\em liberer\+Relation\+Manager\+: Free the instance of \hyperlink{class_relation_manager}{Relation\+Manager} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_relation_manager}{Relation\+Manager} class\+: \hyperlink{class_relation}{Relation} Manager to manage \hyperlink{class_relation}{Relation}, Singleton. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_relation_manager_a6661d400acae8992ce2d0677f7bb8bb7}\label{class_relation_manager_a6661d400acae8992ce2d0677f7bb8bb7}} 
+\index{Relation\+Manager@{Relation\+Manager}!ajouter\+Relation@{ajouter\+Relation}}
+\index{ajouter\+Relation@{ajouter\+Relation}!Relation\+Manager@{Relation\+Manager}}
+\subsubsection{\texorpdfstring{ajouter\+Relation()}{ajouterRelation()}}
+{\footnotesize\ttfamily void Relation\+Manager\+::ajouter\+Relation (\begin{DoxyParamCaption}\item[{\hyperlink{class_relation}{Relation} $\ast$}]{new\+Relation }\end{DoxyParamCaption})}
+
+
+
+ajouter\+Relation\+: add \hyperlink{class_relation}{Relation} to table of \hyperlink{class_relation}{Relation} in \hyperlink{class_relation_manager}{Relation\+Manager} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Relation} & pointer to the new\+Relation \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_relation_manager_a0cbea7cf6799fb13153d1fab8b345487}\label{class_relation_manager_a0cbea7cf6799fb13153d1fab8b345487}} 
+\index{Relation\+Manager@{Relation\+Manager}!begin@{begin}}
+\index{begin@{begin}!Relation\+Manager@{Relation\+Manager}}
+\subsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily \hyperlink{class_relation_manager_1_1iterator}{iterator} Relation\+Manager\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+begin\+: return the pointer to the first position in the table 
+
+\begin{DoxyReturn}{Returns}
+iterator 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_relation_manager_a9425308e362ee6921041d1e904785f19}\label{class_relation_manager_a9425308e362ee6921041d1e904785f19}} 
+\index{Relation\+Manager@{Relation\+Manager}!end@{end}}
+\index{end@{end}!Relation\+Manager@{Relation\+Manager}}
+\subsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily \hyperlink{class_relation_manager_1_1iterator}{iterator} Relation\+Manager\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+end\+: return the pointer to the end position in the table 
+
+\begin{DoxyReturn}{Returns}
+iterator 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_relation_manager_ac4f3ef3f86fd911fb6619de910a52411}\label{class_relation_manager_ac4f3ef3f86fd911fb6619de910a52411}} 
+\index{Relation\+Manager@{Relation\+Manager}!get\+Nb\+Relations@{get\+Nb\+Relations}}
+\index{get\+Nb\+Relations@{get\+Nb\+Relations}!Relation\+Manager@{Relation\+Manager}}
+\subsubsection{\texorpdfstring{get\+Nb\+Relations()}{getNbRelations()}}
+{\footnotesize\ttfamily unsigned int Relation\+Manager\+::get\+Nb\+Relations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+get\+Nb\+Relations\+: get number of relations in \hyperlink{class_relation_manager}{Relation\+Manager} 
+
+\begin{DoxyReturn}{Returns}
+unsigned int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_relation_manager_ab5eedc7d52a94e7377b532704366ee48}\label{class_relation_manager_ab5eedc7d52a94e7377b532704366ee48}} 
+\index{Relation\+Manager@{Relation\+Manager}!get\+Relation\+From\+Title@{get\+Relation\+From\+Title}}
+\index{get\+Relation\+From\+Title@{get\+Relation\+From\+Title}!Relation\+Manager@{Relation\+Manager}}
+\subsubsection{\texorpdfstring{get\+Relation\+From\+Title()}{getRelationFromTitle()}}
+{\footnotesize\ttfamily \hyperlink{class_relation}{Relation} $\ast$ Relation\+Manager\+::get\+Relation\+From\+Title (\begin{DoxyParamCaption}\item[{Q\+String \&}]{title }\end{DoxyParamCaption})}
+
+
+
+get\+Relation\+From\+Title\+: return pointer to relation from a titre 
+
+
+\begin{DoxyParams}{Parameters}
+{\em titre} & titre of the relation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Relation$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_relation_manager_a507b3edf840eb79a29f46662f3c30d04}\label{class_relation_manager_a507b3edf840eb79a29f46662f3c30d04}} 
+\index{Relation\+Manager@{Relation\+Manager}!get\+Relation\+Manager@{get\+Relation\+Manager}}
+\index{get\+Relation\+Manager@{get\+Relation\+Manager}!Relation\+Manager@{Relation\+Manager}}
+\subsubsection{\texorpdfstring{get\+Relation\+Manager()}{getRelationManager()}}
+{\footnotesize\ttfamily static \hyperlink{class_relation_manager}{Relation\+Manager}$\ast$ Relation\+Manager\+::get\+Relation\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+get\+Relation\+Manager\+: get instance of \hyperlink{class_relation_manager}{Relation\+Manager}, contruct if there is no instance of \hyperlink{class_relation_manager}{Relation\+Manager} 
+
+\begin{DoxyReturn}{Returns}
+pointer to instance of \hyperlink{class_relation_manager}{Relation\+Manager} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_relation_manager_af587ffbf383d7fae096b0a2dba9ff679}\label{class_relation_manager_af587ffbf383d7fae096b0a2dba9ff679}} 
+\index{Relation\+Manager@{Relation\+Manager}!load\+Relation\+Manager@{load\+Relation\+Manager}}
+\index{load\+Relation\+Manager@{load\+Relation\+Manager}!Relation\+Manager@{Relation\+Manager}}
+\subsubsection{\texorpdfstring{load\+Relation\+Manager()}{loadRelationManager()}}
+{\footnotesize\ttfamily void Relation\+Manager\+::load\+Relation\+Manager (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+load\+Relation\+Manager\+: load .xml to \hyperlink{class_relation_manager}{Relation\+Manager} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & file .xml to load \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_relation_manager_af12e8c983fdf15a3e84ec826c150fbea}\label{class_relation_manager_af12e8c983fdf15a3e84ec826c150fbea}} 
+\index{Relation\+Manager@{Relation\+Manager}!save\+Relation\+Manager@{save\+Relation\+Manager}}
+\index{save\+Relation\+Manager@{save\+Relation\+Manager}!Relation\+Manager@{Relation\+Manager}}
+\subsubsection{\texorpdfstring{save\+Relation\+Manager()}{saveRelationManager()}}
+{\footnotesize\ttfamily void Relation\+Manager\+::save\+Relation\+Manager (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+save\+Relation\+Manager\+: save \hyperlink{class_relation_manager}{Relation\+Manager} to .xml 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & save to file .xml \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_relation_manager_a1ab185cfa12b8632d44c7f705d0168f1}\label{class_relation_manager_a1ab185cfa12b8632d44c7f705d0168f1}} 
+\index{Relation\+Manager@{Relation\+Manager}!supprimer\+Relation@{supprimer\+Relation}}
+\index{supprimer\+Relation@{supprimer\+Relation}!Relation\+Manager@{Relation\+Manager}}
+\subsubsection{\texorpdfstring{supprimer\+Relation()}{supprimerRelation()}}
+{\footnotesize\ttfamily void Relation\+Manager\+::supprimer\+Relation (\begin{DoxyParamCaption}\item[{\hyperlink{class_relation}{Relation} $\ast$}]{supprimer\+Relation }\end{DoxyParamCaption})}
+
+
+
+supprimer\+Relation\+: detete a \hyperlink{class_relation}{Relation} in \hyperlink{class_relation_manager}{Relation\+Manager} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em supprimer\+Relation} & pointer to the \hyperlink{class_relation}{Relation} needed to delete \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{relation_8h}{relation.\+h}\item 
+relation.\+cpp\end{DoxyCompactItemize}

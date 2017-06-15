@@ -1,0 +1,145 @@
+\hypertarget{class_note}{}\section{Note Class Reference}
+\label{class_note}\index{Note@{Note}}
+
+
+Définit la classe Notes \+: Permet de d\textquotesingle{}ajouter, supprimer, restaurer une \hyperlink{class_version}{Version} à une \hyperlink{class_note}{Note}.  
+
+
+
+
+{\ttfamily \#include $<$note.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_note_1_1iterator}{iterator}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_note_a74953ca0f81bb48c57bfc398bd0dc86a}\label{class_note_a74953ca0f81bb48c57bfc398bd0dc86a}} 
+{\bfseries Note} (const Q\+String \&id, unsigned int nbmax=10, const \hyperlink{note_8h_a952f39258bbc825f3d94ffd41440486b}{Type\+\_\+etat\+\_\+note} \&e=active)
+\item 
+\mbox{\Hypertarget{class_note_aff851c4b14e763f5e00755a3a12fbe76}\label{class_note_aff851c4b14e763f5e00755a3a12fbe76}} 
+const Q\+String \& {\bfseries get\+Id} () const
+\item 
+\mbox{\Hypertarget{class_note_ab5007eef00e371eada1b31ce2afe15d3}\label{class_note_ab5007eef00e371eada1b31ce2afe15d3}} 
+unsigned int {\bfseries get\+Nb\+Version} () const
+\item 
+\mbox{\Hypertarget{class_note_ae967accab8c1783536e3dd49bfe87098}\label{class_note_ae967accab8c1783536e3dd49bfe87098}} 
+unsigned int {\bfseries get\+Nb\+Max\+Version} () const
+\item 
+\mbox{\Hypertarget{class_note_a2db69efc8a682af2b404a05df78edd63}\label{class_note_a2db69efc8a682af2b404a05df78edd63}} 
+const Q\+Date\+Time \& {\bfseries get\+Date\+Creation} () const
+\item 
+\mbox{\Hypertarget{class_note_a36ef7b5d9687d36aba0baf626a125d86}\label{class_note_a36ef7b5d9687d36aba0baf626a125d86}} 
+const \hyperlink{note_8h_a952f39258bbc825f3d94ffd41440486b}{Type\+\_\+etat\+\_\+note} \& {\bfseries get\+Etat} () const
+\item 
+\mbox{\Hypertarget{class_note_aa53e04aa5c6c39867eb10b5b5f274f93}\label{class_note_aa53e04aa5c6c39867eb10b5b5f274f93}} 
+void {\bfseries set\+Etat} (const \hyperlink{note_8h_a952f39258bbc825f3d94ffd41440486b}{Type\+\_\+etat\+\_\+note} e)
+\item 
+\mbox{\Hypertarget{class_note_a015599af2e64410923961d9ef6b3e18d}\label{class_note_a015599af2e64410923961d9ef6b3e18d}} 
+\hyperlink{class_version}{Version} $\ast$ {\bfseries get\+Version} (const unsigned int p)
+\item 
+\mbox{\Hypertarget{class_note_a300a142b7cb07872522b6d16b4c77524}\label{class_note_a300a142b7cb07872522b6d16b4c77524}} 
+\hyperlink{class_version}{Version} $\ast$ {\bfseries get\+Last\+Version} () const
+\item 
+void \hyperlink{class_note_a6a150fba840245d5c99c058e3457e775}{ajouter\+Version} (\hyperlink{class_version}{Version} $\ast$v)
+\begin{DoxyCompactList}\small\item\em \+: Ajoute une version à une note \end{DoxyCompactList}\item 
+void \hyperlink{class_note_a19cfb61168f8f6ce29cbdefd8448c0c0}{restaurer\+Version} (const unsigned int p)
+\begin{DoxyCompactList}\small\item\em Restaurer une version d\textquotesingle{}une note. \end{DoxyCompactList}\item 
+bool \hyperlink{class_note_aca74abbfeb1ff6bba66db5e81f5f622e}{is\+\_\+active} ()
+\begin{DoxyCompactList}\small\item\em Cherche si la \hyperlink{class_note}{Note} est active. \end{DoxyCompactList}\item 
+bool \hyperlink{class_note_a59f2e98d827736fefc03a71606db7e3d}{is\+\_\+archived} ()
+\begin{DoxyCompactList}\small\item\em Cherche si la \hyperlink{class_note}{Note} est archivée. \end{DoxyCompactList}\item 
+bool \hyperlink{class_note_a35ed46ae39aedc142d4fd9461a3d6a33}{is\+\_\+reprieved} ()
+\begin{DoxyCompactList}\small\item\em Cherche si la \hyperlink{class_note}{Note} est en sursis. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_note_a6104d75b44e1c93b2b30b5359746b1db}\label{class_note_a6104d75b44e1c93b2b30b5359746b1db}} 
+\hyperlink{class_note_1_1iterator}{iterator} {\bfseries begin} ()
+\item 
+\mbox{\Hypertarget{class_note_a124c8d9a817ba9531c02750b7e56ad4c}\label{class_note_a124c8d9a817ba9531c02750b7e56ad4c}} 
+\hyperlink{class_note_1_1iterator}{iterator} {\bfseries end} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Définit la classe Notes \+: Permet de d\textquotesingle{}ajouter, supprimer, restaurer une \hyperlink{class_version}{Version} à une \hyperlink{class_note}{Note}. 
+
+Design Pattern \+: \hyperlink{class_iterator}{Iterator}. {\itshape id} \+: identifiant de la note \+: {\bfseries unique} {\itshape version} \+: tableau de pointeur de \hyperlink{class_version}{Version} {\itshape nb\+Version} \+: nombre de versions de la note {\itshape nb\+Max\+Version} \+: nombre de versions maximales de la note {\itshape etat} \+: Etat de la note {\itshape date\+\_\+creation} \+: Date de création de la note 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_note_a6a150fba840245d5c99c058e3457e775}\label{class_note_a6a150fba840245d5c99c058e3457e775}} 
+\index{Note@{Note}!ajouter\+Version@{ajouter\+Version}}
+\index{ajouter\+Version@{ajouter\+Version}!Note@{Note}}
+\subsubsection{\texorpdfstring{ajouter\+Version()}{ajouterVersion()}}
+{\footnotesize\ttfamily void Note\+::ajouter\+Version (\begin{DoxyParamCaption}\item[{\hyperlink{class_version}{Version} $\ast$}]{v }\end{DoxyParamCaption})}
+
+
+
+\+: Ajoute une version à une note 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & \+: \hyperlink{class_version}{Version} d\textquotesingle{}une note \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_note_aca74abbfeb1ff6bba66db5e81f5f622e}\label{class_note_aca74abbfeb1ff6bba66db5e81f5f622e}} 
+\index{Note@{Note}!is\+\_\+active@{is\+\_\+active}}
+\index{is\+\_\+active@{is\+\_\+active}!Note@{Note}}
+\subsubsection{\texorpdfstring{is\+\_\+active()}{is\_active()}}
+{\footnotesize\ttfamily bool Note\+::is\+\_\+active (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Cherche si la \hyperlink{class_note}{Note} est active. 
+
+\begin{DoxyReturn}{Returns}
+1 si \hyperlink{class_note}{Note} est active, 0 sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_note_a59f2e98d827736fefc03a71606db7e3d}\label{class_note_a59f2e98d827736fefc03a71606db7e3d}} 
+\index{Note@{Note}!is\+\_\+archived@{is\+\_\+archived}}
+\index{is\+\_\+archived@{is\+\_\+archived}!Note@{Note}}
+\subsubsection{\texorpdfstring{is\+\_\+archived()}{is\_archived()}}
+{\footnotesize\ttfamily bool Note\+::is\+\_\+archived (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Cherche si la \hyperlink{class_note}{Note} est archivée. 
+
+\begin{DoxyReturn}{Returns}
+1 si \hyperlink{class_note}{Note} est archivée, 0 sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_note_a35ed46ae39aedc142d4fd9461a3d6a33}\label{class_note_a35ed46ae39aedc142d4fd9461a3d6a33}} 
+\index{Note@{Note}!is\+\_\+reprieved@{is\+\_\+reprieved}}
+\index{is\+\_\+reprieved@{is\+\_\+reprieved}!Note@{Note}}
+\subsubsection{\texorpdfstring{is\+\_\+reprieved()}{is\_reprieved()}}
+{\footnotesize\ttfamily bool Note\+::is\+\_\+reprieved (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Cherche si la \hyperlink{class_note}{Note} est en sursis. 
+
+\begin{DoxyReturn}{Returns}
+1 si \hyperlink{class_note}{Note} est en sursis, 0 sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_note_a19cfb61168f8f6ce29cbdefd8448c0c0}\label{class_note_a19cfb61168f8f6ce29cbdefd8448c0c0}} 
+\index{Note@{Note}!restaurer\+Version@{restaurer\+Version}}
+\index{restaurer\+Version@{restaurer\+Version}!Note@{Note}}
+\subsubsection{\texorpdfstring{restaurer\+Version()}{restaurerVersion()}}
+{\footnotesize\ttfamily void Note\+::restaurer\+Version (\begin{DoxyParamCaption}\item[{const unsigned int}]{p }\end{DoxyParamCaption})}
+
+
+
+Restaurer une version d\textquotesingle{}une note. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{note_8h}{note.\+h}\item 
+note.\+cpp\end{DoxyCompactItemize}

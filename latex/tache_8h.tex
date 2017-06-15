@@ -1,0 +1,107 @@
+\hypertarget{tache_8h}{}\section{tache.\+h File Reference}
+\label{tache_8h}\index{tache.\+h@{tache.\+h}}
+{\ttfamily \#include \char`\"{}version.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$Q\+Date\+Time$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_tache}{Tache}
+\begin{DoxyCompactList}\small\item\em Définit la classe \hyperlink{class_tache}{Tache}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{tache_8h_addeb79f2c3a0b32730bfe5fe5eb962a7}\label{tache_8h_addeb79f2c3a0b32730bfe5fe5eb962a7}} 
+enum \hyperlink{tache_8h_addeb79f2c3a0b32730bfe5fe5eb962a7}{Type\+\_\+statut\+\_\+tache} \{ {\bfseries en\+\_\+cours}, 
+{\bfseries attente}, 
+{\bfseries terminee}
+ \}\begin{DoxyCompactList}\small\item\em Enumeration des statut des tâches
+
+{\itshape en\+\_\+cours} \+: La tache est en cours. {\itshape attente} \+: La tache est en attente (par défaut). {\itshape terminee} \+: La tache est en terminée. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{tache_8h_ab21b967fc0cce1c56c019ece61ab5fb9}{enum\+\_\+statut\+\_\+to\+\_\+string} (\hyperlink{tache_8h_addeb79f2c3a0b32730bfe5fe5eb962a7}{Type\+\_\+statut\+\_\+tache} t)
+\begin{DoxyCompactList}\small\item\em \+: Convertit un Type\+\_\+statut\+\_\+tache vers une string. \end{DoxyCompactList}\item 
+\hyperlink{tache_8h_addeb79f2c3a0b32730bfe5fe5eb962a7}{Type\+\_\+statut\+\_\+tache} \hyperlink{tache_8h_a93584148c485123af15a068a269fc628}{string\+\_\+to\+\_\+enum\+\_\+statut} (const string \&s)
+\begin{DoxyCompactList}\small\item\em Convertit une string vers un Type\+\_\+statut\+\_\+tache. \end{DoxyCompactList}\item 
+Q\+String \hyperlink{tache_8h_a5830a98d0d3eab8bb3f2ca3845c756ed}{enum\+\_\+statut\+\_\+to\+\_\+qstring} (\hyperlink{tache_8h_addeb79f2c3a0b32730bfe5fe5eb962a7}{Type\+\_\+statut\+\_\+tache} t)
+\begin{DoxyCompactList}\small\item\em \+: Convertit un Type\+\_\+statut\+\_\+tache vers une string. \end{DoxyCompactList}\item 
+\hyperlink{tache_8h_addeb79f2c3a0b32730bfe5fe5eb962a7}{Type\+\_\+statut\+\_\+tache} \hyperlink{tache_8h_a21959831415f2c105008f9c6d5440f55}{qstring\+\_\+to\+\_\+enum\+\_\+statut} (const Q\+String \&s)
+\begin{DoxyCompactList}\small\item\em Convertit une string vers un Type\+\_\+statut\+\_\+tache. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{tache_8h_a5830a98d0d3eab8bb3f2ca3845c756ed}\label{tache_8h_a5830a98d0d3eab8bb3f2ca3845c756ed}} 
+\index{tache.\+h@{tache.\+h}!enum\+\_\+statut\+\_\+to\+\_\+qstring@{enum\+\_\+statut\+\_\+to\+\_\+qstring}}
+\index{enum\+\_\+statut\+\_\+to\+\_\+qstring@{enum\+\_\+statut\+\_\+to\+\_\+qstring}!tache.\+h@{tache.\+h}}
+\subsubsection{\texorpdfstring{enum\+\_\+statut\+\_\+to\+\_\+qstring()}{enum\_statut\_to\_qstring()}}
+{\footnotesize\ttfamily Q\+String enum\+\_\+statut\+\_\+to\+\_\+qstring (\begin{DoxyParamCaption}\item[{\hyperlink{tache_8h_addeb79f2c3a0b32730bfe5fe5eb962a7}{Type\+\_\+statut\+\_\+tache}}]{t }\end{DoxyParamCaption})}
+
+
+
+\+: Convertit un Type\+\_\+statut\+\_\+tache vers une string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & \+: enum à convertir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Qstring de l\textquotesingle{}enum 
+\end{DoxyReturn}
+\mbox{\Hypertarget{tache_8h_ab21b967fc0cce1c56c019ece61ab5fb9}\label{tache_8h_ab21b967fc0cce1c56c019ece61ab5fb9}} 
+\index{tache.\+h@{tache.\+h}!enum\+\_\+statut\+\_\+to\+\_\+string@{enum\+\_\+statut\+\_\+to\+\_\+string}}
+\index{enum\+\_\+statut\+\_\+to\+\_\+string@{enum\+\_\+statut\+\_\+to\+\_\+string}!tache.\+h@{tache.\+h}}
+\subsubsection{\texorpdfstring{enum\+\_\+statut\+\_\+to\+\_\+string()}{enum\_statut\_to\_string()}}
+{\footnotesize\ttfamily string enum\+\_\+statut\+\_\+to\+\_\+string (\begin{DoxyParamCaption}\item[{\hyperlink{tache_8h_addeb79f2c3a0b32730bfe5fe5eb962a7}{Type\+\_\+statut\+\_\+tache}}]{t }\end{DoxyParamCaption})}
+
+
+
+\+: Convertit un Type\+\_\+statut\+\_\+tache vers une string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & \+: enum à convertir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string de l\textquotesingle{}enum 
+\end{DoxyReturn}
+\mbox{\Hypertarget{tache_8h_a21959831415f2c105008f9c6d5440f55}\label{tache_8h_a21959831415f2c105008f9c6d5440f55}} 
+\index{tache.\+h@{tache.\+h}!qstring\+\_\+to\+\_\+enum\+\_\+statut@{qstring\+\_\+to\+\_\+enum\+\_\+statut}}
+\index{qstring\+\_\+to\+\_\+enum\+\_\+statut@{qstring\+\_\+to\+\_\+enum\+\_\+statut}!tache.\+h@{tache.\+h}}
+\subsubsection{\texorpdfstring{qstring\+\_\+to\+\_\+enum\+\_\+statut()}{qstring\_to\_enum\_statut()}}
+{\footnotesize\ttfamily \hyperlink{tache_8h_addeb79f2c3a0b32730bfe5fe5eb962a7}{Type\+\_\+statut\+\_\+tache} qstring\+\_\+to\+\_\+enum\+\_\+statut (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{s }\end{DoxyParamCaption})}
+
+
+
+Convertit une string vers un Type\+\_\+statut\+\_\+tache. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & \+: Qstring à convertir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+enum de la string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{tache_8h_a93584148c485123af15a068a269fc628}\label{tache_8h_a93584148c485123af15a068a269fc628}} 
+\index{tache.\+h@{tache.\+h}!string\+\_\+to\+\_\+enum\+\_\+statut@{string\+\_\+to\+\_\+enum\+\_\+statut}}
+\index{string\+\_\+to\+\_\+enum\+\_\+statut@{string\+\_\+to\+\_\+enum\+\_\+statut}!tache.\+h@{tache.\+h}}
+\subsubsection{\texorpdfstring{string\+\_\+to\+\_\+enum\+\_\+statut()}{string\_to\_enum\_statut()}}
+{\footnotesize\ttfamily \hyperlink{tache_8h_addeb79f2c3a0b32730bfe5fe5eb962a7}{Type\+\_\+statut\+\_\+tache} string\+\_\+to\+\_\+enum\+\_\+statut (\begin{DoxyParamCaption}\item[{const string \&}]{s }\end{DoxyParamCaption})}
+
+
+
+Convertit une string vers un Type\+\_\+statut\+\_\+tache. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & \+: string à convertir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+enum de la string 
+\end{DoxyReturn}

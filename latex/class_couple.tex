@@ -1,0 +1,114 @@
+\hypertarget{class_couple}{}\section{Couple Class Reference}
+\label{class_couple}\index{Couple@{Couple}}
+
+
+The \hyperlink{class_couple}{Couple} class\+: contain 2 note linked together by a relation, with label.  
+
+
+
+
+{\ttfamily \#include $<$relation.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_couple_a8f1b8ad6f5a177161ea03b35b4af92f1}{Couple} (\hyperlink{class_note}{Note} $\ast$n1, \hyperlink{class_note}{Note} $\ast$n2, Q\+String \&lb)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_couple}{Couple}\+: constructor of couple. \end{DoxyCompactList}\item 
+const \hyperlink{class_note}{Note} \& \hyperlink{class_couple_ab1e111ccd47d953bce5a485a40f6e7d2}{get\+Note1} () const
+\begin{DoxyCompactList}\small\item\em get\+Note1\+: get the note 1 in the couple \end{DoxyCompactList}\item 
+const \hyperlink{class_note}{Note} \& \hyperlink{class_couple_ad3d28199ad0170f65c4564a910167ed6}{get\+Note2} () const
+\begin{DoxyCompactList}\small\item\em get\+Note2\+: get the note 1 in the couple \end{DoxyCompactList}\item 
+const Q\+String \& \hyperlink{class_couple_a0f04e0130d4d44ce39e322033d85a8df}{get\+Label} () const
+\begin{DoxyCompactList}\small\item\em get\+Label\+: get the label of the couple \end{DoxyCompactList}\item 
+void \hyperlink{class_couple_aed2c64b89da0544329d98eb5298d984d}{set\+Label} (Q\+String \&new\+Lb)
+\begin{DoxyCompactList}\small\item\em set\+Label\+: set the new label \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_couple_adb3d0b6785dd4e5ad1fafba5d90df602}\label{class_couple_adb3d0b6785dd4e5ad1fafba5d90df602}} 
+\hyperlink{class_couple_adb3d0b6785dd4e5ad1fafba5d90df602}{$\sim$\+Couple} ()
+\begin{DoxyCompactList}\small\item\em destructor of couple \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_couple}{Couple} class\+: contain 2 note linked together by a relation, with label. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_couple_a8f1b8ad6f5a177161ea03b35b4af92f1}\label{class_couple_a8f1b8ad6f5a177161ea03b35b4af92f1}} 
+\index{Couple@{Couple}!Couple@{Couple}}
+\index{Couple@{Couple}!Couple@{Couple}}
+\subsubsection{\texorpdfstring{Couple()}{Couple()}}
+{\footnotesize\ttfamily Couple\+::\+Couple (\begin{DoxyParamCaption}\item[{\hyperlink{class_note}{Note} $\ast$}]{n1,  }\item[{\hyperlink{class_note}{Note} $\ast$}]{n2,  }\item[{Q\+String \&}]{lb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\hyperlink{class_couple}{Couple}\+: constructor of couple. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n1} & note from \\
+\hline
+{\em n2} & note to \\
+\hline
+{\em lb} & label of the couple\\
+\hline
+\end{DoxyParams}
+This couple indicates the relation from note 1 to note 2 if it is oriented otherwise the relation between note 1 and note 2 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_couple_a0f04e0130d4d44ce39e322033d85a8df}\label{class_couple_a0f04e0130d4d44ce39e322033d85a8df}} 
+\index{Couple@{Couple}!get\+Label@{get\+Label}}
+\index{get\+Label@{get\+Label}!Couple@{Couple}}
+\subsubsection{\texorpdfstring{get\+Label()}{getLabel()}}
+{\footnotesize\ttfamily const Q\+String\& Couple\+::get\+Label (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+get\+Label\+: get the label of the couple 
+
+\begin{DoxyReturn}{Returns}
+const Q\+String\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_couple_ab1e111ccd47d953bce5a485a40f6e7d2}\label{class_couple_ab1e111ccd47d953bce5a485a40f6e7d2}} 
+\index{Couple@{Couple}!get\+Note1@{get\+Note1}}
+\index{get\+Note1@{get\+Note1}!Couple@{Couple}}
+\subsubsection{\texorpdfstring{get\+Note1()}{getNote1()}}
+{\footnotesize\ttfamily const \hyperlink{class_note}{Note}\& Couple\+::get\+Note1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+get\+Note1\+: get the note 1 in the couple 
+
+\begin{DoxyReturn}{Returns}
+const \hyperlink{class_note}{Note}\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_couple_ad3d28199ad0170f65c4564a910167ed6}\label{class_couple_ad3d28199ad0170f65c4564a910167ed6}} 
+\index{Couple@{Couple}!get\+Note2@{get\+Note2}}
+\index{get\+Note2@{get\+Note2}!Couple@{Couple}}
+\subsubsection{\texorpdfstring{get\+Note2()}{getNote2()}}
+{\footnotesize\ttfamily const \hyperlink{class_note}{Note}\& Couple\+::get\+Note2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+get\+Note2\+: get the note 1 in the couple 
+
+\begin{DoxyReturn}{Returns}
+const \hyperlink{class_note}{Note}\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_couple_aed2c64b89da0544329d98eb5298d984d}\label{class_couple_aed2c64b89da0544329d98eb5298d984d}} 
+\index{Couple@{Couple}!set\+Label@{set\+Label}}
+\index{set\+Label@{set\+Label}!Couple@{Couple}}
+\subsubsection{\texorpdfstring{set\+Label()}{setLabel()}}
+{\footnotesize\ttfamily void Couple\+::set\+Label (\begin{DoxyParamCaption}\item[{Q\+String \&}]{new\+Lb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+set\+Label\+: set the new label 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Lb} & new label \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{relation_8h}{relation.\+h}\end{DoxyCompactItemize}

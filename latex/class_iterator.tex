@@ -1,0 +1,152 @@
+\hypertarget{class_iterator}{}\section{Iterator$<$ T $>$ Class Template Reference}
+\label{class_iterator}\index{Iterator$<$ T $>$@{Iterator$<$ T $>$}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_iterator_a87d4af70ba6312e91e1ab6a7c9e2ec6d}\label{class_iterator_a87d4af70ba6312e91e1ab6a7c9e2ec6d}} 
+\hyperlink{class_iterator_a87d4af70ba6312e91e1ab6a7c9e2ec6d}{Iterator} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_iterator}{Iterator}\+: constructor by default. \end{DoxyCompactList}\item 
+T $\ast$ \hyperlink{class_iterator_a10ab6542ca4a31393939291780fa7fa2}{operator$\ast$} () const
+\begin{DoxyCompactList}\small\item\em operator $\ast$\+: get the pointer of current element \end{DoxyCompactList}\item 
+\hyperlink{class_iterator}{Iterator} \& \hyperlink{class_iterator_a7f820677fc6ee38192e0457090646cd6}{operator++} ()
+\begin{DoxyCompactList}\small\item\em operator ++\+: pre-\/increment iterator \end{DoxyCompactList}\item 
+\hyperlink{class_iterator}{Iterator} \& \hyperlink{class_iterator_a292066a3edaea39abf09e6a14328c489}{operator++} (int)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_iterator_a292066a3edaea39abf09e6a14328c489}{operator ++(int)}\+: post-\/increment iterator \end{DoxyCompactList}\item 
+\hyperlink{class_iterator}{Iterator} \& \hyperlink{class_iterator_a580d645f1163cd20b92b469477324509}{operator-\/-\/} ()
+\begin{DoxyCompactList}\small\item\em operator --\+: pre-\/decrement iterator \end{DoxyCompactList}\item 
+\hyperlink{class_iterator}{Iterator} \& \hyperlink{class_iterator_a96b7f620a07d11a31335e8b43609625e}{operator-\/-\/} (int)
+\begin{DoxyCompactList}\small\item\em operator --\+: post-\/decrement iterator \end{DoxyCompactList}\item 
+bool \hyperlink{class_iterator_a81ed85772dc6f8251fc5d65cf57b7fa8}{operator==} (\hyperlink{class_iterator}{Iterator} it) const
+\begin{DoxyCompactList}\small\item\em operator ==\+: comparaison of iterator \end{DoxyCompactList}\item 
+bool \hyperlink{class_iterator_a5e8725bfbba9901f8148e427a9b8886a}{operator!=} (\hyperlink{class_iterator}{Iterator} it) const
+\begin{DoxyCompactList}\small\item\em operator !=\+: comparaison of iterator \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_iterator_a8d10287aafe1cac58db300c53c2a3f8c}{Iterator} (T $\ast$$\ast$curr)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_iterator}{Iterator}\+: constructor of iterator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_iterator_a8d10287aafe1cac58db300c53c2a3f8c}\label{class_iterator_a8d10287aafe1cac58db300c53c2a3f8c}} 
+\index{Iterator@{Iterator}!Iterator@{Iterator}}
+\index{Iterator@{Iterator}!Iterator@{Iterator}}
+\subsubsection{\texorpdfstring{Iterator()}{Iterator()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+\hyperlink{class_iterator}{Iterator}$<$ T $>$\+::\hyperlink{class_iterator}{Iterator} (\begin{DoxyParamCaption}\item[{T $\ast$$\ast$}]{curr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+\hyperlink{class_iterator}{Iterator}\+: constructor of iterator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em curr} & pointer to an position of the table of T \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_iterator_a5e8725bfbba9901f8148e427a9b8886a}\label{class_iterator_a5e8725bfbba9901f8148e427a9b8886a}} 
+\index{Iterator@{Iterator}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Iterator@{Iterator}}
+\subsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+bool \hyperlink{class_iterator}{Iterator}$<$ T $>$\+::operator!= (\begin{DoxyParamCaption}\item[{\hyperlink{class_iterator}{Iterator}$<$ T $>$}]{it }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+operator !=\+: comparaison of iterator 
+
+\begin{DoxyReturn}{Returns}
+true if not same position 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_iterator_a10ab6542ca4a31393939291780fa7fa2}\label{class_iterator_a10ab6542ca4a31393939291780fa7fa2}} 
+\index{Iterator@{Iterator}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Iterator@{Iterator}}
+\subsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+T$\ast$ \hyperlink{class_iterator}{Iterator}$<$ T $>$\+::operator$\ast$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+operator $\ast$\+: get the pointer of current element 
+
+\begin{DoxyReturn}{Returns}
+pointer of type T 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_iterator_a7f820677fc6ee38192e0457090646cd6}\label{class_iterator_a7f820677fc6ee38192e0457090646cd6}} 
+\index{Iterator@{Iterator}!operator++@{operator++}}
+\index{operator++@{operator++}!Iterator@{Iterator}}
+\subsubsection{\texorpdfstring{operator++()}{operator++()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+\hyperlink{class_iterator}{Iterator}\& \hyperlink{class_iterator}{Iterator}$<$ T $>$\+::operator++ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+operator ++\+: pre-\/increment iterator 
+
+\begin{DoxyReturn}{Returns}
+iterator\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_iterator_a292066a3edaea39abf09e6a14328c489}\label{class_iterator_a292066a3edaea39abf09e6a14328c489}} 
+\index{Iterator@{Iterator}!operator++@{operator++}}
+\index{operator++@{operator++}!Iterator@{Iterator}}
+\subsubsection{\texorpdfstring{operator++()}{operator++()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+\hyperlink{class_iterator}{Iterator}\& \hyperlink{class_iterator}{Iterator}$<$ T $>$\+::operator++ (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\hyperlink{class_iterator_a292066a3edaea39abf09e6a14328c489}{operator ++(int)}\+: post-\/increment iterator 
+
+\begin{DoxyReturn}{Returns}
+iterator\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_iterator_a580d645f1163cd20b92b469477324509}\label{class_iterator_a580d645f1163cd20b92b469477324509}} 
+\index{Iterator@{Iterator}!operator-\/-\/@{operator-\/-\/}}
+\index{operator-\/-\/@{operator-\/-\/}!Iterator@{Iterator}}
+\subsubsection{\texorpdfstring{operator-\/-\/()}{operator--()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+\hyperlink{class_iterator}{Iterator}\& \hyperlink{class_iterator}{Iterator}$<$ T $>$\+::operator-\/-\/ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+operator --\+: pre-\/decrement iterator 
+
+\begin{DoxyReturn}{Returns}
+iterator\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_iterator_a96b7f620a07d11a31335e8b43609625e}\label{class_iterator_a96b7f620a07d11a31335e8b43609625e}} 
+\index{Iterator@{Iterator}!operator-\/-\/@{operator-\/-\/}}
+\index{operator-\/-\/@{operator-\/-\/}!Iterator@{Iterator}}
+\subsubsection{\texorpdfstring{operator-\/-\/()}{operator--()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+\hyperlink{class_iterator}{Iterator}\& \hyperlink{class_iterator}{Iterator}$<$ T $>$\+::operator-\/-\/ (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+operator --\+: post-\/decrement iterator 
+
+\begin{DoxyReturn}{Returns}
+iterator\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_iterator_a81ed85772dc6f8251fc5d65cf57b7fa8}\label{class_iterator_a81ed85772dc6f8251fc5d65cf57b7fa8}} 
+\index{Iterator@{Iterator}!operator==@{operator==}}
+\index{operator==@{operator==}!Iterator@{Iterator}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+bool \hyperlink{class_iterator}{Iterator}$<$ T $>$\+::operator== (\begin{DoxyParamCaption}\item[{\hyperlink{class_iterator}{Iterator}$<$ T $>$}]{it }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+operator ==\+: comparaison of iterator 
+
+\begin{DoxyReturn}{Returns}
+true if same position 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{iterator_8h}{iterator.\+h}\end{DoxyCompactItemize}

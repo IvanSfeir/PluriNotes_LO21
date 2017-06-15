@@ -1,0 +1,26 @@
+var class_interface =
+[
+    [ "Interface", "class_interface.html#a4406d74c75bdfe150bf72be1f1cda8b1", null ],
+    [ "avant_de_fermer", "class_interface.html#a3a82b8958d8fa2dd8239f781c5c92042", null ],
+    [ "closeEvent", "class_interface.html#a5e55a321ae0f587fb2c1378aad7536cf", null ],
+    [ "creer_couple", "class_interface.html#a10c473d45e7063f2e556f3267b1df85f", null ],
+    [ "creer_relation", "class_interface.html#aaf757b3c67a42c5c42e0fd993ed2eb0e", null ],
+    [ "fermer_centre", "class_interface.html#a0089c8fe1279b59d283bf9bd50b43912", null ],
+    [ "fermer_droite", "class_interface.html#a72f663f65f2f4f0f1c0cc710206c844f", null ],
+    [ "fermer_gauche", "class_interface.html#a82de37089406e4a81eae6b98d8c6f4e4", null ],
+    [ "forward_to_create_type", "class_interface.html#a2ebf4a5fd59fa36584671931daae622a", null ],
+    [ "ouvrir_couples", "class_interface.html#addd6497067b6e680dee59e00726ea22e", null ],
+    [ "ouvrir_creer_couple", "class_interface.html#a7f3dca1c4257a0af289a56dafe1c3025", null ],
+    [ "ouvrir_creer_note", "class_interface.html#a98b07127215c9316870987d49b2e0d3c", null ],
+    [ "ouvrir_creer_relation", "class_interface.html#ac5a8f808b693fc578f37b303aaf7ff1b", null ],
+    [ "ouvrir_gauche", "class_interface.html#ab56822f065a7ef72d1db16964e0cbb4d", null ],
+    [ "ouvrir_note_active_id", "class_interface.html#a473b685de72a223d9972a70c0698e314", null ],
+    [ "ouvrir_note_archivee_id", "class_interface.html#a741673a4341956dba8eb4d6173931fca", null ],
+    [ "ouvrir_relations", "class_interface.html#a94a88ff71e0b2caef92e88972662d4b0", null ],
+    [ "ouvrir_version_act", "class_interface.html#abb959eacc914a6618e9f4741b42706f7", null ],
+    [ "ouvrir_version_arch", "class_interface.html#a81f01e8dec044f52338b2f650fa48bde", null ],
+    [ "restaurer_note", "class_interface.html#a326cdc1e75cc89190832376aaa56d3af", null ],
+    [ "restaurer_version", "class_interface.html#ab4cdf89b7b6c8120c44625356a4987c1", null ],
+    [ "sauver_article", "class_interface.html#a3a3d220b32fa6e4dda6f17f1899d1882", null ],
+    [ "actionCorbeilleAuto", "class_interface.html#a9ec3b9f9d2f43b773f04f22e49d439a8", null ]
+];
