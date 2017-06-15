@@ -35,7 +35,7 @@ class WindowAfficherCouple : public QWidget {
 
 public:
     WindowAfficherCouple(QString& relation_name, QWidget *parent=0);
-    //QPushButton* getButtonCreate() {return button_create;}
+    QPushButton* getButtonCreateVersion() {return creer_couple;}
     //QTextEdit* getTextBox() {return text_box;}
 
 signals:

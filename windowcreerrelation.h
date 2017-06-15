@@ -16,7 +16,7 @@ class WindowCreerRelation :public QWidget
 {
   Q_OBJECT
 
-  //** MTL
+  
   QVBoxLayout *V_window; /*!< Emplacemet vertical de la fenetre*/
 
   // ID

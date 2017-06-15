@@ -134,7 +134,7 @@ void Interface::ouvrir_relations() {
     QObject::connect(window_relations->getBoutonAfficher(), SIGNAL(clicked()), this, SLOT(ouvrir_couples()));
     //QObject::connect(window_relations->getBoutonAfficher(), SIGNAL(clicked()), this, SLOT(ouvrir_relation_details()));
     QObject::connect(window_relations->getBoutonCreate(), SIGNAL(clicked()), this, SLOT(ouvrir_creer_relation()));
-    //QObject::connect(window_creer_relation->get, SIGNAL(clicked()),this, SLOT(ouvrir_creer_relation()));
+    //QObject::connect(window_relations->get(), SIGNAL(clicked()),this, SLOT(ouvrir_creer_couple()));
 
 }
 
@@ -150,6 +150,7 @@ void Interface::fermer_droite() {
     if(window_relations) window_relations->close();
     if(window_relation_details) window_relation_details->close();
     if(window_creer_relation) window_creer_relation->close();
+    if(window_creer_couple) window_creer_couple->close();
 
 }
 
@@ -195,6 +196,31 @@ void Interface::creer_relation()
     }
     RM->ajouterRelation(rn);
 }
+
+void Interface::ouvrir_creer_couple()
+{
+    fermer_droite();
+    window_creer_couple = new WindowCreerCouple(this);
+    connect(window_creer_couple->getBoutonValider(), SIGNAL(clicked(bool)), this, SLOT(creer_couple()));
+    window_creer_couple->move(800,15);
+    window_creer_couple->show();
+}
+
+void Interface::creer_couple()
+{
+    //fermer_droite();
+    RelationManager *RM = RelationManager::getRelationManager();
+    QString id1 = window_creer_couple->getNote1();
+    QString id2 = window_creer_couple->getNote2();
+    QString label= window_creer_couple->getLabel();
+    NotesManager * NM = NotesManager::getInstance();
+    Note *n1,*n2;
+    n1=NM->getNote(id1);
+    n2=NM->getNote(id2);
+    Couple * newCouple = new Couple(n1,n2,label);
+    currentRelation->ajouterCouple(newCouple);
+}
+
 ///////////////////////////PARTIE SHOW NOTES/////////////////////////
 /////////////////////////////////////////////////////////////////////
 void Interface::ouvrir_gauche() {
@@ -304,6 +330,18 @@ void Interface::restaurer_version(){
     }
 }
 
+void Interface::sauver_article(){
+    NotesManager *NM = NotesManager::getInstance();
+    QString id = window_gauche->getNotesActives()->currentItem()->text();
+    Note *n = NM->getNote(id);
+    Article* art = new Article(window_afficher_article->getTitle()->text(),
+                               QDateTime::currentDateTime(),
+                               window_afficher_article->getText()->toPlainText());
+    n->ajouterVersion(art);
+    QMessageBox::information(this,"Sauvegarde","Votre article a bien été sauvegardé");
+    window_afficher_article->close();
+}
+
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
 
@@ -317,6 +355,7 @@ void Interface::ouvrir_version_act() {
     fermer_centre();
     if(typeid(*vers)==typeid(Article)) {
         window_afficher_article = new WindowAfficherArticle(dynamic_cast<Article*>(vers), this);
+        QObject::connect(window_afficher_article->getButtonSave(),SIGNAL(clicked(bool)),this,SLOT(sauver_article()));
         window_afficher_article->move(400,20);
         window_afficher_article->show();
     }
@@ -334,6 +373,11 @@ void Interface::ouvrir_version_act() {
         window_afficher_video = new WindowAfficherVideo(dynamic_cast<video*>(vers), this);
         window_afficher_video->move(400,20);
         window_afficher_video->show();
+    }
+    if(typeid(*vers)==typeid(Tache)) {
+        window_afficher_tache = new WindowAfficherTache(dynamic_cast<Tache*>(vers), this);
+        window_afficher_tache->move(400,20);
+        window_afficher_tache->show();
     }
 }
 
@@ -374,6 +418,16 @@ void Interface::ouvrir_version_arch() {
         window_afficher_video->getChemin()->setReadOnly(true);
         window_afficher_video->getCheminVideo()->setReadOnly(true);
     }
+    if(typeid(*vers)==typeid(Tache)) {
+        window_afficher_tache->move(400,20);
+        window_afficher_tache = new WindowAfficherTache(dynamic_cast<Tache*>(vers), this);
+        window_afficher_tache->show();
+        window_afficher_tache->getTextBox()->setReadOnly(true);
+        window_afficher_tache->getTitle()->setReadOnly(true);
+        window_afficher_tache->getStatutBox()->setReadOnly(true);
+        window_afficher_tache->getPrioBox()->setReadOnly(true);
+        window_afficher_tache->getDate_e_DayBox()->setReadOnly(true);
+    }
 }
 
 ///////////////////////////////////////////////
@@ -381,8 +435,12 @@ void Interface::ouvrir_version_arch() {
 
 void Interface::ouvrir_couples(){
     QString rela = window_relations->getListRelation()->currentItem()->text();
+     QString rel_title=window_relations->getListRelation()->currentItem()->text();
+     RelationManager *RM= RelationManager::getRelationManager();
+     currentRelation = RM->getRelationFromTitle(rel_title);
     fermer_droite();
     window_afficher_couples = new WindowAfficherCouple(rela, this);
     window_afficher_couples->move(800,15);
     window_afficher_couples->show();
+    QObject::connect(window_afficher_couples->getButtonCreateVersion(), SIGNAL(clicked()),this, SLOT(ouvrir_creer_couple()));
 }
