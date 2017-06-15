@@ -132,7 +132,8 @@ void Interface::ouvrir_relations() {
     window_relations->show();
     QObject::connect(window_relations->getBoutonAfficher(), SIGNAL(clicked()), this, SLOT(ouvrir_couples()));
     //QObject::connect(window_relations->getBoutonAfficher(), SIGNAL(clicked()), this, SLOT(ouvrir_relation_details()));
-    QObject::connect(creer_relation, SIGNAL(clicked()),this, SLOT(ouvrir_creer_relation()));
+    QObject::connect(window_relations->getBoutonCreate(), SIGNAL(clicked()), this, SLOT(ouvrir_creer_relation()));
+    //QObject::connect(window_creer_relation->get, SIGNAL(clicked()),this, SLOT(ouvrir_creer_relation()));
 
 }
 
@@ -147,6 +148,8 @@ void Interface::ouvrir_relation_details(unsigned int position) {
 void Interface::fermer_droite() {
     if(window_relations) window_relations->close();
     if(window_relation_details) window_relation_details->close();
+    if(window_creer_relation) window_creer_relation->close();
+
 }
 
 void Interface::fermer_gauche() {
@@ -178,15 +181,18 @@ void Interface::ouvrir_creer_relation()
 void Interface::creer_relation()
 {
     fermer_droite();
+    RelationManager *RM = RelationManager::getRelationManager();
     QString titre = window_creer_relation->getTitle();
     QString descr = window_creer_relation->getDesc();
     QString orient = window_creer_relation->getOrientation();
+    RelationNormale *rn;
     if(orient=="Non orientee"){
-        RelationPreexistente *rp= RelationPreexistente::getRelationPreexistente();        
+        rn = new RelationNormale(titre,descr,0);
     }
     if(orient=="Orientee"){
-       RelationNormale *rn = new RelationNormale(titre,descr,1);
+       rn = new RelationNormale(titre,descr,1);
     }
+    RM->ajouterRelation(rn);
 }
 ///////////////////////////PARTIE SHOW NOTES/////////////////////////
 /////////////////////////////////////////////////////////////////////

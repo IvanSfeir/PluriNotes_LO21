@@ -21,10 +21,10 @@ CentreRelations::CentreRelations(QMainWindow *parent):
     //QObject::connect(afficher_relation, SIGNAL(Clicked()),this, SLOT(afficherRelation()));
 
     fermer = new QPushButton("Fermer");
-    connect(fermer, SIGNAL(Clicked()),this, SLOT(close()));
+    connect(fermer, SIGNAL(clicked()),this, SLOT(close()));
 
     creer_relation = new QPushButton("Creer relation");
-    QObject::connect(creer_relation, SIGNAL(clicked()),this, SLOT(ouvrir_creer_relation()));
+    //QObject::connect(creer_relation, SIGNAL(clicked()),this, SLOT(ouvrir_creer_relation()));
 
     supprimer_relation = new QPushButton("Supprimer relation");
     //QObject::connect(supprimer_relation, SIGNAL(Clicked()),this, SLOT(supprimerRelation()));

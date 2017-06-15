@@ -30,6 +30,7 @@ class CentreRelations : public QWidget {
 public:
     explicit CentreRelations(QMainWindow* parent=0);
     QPushButton* getBoutonAfficher() {return afficher_relation;}
+    QPushButton *getBoutonCreate(){return creer_relation;}
     QListWidget* getListRelation() {return relations;}
     unsigned int getIndiceRelation() {return relations->currentRow();}
 

@@ -140,7 +140,7 @@ void NotesManager::saveNotesManager(const QString & filename){
             type_version=type_version.substr(1,type_version.length()-1); // on renvoie le nom du type de l'objet, sans le 1er char (la longueur du nom)
 
             //if (type_version=="image") {
-                if(typeid(*it_note)==typeid(image)){
+                if(typeid(**it_note)==typeid(image)){
                         image *img =  dynamic_cast<image*>(*it_note);   //cast version* to *img
                         stream.writeTextElement("type", "image");
                        stream.writeTextElement("img", img->getImg());
@@ -148,28 +148,28 @@ void NotesManager::saveNotesManager(const QString & filename){
                        stream.writeTextElement("img_URL",  img->getimg_URL());
                 }
             //else if(type_version=="audio"){
-                if(typeid(*it_note)==typeid(audio)){
+                if(typeid(**it_note)==typeid(audio)){
                         audio *aud = dynamic_cast<audio*>(*it_note);
                         stream.writeTextElement("type", "audio");
                        stream.writeTextElement("audio_URL", aud->getAudio_URL());
                        //stream.writeStartElement("playeraudio", enum_statut_to_string( (*it_note)->getImg_URL()));
                        stream.writeTextElement("desc", aud->getDesc());
                        stream.writeTextElement("img_URL", aud->getimg_URL());
-               }
+                }
            // else if(type_version=="video"){
-                    if(typeid(*it_note)==typeid(video)){
+                    if(typeid(**it_note)==typeid(video)){
                        video *vid = dynamic_cast<video*>(*it_note);
                        stream.writeTextElement("type", "video");
                        stream.writeTextElement("video_URL", vid->getVideo_URL());
                        stream.writeTextElement("desc", vid->getDesc());
                        stream.writeTextElement("img_URL",  vid->getimg_URL());
 
-}
+                     }
             //else if(type_version=="Tache"){
-                    if(typeid(*it_note)==typeid(Tache)){
+                    if(typeid(**it_note)==typeid(Tache)){
 
-                        Tache *tach =dynamic_cast<Tache*>(*it_note);
-                        stream.writeTextElement("type", "Tache");
+                       Tache *tach =dynamic_cast<Tache*>(*it_note);
+                       stream.writeTextElement("type", "Tache");
                        stream.writeTextElement("action", tach->getAction());
                        if(tach->getPriorite())
                        {
@@ -180,14 +180,13 @@ void NotesManager::saveNotesManager(const QString & filename){
                        //if((tach->getDate_echeance()).QDateTime::isNull()) stream.writeStartElement("Date_echeance", tach->getDate_echeance().toString("dd.MM.yyyy-hh::mm:ss"));
                        string s_statut=enum_statut_to_string( tach->getStatut());
                        stream.writeTextElement("statut", QString::fromStdString(s_statut));
-            }
-            //else if (type_version=="Article")
-                    if(typeid(*it_note)==typeid(image))
-            {
-              stream.writeTextElement("type", "Article");
-                        Article *art=dynamic_cast<Article*>(*it_note);
+                     }
+                     //else if (type_version=="Article")
+                    if(typeid(**it_note)==typeid(Article)){
+                       stream.writeTextElement("type", "Article");
+                       Article *art=dynamic_cast<Article*>(*it_note);
                        stream.writeTextElement("text", art->getText());
-            }
+                    }
             stream.writeEndElement();
         }
         stream.writeEndElement();
