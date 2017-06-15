@@ -140,6 +140,7 @@ void Interface::ouvrir_relation_details(unsigned int position) {
     window_relation_details = new CentreRelationDetails((*it), this);
 }
 
+
 void Interface::fermer_droite() {
     if(window_relations) window_relations->close();
     if(window_relation_details) window_relation_details->close();
@@ -162,6 +163,31 @@ void Interface::fermer_centre() {
     if(window_afficher_image) window_afficher_image->close();
 }
 
+void Interface::ouvrir_creer_relation()
+{
+    fermer_droite();
+    window_creer_relation = new WindowCreerRelation(this);
+    connect(window_creer_relation->getBoutonValider(), SIGNAL(clicked(bool)), this, SLOT(creer_relation()));
+    window_creer_relation->move(800,15);
+    window_creer_relation->show();
+}
+
+void Interface::creer_relation()
+{
+    fermer_droite();
+    QString titre = window_creer_relation->getTitle();
+    QString descr = window_creer_relation->getDesc();
+    QString orient = window_creer_relation->getOrientation();
+    if(orient=="Non orientee"){
+        RelationPreexistente *rp= RelationPreexistente::getRelationPreexistente();
+        *rp->setTitre(titre);
+        rp->setDescription(descr);
+        rp->setOrientee(0);
+    }
+    if(typeNote=="Orientee"){
+       RelationNormale *rn = new RelationNormale(titre,desc,1);
+    }
+}
 ///////////////////////////PARTIE SHOW NOTES/////////////////////////
 /////////////////////////////////////////////////////////////////////
 void Interface::ouvrir_gauche() {

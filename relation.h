@@ -115,6 +115,7 @@ public:
     RelationManager::instance_RelationManager=nullptr;  
     }
 
+    Relation* getRelationFromTitle(QString& title);
     unsigned int getNbRelations() {return nbRelations;}
     void ajouterRelation(Relation* newRelation);
     void supprimerRelation(Relation* supprimerRelation);

@@ -1,16 +1,17 @@
 #include "waffichercouple.h"
 #include "relation.h"
 #include <QLabel>
-#include <QWidget>
+#include <QListWidget>
 #include <QLayout>
 #include <QPushButton>
 
-waffichercouple::waffichercouple(Relation* r, QMainWindow *parent):
+WindowAfficherCouple::WindowAfficherCouple(QString& relation_name, QWidget *parent):
     QWidget(parent) {
 
     setFixedSize(320,350);
     //NotesManager *NM = NotesManager::getInstance();
-    //RelationManager* RM = RelationManager::getRelationManager();
+    RelationManager* RM = RelationManager::getRelationManager();
+    Relation* r = RM->getRelationFromTitle(relation_name);
 
     titre_relation = new QHBoxLayout;
     titre_st = new QLabel("Les couples disponibles :");
@@ -22,39 +23,33 @@ waffichercouple::waffichercouple(Relation* r, QMainWindow *parent):
     else arrow = "------";
 
     for (Relation::iterator it = r->begin(); it != r->end(); it++) {
-        couples->addItem((*it)->getNote1()->getId() + arrow + (*it)->getNote2()->getId());
+        couples->addItem((*it)->getLabel()+": "+(*it)->getNote1().getId() + arrow + (*it)->getNote2().getId());
     }
 
-
-    afficher_relation = new QPushButton("Afficher Couples");
-    //QObject::connect(afficher_relation, SIGNAL(Clicked()),this, SLOT(afficherRelation()));
 
     fermer = new QPushButton("Fermer");
     QObject::connect(fermer, SIGNAL(Clicked()),this, SLOT(close()));
 
-    creer_relation = new QPushButton("Creer relation");
+    creer_couple = new QPushButton("Creer couple");
     //QObject::connect(creer_relation_orientee, SIGNAL(Clicked()),this, SLOT(creerRelation()));
 
-    supprimer_relation = new QPushButton("Supprimer relation");
+    supprimer_couple = new QPushButton("Supprimer couple");
     //QObject::connect(supprimer_relation, SIGNAL(Clicked()),this, SLOT(supprimerRelation()));
 
     horiz1 = new QHBoxLayout;
-    horiz1->addWidget(afficher_relation);
-    horiz1->addWidget(supprimer_relation);
+    horiz1->addWidget(supprimer_couple);
     horiz1->addWidget(fermer);
 
     horiz2 = new QHBoxLayout;
-    horiz2->addWidget(creer_relation);
+    horiz2->addWidget(creer_couple);
 
 
     verti = new QVBoxLayout;
-    verti->addWidget(titre_relations);
-    verti->addWidget(relations);
+    verti->addLayout(titre_relation);
+    verti->addWidget(couples);
     verti->addLayout(horiz1);
     verti->addLayout(horiz2);
 
     setLayout(verti);
-
-
 
 }
