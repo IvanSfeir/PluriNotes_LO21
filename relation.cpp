@@ -71,6 +71,13 @@ void RelationManager::supprimerRelation(Relation* supRelation){
     } throw Exception("La relation n'est pas existe ou n'est pas supprime!");
 }
 
+Relation* RelationManager::getRelationFromTitle(QString& title) {
+    RelationManager* RM = RelationManager::getRelationManager();
+    for (RelationManager::iterator it = RM->begin(); it != RM->end(); it++){
+        if ((*it)->getTitre() == title) return (*it);
+    }
+}
+
 ////////////////////////////////////////////////////////////////////
 /////////////////////method save, load//////////////////////////////
 ////////////////////////////////////////////////////////////////////
