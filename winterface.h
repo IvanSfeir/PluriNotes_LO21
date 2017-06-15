@@ -28,6 +28,7 @@
 #include "wafficherimage.h"
 #include "hafficheraudio.h"
 #include "haffichervideo.h"
+#include "waffichertache.h"
 #include "waffichercouple.h"
 #include "wcreercouple.h"
 #include <QCloseEvent>
@@ -55,8 +56,8 @@ class Interface : public QMainWindow {
     WindowAfficherImage* window_afficher_image=0;
     WindowAfficherAudio* window_afficher_audio=0;
     WindowAfficherVideo* window_afficher_video=0;
+    WindowAfficherTache* window_afficher_tache=0;
     WindowAfficherCouple* window_afficher_couples=0;
-    //WindowAfficherVideo* window_afficher_video=0;
 
 
     QMenu *menuNotes;

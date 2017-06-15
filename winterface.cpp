@@ -360,6 +360,11 @@ void Interface::ouvrir_version_act() {
         window_afficher_video->move(400,20);
         window_afficher_video->show();
     }
+    if(typeid(*vers)==typeid(Tache)) {
+        window_afficher_tache = new WindowAfficherTache(dynamic_cast<Tache*>(vers), this);
+        window_afficher_tache->move(400,20);
+        window_afficher_tache->show();
+    }
 }
 
 void Interface::ouvrir_version_arch() {
@@ -398,6 +403,16 @@ void Interface::ouvrir_version_arch() {
         window_afficher_video->getTitle()->setReadOnly(true);
         window_afficher_video->getChemin()->setReadOnly(true);
         window_afficher_video->getCheminVideo()->setReadOnly(true);
+    }
+    if(typeid(*vers)==typeid(Tache)) {
+        window_afficher_tache->move(400,20);
+        window_afficher_tache = new WindowAfficherTache(dynamic_cast<Tache*>(vers), this);
+        window_afficher_tache->show();
+        window_afficher_tache->getTextBox()->setReadOnly(true);
+        window_afficher_tache->getTitle()->setReadOnly(true);
+        window_afficher_tache->getStatutBox()->setReadOnly(true);
+        window_afficher_tache->getPrioBox()->setReadOnly(true);
+        window_afficher_tache->getDate_e_DayBox()->setReadOnly(true);
     }
 }
 
