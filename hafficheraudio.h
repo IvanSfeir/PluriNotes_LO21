@@ -1,0 +1,4 @@
+#ifndef HAFFICHERAUDIO_H
+#define HAFFICHERAUDIO_H
+
+#endif // HAFFICHERAUDIO_H
