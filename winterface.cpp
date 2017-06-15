@@ -315,10 +315,10 @@ void Interface::restaurer_note(){
 void Interface::restaurer_version(){
     int index = window_note_act->getListVersions()->currentRow();
     if (index != -1){
-    qDebug() << currentNote->getVersion(index)->getTitle() << "\n";
-    qDebug() << currentNote->getNbVersion() <<"\n";
+    //qDebug() << currentNote->getVersion(index)->getTitle() << "\n";
+    //qDebug() << currentNote->getNbVersion() <<"\n";
     //currentNote->ajouterVersion(currentNote->getVersion(index));
-    //currentNote->restaurerVersion(index);
+    currentNote->restaurerVersion(index);
     ouvrir_note_active_id();
     }
 }
