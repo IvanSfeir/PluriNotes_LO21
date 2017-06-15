@@ -11,7 +11,7 @@ NotesManager* notesManager = NotesManager::getInstance(); //get this Instance fo
 
 RelationManager* RelationManager::instance_RelationManager = nullptr;
 
-RelationManager::RelationManager():relations(nullptr),nbRelations(0),maxRelations(0) {}
+RelationManager::RelationManager(): relations(nullptr),nbRelations(0),maxRelations(0) {}
 
 void Relation::ajouterCouple(Couple* newCouple){
     if (nbCouples == maxCouples){
@@ -41,6 +41,8 @@ void Relation::supprimerCouple(Couple* supCouple){
 }
 
 RelationPreexistente* RelationPreexistente::instance_RelationPreexistente = 0;
+
+RelationPreexistente::RelationPreexistente(): Relation("REFERENCE", "preexistente") {}
 
 void RelationManager::ajouterRelation(Relation* newRelation){
     if (nbRelations == maxRelations){

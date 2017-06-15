@@ -30,7 +30,7 @@ protected:
     bool orientee;
 public:
     Relation(const QString& titr, const QString& desc="", bool orie=true):
-        titre(titr), description(desc), nbCouples(0), maxCouples(10), orientee(orie){}
+        titre(titr), description(desc), nbCouples(0), maxCouples(0), orientee(orie){}
 
     virtual void setTitre(const QString& newTitre) = 0;                     //pure
     virtual void setDescription(const QString& newDescription) = 0;         //pure
@@ -75,7 +75,7 @@ class RelationPreexistente: public Relation{
     RelationPreexistente(const RelationPreexistente& r);
     ~RelationPreexistente(){}
     RelationPreexistente& operator=(const RelationPreexistente&);
-    RelationPreexistente(): Relation("ref", "preexistente"){}
+    RelationPreexistente();
 
 public:
     static RelationPreexistente* getRelationPreexistente(){
