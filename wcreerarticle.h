@@ -50,9 +50,9 @@ class WindowCreerArticle : public QWidget {
      * \brief text_title: boxLayout titre text of the Widget
      */
     QHBoxLayout *text_title;
-    /*!
-     * \brief text_label: label text of the text
-     */
+        /*!
+         * \brief text_label: label text of the text
+         */
     QLabel *text_label;
     /*!
      * \brief text_box: Line space to view and edit text

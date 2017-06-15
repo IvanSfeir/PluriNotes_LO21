@@ -97,8 +97,8 @@ public:
      */
     QTextEdit* getText() {return text_box;}
     /*!
-     * \brief getArticle: get the choosed article
-     * \return pointer to the choosed article
+     * \brief getArticle: get the selected article
+     * \return pointer to the selected article
      */
     Article* getArticle() {return article;}
 
