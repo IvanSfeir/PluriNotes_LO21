@@ -145,26 +145,55 @@ class Interface : public QMainWindow {
      */
     QAction *afficherNotes;
     /*!
-     * \brief afficherNotes: Action to create Note
+     * \brief creerNote: Action to create Note
      * \details bind this action to button creerNote in menuNotes
      */
     QAction *creerNote;
     /*!
-     * \brief afficherNotes: Action to create Note
-     * \details bind this action to button creerNote in menuNotes
+     * \brief afficherRelations: Action to view Relations
+     * \details bind this action to button affricherRelations in menuRelations
      */
     QAction *afficherRelations;
+    /*!
+     * \brief actionQuitter: Action to turn off the program
+     * \details bind this action to button quitter in menuQuitter
+     */
     QAction *actionQuitter;
 
+    /*!
+     * \brief currentNote: current Note choosing in the ListNotes
+     */
     Note* currentNote;
+    /*!
+     * \brief currentRelation: current Relation choosing in the ListRelations
+     */
     Relation* currentRelation;
 
 public:
+    /*!
+     * \brief Interface: initilize the Interface
+     */
     Interface();
+    /*!
+     * \brief actionCorbeilleAuto: this action bind to check to empty Corbeille when close program
+     */
     QAction *actionCorbeilleAuto;
+    /*!
+     * \brief fermer_droite: close whatever widgets which are opened on the right side of the Interface
+     */
     void fermer_droite();
+    /*!
+     * \brief fermer_gauche: close whatever widgets which are opened on the left side of the Interface
+     */
     void fermer_gauche();
+    /*!
+     * \brief fermer_centre: close whatever widgets which are opened on the centre of the Interface
+     */
     void fermer_centre();
+    /*!
+     * \brief closeEvent: handle Event when click close button at the up-right corner of the Interface
+     * \param bar: pointer to buttons
+     */
     void closeEvent(QCloseEvent *bar);
 
 
@@ -173,24 +202,73 @@ signals:
 private slots:
 
 public slots:
+    /*!
+     * \brief avant_de_fermer: action perform before close totally program
+     */
     void avant_de_fermer();
+    /*!
+     * \brief ouvrir_relations: construct and show widget to view all the Relations
+     */
     void ouvrir_relations();
-    void ouvrir_relation_details(unsigned int position);
+    /*!
+     * \brief ouvrir_creer_relation: construct and show widget to create Relation
+     */
     void ouvrir_creer_relation();
+    /*!
+     * \brief ouvrir_gauche: construct and show widget to view all the notes (active and archived)
+     */
     void ouvrir_gauche();                                   //done
+    /*!
+     * \brief ouvrir_note_active_id: construct and show widget to view note active with its versions
+     */
     void ouvrir_note_active_id();                           //done
+    /*!
+     * \brief ouvrir_note_archivee_id: construct and show widget to view note archived with its versions
+     */
     void ouvrir_note_archivee_id();                         //done
-    void ouvrir_creer_note();                               //working
+    /*!
+     * \brief ouvrir_creer_note: construct and show widget to create a new note
+     */
+    void ouvrir_creer_note();                               //done
+    /*!
+     * \brief forward_to_create_type: construct and show widget form accordingly to the type of the note
+     */
     void forward_to_create_type();                          //done
+    /*!
+     * \brief restaurer_note: restore the note which is archived
+     */
     void restaurer_note();
+    /*!
+     * \brief restaurer_version: restore a version of a note active
+     */
     void restaurer_version();
-    //void fermer_centre();
+    /*!
+     * \brief ouvrir_version_act: construct and show widget to view inside a version of a note active
+     */
     void ouvrir_version_act();
+    /*!
+     * \brief ouvrir_version_act: construct and show widget to view inside a version of a note archived
+     */
     void ouvrir_version_arch();
+    /*!
+     * \brief sauver_article: save an Article
+     */
     void sauver_article();
+    /*!
+     * \brief creer_relation: construct and show widget to create new relation
+     */
     void creer_relation();
+    /*!
+     * \brief ouvrir_couples: construct and show widget to view couples inside a relation
+     */
     void ouvrir_couples();
+    /*!
+     * \brief ouvrir_creer_couple: construct and show widget to create new couple
+     */
     void ouvrir_creer_couple();
+    /*!
+     * \brief ouvrir_creer_couple: construct and show widget to create new couple
+     */
     void creer_couple();
 
 
