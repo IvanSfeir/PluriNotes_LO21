@@ -1,14 +1,17 @@
 /*!
  * \file note.h
- * \class Note
- * \brief Définit la classe NotesManager : Permet de d'ajouter, supprimer, restaurer une Note. Permet de sauvegarder/charger la session dans/à partir d'un fichier XML.
+ * \class Note note.h
+ * \brief Définit la classe Notes : Permet de d'ajouter, supprimer, restaurer une Version à une Note.
  *
- * \details Design Pattern : Singleton et Iterator.
- *   \a tab_notes : tableau de pointeur de Notes
- *   \a nbNotes : nombre de notes dans tab_notes
- *   \a nbMaxNotes : nombre de notes maximales dans tab_notes
- *   \a instance_NotesManager : Instance static de NotesManager
+ * \details Design Pattern : Iterator.
+ *   \a id : identifiant de la note : \b unique
+ *   \a version : tableau de pointeur de Version
+ *   \a nbVersion : nombre de versions de la note
+ *   \a nbMaxVersion : nombre de versions maximales de la note
+ *   \a etat : Etat de la note
+ *   \a date_creation : Date de création de la note
  */
+
 #ifndef NOTE_H
 #define NOTE_H
 
@@ -34,17 +37,21 @@ enum Type_etat_note {active, archive, sursis};
 
 
 /*!
+ * \fn string enum_etat_to_string(Type_etat_note t)
  *  \brief : Convertit un Type_etat_note vers une string.
  * @param t : enum à convertir
  * @return  string de l'enum
  */
 string enum_etat_to_string(Type_etat_note t);
+
 /*!
+ * \fn Type_etat_note string_to_enum_etat(const string &s)
  * \brief Convertit une string vers un Type_etat_note
  * @param s : string à convertir
  * @return enum de la string
  */
 Type_etat_note string_to_enum_etat(const string &s);
+
 
 class Note {
     QString id; //unique
@@ -75,7 +82,11 @@ public:
     Version* getVersion(const unsigned int p);
     Version * getLastVersion() const { return versions[nbVersion];}
 
-
+/*!
+ * \fn     void ajouterVersion(Version *v)
+ * \brief
+ * @param v : Version d'une note
+ */
     void ajouterVersion(Version *v);
     void supprimerVersion(Version *oldVersion);
     void restaurerVersion(const unsigned int p);
@@ -85,15 +96,6 @@ public:
     bool is_reprieved(){return etat==sursis;}
 
 
-
-    // ********* ITERATOR ********
-    //class iterator_version : public iterator<Version,Note>{
-    //iterator_version begin() {return iterator_version(versions);}
-    //iterator_version end() {return iterator_version(versions+nbVersion);}
-    //iterator_version getIterator() const{
-    //        return iterator_version(versions, nbVersion);
-    //    }
-//};
     //implement iterator
     class iterator: public Iterator<Version>{
      friend class Note;
