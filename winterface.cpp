@@ -12,8 +12,7 @@ Interface::Interface() {
     //////////////////////////////////////////////
     NotesManager* NM = NotesManager::getInstance();
     RelationManager* RM = RelationManager::getRelationManager();
-    RelationPreexistente* RP = RelationPreexistente::getRelationPreexistente();
-    RM->ajouterRelation(RP);
+    qDebug() << RM->getNbRelations();
 
 
     Note* newNote = new Note("note1"); //id=1
@@ -88,8 +87,8 @@ void Interface::closeEvent(QCloseEvent *bar){
 }
 
 void Interface::avant_de_fermer() {
-    NotesManager *NM = NotesManager::getInstance();
-    //if (!(NM->is_bin_empty()) and (!actionCorbeilleAuto->isChecked())) {
+    //NotesManager *NM = NotesManager::getInstance();
+    //if (!(NM->corbeilleIsEmpty()) and (!actionCorbeilleAuto->isChecked())) {
     actionCorbeilleAuto->setChecked(true);
     bool booleen = actionCorbeilleAuto->isChecked();
     if (booleen == true) {
@@ -127,9 +126,9 @@ void Interface::avant_de_fermer() {
 
 ///////////////////RELATION////////////////////////////
 void Interface::ouvrir_relations() {
-    //fermer_droite();
+    fermer_droite();
     window_relations = new CentreRelations(this);
-    window_relations->move(400,15);
+    window_relations->move(800,15);
     window_relations->show();
     //QObject::connect(window_relations->getBoutonAfficher(), SIGNAL(clicked()), this, SLOT(ouvrir_relation_details()));
 }
