@@ -179,13 +179,10 @@ void Interface::creer_relation()
     QString descr = window_creer_relation->getDesc();
     QString orient = window_creer_relation->getOrientation();
     if(orient=="Non orientee"){
-        RelationPreexistente *rp= RelationPreexistente::getRelationPreexistente();
-        *rp->setTitre(titre);
-        rp->setDescription(descr);
-        rp->setOrientee(0);
+        RelationPreexistente *rp= RelationPreexistente::getRelationPreexistente();        
     }
-    if(typeNote=="Orientee"){
-       RelationNormale *rn = new RelationNormale(titre,desc,1);
+    if(orient=="Orientee"){
+       RelationNormale *rn = new RelationNormale(titre,descr,1);
     }
 }
 ///////////////////////////PARTIE SHOW NOTES/////////////////////////
