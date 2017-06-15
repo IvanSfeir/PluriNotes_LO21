@@ -1,3 +1,12 @@
+/*!
+ * \file multimedia.h
+ * \class Multimedia multimedia.h
+ * \brief Définit la classe Multimedia et ses classes filles (image, audio, video)
+ * \details Classe abstraite
+ *      \a desc: Description
+ *      \a img_URL : Fichier image
+ */
+
 #ifndef MULTIMEDIA_H
 #define MULTIMEDIA_H
 
@@ -18,7 +27,7 @@ class Multimedia : public Version {
 public:
     Multimedia(const QString & t, QDateTime d, const QString &desc, const QString &i):
         Version(t,d),desc(desc), img_URL(i){}
-    ~Multimedia(){}
+    ~virtual Multimedia()=0;
 
     const QString& getDesc() const {return desc;}
     const QString & getimg_URL() const{return img_URL;}
@@ -26,11 +35,19 @@ public:
     void setDesc(const QString& newDesc) {desc=newDesc;}
     void setImg_URL(const QString& newImg_URL) {img_URL=newImg_URL;}
 
-    void showImg() const;   // ou alors renvoi juste le label pour affichage ensuite dans l'onterface
+    /*!
+     * Affiche le fichier image
+     */
+    void showImg() const;
 
 };
 
-
+/*!
+ * \class image multimedia.h
+ * \brief Classe image hérite de Multimedia
+ * \details Note image
+ * \a img : QString lien vers le fichier image. Ce lien est identique à celui de Multimedia
+ */
 class image : public Multimedia{
     QString img;    //=img_URL de Multimedia
     
@@ -44,6 +61,12 @@ public:
 
 };
 
+/*!
+ * \class audio multimedia.h
+ * \brief Classe audio hérite de Multimedia
+ * \details Note audio
+ * \a img : QString lien vers le fichier audio.
+ */
 class audio : public Multimedia{
     QString audio_URL;
     QMediaPlayer* playeraudio;
@@ -53,14 +76,31 @@ public:
     Multimedia(t,d,desc,i), audio_URL(au) {}
     ~audio(){}
 
+    /*!
+     * Lance le fichier audio
+     */
     void playAudio() const;
+
+    /*!
+     * Met en pause le fichier audio
+     */
     void pauseAudio() const;
+
+    /*!
+     * Stop le fichier audio en cours de lecture
+     */
     void stopAudio() const;
 
     const QString&  getAudio_URL() const {return audio_URL;}
     void  setAudio_URL(const QString & aud_URL) {audio_URL=aud_URL;}
 };
 
+/*!
+ * \class video multimedia.h
+ * \brief Classe video hérite de Multimedia
+ * \details Note video
+ * \a img : QString lien vers le fichier video.
+ */
 class video : public Multimedia{
     QString video_URL;
     QMediaPlayer* playervideo;
@@ -70,11 +110,21 @@ public:
     Multimedia(t,d,desc,i), video_URL(vid) {}
     ~video(){}
 
+    const QString&  getVideo_URL() const {return video_URL;}
+
+    /*!
+     * Lance le fichier video
+     */
     void playVideo() const;
+    /*!
+     * Met en pause le fichier audio
+     */
     void pauseVideo() const;
+    /*!
+     * Stop le fichier video
+     */
     void stopVideo() const;
 
-    const QString&  getVideo_URL() const {return video_URL;}
 
 
 };

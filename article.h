@@ -1,3 +1,11 @@
+/*!
+ * \file article.h
+ * \class Article article.h
+ * \brief Définit la classe Article
+ * \details Hérite de \b Version
+ *      \a text : Texte de l'article
+ */
+
 #ifndef ARTICLE_H
 #define ARTICLE_H
 
