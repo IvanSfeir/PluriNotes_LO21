@@ -1,5 +1,6 @@
 /*!
  *  \file NotesManager.h
+ *  \class NotesManager
  *  \brief Définit la classe NotesManager : Permet de d'ajouter, supprimer, restaurer une Note. Permet de sauvegarder/charger la session dans/à partir d'un fichier XML.
  *
  *  \details Design Pattern : Singleton et Iterator.
@@ -47,37 +48,50 @@ private:
     static NotesManager * instance_NotesManager;
 
 public:
-    Note* getNote(const QString& id);
     /*!
+     * \fn     Note* getNote(const QString& id)
+     * \brief Cherche une note à partir d'un id.
+     * @param id : L'id de la note
+     * @return : Pointeur vers la note
+     */
+    Note* getNote(const QString& id);
+
+    /*!
+     * \fn void ajouterNote(Note* n)
      *  \brief Fontion pour ajouter des notes
      * @param n : Pointeur vers la note à ajouter
      */
     void ajouterNote(Note* n);
 
     /*!
+     * \fn void supprimerNote(Note* oldNote)
      * \brief Supprimer une note : change l'état de la note de active à en sursis ou archivé
      * @param oldNote : La note à supprimer
      */
     void supprimerNote(Note* oldNote);
 
     /*!
+     * \fn    void restaurerNote(const QString & id)
      * \brief Restaurer une note : change l'état de la note à active
      * @param id : L'id de la note à restaurer
      */
     void restaurerNote(const QString & id);
 
     /*!
+     * \fn    bool is_bin_empty()
      * \brief Cherche s'il y a des notes supprimées et en sursis
      * @return 1 s'il y a des notes en sursis, 0 sinon
      */
     bool is_bin_empty();
-    \/*!
-     * Cherche s'il y a des notes supprimées et archivées
+
+    /*! \fn     bool is_archived_in_bin()
+     * \brief s'il y a des notes supprimées et archivées
      * @return  1 s'il y a des notes archivées, 0 sinon
      */
     bool is_archived_in_bin();
     /*!
-     * Cherche si la note est impliquée dans une relation \b Reference
+     * \fn     bool is_note_refed(const QString & id)
+     * \brief si la note est impliquée dans une relation \b Reference
      * @param id : id d'une note
      * @return 1 si la note est référencée, 0 sinon
      */
@@ -95,32 +109,36 @@ public:
 
     // ********* SINGLETON *************
     /*!
-     *
+     *  \fn     static NotesManager* getInstance()
      * @return Pointeur sur l'instance singleton NotesManager
      */
     static NotesManager* getInstance();
     /*!
+     * \fn     static void libererInstance()
      * \brief Libère l'instance singleton NotesManager
      */
     static void libererInstance();
 
-    /*!
+    /*! \fn     void loadNotesManager(const QString & filename)
      * \brief Charge les notes à partir d'un fichier XML
      * @param filename : Nom du fichier XML à charger
      */
     void loadNotesManager(const QString & filename);
+
     /*!
+     * \fn     void saveNotesManager(const QString & filename)
      * \brief Enregistre les notes dans un fichier XML
      * @param filename : Le nom du fichier XML où les notes seront sauvegardées
      */
     void saveNotesManager(const QString & filename);
-    /*!
+
+    /*! \fn     void saveNotesManager_no_reprieve(const QString & filename)
      *  \brief Enregistre les notes \b qui ne sont pas en sursis dans un fichier XML
      * @param filename : Le nom du fichier XML où les notes seront sauvegardées
      */
     void saveNotesManager_no_reprieve(const QString & filename);
 
-/*!
+/*! \fn bool is_id_taken(const QString &id)
  * \brief Cherche si l'id d'une note est unique ou non.
  * @param id : L'id de la note
  * @return 1 si l'id est déjà pris, 0 sinon
