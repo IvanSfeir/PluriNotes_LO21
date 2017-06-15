@@ -132,18 +132,12 @@ void Interface::ouvrir_relations() {
     window_relations->move(800,15);
     window_relations->show();
     QObject::connect(window_relations->getBoutonAfficher(), SIGNAL(clicked()), this, SLOT(ouvrir_couples()));
-    //QObject::connect(window_relations->getBoutonAfficher(), SIGNAL(clicked()), this, SLOT(ouvrir_relation_details()));
     QObject::connect(window_relations->getBoutonCreate(), SIGNAL(clicked()), this, SLOT(ouvrir_creer_relation()));
     //QObject::connect(window_relations->get(), SIGNAL(clicked()),this, SLOT(ouvrir_creer_couple()));
 
 }
 
-void Interface::ouvrir_relation_details(unsigned int position) {
-    RelationManager *RM = RelationManager::getRelationManager();
-    RelationManager::iterator it = RM->begin();
-    for(unsigned int i=0; i!=position; i++) {it++;}
-    window_relation_details = new CentreRelationDetails((*it), this);
-}
+
 
 
 void Interface::fermer_droite() {
