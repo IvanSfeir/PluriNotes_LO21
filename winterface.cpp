@@ -170,8 +170,8 @@ void Interface::ouvrir_note_archivee_id() {
     NotesManager *NM = NotesManager::getInstance();
     fermer_centre();
     window_note_arch = new CentreNoteArch(NM->getNote(ident),this);
-    window_note_arch->move(400,15);
     QObject::connect(this->window_note_arch->getBoutonAfficherVersion(), SIGNAL(clicked()), this, SLOT(ouvrir_version_arch()));
+    window_note_arch->move(400,15);
     window_note_arch->show();
 }
 
@@ -259,22 +259,19 @@ void Interface::restaurer_version(){
 void Interface::ouvrir_version_act() {
     unsigned int pos = window_note_act->getListVersions()->currentRow();
     Version* vers = currentNote->getVersion(pos);
+    fermer_centre();
     if(typeid(*vers)==typeid(Article)) {
-        fermer_centre();
         window_afficher_article = new WindowAfficherArticle(dynamic_cast<Article*>(vers), this);
-        window_afficher_article->move(400,15);
+        window_afficher_article->move(400,20);
         window_afficher_article->show();
     }
 //    if(typeid(*vers)==typeid(Article)) {
-//        fermer_centre();
 //        window_afficher_article = new WindowAfficherArticle(vers, this);
 //    }
 //    if(typeid(*vers)==typeid(Article)) {
-//        fermer_centre();
 //        window_afficher_article = new WindowAfficherArticle(vers, this);
 //    }
 //    if(typeid(*vers)==typeid(Article)) {
-//        fermer_centre();
 //        window_afficher_article = new WindowAfficherArticle(vers, this);
 //    }
 }
@@ -282,21 +279,23 @@ void Interface::ouvrir_version_act() {
 void Interface::ouvrir_version_arch() {
     unsigned int pos = window_note_arch->getListVersions()->currentRow();
     Version* vers = currentNote->getVersion(pos);
+    fermer_centre();
     if(typeid(*vers)==typeid(Article)) {
-        fermer_centre();
         window_afficher_article = new WindowAfficherArticle(dynamic_cast<Article*>(vers), this);
+        window_afficher_article->move(400,20);
+        window_afficher_article->show();
+        window_afficher_article->getText()->setReadOnly(true);
+        window_afficher_article->getTitle()->setReadOnly(true);
     }
 //    if(typeid(*vers)==typeid(Article)) {
-//        fermer_centre();
 //        window_afficher_article = new WindowAfficherArticle(vers, this);
 //    }
 //    if(typeid(*vers)==typeid(Article)) {
-//        fermer_centre();
 //        window_afficher_article = new WindowAfficherArticle(vers, this);
 //    }
 //    if(typeid(*vers)==typeid(Article)) {
-//        fermer_centre();
 //        window_afficher_article = new WindowAfficherArticle(vers, this);
 //    }
 }
 
+//void sauver_article() {}

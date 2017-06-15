@@ -84,6 +84,7 @@ public slots:
     //void fermer_centre();
     void ouvrir_version_act();
     void ouvrir_version_arch();
+    //void sauver_article();
 
 };
 
