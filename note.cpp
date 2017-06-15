@@ -38,29 +38,6 @@ void Note::ajouterVersion(Version * v){
     versions[nbVersion++]=v;
 }
 
-void Note::supprimerVersion(Version * oldVersion){
-    // recherche si note existe déjà
-    unsigned int i=0;
-    while((versions[i]->getTitle()!=oldVersion->getTitle()) && i<nbVersion)
-    {
-        ++i;
-    }
-    // si la version n'est pas trouvé
-    if(i==nbVersion)
-        throw Exception("error, deletion of a non existant note.");
-
-    // décalage à gauche du tableau
-    for(unsigned int j=i; j<nbVersion-1; j++){
-        versions[j]=versions[j+1];
-    }
-
-    // suppression de la dernière version (en double) de versions[j=nbVersion-1];
-    delete versions[nbVersion];
-    delete oldVersion;
-
-    //actualisation du nombre de version
-    --nbVersion;
-}
 
 void Note::restaurerVersion(const unsigned int p)
 {

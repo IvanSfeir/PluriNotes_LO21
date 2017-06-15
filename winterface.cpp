@@ -142,10 +142,12 @@ void Interface::ouvrir_relations() {
 
 void Interface::fermer_droite() {
     if(window_relations) window_relations->close();
-    if(window_relation_details) window_relation_details->close();
     if(window_creer_relation) window_creer_relation->close();
     if(window_creer_couple) window_creer_couple->close();
 
+    if(window_creer_relation) window_creer_relation->close();
+    if(window_creer_couple) window_creer_couple->close();
+    if(window_afficher_couples) window_afficher_couples->close();
 }
 
 void Interface::fermer_gauche() {
@@ -202,16 +204,15 @@ void Interface::ouvrir_creer_couple()
 
 void Interface::creer_couple()
 {
-    //fermer_droite();
-    RelationManager *RM = RelationManager::getRelationManager();
+    fermer_droite();
     QString id1 = window_creer_couple->getNote1();
     QString id2 = window_creer_couple->getNote2();
     QString label= window_creer_couple->getLabel();
     NotesManager * NM = NotesManager::getInstance();
     Note *n1,*n2;
-    n1=NM->getNote(id1);
-    n2=NM->getNote(id2);
-    Couple * newCouple = new Couple(n1,n2,label);
+    n1= NM->getNote(id1);
+    n2= NM->getNote(id2);
+    Couple* newCouple = new Couple(n1,n2,label);
     currentRelation->ajouterCouple(newCouple);
 }
 
@@ -315,11 +316,11 @@ void Interface::restaurer_note(){
 
 void Interface::restaurer_version(){
     int index = window_note_act->getListVersions()->currentRow();
-    if (index != -1 && currentNote->getNbVersion() - 1 == index){
-    qDebug() << currentNote->getVersion(index)->getTitle() << "\n";
-    qDebug() << currentNote->getNbVersion() <<"\n";
+    if (index != -1){
+    //qDebug() << currentNote->getVersion(index)->getTitle() << "\n";
+    //qDebug() << currentNote->getNbVersion() <<"\n";
     //currentNote->ajouterVersion(currentNote->getVersion(index));
-    //currentNote->restaurerVersion(index);
+    currentNote->restaurerVersion(index);
     ouvrir_note_active_id();
     }
 }

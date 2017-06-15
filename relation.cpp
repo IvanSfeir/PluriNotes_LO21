@@ -22,7 +22,7 @@ void Relation::ajouterCouple(Couple* newCouple){
         delete[] oldCouples;
         maxCouples += 10;
     }
-    couples[++nbCouples] = newCouple;
+    couples[nbCouples++] = newCouple;
 }
 
 void Relation::supprimerCouple(Couple* supCouple){
