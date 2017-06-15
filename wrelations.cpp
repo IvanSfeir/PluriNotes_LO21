@@ -1,5 +1,6 @@
 #include "wrelations.h"
 
+
 CentreRelations::CentreRelations(QMainWindow *parent):
     QWidget(parent) {
     setFixedSize(320,350);
@@ -20,10 +21,10 @@ CentreRelations::CentreRelations(QMainWindow *parent):
     //QObject::connect(afficher_relation, SIGNAL(Clicked()),this, SLOT(afficherRelation()));
 
     fermer = new QPushButton("Fermer");
-    QObject::connect(fermer, SIGNAL(Clicked()),this, SLOT(close()));
+    connect(fermer, SIGNAL(Clicked()),this, SLOT(close()));
 
     creer_relation = new QPushButton("Creer relation");
-    //QObject::connect(creer_relation_orientee, SIGNAL(Clicked()),this, SLOT(creerRelation()));
+    QObject::connect(creer_relation, SIGNAL(clicked()),this, SLOT(ouvrir_creer_relation()));
 
     supprimer_relation = new QPushButton("Supprimer relation");
     //QObject::connect(supprimer_relation, SIGNAL(Clicked()),this, SLOT(supprimerRelation()));

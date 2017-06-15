@@ -130,7 +130,10 @@ void Interface::ouvrir_relations() {
     window_relations = new CentreRelations(this);
     window_relations->move(800,15);
     window_relations->show();
+    QObject::connect(window_relations->getBoutonAfficher(), SIGNAL(clicked()), this, SLOT(ouvrir_couples()));
     //QObject::connect(window_relations->getBoutonAfficher(), SIGNAL(clicked()), this, SLOT(ouvrir_relation_details()));
+    QObject::connect(creer_relation, SIGNAL(clicked()),this, SLOT(ouvrir_creer_relation()));
+
 }
 
 void Interface::ouvrir_relation_details(unsigned int position) {
@@ -366,4 +369,13 @@ void Interface::ouvrir_version_arch() {
     }
 }
 
-//void sauver_article() {}
+///////////////////////////////////////////////
+//////////////PARTIE COUPLES///////////////////
+
+void Interface::ouvrir_couples(){
+    QString rela = window_relations->getListRelation()->currentItem()->text();
+    fermer_droite();
+    window_afficher_couples = new WindowAfficherCouple(rela, this);
+    window_afficher_couples->move(800,15);
+    window_afficher_couples->show();
+}
