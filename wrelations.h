@@ -10,6 +10,7 @@
 #include <QHBoxLayout>
 #include "relation.h"
 #include "notesmanager.h"
+#include "windowcreerrelation.h"
 
 class CentreRelations : public QWidget {
 
