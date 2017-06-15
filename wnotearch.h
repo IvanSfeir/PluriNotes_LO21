@@ -1,3 +1,12 @@
+/*!
+ * \file wnotearch.h
+ * \class CentreNoteArch wnotearch.h
+ * \brief Définit la classe CentreNoteArch : Affiche les versions d'une note archivée
+ * \details Hérite de QWidget
+ *   \brief versions : Liste des versions de la note archivée
+    *\brief afficher : Bouton afficher
+    *\brief fermer : Bouton fermer
+ */
 #ifndef CENTRENOTEARCH_H
 #define CENTRENOTEARCH_H
 
@@ -16,11 +25,8 @@ class CentreNoteArch : public QWidget {
     Q_OBJECT // macro pour pouvoir utiliser signals et slots
 
     QLabel *titre_id;
-    //QLabel *titre_id2;
-    //QLabel *titre_id3;
     QListWidget *versions;
     QPushButton *afficher;
-    //QPushButton *restaurer;
     QPushButton *fermer;
 
     QHBoxLayout *horiz;

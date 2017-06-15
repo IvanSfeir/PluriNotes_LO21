@@ -1,3 +1,19 @@
+/*!
+ * \file wcreertache.h
+ * \class WindowdCreerTache wcreertache.h
+ * \brief Définit la classe WindowdCreerTache : Emplacement pour la création d'une note tâche
+ * \details Hérite de QWidget
+ *   \brief action_box: Formulaire action de la tâche
+ *   \brief statut_box : Formulaire statut de la tâche
+ *   \brief prio_box : Formulaire priorite de la tâche (optionnelle)
+ *   \brief date_e_day_box : Formulaire jour de la date d'échéance de la tâche (optionnelle)
+ *   \brief date_e_min_box : Formulaire temps de la date d'échéance de la tâche (optionnelle)
+ *   \brief identifiant : Identifiant de la note à créer
+ *   \brief titre_version : Titre de la version associée à la note à créer*
+    *\brief button_create : Bouton créer note tache
+    *\brief button_close : Bouton fermer
+ */
+
 #ifndef WCREERTACHE_H
 #define WCREERTACHE_H
 
@@ -72,6 +88,10 @@ signals:
 private slots:
 
 public slots:
+    /*!
+     * \fn void create()
+     * \brief Récupère les données du formulaire et créer la note
+     */
     void create();
 
 

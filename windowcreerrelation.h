@@ -1,3 +1,14 @@
+/*!
+ * \file windowcreerrelation.h
+ * \class WindowCreerRelation windowcreerrelation.h
+ * \brief Définit la classe WindowCreerRelation : Emplacement pour créer une relation
+ * \details Hérite de QWidget
+ *   \brief title: Formulaire titre de la relation
+ *   \brief desc : Formulaire description de la relation
+ *   \brief orientee : Formulaire orientation de la relation
+    *\brief valider : Bouton valider
+    *\brief annuler : Bouton annuler
+ */
 #ifndef WINDOWCREERRELATION_H
 #define WINDOWCREERRELATION_H
 

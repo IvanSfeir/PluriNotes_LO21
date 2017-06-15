@@ -1,3 +1,14 @@
+/*!
+ * \file windowcreercouple.h
+ * \class WindowCreerCouple windowcreercouple.h
+ * \brief Définit la classe WindowCreerCouple : Emplacement pour créer une couple
+ * \details Hérite de QWidget
+ *   \brief note1 : Formulaire identifiant de la note 1 du couple
+ *   \brief note2 : Formulaire identifiant de la note 2 du couple
+ *   \brief label : Formulaire label du couple de la relation
+    *\brief valider : Bouton valider
+    *\brief annuler : Bouton annuler
+ */
 #ifndef WCREERCOUPLE_H
 #define WCREERCOUPLE_H
 

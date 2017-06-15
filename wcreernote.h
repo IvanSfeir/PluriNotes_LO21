@@ -1,3 +1,15 @@
+/*!
+ * \file wcreernote.h
+ * \class WindowdCreerNote wcreernote.h
+ * \brief Définit la classe WindowdCreerNote: Emplacement pour la création d'une note
+ * \details Hérite de QWidget
+ *   \brief id: Formulaire identifiant de la note
+ *   \brief title : Formulaire titre de la version associée à la note
+ *   \brief type_note : Formulaire type de la note (Article, Tache, image, video, audio)
+    *\brief valider : Bouton valider création de la note
+    *\brief annuler: Bouton annuler
+ */
+
 #ifndef WCREERNOTE_H
 #define WCREERNOTE_H
 

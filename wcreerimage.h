@@ -1,3 +1,18 @@
+/*!
+ * \file wcreerimage.h
+ * \class WindowdCreerImage wcreerimage.h
+ * \brief Définit la classe WindowdCreerImage : Emplacement pour la création d'une note image
+ * \details Hérite de QWidget
+ *   \brief desc_box : Formulaire description de la image
+ *   \brief image_URL : Formulaire lien fichier image de la image
+ *   \brief image_title : Formulaire titre de la image
+ *   \brief identifiant : Identifiant de la note à créer
+ *   \brief titre_version : Titre de la version associée à la note à créer
+ *
+    *\brief button_create : Bouton créer note image
+    *\brief button_close : Bouton fermer
+ */
+
 #ifndef WCREERMULTI_H
 #define WCREERMULTI_H
 
@@ -51,6 +66,10 @@ signals:
 private slots:
 
 public slots:
+    /*!
+     * \fn void create()
+     * \brief Récupère les données du formulaire et créer la note
+     */
     void create();
 };
 

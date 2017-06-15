@@ -1,3 +1,15 @@
+/*!
+ * \file wgauche.h
+ * \class Gauche wgauche.h
+ * \brief Définit la classe Gauche : Affichage des notes actives et archivées
+ * \details Hérite de QWidget
+ *   \brief notes_actives : Liste des notes actives
+ *   \brief notes_archivees : Liste des notes archivées
+    *\brief bouton_afficher_act: Bouton afficher notes actives
+    *\brief bouton_afficher_arch: Bouton afficher notes archivées
+    *\brief restaurer : Bouton restaurer
+    *\brief arborescence : Bouton arborescence
+ */
 #ifndef GAUCHE_H
 #define GAUCHE_H
 
@@ -34,19 +46,6 @@ class Gauche : public QWidget {
     QHBoxLayout *button_box;
     QPushButton *arborescence;
     QHBoxLayout* button_arch_box;
-    /*
-    QScrollArea *scrolleur;
-    QWidget *contenuScrolleur;
-    QWidget *section;
-
-    QVBoxLayout *section_actives;
-    QVBoxLayout *notes_actives;
-    QPushButton *b1;
-    QPushButton *b2;
-    QPushButton *b3;
-    QPushButton *b4;
-    */
-
 
 
 public:
@@ -60,15 +59,11 @@ public:
 
 
 
-    void ouvrir_note();
 
 signals:
 
 private slots:
-    //transportes dans interface :
-    //****************************
-    //void ouvrirNoteActiveId(const QString& ident);
-    //void ouvrirNoteArchiveeId(const QString& ident);
+
 
 public slots:
 

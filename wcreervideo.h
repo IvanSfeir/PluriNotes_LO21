@@ -1,3 +1,18 @@
+/*!
+ * \file wcreervideo.h
+ * \class WindowdCreerVideo wcreervideo.h
+ * \brief Définit la classe WindowdCreerVideo : Emplacement pour la création d'une note vidéo
+ * \details Hérite de QWidget
+ *   \brief desc_box : Formulaire description de la vidéo
+ *   \brief image_URL : Formulaire lien fichier image de la vidéo
+ *   \brief video_title : Formulaire titre de la vidéo
+ *   \brief identifiant : Identifiant de la note à créer
+ *   \brief titre_version : Titre de la version associée à la note à créer
+ *
+    *\brief button_create : Bouton créer note vidéo
+    *\brief button_close : Bouton fermer
+ */
+
 #ifndef WCREERVIDEO_H
 #define WCREERVIDEO_H
 

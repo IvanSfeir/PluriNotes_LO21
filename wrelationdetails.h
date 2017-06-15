@@ -1,3 +1,18 @@
+/*!
+ * \file wrelationsdetails.h
+ * \class CentreRelationsDetails wrelationsdetails.h
+ * \brief Définit la classe CentreRelationDetails : Gestion d'une relation en particulière
+ * \details Hérite de QWidget
+ *     \brief  titre : Champ titre relation
+ *   \brief desc : Champ description relation
+ *   \brief orientee : Champ orientation relation
+  *  \brief couples : Liste de couples d'une relation
+   * \brief supprimer_relation : Bouton supprimer relation
+    *\brief sauver: Bouton sauver
+    *\brief ajouter_couple : Bouton pour ajouter couple
+    *\brief supprimer_couple : Bouton pour supprimer couple
+ */
+
 #ifndef CENTRERELATIONORIENTEE_H
 #define CENTRERELATIONORIENTEE_H
 

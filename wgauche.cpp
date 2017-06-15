@@ -56,19 +56,5 @@ Gauche::Gauche(QMainWindow* parent) :
 
 
 }
-//deplaces dans interface
-//***********************
-/*
-void Gauche::ouvrirNoteActiveId(const QString& ident) {
-    NotesManager *NM = NotesManager::getInstance();
-    //fermer_centre();
-    CentreNoteAct centrenoteact(&(NM->getNote(ident)),this);
-}
 
-void Gauche::ouvrirNoteArchiveeId(const QString& ident) {
-    NotesManager *NM = NotesManager::getInstance();
-    //fermer_centre();
-    CentreNoteArch centrenotearch(&(NM->getNote(ident)),this);
-}
-*/
 

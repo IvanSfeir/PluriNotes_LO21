@@ -1,3 +1,16 @@
+/*!
+ * \file hafficheraudio.h
+ * \class WindowAfficherAudio hafficheraudio.h
+ * \brief Définit la classe WindowAfficherAudio : Emplacement pour afficher un audio
+ * \details Hérite de QWidget
+ *      \brief audio : Note audio
+ *   \brief titre_text: Formulaire titre de la relation
+ *   \brief desc_text: Formulaire titre de la relation
+ *   \brief image_text: Formulaire titre de la relation
+ *   \brief audio_text: Formulaire titre de la relation
+    *\brief valider : Bouton valider
+    *\brief annuler : Bouton annuler
+ */
 #ifndef HAFFICHERAUDIO_H
 #define HAFFICHERAUDIO_H
 

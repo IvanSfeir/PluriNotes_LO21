@@ -1,12 +1,14 @@
 /*!
  * \file wrelations.h
- * \class CentreRelations wversionarticle.h
- * \brief Définit la classe CentreVersionArticle
- * \details Hérite de CentreVersion
- *      \a texte : Texte de l'article ;
- *   \a QLabel *textel;
-*    \a QHBoxLayout *ctexte;
-*   \a Article *article;
+ * \class CentreRelations wrelations.h
+ * \brief Définit la classe CentreRelations : Gestion des relations
+ * \details Hérite de QWidget
+ *   \brief relations : Liste des relations
+  *  \brief afficher_relation : Bouton afficher relation
+   * \brief supprimer_relation : Bouton supprimer relation
+    * \brief creer_relation :Bouton créer relation
+    *\brief fermer : Bouton fermer
+
  */
 #ifndef CENTRERELATIONS_H
 #define CENTRERELATIONS_H
@@ -49,6 +51,9 @@ signals:
 private slots:
 
 public slots:
+    /*!
+     * \brief Supprime une relation.
+     */
     void supprimerRelation();
 
 
