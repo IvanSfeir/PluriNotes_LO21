@@ -7,6 +7,7 @@
 #include <QMenu>
 #include <QMessageBox>
 #include <QAction>
+#include<typeinfo>
 
 #include "NotesManager.h"
 #include "relation.h"
@@ -22,6 +23,7 @@
 #include "wcreeraudio.h"
 #include "wcreervideo.h"
 #include "wcreertache.h"
+#include "wafficherarticle.h"
 #include <QCloseEvent>
 
 class Interface : public QMainWindow {
@@ -41,6 +43,7 @@ class Interface : public QMainWindow {
     WindowCreerVideo* window_creer_video=0;
     WindowCreerAudio* window_creer_audio=0;
     WindowCreerTache* window_creer_tache=0;
+    WindowAfficherArticle* window_afficher_article=0;
 
     QMenu *menuNotes;
     QMenu *menuRelations;
@@ -79,6 +82,8 @@ public slots:
     void restaurer_note();
     void restaurer_version();
     //void fermer_centre();
+    void ouvrir_version_act();
+    void ouvrir_version_arch();
 
 };
 

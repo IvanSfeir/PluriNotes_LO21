@@ -15,6 +15,7 @@ Interface::Interface() {
     RelationPreexistente* RP = RelationPreexistente::getRelationPreexistente();
     RM->ajouterRelation(RP);
 
+
     Note* newNote = new Note("note1"); //id=1
     Article* a1 = new Article("testA1",QDateTime::currentDateTime(),"testestsetsetstest");
     Article* a2 = new Article("testA2",QDateTime::fromString("13.06.2017-10:30:14","dd.MM.yyyy-hh:mm:ss"),"testestsetsetstest2");
@@ -135,6 +136,7 @@ void Interface::fermer_gauche() {
 void Interface::fermer_centre() {
     if(window_note_act) window_note_act->close();
     if(window_note_arch) window_note_arch->close();
+    if(window_afficher_article) window_afficher_article->close();
 }
 
 ///////////////////////////PARTIE SHOW NOTES/////////////////////////
@@ -156,6 +158,7 @@ void Interface::ouvrir_note_active_id() {
         currentNote = NM->getNote(ident->text());
         window_note_act = new CentreNoteAct (currentNote,this);
         QObject::connect(window_note_act->getBoutonRestaurerVersion(),SIGNAL(clicked()),this,SLOT(restaurer_version()));
+        QObject::connect(this->window_note_act->getBoutonAfficherVersion(), SIGNAL(clicked()), this, SLOT(ouvrir_version_act()));
         window_note_act->move(400,15);
         window_note_act->show();
     }
@@ -167,8 +170,12 @@ void Interface::ouvrir_note_archivee_id() {
     fermer_centre();
     window_note_arch = new CentreNoteArch(NM->getNote(ident),this);
     window_note_arch->move(400,15);
+    QObject::connect(this->window_note_arch->getBoutonAfficherVersion(), SIGNAL(clicked()), this, SLOT(ouvrir_version_arch()));
     window_note_arch->show();
 }
+
+
+
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
 
@@ -240,3 +247,55 @@ void Interface::restaurer_version(){
     ouvrir_note_active_id();
     }
 }
+
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
+///////////////////////////PARTIE AFFICHE VERSION////////////////////
+/////////////////////////////////////////////////////////////////////
+
+
+void Interface::ouvrir_version_act() {
+    unsigned int pos = window_note_act->getListVersions()->currentRow();
+    Version* vers = currentNote->getVersion(pos);
+    if(typeid(*vers)==typeid(Article)) {
+        fermer_centre();
+        window_afficher_article = new WindowAfficherArticle(dynamic_cast<Article*>(vers), this);
+        window_afficher_article->move(400,15);
+        window_afficher_article->show();
+    }
+//    if(typeid(*vers)==typeid(Article)) {
+//        fermer_centre();
+//        window_afficher_article = new WindowAfficherArticle(vers, this);
+//    }
+//    if(typeid(*vers)==typeid(Article)) {
+//        fermer_centre();
+//        window_afficher_article = new WindowAfficherArticle(vers, this);
+//    }
+//    if(typeid(*vers)==typeid(Article)) {
+//        fermer_centre();
+//        window_afficher_article = new WindowAfficherArticle(vers, this);
+//    }
+}
+
+void Interface::ouvrir_version_arch() {
+    unsigned int pos = window_note_arch->getListVersions()->currentRow();
+    Version* vers = currentNote->getVersion(pos);
+    if(typeid(*vers)==typeid(Article)) {
+        fermer_centre();
+        window_afficher_article = new WindowAfficherArticle(dynamic_cast<Article*>(vers), this);
+    }
+//    if(typeid(*vers)==typeid(Article)) {
+//        fermer_centre();
+//        window_afficher_article = new WindowAfficherArticle(vers, this);
+//    }
+//    if(typeid(*vers)==typeid(Article)) {
+//        fermer_centre();
+//        window_afficher_article = new WindowAfficherArticle(vers, this);
+//    }
+//    if(typeid(*vers)==typeid(Article)) {
+//        fermer_centre();
+//        window_afficher_article = new WindowAfficherArticle(vers, this);
+//    }
+}
+
