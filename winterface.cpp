@@ -132,7 +132,8 @@ void Interface::ouvrir_relations() {
     window_relations->show();
     QObject::connect(window_relations->getBoutonAfficher(), SIGNAL(clicked()), this, SLOT(ouvrir_couples()));
     //QObject::connect(window_relations->getBoutonAfficher(), SIGNAL(clicked()), this, SLOT(ouvrir_relation_details()));
-    QObject::connect(creer_relation, SIGNAL(clicked()),this, SLOT(ouvrir_creer_relation()));
+    QObject::connect(window_relations->getBoutonCreate(), SIGNAL(clicked()), this, SLOT(ouvrir_creer_relation()));
+    //QObject::connect(window_creer_relation->get, SIGNAL(clicked()),this, SLOT(ouvrir_creer_relation()));
 
 }
 
