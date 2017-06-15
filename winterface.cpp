@@ -315,16 +315,16 @@ void Interface::ouvrir_version_act() {
         window_afficher_image->move(400,20);
         window_afficher_image->show();
     }
-//    if(typeid(*vers)==typeid(Article)) {
-//        window_afficher_article = new WindowAfficherArticle(vers, this);
-//        window_afficher_article->move(400,20);
-//        window_afficher_article->show();
-    //    }
-//    if(typeid(*vers)==typeid(Article)) {
-//        window_afficher_article = new WindowAfficherArticle(vers, this);
-//        window_afficher_article->move(400,20);
-//        window_afficher_article->show();
-//    }
+    if(typeid(*vers)==typeid(audio)) {
+        window_afficher_audio = new WindowAfficherAudio(dynamic_cast<audio*>(vers), this);
+        window_afficher_audio->move(400,20);
+        window_afficher_audio->show();
+        }
+    if(typeid(*vers)==typeid(video)) {
+        window_afficher_video = new WindowAfficherVideo(dynamic_cast<video*>(vers), this);
+        window_afficher_video->move(400,20);
+        window_afficher_video->show();
+    }
 }
 
 void Interface::ouvrir_version_arch() {
@@ -346,16 +346,24 @@ void Interface::ouvrir_version_arch() {
         window_afficher_image->getTitle()->setReadOnly(true);
         window_afficher_image->getChemin()->setReadOnly(true);
     }
-//    if(typeid(*vers)==typeid(Article)) {
-//        window_afficher_article = new WindowAfficherArticle(vers, this);
-//        window_afficher_article->move(400,20);
-//        window_afficher_article->show();
-    //    }
-//    if(typeid(*vers)==typeid(Article)) {
-//        window_afficher_article = new WindowAfficherArticle(vers, this);
-//        window_afficher_article->move(400,20);
-//        window_afficher_article->show();
-//    }
+    if(typeid(*vers)==typeid(audio)) {
+        window_afficher_audio = new WindowAfficherAudio(dynamic_cast<audio*>(vers), this);
+        window_afficher_audio->move(400,20);
+        window_afficher_audio->show();
+        window_afficher_audio->getDesc()->setReadOnly(true);
+        window_afficher_audio->getTitle()->setReadOnly(true);
+        window_afficher_audio->getChemin()->setReadOnly(true);
+        window_afficher_audio->getCheminAudio()->setReadOnly(true);
+        }
+    if(typeid(*vers)==typeid(video)) {
+        window_afficher_video = new WindowAfficherVideo(dynamic_cast<video*>(vers), this);
+        window_afficher_video->move(400,20);
+        window_afficher_video->show();
+        window_afficher_video->getDesc()->setReadOnly(true);
+        window_afficher_video->getTitle()->setReadOnly(true);
+        window_afficher_video->getChemin()->setReadOnly(true);
+        window_afficher_video->getCheminVideo()->setReadOnly(true);
+    }
 }
 
 //void sauver_article() {}
