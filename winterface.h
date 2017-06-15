@@ -101,11 +101,12 @@ public slots:
     //void fermer_centre();
     void ouvrir_version_act();
     void ouvrir_version_arch();
-    //void sauver_article();
+    void sauver_article();
     void creer_relation();
     void ouvrir_couples();
     void ouvrir_creer_couple();
     void creer_couple();
+
 
 };
 

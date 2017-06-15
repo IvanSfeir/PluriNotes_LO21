@@ -329,6 +329,18 @@ void Interface::restaurer_version(){
     }
 }
 
+void Interface::sauver_article(){
+    NotesManager *NM = NotesManager::getInstance();
+    QString id = window_gauche->getNotesActives()->currentItem()->text();
+    Note *n = NM->getNote(id);
+    Article* art = new Article(window_afficher_article->getTitle()->text(),
+                               QDateTime::currentDateTime(),
+                               window_afficher_article->getText()->toPlainText());
+    n->ajouterVersion(art);
+    QMessageBox::information(this,"Sauvegarde","Votre article a bien été sauvegardé");
+    window_afficher_article->close();
+}
+
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
 
@@ -342,6 +354,7 @@ void Interface::ouvrir_version_act() {
     fermer_centre();
     if(typeid(*vers)==typeid(Article)) {
         window_afficher_article = new WindowAfficherArticle(dynamic_cast<Article*>(vers), this);
+        QObject::connect(window_afficher_article->getButtonSave(),SIGNAL(clicked(bool)),this,SLOT(sauver_article()));
         window_afficher_article->move(400,20);
         window_afficher_article->show();
     }
