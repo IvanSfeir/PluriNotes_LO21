@@ -52,6 +52,7 @@ class Interface : public QMainWindow {
     WindowAfficherArticle* window_afficher_article=0;
     WindowAfficherImage* window_afficher_image=0;
     WindowAfficherAudio* window_afficher_audio=0;
+    WindowAfficherVideo* window_afficher_video=0;
     WindowAfficherCouple* window_afficher_couples=0;
     //WindowAfficherVideo* window_afficher_video=0;
 
