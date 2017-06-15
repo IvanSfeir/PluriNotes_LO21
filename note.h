@@ -1,3 +1,14 @@
+/*!
+ * \file note.h
+ * \class Note
+ * \brief Définit la classe NotesManager : Permet de d'ajouter, supprimer, restaurer une Note. Permet de sauvegarder/charger la session dans/à partir d'un fichier XML.
+ *
+ * \details Design Pattern : Singleton et Iterator.
+ *   \a tab_notes : tableau de pointeur de Notes
+ *   \a nbNotes : nombre de notes dans tab_notes
+ *   \a nbMaxNotes : nombre de notes maximales dans tab_notes
+ *   \a instance_NotesManager : Instance static de NotesManager
+ */
 #ifndef NOTE_H
 #define NOTE_H
 
@@ -9,13 +20,30 @@
 #include "version.h"
 #include "iterator.h"
 #include "exception.h"
-//#include "notesmanager.h"
 
 using namespace std;
 
+/*!
+ * \brief Enumeration des états des notes
+ * \enum Type_etat_note
+ * \a active : La note est active
+ * \a archive : La note est archivée (supprimée mais encore liée par une relation de Reference)
+ * \a sursis : La note est en sursis (supprimée et liée à aucune relation de Reference)
+ */
 enum Type_etat_note {active, archive, sursis};
 
+
+/*!
+ *  \brief : Convertit un Type_etat_note vers une string.
+ * @param t : enum à convertir
+ * @return  string de l'enum
+ */
 string enum_etat_to_string(Type_etat_note t);
+/*!
+ * \brief Convertit une string vers un Type_etat_note
+ * @param s : string à convertir
+ * @return enum de la string
+ */
 Type_etat_note string_to_enum_etat(const string &s);
 
 class Note {
