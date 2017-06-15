@@ -53,7 +53,7 @@ void RelationManager::ajouterRelation(Relation* newRelation){
         delete[] oldRelations;
         maxRelations += 10;
     }
-    relations[++nbRelations] = newRelation;
+    relations[nbRelations++] = newRelation;
 }
 
 void RelationManager::supprimerRelation(Relation* supRelation){

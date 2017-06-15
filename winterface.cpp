@@ -11,11 +11,10 @@ Interface::Interface() {
     //init for testing////////////////////////////
     //////////////////////////////////////////////
     NotesManager* NM = NotesManager::getInstance();
-//    RelationManager* RM = RelationManager::getRelationManager();
-//    RelationPreexistente* RP = RelationPreexistente::getRelationPreexistente();
-//    RM->ajouterRelation(RP);
-//    RelationManager::iterator it = RM->begin();
-//    qDebug() << (*it)->getOrientee();
+    RelationManager* RM = RelationManager::getRelationManager();
+    RelationPreexistente* RP = RelationPreexistente::getRelationPreexistente();
+    RM->ajouterRelation(RP);
+
 
     Note* newNote = new Note("note1"); //id=1
     Article* a1 = new Article("testA1",QDateTime::currentDateTime(),"testestsetsetstest");
@@ -90,13 +89,36 @@ void Interface::closeEvent(QCloseEvent *bar){
 
 void Interface::avant_de_fermer() {
     NotesManager *NM = NotesManager::getInstance();
-    //if (!(NM->corbeilleIsEmpty()) and (!actionCorbeilleAuto->isChecked())) {
+    //if (!(NM->is_bin_empty()) and (!actionCorbeilleAuto->isChecked())) {
     actionCorbeilleAuto->setChecked(true);
     bool booleen = actionCorbeilleAuto->isChecked();
     if (booleen == true) {
-        QMessageBox::information(this,"checked","checked");
-        // int reponse = QMessageBox::question(this,"Corbeille","Voulez-vous supprimer definitivement les notes de la corbeille ?");
-        // save(NM, reponse);
+        //QMessageBox::information(this,"checked","checked");
+        QMessageBox msgBox;
+        msgBox.setText("Corbeille");
+        msgBox.setInformativeText("Voulez-vous supprimer definitivement les notes de la corbeille ?");
+        msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+        msgBox.setDefaultButton(QMessageBox::Save);
+//        int ret = msgBox.exec();
+//        // int reponse = QMessageBox::question(this,"Corbeille","Voulez-vous supprimer definitivement les notes de la corbeille ?");
+//        // save(NM, reponse);
+//        switch (ret) {
+//////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! EN CHANTIER ...  !!!!!!!!!!!!!!!!!////////////////////////////
+//          case QMessageBox::Save:
+//              // Save was clicked
+//            close();
+//              break;
+//          case QMessageBox::Discard:
+//              // Don't Save was clicked
+//            close();
+//              break;
+////          case QMessageBox::Cancel:
+////              // Cancel was clicked
+////              break;
+////          default:
+////              // should never be reached
+//              break;
+//        }
     }
     NotesManager::libererInstance();
     RelationManager::libererRelationManager();
