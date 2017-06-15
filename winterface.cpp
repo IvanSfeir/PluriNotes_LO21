@@ -142,7 +142,6 @@ void Interface::ouvrir_relations() {
 
 void Interface::fermer_droite() {
     if(window_relations) window_relations->close();
-    if(window_relation_details) window_relation_details->close();
     if(window_creer_relation) window_creer_relation->close();
     if(window_creer_couple) window_creer_couple->close();
 
@@ -315,7 +314,7 @@ void Interface::restaurer_note(){
 
 void Interface::restaurer_version(){
     int index = window_note_act->getListVersions()->currentRow();
-    if (index != -1 && currentNote->getNbVersion() - 1 == index){
+    if (index != -1){
     qDebug() << currentNote->getVersion(index)->getTitle() << "\n";
     qDebug() << currentNote->getNbVersion() <<"\n";
     //currentNote->ajouterVersion(currentNote->getVersion(index));

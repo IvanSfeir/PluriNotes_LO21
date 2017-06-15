@@ -27,7 +27,6 @@ class Multimedia : public Version {
 public:
     Multimedia(const QString & t, QDateTime d, const QString &desc, const QString &i):
         Version(t,d),desc(desc), img_URL(i){}
-    ~virtual Multimedia()=0;
 
     const QString& getDesc() const {return desc;}
     const QString & getimg_URL() const{return img_URL;}
@@ -54,7 +53,6 @@ class image : public Multimedia{
 public:
     image(const QString & t, QDateTime d, const QString &desc, const QString &i):
     Multimedia(t,d,desc,i), img(i) {}
-    ~image(){}
 
     const QString & getImg() const {return img;}
     void setImg(const QString & img_URL) {img=img_URL;}
@@ -74,8 +72,6 @@ class audio : public Multimedia{
 public:
     audio(const QString & t, QDateTime d, const QString &desc, const QString &i, QString au):
     Multimedia(t,d,desc,i), audio_URL(au) {}
-    ~audio(){}
-
     /*!
      * Lance le fichier audio
      */
@@ -108,7 +104,6 @@ class video : public Multimedia{
 public:
     video(const QString & t, QDateTime d, const QString &desc, const QString &i, QString vid):
     Multimedia(t,d,desc,i), video_URL(vid) {}
-    ~video(){}
 
     const QString&  getVideo_URL() const {return video_URL;}
 

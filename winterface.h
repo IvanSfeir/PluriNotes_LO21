@@ -22,7 +22,6 @@
 #include "wrelationdetails.h"
 #include "wnoteact.h"
 #include "wnotearch.h"
-#include "wversion.h"
 #include "wgauche.h"
 #include "wcreernote.h"
 #include "wcreerarticle.h"
