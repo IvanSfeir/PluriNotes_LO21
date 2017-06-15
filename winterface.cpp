@@ -87,13 +87,8 @@ void Interface::closeEvent(QCloseEvent *bar){
 }
 
 void Interface::avant_de_fermer() {
-<<<<<<< HEAD
     //NotesManager *NM = NotesManager::getInstance();
     //if (!(NM->corbeilleIsEmpty()) and (!actionCorbeilleAuto->isChecked())) {
-=======
-    NotesManager *NM = NotesManager::getInstance();
-    //if (!(NM->is_bin_empty()) and (!actionCorbeilleAuto->isChecked())) {
->>>>>>> 64220457ee392ddfdb5c53c462a3c3b14bc44718
     actionCorbeilleAuto->setChecked(true);
     bool booleen = actionCorbeilleAuto->isChecked();
     if (booleen == true) {
